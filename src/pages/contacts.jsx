@@ -9,7 +9,7 @@ export default function Contacts() {
           paddingTop: "100px",
           flex: "auto",
           fontSize: "30px",
-          color: "blue",
+          color: "white",
         }}
       >
         <p>Наші координати:</p>

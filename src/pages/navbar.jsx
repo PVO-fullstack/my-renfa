@@ -5,10 +5,12 @@ export default function Navbar() {
   return (
     <div
       style={{
+        position: "relative",
+        zIndex: "3",
         display: "flex",
         gap: "30px",
         justifyContent: "space-around",
-        backgroundColor: "tomato",
+        backgroundColor: "#4bd4bf",
         border: "2px solid black",
         borderRadius: "5px",
         padding: "10px",

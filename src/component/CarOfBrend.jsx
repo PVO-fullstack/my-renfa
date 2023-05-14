@@ -28,7 +28,9 @@ export const CarOfBrend = () => {
 
   return (
     <Layout>
-      <div style={{ padding: "0 50px" }}>
+      <div
+        style={{ padding: "0 10px 10px 350px", position: "fixed", zIndex: "1" }}
+      >
         <h1 id="title" style={{ textAlign: "center" }}>
           {page}
         </h1>

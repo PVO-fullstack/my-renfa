@@ -7,6 +7,7 @@ export const ModelList = () => {
         display: "flex",
         justifyContent: "space-around",
         listStyle: "none",
+        marginLeft: "30px",
       }}
     >
       {model.map((item) => (

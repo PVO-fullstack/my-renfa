@@ -9,27 +9,17 @@ export default function Layout({ children }) {
     // <html lang="en">
     //   <head></head>
     //   <body style={{ backgroundColor: "GrayText" }}>
-    <div>
-      <Navbar />
-      <div className={css.main} style={{ display: "flex" }}>
-        <SideBar />
-        {children}
+    <>
+      <div className={css.main}>
+        <div>
+          <Navbar />
+        </div>
+        <div>
+          <SideBar />
+          {children}
+          <Footer />
+        </div>
       </div>
-      <Footer />
-    </div>
-    //   </body>
-    // </html>
-    // <html lang="en">
-    //
-    //   {/* <div style={{ display: "flex" }}> */}
-    //   <main style={{ width: "-webkit-fill-available" }}>
-    //     <body style={{ backgroundColor: "aliceblue" }}>
-    //       <>{children}</>
-    //     </body>
-    //   </main>
-    //   {/* </div> */}
-
-    //   <Footer />
-    // </html>
+    </>
   );
 }

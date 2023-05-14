@@ -13,15 +13,23 @@ export const PartsList = () => {
 
   return (
     <div style={{ flex: "auto" }}>
-      <h2 style={{ textAlign: "center" }}>{model}</h2>
+      <h2 style={{ textAlign: "center", color: "white" }}>{model}</h2>
       {/* <ul style={{ textAlign: "center" }}> */}
-      <table style={{ marginLeft: "auto", marginRight: "auto" }}>
+      <table
+        style={{
+          marginLeft: "400px",
+          marginRight: "auto",
+          position: "relative",
+          zIndex: "1",
+        }}
+      >
         <thead>
           <tr>
             <th
               style={{
-                border: "1px solid black",
-                color: "blue",
+                backgroundColor: "rgb(64 224 208 / 41%)",
+                border: "1px solid red",
+                color: "white",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -30,8 +38,9 @@ export const PartsList = () => {
             </th>
             <th
               style={{
-                border: "1px solid black",
-                color: "blue",
+                backgroundColor: "rgb(64 224 208 / 41%)",
+                border: "1px solid red",
+                color: "white",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -40,8 +49,9 @@ export const PartsList = () => {
             </th>
             <th
               style={{
-                border: "1px solid black",
-                color: "blue",
+                backgroundColor: "rgb(64 224 208 / 41%)",
+                border: "1px solid red",
+                color: "white",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -56,9 +66,9 @@ export const PartsList = () => {
             <tr key={item.Code}>
               <td
                 style={{
-                  border: "1px solid black",
-                  // backgroundColor: "#aac8e3",
-                  color: "blue",
+                  border: "1px solid red",
+                  backgroundColor: "rgb(255 254 22 / 41%)",
+                  color: "white",
                   fontSize: "15px",
                   padding: "5px",
                 }}
@@ -67,9 +77,9 @@ export const PartsList = () => {
               </td>
               <td
                 style={{
-                  border: "1px solid black",
-                  // backgroundColor: "#3e912b",
-                  color: "blue",
+                  border: "1px solid red",
+                  backgroundColor: "rgb(255 254 22 / 41%)",
+                  color: "white",
                   fontSize: "20px",
                   padding: "5px",
                 }}
@@ -78,9 +88,9 @@ export const PartsList = () => {
               </td>
               <td
                 style={{
-                  border: "1px solid black",
-                  // backgroundColor: "#aac8e3",
-                  color: "blue",
+                  border: "1px solid red",
+                  backgroundColor: "rgb(255 254 22 / 41%)",
+                  color: "white",
                   fontSize: "20px",
                   padding: "5px",
                 }}

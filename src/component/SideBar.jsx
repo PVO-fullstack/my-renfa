@@ -5,10 +5,14 @@ export const SideBar = () => {
   return (
     <ul
       style={{
+        position: "fixed",
+        top: "60px",
+        zIndex: "2",
         listStyle: "none",
         padding: "0",
         backgroundColor: "inheryt",
         minWidth: "300px",
+        marginLeft: "30px",
       }}
     >
       {model.map((item) => (
@@ -23,8 +27,10 @@ export const SideBar = () => {
         >
           <li
             style={{
+              backgroundColor: "rgb(64 224 208 / 41%)",
               textAlign: "center",
               border: "2px solid red",
+              borderRadius: "20px",
               display: "flex",
               alignItems: "center",
               justifyContent: "space-evenly",

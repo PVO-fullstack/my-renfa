@@ -7,10 +7,10 @@ export default function Home() {
       <div
         style={{
           flex: "auto",
-          margin: "200px 0",
+          margin: "200px 0 200px 300px",
           textAlign: "center",
           fontSize: "40px",
-          color: "black",
+          color: "white",
         }}
       >
         <p>
