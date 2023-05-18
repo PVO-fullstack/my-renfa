@@ -4,7 +4,7 @@ import Layout from "@/app/layout";
 import { ModelList } from "@/component/ModelList";
 import { Part } from "@/component/Part";
 import { SideBar } from "@/component/SideBar";
-import { Modal } from "@/component/modal";
+import { Modal } from "@/component/Modal";
 import parts from "../data/350.json";
 
 // import { useRouter } from "next/router";
