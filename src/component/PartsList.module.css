@@ -1,0 +1,18 @@
+@media screen and (max-width: 1199px) {
+    .partsTable{
+                   /* margin-left: "400px", */
+                    margin-right: auto;
+                    position: relative;
+                    z-index: 1; 
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+        .partsTable {
+                margin-left: 400px;
+                margin-right: auto;
+                position: relative;
+                z-index: 1;
+            }
+}

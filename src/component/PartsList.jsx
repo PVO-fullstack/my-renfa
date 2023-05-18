@@ -1,5 +1,6 @@
 import cars from "../data/cars.json";
 import { useRouter } from "next/router";
+import css from "./PartsList.module.css";
 
 export const PartsList = () => {
   const router = useRouter();
@@ -15,14 +16,7 @@ export const PartsList = () => {
     <div style={{ flex: "auto" }}>
       <h2 style={{ textAlign: "center", color: "black" }}>{model}</h2>
       {/* <ul style={{ textAlign: "center" }}> */}
-      <table
-        style={{
-          marginLeft: "400px",
-          marginRight: "auto",
-          position: "relative",
-          zIndex: "1",
-        }}
-      >
+      <table className={css.partsTable}>
         <thead>
           <tr>
             <th

@@ -1,0 +1,13 @@
+@media screen and (max-width: 1199px) {
+  .carList {
+    padding: 0 10px 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .carList {
+    padding: 0 10px 10px 350px;
+    position: fixed;
+    z-Index: 1;
+  }
+}

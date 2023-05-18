@@ -10,16 +10,16 @@ export default function Layout({ children }) {
     //   <head></head>
     //   <body style={{ backgroundColor: "GrayText" }}>
     <>
+      <Navbar />
       <div className={css.main}>
-        <div>
-          <Navbar />
-        </div>
-        <div>
-          <SideBar />
-          {children}
-          <Footer />
-        </div>
+        {/* <div> */}
+        {/* <div style={{ display: "flex" }}> */}
+        <SideBar />
+        {children}
       </div>
+      {/* </div> */}
+      <Footer />
+      {/* </div> */}
     </>
   );
 }

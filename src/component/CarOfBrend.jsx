@@ -2,7 +2,7 @@ import Layout from "@/app/layout";
 import cars from "../data/cars.json";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import css from "../app/page.module.css";
+import css from "./CarOfBrend.module.css";
 
 export const CarOfBrend = () => {
   const router = useRouter();
@@ -28,9 +28,7 @@ export const CarOfBrend = () => {
 
   return (
     <Layout>
-      <div
-        style={{ padding: "0 10px 10px 350px", position: "fixed", zIndex: "1" }}
-      >
+      <div className={css.carList}>
         <h1 id="title" style={{ textAlign: "center" }}>
           {page}
         </h1>
