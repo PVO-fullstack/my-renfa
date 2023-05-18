@@ -13,7 +13,7 @@ export const PartsList = () => {
 
   return (
     <div style={{ flex: "auto" }}>
-      <h2 style={{ textAlign: "center", color: "white" }}>{model}</h2>
+      <h2 style={{ textAlign: "center", color: "black" }}>{model}</h2>
       {/* <ul style={{ textAlign: "center" }}> */}
       <table
         style={{
@@ -29,7 +29,7 @@ export const PartsList = () => {
               style={{
                 backgroundColor: "rgb(64 224 208 / 41%)",
                 border: "1px solid red",
-                color: "white",
+                color: "black",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -40,7 +40,7 @@ export const PartsList = () => {
               style={{
                 backgroundColor: "rgb(64 224 208 / 41%)",
                 border: "1px solid red",
-                color: "white",
+                color: "black",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -51,7 +51,7 @@ export const PartsList = () => {
               style={{
                 backgroundColor: "rgb(64 224 208 / 41%)",
                 border: "1px solid red",
-                color: "white",
+                color: "black",
                 padding: "5px",
                 fontSize: "25px",
               }}
@@ -68,7 +68,7 @@ export const PartsList = () => {
                 style={{
                   border: "1px solid red",
                   backgroundColor: "rgb(255 254 22 / 41%)",
-                  color: "white",
+                  color: "black",
                   fontSize: "15px",
                   padding: "5px",
                 }}
@@ -79,7 +79,7 @@ export const PartsList = () => {
                 style={{
                   border: "1px solid red",
                   backgroundColor: "rgb(255 254 22 / 41%)",
-                  color: "white",
+                  color: "black",
                   fontSize: "20px",
                   padding: "5px",
                 }}
@@ -90,7 +90,7 @@ export const PartsList = () => {
                 style={{
                   border: "1px solid red",
                   backgroundColor: "rgb(255 254 22 / 41%)",
-                  color: "white",
+                  color: "black",
                   fontSize: "20px",
                   padding: "5px",
                 }}

@@ -10,7 +10,7 @@ export default function Home() {
           margin: "200px 0 200px 300px",
           textAlign: "center",
           fontSize: "40px",
-          color: "white",
+          color: "black",
         }}
       >
         <p>
