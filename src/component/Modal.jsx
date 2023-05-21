@@ -16,10 +16,12 @@ export const Modal = ({ src, onClose }) => {
       const getLS = JSON.parse(localStorage.getItem("part"));
       partList.push(...getLS, src);
       localStorage.setItem("part", JSON.stringify(partList));
+      onClose();
       return;
     }
     partList.push(src);
     localStorage.setItem("part", JSON.stringify(partList));
+    onClose();
   };
 
   return (
