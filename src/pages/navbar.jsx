@@ -25,6 +25,9 @@ export default function Navbar() {
       <NavLink className={css.link} href="/contacts">
         Contacts
       </NavLink>
+      <NavLink className={css.link} href="/order">
+        Order
+      </NavLink>
     </div>
   );
 }
