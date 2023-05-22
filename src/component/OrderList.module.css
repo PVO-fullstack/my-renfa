@@ -11,9 +11,27 @@
 
     .orderItem {
         display: flex;
+        width: 900px;
     }
 
     .orderItemP {
         padding: 0 10px;
+        /* width: 400px; */
         margin: 0;
+    }
+
+    .partsName {
+                padding: 0 10px;
+        width: 400px;
+                margin: 0;
+    }
+
+    .partsPrice {
+                        padding: 0 10px;
+                            width: 70px;
+                            margin: 0;
+    }
+
+    .quantity {
+        width: 40px;
     }
