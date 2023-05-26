@@ -1,8 +1,8 @@
-import Navbar from "../pages/navbar";
 import Footer from "../pages/footer";
 import { SideBar } from "@/component/SideBar";
 import bgImg from "../img/MG-Logo.png";
 import css from "./page.module.css";
+import Navbars from "../pages/navbar";
 
 export default function Layout({ children }) {
   return (
@@ -10,7 +10,7 @@ export default function Layout({ children }) {
     //   <head></head>
     //   <body style={{ backgroundColor: "GrayText" }}>
     <>
-      <Navbar />
+      <Navbars />
       <div className={css.main}>
         {/* <div> */}
         {/* <div style={{ display: "flex" }}> */}
