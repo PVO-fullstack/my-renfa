@@ -12,19 +12,24 @@ const token = {
 };
 
 export const register = async (credential) => {
-  const user = axios.post("/api/auth/users/register", credential);
-  // token.set(user.data.token);
-  return user.data;
+  const res = await axios.post("/api/auth/users/register", credential);
+  token.set(res.data.token);
+  return res.data;
 };
 
 export const login = async (credential) => {
-  const user = await axios.post("/api/auth/users/login", credential);
-  token.set(user.data.token);
-  return user.data.user;
+  const res = await axios.post("/api/auth/users/login", credential);
+  token.set(res.data.token);
+  return res.data;
 };
 
 export const logout = async () => {
-  const user = await axios.post("/api/auth/users/logout");
+  const res = await axios.post("/api/auth/users/logout");
   token.unset();
-  return user.data.user;
+  return res.data;
+};
+
+export const userRefresh = async () => {
+  const res = await axios.get("/api/auth/users/current");
+  return res.data;
 };

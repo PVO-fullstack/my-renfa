@@ -1,6 +1,16 @@
 import Layout from "@/app/layout";
+import { userRefresh } from "@/authService/auth";
+import { useEffect } from "react";
 
 export default function Contacts() {
+  // useEffect(() => {
+  //   const fetchRefresh = async () => {
+  //     const refresh = await userRefresh();
+  //     console.log("refresh", refresh);
+  //   };
+  //   fetchRefresh();
+  // }, []);
+
   return (
     <Layout>
       <div

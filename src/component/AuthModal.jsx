@@ -14,14 +14,21 @@ export const AuthModal = ({ show, handleClose }) => {
       const name = formBasicName.value;
       const email = formBasicEmail.value;
       const password = formBasicPassword.value;
-      const user = await register({ name, email, password });
-      handleClose();
+      const data = await register({ name, email, password });
+      localStorage.setItem("token", JSON.stringify(data.token));
+      localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
+      handleClose(name);
       return;
     }
     const email = formBasicEmail.value;
     const password = formBasicPassword.value;
-    const user = await login({ email, password });
-    handleClose(user.name);
+    const data = await login({ email, password });
+    const {
+      user: { name },
+    } = data;
+    localStorage.setItem("token", JSON.stringify(data.token));
+    localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
+    handleClose(name);
   };
 
   const handleChangeLoginForm = () => {

@@ -1,6 +1,6 @@
 import NavLink from "next/link";
 import css from "./navbar.module.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AuthModal } from "@/component/AuthModal";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "@/authService/auth";
@@ -10,14 +10,24 @@ export default function Navbars() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(null);
 
+  useEffect(() => {
+    let localName = JSON.parse(localStorage.getItem("name"));
+    if (localName === "null") {
+      return;
+    }
+    setName(localName);
+  }, []);
+
   const handleClose = (name) => {
     setShow(false);
     setName(name);
+    localStorage.setItem("name", JSON.stringify(name));
   };
   const handleShow = () => setShow(true);
 
   const handleLogout = () => {
     logout();
+    localStorage.setItem("name", null);
     setName(null);
   };
 
@@ -34,7 +44,7 @@ export default function Navbars() {
         borderRadius: "5px",
         marginTop: "5px",
         padding: "5px",
-        boxShadow: "0 0 10px 5px #441d1d80;",
+        // boxShadow: "0 0 10px 5px #441d1d80;",
       }}
     >
       <NavLink className={css.link} href="/">
