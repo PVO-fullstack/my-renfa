@@ -1,10 +1,10 @@
 import NavLink from "next/link";
 import css from "./navbar.module.scss";
-import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { AuthModal } from "@/component/AuthModal";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "@/authService/auth";
+import { UserMenu } from "@/component/UserMenu";
 
 export default function Navbars() {
   const [show, setShow] = useState(false);
@@ -46,19 +46,7 @@ export default function Navbars() {
       <NavLink className={css.link} href="/contacts">
         Contacts
       </NavLink>
-      <NavLink className={css.link} href="/order">
-        Order
-      </NavLink>
-      {name ? <p className={css.user_name}>Вітаю Вас: {name}</p> : ""}
-      {name ? (
-        <Button variant="primary" size="lg" onClick={handleLogout}>
-          Logout
-        </Button>
-      ) : (
-        <Button variant="primary" size="lg" onClick={handleShow}>
-          Register
-        </Button>
-      )}
+      <UserMenu name={name} logout={handleLogout} show={handleShow} />
       <AuthModal show={show} handleClose={handleClose} />
     </div>
   );
