@@ -3,7 +3,6 @@ import css from "./navbar.module.scss";
 import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { AuthModal } from "@/component/AuthModal";
-// import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import { logout } from "@/authService/auth";
 
