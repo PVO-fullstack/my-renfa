@@ -7,11 +7,11 @@ export const UserMenu = ({ name, logout, show }) => {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
-    const userAvatar = JSON.parse(localStorage.getItem("avatar"));
-    setAvatar(userAvatar);
+    if (localStorage.getItem("avatar")) {
+      const userAvatar = JSON.parse(localStorage.getItem("avatar"));
+      setAvatar(userAvatar);
+    }
   }, []);
-
-  console.log("avatar", avatar);
 
   return (
     <div className={css.menu}>

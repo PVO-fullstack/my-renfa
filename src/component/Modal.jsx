@@ -3,6 +3,8 @@ import css from "./Modal.module.css";
 export const Modal = ({ src, onClose }) => {
   const kurs = 40;
 
+  console.log("src", src);
+
   const handleOverlayClick = (e) => {
     if (e.currentTarget === e.target) {
       onClose();

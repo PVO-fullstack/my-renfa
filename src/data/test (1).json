@@ -1,0 +1,126 @@
+{
+"Лист1":[
+ {
+  "Brand": "MG",
+  "Model": 350,
+  "Articul": "30013136",
+  "Part_Name": "Актуатор печі MG350",
+  "Description": "Актуатор печі на автомобілі MG350 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "10",
+  "Img": "https:\/\/images.prom.ua\/641679830_aktuator-pechki-mg350.jpg",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 2
+ },
+ {
+  "Brand": "MG",
+  "Model": "\\\"3\\\", \\\"350\\\", \\\"5\\\", \\\"550\\\", \\\"6\\\"",
+  "Articul": "LPW100180P",
+  "Part_Name": "Фільтр масла (ALL) (Poland) MG350",
+  "Description": "Фільтр масла (ALL) (Poland) на автомобіль MG350 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "4",
+  "Img": "https:\/\/images.prom.ua\/366526145_filtr-masla-all.jpg",
+  "In_stock": "+",
+  "Country": "Польша",
+  "Quantity": 1
+ },
+ {
+  "Brand": "MG",
+  "Model": "\\\"3\\\", \\\"350\\\", \\\"5\\\", \\\"550\\\", \\\"6\\\"",
+  "Articul": "LPW100180",
+  "Part_Name": "Фільтр масла (ALL) MG350",
+  "Description": "Фільтр масла (ALL) на автомобіль MG350 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "5,7",
+  "Img": "https:\/\/images.prom.ua\/366526146_filtr-masla-all.jpg",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "MG",
+  "Model": "\\\"3\\\", \\\"350\\\", \\\"5\\\", \\\"550\\\", \\\"6\\\"",
+  "Articul": "50016740",
+  "Part_Name": "Фільтр паливний MG350",
+  "Description": "Фільтр паливний на автомобіль MG350 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "3",
+  "Img": "https:\/\/images.prom.ua\/3434586221_filtr-toplivnyj-mg350.jpg",
+  "In_stock": "+",
+  "Country": "Польша",
+  "Quantity": 1
+ },
+ {
+  "Brand": "MG",
+  "Model": 350,
+  "Articul": "50016901",
+  "Part_Name": "Фільтр повітряний MG350",
+  "Description": "Фільтр повітряний на автомобілі MG350, MG5 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "8,1",
+  "Img": "https:\/\/images.prom.ua\/366526132_filtr-vozdushnyj-mg350.jpg",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "MG",
+  "Model": 350,
+  "Articul": "10031849",
+  "Part_Name": "Фільтр салону MG350",
+  "Description": "Фільтр салону на автомобілі MG350, MG5 , завжди в наявності, найкращі ціни, доставка по Україні, прямі поставки з Китаю.",
+  "Price": "8,1",
+  "Img": "https:\/\/images.prom.ua\/366525263_filtr-salona-mg350.jpg",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "Chery",
+  "Model": "Amulet",
+  "Articul": "A11-1109111AB",
+  "Part_Name": "Фильтр воздушный Amulet",
+  "Description": "Фильтр воздушный Amulet",
+  "Price": 2,
+  "Img": "https:\/\/dummyimage.com\/640x480\/2a2a2a\/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "Chery",
+  "Model": "Amulet",
+  "Articul": "480-1012010",
+  "Part_Name": "Фильтр масляный Amulet",
+  "Description": "Фильтр масляный Amulet",
+  "Price": 2.6,
+  "Img": "https:\/\/dummyimage.com\/640x480\/2a2a2a\/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "Chery",
+  "Model": "Amulet",
+  "Articul": "A11-5300640AB",
+  "Part_Name": "Фильтр салона",
+  "Description": "Фильтр салона",
+  "Price": 3.2,
+  "Img": "https:\/\/dummyimage.com\/640x480\/2a2a2a\/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ },
+ {
+  "Brand": "Chery",
+  "Model": "Amulet",
+  "Articul": "A11-1117110CA",
+  "Part_Name": "Фильтр топливный",
+  "Description": "Фильтр топливный",
+  "Price": 2.5,
+  "Img": "https:\/\/dummyimage.com\/640x480\/2a2a2a\/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+  "In_stock": "+",
+  "Country": "Китай",
+  "Quantity": 1
+ }
+],
+"Лист2":[],
+"Лист3":[]
+}

@@ -11,6 +11,7 @@ export default function Navbars() {
   const [name, setName] = useState(null);
 
   useEffect(() => {
+    // if (localStorage.getItem("name"))
     let localName = JSON.parse(localStorage.getItem("name"));
     if (localName === "null") {
       return;

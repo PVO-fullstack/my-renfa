@@ -3,24 +3,47 @@ import cars from "../data/cars.json";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import css from "./CarOfBrend.module.css";
+import { useEffect, useState } from "react";
+import { getModelBrand } from "@/apiService/apiParts";
 
 export const CarOfBrend = () => {
   const router = useRouter();
+  const brand = router.query.slag;
+  console.log(brand);
 
-  const page = router.query.slag;
-  console.log(page);
+  const [models, setModels] = useState([]);
 
-  const model = cars.filter((car) => car.Brend === page);
-
-  const uniquModels = [];
-
-  for (let car of model) {
-    // console.log(car);
-    const qwe = uniquModels.map((item) => item.Model);
-    if (!qwe.includes(car.Model)) {
-      uniquModels.push(car);
+  useEffect(() => {
+    if (brand) {
+      async function getBrand(brand) {
+        const brandID = await getModelBrand(brand);
+        console.log("brand", brandID);
+        // const qwe = [];
+        const allModel = brandID.flatMap((el) => el.Model);
+        const uniqueModel = allModel.filter(
+          (model, index, array) => array.indexOf(model) === index
+        );
+        setModels(uniqueModel);
+      }
+      getBrand(brand);
+      // const allModell = getBrand(brand);
+      // console.log("allModell", allModell);
     }
-  }
+  }, [brand]);
+
+  console.log("model", models);
+
+  // const model = cars.filter((car) => car.Brend === page);
+
+  // const uniquModels = [];
+
+  // for (let car of model) {
+  //   // console.log(car);
+  //   const qwe = uniquModels.map((item) => item.Model);
+  //   if (!qwe.includes(car.Model)) {
+  //     uniquModels.push(car);
+  //   }
+  // }
 
   // const style = page.toLowerCase();
 
@@ -30,7 +53,7 @@ export const CarOfBrend = () => {
     <Layout>
       <div className={css.carList}>
         <h1 id="title" style={{ textAlign: "center" }}>
-          {page}
+          {brand}
         </h1>
         <ul
           style={{
@@ -42,13 +65,13 @@ export const CarOfBrend = () => {
             padding: "0",
           }}
         >
-          {uniquModels.map((car) => (
+          {models.map((car) => (
             <Link
               href={{
                 pathname: `/models/[page]/[model]`,
-                query: { page: page, model: car.Model },
+                query: { page: brand, model: car },
               }}
-              key={car.Model}
+              key={car}
             >
               <li>
                 <button
@@ -63,7 +86,7 @@ export const CarOfBrend = () => {
                     padding: "10px 0",
                   }}
                 >
-                  {car.Model}
+                  {car}
                 </button>
               </li>
             </Link>
