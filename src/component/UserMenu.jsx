@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavLink from "next/link";
 import { Button } from "react-bootstrap";
 import css from "./UserMenu.module.scss";
-import img from "../../public/cart.png";
+// import img from "../../public/cart.png"
 
 export const UserMenu = ({ name, logout, show }) => {
   const [avatar, setAvatar] = useState("");
@@ -35,7 +35,7 @@ export const UserMenu = ({ name, logout, show }) => {
         <NavLink className={css.link} href="/order">
           <img
             className={css.cart}
-            src={img}
+            src="/cart.png"
             width={30}
             // title="smart cart icons"
           />
