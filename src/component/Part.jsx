@@ -66,7 +66,7 @@ export const Part = ({ openModal, getAllParts }) => {
               alt={part.Description}
             />
             <p style={{ color: "black", textAlign: "center" }}>
-              Ціна: {part.Price * kurs} грн
+              Ціна: {Math.round(part.Price * kurs)} грн
             </p>
           </a>
         </li>
