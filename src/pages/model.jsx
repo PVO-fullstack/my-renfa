@@ -1,5 +1,5 @@
 // import { useState } from "react";
-// import Layout from "@/app/layout";
+import Layout from "@/app/layout";
 // import { ModelList } from "@/component/ModelList";
 // import { Part } from "@/component/Part";
 // import { SideBar } from "@/component/SideBar";
