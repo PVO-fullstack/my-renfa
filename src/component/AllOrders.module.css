@@ -1,0 +1,47 @@
+.false {
+    color: tomato;
+}
+
+.true {
+    color: green;
+}
+
+.order_list {
+    list-style: none;
+}
+
+.order_card {
+    border: 2px solid green;
+    border-radius: 5px;
+    background-color: aquamarine;
+    list-style: none;
+    width: fit-content;
+    margin: auto;
+    padding: 0;
+}
+
+.item_card {
+    display: flex;
+    border: 2px solid white;
+}
+
+.articul {
+    width: 200px;
+    padding: 5px 10px;
+    margin: 0;
+}
+
+.part_name {
+    width: 400px;
+    padding: 5px 10px;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+        margin: 0;
+}
+
+.price {
+    width: 100px;
+    padding: 5px 10px;
+        margin: 0;
+        text-align: center;
+}

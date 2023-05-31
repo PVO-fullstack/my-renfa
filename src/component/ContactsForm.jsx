@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
@@ -6,39 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { login, register } from "@/authService/auth";
 import css from "./PartModal.module.css";
 
-export const PartModal = ({ show, handleClose }) => {
-  // const [signUp, setSignUp] = useState(false);
-
+export const ContactsForm = ({ show, handleClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (signUp === false) {
-    //   const name = formBasicName.value;
-    //   const email = formBasicEmail.value;
-    //   const password = formBasicPassword.value;
-    //   const data = await register({ name, email, password });
-    //   localStorage.setItem("token", JSON.stringify(data.token));
-    //   localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
     handleClose();
-    //   return;
-    // }
-    // const email = formBasicEmail.value;
-    // const password = formBasicPassword.value;
-    // const data = await login({ email, password });
-    // const {
-    //   user: { name },
-    // } = data;
-    // localStorage.setItem("token", JSON.stringify(data.token));
-    // localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
-    // handleClose(name);
   };
-
-  // const handleChangeLoginForm = () => {
-  //   setSignUp(true);
-  // };
-
-  // const handleChangeRegisterForm = () => {
-  //   setSignUp(false);
-  // };
 
   return (
     <>
@@ -48,36 +20,36 @@ export const PartModal = ({ show, handleClose }) => {
             <Form.Group
               style={{ display: "flex" }}
               className="mb-3"
-              controlId="Brand"
+              controlId="Name"
             >
-              <Form.Label className={css.label}>Brand</Form.Label>
+              <Form.Label className={css.label}>Імя та Прізвище</Form.Label>
               <Form.Control type="text" name="Brand" />
             </Form.Group>
             <Form.Group
               style={{ display: "flex" }}
               className="mb-3"
-              controlId="Model"
+              controlId="Phone"
             >
-              <Form.Label className={css.label}>Model</Form.Label>
-              <Form.Control type="text" name="Model" />
+              <Form.Label className={css.label}>Номер телефону</Form.Label>
+              <Form.Control type="text" name="Phone" />
             </Form.Group>
             <Form.Group
               style={{ display: "flex" }}
               className="mb-3"
-              controlId="Articul"
+              controlId="City"
             >
-              <Form.Label className={css.label}>Articul</Form.Label>
-              <Form.Control type="text" name="Articule" />
+              <Form.Label className={css.label}>Місто</Form.Label>
+              <Form.Control type="text" name="City" />
             </Form.Group>
             <Form.Group
               style={{ display: "flex" }}
               className="mb-3"
-              controlId="Part_Name"
+              controlId="NP"
             >
-              <Form.Label className={css.label}>Part_Name</Form.Label>
-              <Form.Control type="text" name="Part_Name" />
+              <Form.Label className={css.label}>Номер відділення НП</Form.Label>
+              <Form.Control type="text" name="NP" />
             </Form.Group>
-            <Form.Group
+            {/* <Form.Group
               style={{ display: "flex" }}
               className="mb-3"
               controlId="Description"
@@ -124,9 +96,9 @@ export const PartModal = ({ show, handleClose }) => {
             >
               <Form.Label className={css.label}>Quantity</Form.Label>
               <Form.Control type="text" name="Quantity" />
-            </Form.Group>
+            </Form.Group> */}
             <Button variant="primary" type="submit">
-              Створити
+              Підтвердити
             </Button>
           </Form>
         </Modal.Body>

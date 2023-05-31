@@ -42,7 +42,7 @@ export const Part = ({ openModal, getAllParts }) => {
   return (
     <ul className={css.ImageGallery}>
       {part.map((part, index) => (
-        <li className={css.ImageGalleryItem} key={part.Articul}>
+        <li className={css.ImageGalleryItem} key={part._id}>
           <a
             onClick={(e) => {
               e.preventDefault();

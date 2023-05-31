@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import css from "./OrderList.module.css";
+import { createOrder, getUserOrders } from "@/apiService/apiOrders";
 
 export const OrderList = () => {
   const [partList, setPartList] = useState([]);
   const [newPartsList, setNewPartsList] = useState(0);
   const [disabled, setDisabled] = useState(false);
+  const [orders, setOrders] = useState([]);
+  const [order, setOrder] = useState([]);
 
   const kurs = 40;
 
@@ -14,11 +17,20 @@ export const OrderList = () => {
       const partList = JSON.parse(ls);
       setPartList(partList);
     }
+    async function getOrder() {
+      const order = await getUserOrders();
+
+      const we = order.map((el) => el.close);
+      console.log("we", we);
+      setOrders(order);
+    }
+    getOrder();
   }, []);
 
   const newOrder = [];
+  console.log(orders);
 
-  const handleClickSubmit = (e) => {
+  const handleClickSubmit = async (e) => {
     e.preventDefault();
     const keys = Object.keys(newPartsList);
     partList.map((part) => {
@@ -32,7 +44,12 @@ export const OrderList = () => {
     const filteredOrder = newOrder.filter(
       (part) => part.Quantity !== undefined && part.Quantity !== "0"
     );
-    console.log(filteredOrder);
+    // console.log(filteredOrder);
+    const partId = filteredOrder.map((el) => el._id);
+    // console.log("partId", partId);
+    const qwe = await createOrder({ partId });
+    // console.log("qwe", qwe);
+    localStorage.setItem("part", "");
     setDisabled(true);
   };
 
@@ -48,11 +65,23 @@ export const OrderList = () => {
     setNewPartsList({ ...newPartsList, ...newPart });
   };
 
+  const handleOrderClick = (e) => {
+    const orderN = e.currentTarget.innerText;
+    const order = orders
+      .filter((el) => el._id === orderN)
+      .map((el) => el.partId);
+    setOrder(...order);
+    console.log("order", orders);
+    // console.log("order.partsId", order);
+  };
+
+  // console.log("orders", orders);
+
   return (
     <div className={css.orderList}>
       <form>
-        {partList.map(({ Articul, Part_Name, Price, Quantity }) => (
-          <li className={css.orderItem} key={Articul}>
+        {partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => (
+          <li className={css.orderItem} key={_id}>
             <p className={css.orderItemP}>{Articul}</p>
             <p className={css.partsName}>{Part_Name}</p>
             <p className={css.partsPrice}>{Price * kurs}</p>
@@ -73,6 +102,18 @@ export const OrderList = () => {
           Order
         </button>
       </form>
+      <ul>
+        {orders.map((el) => (
+          <li onClick={handleOrderClick} className={css[el.close]} key={el._id}>
+            {el._id}
+          </li>
+        ))}
+      </ul>
+      <ul>
+        {order.map((el) => (
+          <li key={el.Part_Name}>{el.Part_Name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
