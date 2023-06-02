@@ -1,9 +1,15 @@
 .false {
-    color: tomato;
+    display: flex;
+    /* color: tomato; */
+    background-color: tomato;
+    margin-bottom: 5px;
 }
 
 .true {
-    color: green;
+    display: flex;
+    /* color: green; */
+    background-color: green;
+    margin-bottom: 5px;
 }
 
 .order_list {
@@ -44,4 +50,29 @@
     padding: 5px 10px;
         margin: 0;
         text-align: center;
+}
+
+.order_name {
+    margin: 0;
+    width: 210px;
+}
+
+.order_btn {
+    display: flex;
+    margin-left: 10px;
+    background-color: #0d6efd;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.order_btn:disabled {
+    background-color: #b2d0b2;
+}
+
+.order_btn:hover {
+   background-color: #1052b4;
+}
+
+.order_btn:disabled:hover {
+    background-color: #b2d0b2;
 }

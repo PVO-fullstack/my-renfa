@@ -26,8 +26,10 @@ export const AuthModal = ({ show, handleClose }) => {
     const {
       user: { name },
     } = data;
+    console.log(data.user);
     localStorage.setItem("token", JSON.stringify(data.token));
     localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
+    localStorage.setItem("position", JSON.stringify(data.user.position));
     handleClose(name);
   };
 
@@ -42,10 +44,10 @@ export const AuthModal = ({ show, handleClose }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header style={{ display: "flex" }} closeButton>
           {/* <Modal.Title>Зареєструйтесь</Modal.Title> */}
           <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
-          Або
+          <p style={{ margin: "0" }}> Або </p>
           <Button onClick={handleChangeLoginForm}>Увійти</Button>
         </Modal.Header>
         <Modal.Body>

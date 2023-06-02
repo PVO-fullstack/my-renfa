@@ -38,8 +38,8 @@ export const getModel = async (model) => {
 
 export const createModel = async (part) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
-  // const tokenLs = await JSON.parse(localStorage.getItem("token"));
-  // await token.set(tokenLs);
-  const res = await axios.post(`/api/parts/`, part);
+  const tokenLs = await JSON.parse(localStorage.getItem("token"));
+  await token.set(tokenLs);
+  const res = await axios.post(`/api/parts`, part);
   return res.data;
 };

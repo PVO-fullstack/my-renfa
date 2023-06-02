@@ -1,10 +1,11 @@
-import { getAllOrders } from "@/apiService/apiOrders";
+import { getAllOrders, patchOrder } from "@/apiService/apiOrders";
 import React, { useEffect, useState } from "react";
 import css from "./AllOrders.module.css";
 
 export const AllOrders = () => {
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState([]);
+  const [neworder, setNeworder] = useState("");
 
   useEffect(() => {
     async function allOrders() {
@@ -13,7 +14,7 @@ export const AllOrders = () => {
       setOrders(orders);
     }
     allOrders();
-  }, []);
+  }, [neworder]);
 
   const handleOrderClick = (e) => {
     const orderN = e.currentTarget.innerText;
@@ -24,6 +25,15 @@ export const AllOrders = () => {
     const h2 = document.getElementById("nak");
     h2.textContent = `Накладна №${orderN}`;
     // console.log("order.partsId", order);
+  };
+
+  const handleClose = (e) => {
+    e.preventDefault();
+    const id = e.currentTarget.attributes.data_atr.value;
+    console.log(id);
+    patchOrder(id);
+    setNeworder(neworder + 1);
+    e.currentTarget.innerText = "Готово";
   };
 
   return (
@@ -39,12 +49,18 @@ export const AllOrders = () => {
         <h2>Список замовлень</h2>
         <ul className={css.order_list}>
           {orders.map((el) => (
-            <li
-              onClick={handleOrderClick}
-              className={css[el.close]}
-              key={el._id}
-            >
-              {el._id}
+            <li className={css[el.close]} key={el._id}>
+              <p onClick={handleOrderClick} className={css.order_name}>
+                {el._id}
+              </p>
+              <button
+                data_atr={`${el._id}`}
+                onClick={handleClose}
+                disabled={el.close}
+                className={css.order_btn}
+              >
+                Закрити
+              </button>
             </li>
           ))}
         </ul>

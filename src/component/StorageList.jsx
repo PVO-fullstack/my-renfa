@@ -2,6 +2,7 @@ import { getAllParts } from "@/apiService/apiParts";
 import React, { useEffect, useState } from "react";
 import brand from "../data/model.json";
 import { PartModal } from "./PartModal";
+import css from "./StorageList.module.css";
 
 export const StorageList = () => {
   const [allParts, setAllParts] = useState([]);
@@ -10,6 +11,7 @@ export const StorageList = () => {
   const [parts, setParts] = useState([]);
   const [filter, setFilter] = useState([]);
   const [show, setShow] = useState(false);
+  const [id, setId] = useState("");
 
   useEffect(() => {
     async function getParts() {
@@ -32,22 +34,22 @@ export const StorageList = () => {
     );
     setModels(uniqueModel);
   };
-  console.log("models", models);
+  // console.log("models", models);
 
   const handleModelClick = (e) => {
     const modelName = e.currentTarget.innerText;
     setFilter([]);
-    console.log("model", modelName);
-    console.log("brandModels", brandModels);
+    // console.log("model", modelName);
+    // console.log("brandModels", brandModels);
     const modelParts = brandModels.filter((el) => el.Model.includes(modelName));
     setParts(modelParts);
-    console.log("modelParts", modelParts);
+    // console.log("modelParts", modelParts);
   };
 
   const handleChange = (e) => {
     e.preventDefault();
     const searchValue = e.currentTarget.value.toLowerCase();
-    console.log("searchValue", searchValue);
+    // console.log("searchValue", searchValue);
     if (parts.length > 0) {
       const filtredParts = parts.filter(
         (el) =>
@@ -55,7 +57,7 @@ export const StorageList = () => {
           el.Part_Name.toLowerCase().includes(searchValue)
       );
       setFilter(filtredParts);
-      console.log("filtredParts", filtredParts);
+      // console.log("filtredParts", filtredParts);
       return;
     }
     if (allParts.length > 0) {
@@ -63,16 +65,18 @@ export const StorageList = () => {
         el.Articul.toLowerCase().includes(searchValue)
       );
       setFilter(filtredParts);
-      console.log("filtredParts", filtredParts);
+      // console.log("filtredParts", filtredParts);
     }
   };
 
   const handlePartClick = (e) => {
     setShow(true);
-    console.log("el", e.currentTarget);
+    const id = e.currentTarget.id;
+    const partId = allParts.filter((el) => el._id === id);
+    setId(partId);
   };
 
-  console.log("filter", filter);
+  // console.log("filter", filter);
 
   const handleClose = () => {
     setShow(false);
@@ -97,9 +101,10 @@ export const StorageList = () => {
             {el.Brend}
           </li>
         ))}
+        <button onClick={handlePartClick}>Створити новий запис</button>
       </ul>
       <div style={{ display: "flex" }}>
-        <ul>
+        <ul className={css.model_list}>
           {models.length > 0
             ? models.map((el) => (
                 <li onClick={handleModelClick} key={el}>
@@ -108,32 +113,58 @@ export const StorageList = () => {
               ))
             : ""}
         </ul>
-        <ul>
-          {filter.length < 1 && parts.length > 0
-            ? parts.map((el) => (
+        <ul className={css.order_list}>
+          <li className={css.item_cardN}>
+            <p className={css.articul}>Артикул</p>
+            <p className={css.part_name}>Назва</p>
+            <p className={css.price}>Кількість</p>
+          </li>
+          {filter.length > 0 && filter.length < 10
+            ? // {filter.length < 1 && parts.length > 0
+
+              filter.map((el) => (
                 <li
+                  className={css.item_card}
+                  id={el._id}
                   onClick={handlePartClick}
-                  style={{
-                    display: "flex",
-                    gap: "20px",
-                    border: "2px solid blue",
-                  }}
+                  // style={{
+                  //   display: "flex",
+                  //   gap: "20px",
+                  //   border: "2px solid blue",
+                  // }}
                   key={el._id}
                 >
-                  <p>{el.Articul}</p>
-                  <p>{el.Part_Name}</p>
-                  <p>{el.Quantity}</p>
+                  <p className={css.articul}>{el.Articul}</p>
+                  <p className={css.part_name}>{el.Part_Name}</p>
+                  <p className={css.price}>{el.Quantity}</p>
                 </li>
               ))
-            : ""}
+            : parts.map((el) => (
+                <li
+                  className={css.item_card}
+                  id={el._id}
+                  onClick={handlePartClick}
+                  // style={{
+                  //   display: "flex",
+                  //   gap: "20px",
+                  //   border: "2px solid blue",
+                  // }}
+                  key={el._id}
+                >
+                  <p className={css.articul}>{el.Articul}</p>
+                  <p className={css.part_name}>{el.Part_Name}</p>
+                  <p className={css.price}>{el.Quantity}</p>
+                </li>
+              ))}
         </ul>
-        <ul>
-          {filter.length > 0 && filter.length < 10
+        {/* <ul> */}
+        {/* {filter.length > 0 && filter.length < 10
             ? filter.map((el) => <li key={el._id}>{el.Articul}</li>)
-            : ""}
-        </ul>
+            : ""} */}
+        {/* </ul> */}
       </div>
-      <PartModal show={show} handleClose={handleClose} />
+
+      <PartModal show={show} handleClose={handleClose} id={id} />
     </div>
   );
 };

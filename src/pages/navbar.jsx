@@ -30,6 +30,7 @@ export default function Navbars() {
     logout();
     localStorage.setItem("name", null);
     setName(null);
+    localStorage.setItem("position", null);
   };
 
   return (
