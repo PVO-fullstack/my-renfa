@@ -16,8 +16,8 @@ export const AuthModal = ({ show, handleClose }) => {
       const password = formBasicPassword.value;
       const data = await register({ name, email, password });
       localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
-      handleClose(name);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      handleClose(data.user);
       return;
     }
     const email = formBasicEmail.value;
@@ -28,9 +28,9 @@ export const AuthModal = ({ show, handleClose }) => {
     } = data;
     console.log(data.user);
     localStorage.setItem("token", JSON.stringify(data.token));
-    localStorage.setItem("avatar", JSON.stringify(data.user.avatar));
-    localStorage.setItem("position", JSON.stringify(data.user.position));
-    handleClose(name);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    // localStorage.setItem("position", JSON.stringify(data.user.position));
+    handleClose(data.user);
   };
 
   const handleChangeLoginForm = () => {
@@ -44,7 +44,7 @@ export const AuthModal = ({ show, handleClose }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header style={{ display: "flex" }} closeButton>
+        <Modal.Header style={{ display: "flex", gap: "40px" }} closeButton>
           {/* <Modal.Title>Зареєструйтесь</Modal.Title> */}
           <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
           <p style={{ margin: "0" }}> Або </p>

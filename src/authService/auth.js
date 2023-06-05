@@ -2,6 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3001";
+// axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
   set(token) {
@@ -32,7 +33,7 @@ export const logout = async () => {
   const res = await axios.post("/api/auth/users/logout");
   token.unset();
   localStorage.setItem("token", "");
-  localStorage.setItem("avatar", "");
+  localStorage.setItem("user", null);
   return res.data;
 };
 

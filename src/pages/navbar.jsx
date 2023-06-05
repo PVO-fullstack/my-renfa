@@ -9,29 +9,36 @@ import { UserMenu } from "@/component/UserMenu";
 export default function Navbars() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // if (localStorage.getItem("name"))
-    let localName = JSON.parse(localStorage.getItem("name"));
-    if (localName === "null") {
-      return;
+    if (localStorage.getItem("user")) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user === null) {
+        return;
+      }
+      // setName(user.name);
+      // setUser(user);
     }
-    setName(localName);
-  }, []);
+  }, [user]);
 
-  const handleClose = (name) => {
+  const handleClose = (user) => {
     setShow(false);
-    setName(name);
-    localStorage.setItem("name", JSON.stringify(name));
+    setUser(user);
+    // localStorage.setItem("name", JSON.stringify(name));
   };
+
   const handleShow = () => setShow(true);
 
   const handleLogout = () => {
     logout();
-    localStorage.setItem("name", null);
+    localStorage.setItem("user", null);
     setName(null);
-    localStorage.setItem("position", null);
+    setUser(null);
+    // localStorage.setItem("position", null);
   };
+
+  console.log("user", user);
 
   return (
     <div
@@ -58,7 +65,7 @@ export default function Navbars() {
       <NavLink className={css.link} href="/contacts">
         Contacts
       </NavLink>
-      <UserMenu name={name} logout={handleLogout} show={handleShow} />
+      <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
       <AuthModal show={show} handleClose={handleClose} />
     </div>
   );

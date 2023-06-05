@@ -2,6 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3001";
+// axios.defaults.baseURL = "https://renfa-api-2uzf.vercel.app/";
 
 const token = {
   set(token) {

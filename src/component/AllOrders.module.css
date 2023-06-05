@@ -1,78 +1,87 @@
 .false {
-    display: flex;
-    /* color: tomato; */
-    background-color: tomato;
-    margin-bottom: 5px;
+  display: flex;
+  /* color: tomato; */
+  background-color: tomato;
+  margin-bottom: 5px;
 }
 
 .true {
-    display: flex;
-    /* color: green; */
-    background-color: green;
-    margin-bottom: 5px;
+  display: flex;
+  /* color: green; */
+  background-color: green;
+  margin-bottom: 5px;
 }
 
 .order_list {
-    list-style: none;
+  list-style: none;
 }
 
 .order_card {
-    border: 2px solid green;
-    border-radius: 5px;
-    background-color: aquamarine;
-    list-style: none;
-    width: fit-content;
-    margin: auto;
-    padding: 0;
+  border: 2px solid green;
+  border-radius: 5px;
+  background-color: aquamarine;
+  list-style: none;
+  width: fit-content;
+  margin: auto;
+  padding: 0;
 }
 
 .item_card {
-    display: flex;
-    border: 2px solid white;
+  display: flex;
+  border: 2px solid white;
 }
 
 .articul {
-    width: 200px;
-    padding: 5px 10px;
-    margin: 0;
+  width: 200px;
+  padding: 5px 10px;
+  margin: 0;
 }
 
 .part_name {
-    width: 400px;
-    padding: 5px 10px;
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-        margin: 0;
+  width: 400px;
+  padding: 5px 10px;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  margin: 0;
 }
 
 .price {
-    width: 100px;
-    padding: 5px 10px;
-        margin: 0;
-        text-align: center;
+  width: 100px;
+  padding: 5px 10px;
+  margin: 0;
+  text-align: center;
 }
 
 .order_name {
-    margin: 0;
-    width: 210px;
+  margin: 0;
+  width: 210px;
 }
 
 .order_btn {
-    display: flex;
-    margin-left: 10px;
-    background-color: #0d6efd;
-    color: #fff;
-    border-radius: 5px;
+  display: flex;
+  margin-left: 10px;
+  background-color: #0d6efd;
+  color: #fff;
+  border-radius: 5px;
 }
 
 .order_btn:disabled {
-    background-color: #b2d0b2;
+  background-color: #b2d0b2;
 }
 
 .order_btn:hover {
-   background-color: #1052b4;
+  background-color: #1052b4;
 }
 
 .order_btn:disabled:hover {
-    background-color: #b2d0b2;
+  background-color: #b2d0b2;
+}
+
+.ordered {
+  width: 90px;
+  padding: 5px 10px;
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  margin: 0;
+  text-align: center;
 }
