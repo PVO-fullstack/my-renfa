@@ -85,3 +85,17 @@
   margin: 0;
   text-align: center;
 }
+
+.conteiner {
+  display: flex;
+  background-color: aquamarine;
+  border-bottom: 2px solid white;
+  width: 850;
+}
+
+.post {
+  width: 200px;
+  padding: 5px 10px;
+  margin: 0;
+  text-align: center;
+}

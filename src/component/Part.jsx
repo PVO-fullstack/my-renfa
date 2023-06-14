@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import css from "./Part.module.css";
 import { getModel } from "@/apiService/apiParts";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "@/redux/auth/auth-operations";
 
 // const partsList = JSON.parse(parts);
 
@@ -12,17 +14,12 @@ export const Part = ({ openModal, getAllParts }) => {
   const router = useRouter();
   const model = router.query.slag;
   console.log("model", model);
-  //     // let parts = [];
-  // if (model) {
-  // const modelName = model.splice(1, 1);
-  // const parts = cars.filter((car) => car.Model.toString() === model[1]);
-  // setPart(model[1]);
-  // console.log("qwe", modelName);
-  // }
-  // console.log(parts);
+
+  const dispatch = useDispatch();
 
   const kurs = 40;
   useEffect(() => {
+    dispatch(refreshUser());
     if (model) {
       const modelName = model[1];
       if (modelName) {

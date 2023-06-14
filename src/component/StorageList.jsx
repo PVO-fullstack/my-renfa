@@ -84,6 +84,7 @@ export const StorageList = () => {
 
   return (
     <div style={{ marginLeft: "350px" }}>
+      <div style={{ textAlign: "center", margin: "20px 0" }}>Склад</div>
       <label>
         Введіть каталожний номер або назву запчaстини
         <input
@@ -107,7 +108,11 @@ export const StorageList = () => {
         <ul className={css.model_list}>
           {models.length > 0
             ? models.map((el) => (
-                <li onClick={handleModelClick} key={el}>
+                <li
+                  className={css.model_item}
+                  onClick={handleModelClick}
+                  key={el}
+                >
                   {el}
                 </li>
               ))

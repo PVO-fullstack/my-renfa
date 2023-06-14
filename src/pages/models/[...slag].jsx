@@ -23,12 +23,12 @@ export default function Parts() {
   console.log("part", part);
 
   return (
-    <Layout>
+    <>
       {/* <PartsList /> */}
       {/* <Part /> */}
       <Part openModal={openModal} getAllParts={getParts} />
       {showModal && <Modal src={part[activeImgIdx]} onClose={closeModal} />}
-    </Layout>
+    </>
   );
 }
 

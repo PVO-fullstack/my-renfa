@@ -96,3 +96,9 @@
   margin: 0;
   text-align: center;
 }
+
+.input {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+}

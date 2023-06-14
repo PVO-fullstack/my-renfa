@@ -1,5 +1,8 @@
 // import { useState } from "react";
 import Layout from "@/app/layout";
+import { refreshUser } from "@/redux/auth/auth-operations";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 // import { ModelList } from "@/component/ModelList";
 // import { Part } from "@/component/Part";
 // import { SideBar } from "@/component/SideBar";
@@ -7,25 +10,11 @@ import Layout from "@/app/layout";
 // // import parts from "../data/350.json";
 
 export default function Model() {
-  //   const [showModal, setShowModal] = useState(false);
-  //   const [activeImgIdx, setActiveImgIdx] = useState(null);
-  //   const [part, setPart] = useState([]);
+  const dispatch = useDispatch();
 
-  //   const openModal = (index) => {
-  //     setShowModal(true);
-  //     setActiveImgIdx(index);
-  //   };
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  //   const getParts = (parts) => {
-  //     setPart(parts);
-  //   };
-
-  //   const closeModal = () => setShowModal(false);
-  return (
-    <Layout>
-      <div>Model</div>
-      {/* <Part openModal={openModal} getAllParts={getParts} />
-      {showModal && <Modal src={part[activeImgIdx]} onClose={closeModal} />} */}
-    </Layout>
-  );
+  return <div>Model</div>;
 }

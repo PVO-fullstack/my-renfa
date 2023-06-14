@@ -4,9 +4,9 @@ import { AllOrders } from "@/component/AllOrders";
 export default function Orders() {
   return (
     <div>
-      <Layout>
-        <AllOrders />
-      </Layout>
+      {/* <Layout> */}
+      <AllOrders />
+      {/* </Layout> */}
     </div>
   );
 }

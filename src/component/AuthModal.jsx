@@ -4,9 +4,12 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { login, register } from "@/authService/auth";
+import { logInUser } from "@/redux/auth/auth-operations";
+import { useDispatch } from "react-redux";
 
 export const AuthModal = ({ show, handleClose }) => {
   const [signUp, setSignUp] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,15 +25,15 @@ export const AuthModal = ({ show, handleClose }) => {
     }
     const email = formBasicEmail.value;
     const password = formBasicPassword.value;
-    const data = await login({ email, password });
-    const {
-      user: { name },
-    } = data;
-    console.log(data.user);
-    localStorage.setItem("token", JSON.stringify(data.token));
-    localStorage.setItem("user", JSON.stringify(data.user));
+    dispatch(logInUser({ email, password }));
+    // const {
+    //   user: { name },
+    // } = data;
+    // console.log(data);
+    // localStorage.setItem("token", JSON.stringify(data.token));
+    // localStorage.setItem("user", JSON.stringify(data.user));
     // localStorage.setItem("position", JSON.stringify(data.user.position));
-    handleClose(data.user);
+    handleClose();
   };
 
   const handleChangeLoginForm = () => {

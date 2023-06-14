@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import css from "./OrderList.module.css";
 import { createOrder, getUserOrders } from "@/apiService/apiOrders";
+import { useDispatch } from "react-redux";
+import { refreshUser } from "@/redux/auth/auth-operations";
 
 export const OrderList = () => {
   const [partList, setPartList] = useState([]);
@@ -9,6 +11,7 @@ export const OrderList = () => {
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState([]);
   const [user, setUser] = useState({});
+  const dispatch = useDispatch();
 
   const kurs = 40;
 
@@ -22,11 +25,12 @@ export const OrderList = () => {
       setUser(user);
     }
     async function getOrder() {
-      const order = await getUserOrders();
-
-      const we = order.map((el) => el.close);
-      console.log("we", we);
-      setOrders(order);
+      await dispatch(refreshUser());
+      const order = await dispatch(getUserOrders());
+      console.log(order.payload);
+      // const we = order.map((el) => el.close);
+      // console.log("we", we);
+      setOrders(order.payload);
     }
     getOrder();
   }, []);
@@ -145,7 +149,7 @@ export const OrderList = () => {
             ))}
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="">
+            <label className={css.input}>
               Імя та Прізвище
               <input
                 onChange={handleChangeUserValue}
@@ -155,7 +159,7 @@ export const OrderList = () => {
                 id=""
               />
             </label>
-            <label htmlFor="">
+            <label className={css.input}>
               Місто
               <input
                 onChange={handleChangeUserValue}
@@ -165,7 +169,7 @@ export const OrderList = () => {
                 id=""
               />
             </label>
-            <label htmlFor="">
+            <label className={css.input}>
               № відділення Нової пошти
               <input
                 onChange={handleChangeUserValue}
@@ -175,7 +179,7 @@ export const OrderList = () => {
                 id=""
               />
             </label>
-            <label htmlFor="">
+            <label className={css.input}>
               Телефон отримувача
               <input
                 onChange={handleChangeUserValue}

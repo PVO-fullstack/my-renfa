@@ -6,8 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import { login, register } from "@/authService/auth";
 import css from "./PartModal.module.css";
 import { createModel } from "@/apiService/apiParts";
+import { useDispatch } from "react-redux";
 
 export const PartModal = ({ show, handleClose, id }) => {
+  const dispatch = useDispatch();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const {
@@ -38,7 +41,7 @@ export const PartModal = ({ show, handleClose, id }) => {
       Quantity: quantity || "1",
     };
     console.log("newPart", newPart);
-    createModel(newPart);
+    dispatch(createModel(newPart));
     handleClose();
   };
 

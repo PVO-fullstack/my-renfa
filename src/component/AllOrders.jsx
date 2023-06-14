@@ -1,6 +1,7 @@
 import { getAllOrders, patchOrder } from "@/apiService/apiOrders";
 import React, { useEffect, useState } from "react";
 import css from "./AllOrders.module.css";
+import { useDispatch } from "react-redux";
 
 export const AllOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -8,16 +9,18 @@ export const AllOrders = () => {
   const [neworder, setNeworder] = useState("");
   const [owner, setOwner] = useState(null);
 
+  const dispatch = useDispatch();
+
   const allOrders = [];
 
   useEffect(() => {
     async function allOrders() {
-      const orders = await getAllOrders();
-      console.log("orders", orders);
-      setOrders(orders);
+      const orders = await dispatch(getAllOrders());
+      console.log("orders", orders.payload);
+      setOrders(orders.payload);
     }
     allOrders();
-  }, [neworder]);
+  }, [dispatch, neworder]);
 
   const handleOrderClick = (e) => {
     const orderN = e.currentTarget.innerText;
@@ -60,6 +63,7 @@ export const AllOrders = () => {
         // justifyContent: "space-around",
       }}
     >
+      <div style={{ textAlign: "center", margin: "20px 0" }}>Замовлення</div>
       <div style={{ display: "flex", justifyContent: "space-around" }}>
         <div>
           <h2>Список замовлень</h2>
@@ -110,13 +114,26 @@ export const AllOrders = () => {
       </div>
       {owner && (
         <div
-          style={{ display: "block", marginLeft: "400px", marginTop: "20px" }}
+          style={{
+            display: "block",
+            marginLeft: "370px",
+            marginTop: "20px",
+            marginRight: "20px",
+          }}
         >
           <h2>Замовник</h2>
-          <p>Імя: {owner.name}</p>
-          <p>Телефон: {owner.phone}</p>
-          <p>Місто: {owner.city}</p>
-          <p>Номер нової пошти: {owner.numberNewPost}</p>
+          <div className={css.conteiner}>
+            <p className={css.part_name}>Імя</p>
+            <p className={css.ordered}>Телефон</p>
+            <p className={css.ordered}>Місто</p>
+            <p className={css.post}>Нова пошта</p>
+          </div>
+          <div className={css.conteiner}>
+            <p className={css.part_name}>{owner.name}</p>
+            <p className={css.ordered}>{owner.phone}</p>
+            <p className={css.ordered}>{owner.city}</p>
+            <p className={css.post}>{owner.numberNewPost}</p>
+          </div>
         </div>
       )}
     </div>

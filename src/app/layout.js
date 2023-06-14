@@ -2,7 +2,7 @@ import Footer from "../pages/footer";
 import { SideBar } from "@/component/SideBar";
 import bgImg from "../img/MG-Logo.png";
 import css from "./page.module.css";
-import Navbars from "../pages/navbar";
+import Navbars from "@/component/NavBar";
 
 export default function Layout({ children }) {
   return (
