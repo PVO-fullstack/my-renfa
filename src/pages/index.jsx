@@ -1,5 +1,4 @@
-import Layout from "@/app/layout";
-import css from "../app/page.module.css";
+import "../../styles/globals.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
@@ -12,7 +11,6 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    // <Layout>
     <div
       style={{
         flex: "auto",
@@ -27,6 +25,5 @@ export default function Home() {
         замовлення запчастин з Китаю.
       </p>
     </div>
-    // </Layout>
   );
 }

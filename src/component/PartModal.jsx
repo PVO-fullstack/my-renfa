@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import { login, register } from "@/authService/auth";
 import css from "./PartModal.module.css";
 import { createModel } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
@@ -57,10 +56,6 @@ export const PartModal = ({ show, handleClose, id }) => {
     Country,
     Quantity,
   } = { ...id[0] };
-
-  // const [brand, setBrand] = useState(Brand);
-
-  // console.log("Brand", id);
 
   return (
     <>
@@ -129,11 +124,7 @@ export const PartModal = ({ show, handleClose, id }) => {
               controlId="Img"
             >
               <Form.Label className={css.label}>Img</Form.Label>
-              <Form.Control
-                type="file"
-                name="Img"
-                // defaultValue={Img}
-              />
+              <Form.Control type="file" name="Img" />
             </Form.Group>
             <Form.Group
               style={{ display: "flex" }}
@@ -172,14 +163,6 @@ export const PartModal = ({ show, handleClose, id }) => {
             </Button>
           </Form>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

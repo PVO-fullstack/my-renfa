@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { login, register } from "@/authService/auth";
+import { register } from "@/authService/auth";
 import { logInUser } from "@/redux/auth/auth-operations";
 import { useDispatch } from "react-redux";
 
@@ -26,13 +26,6 @@ export const AuthModal = ({ show, handleClose }) => {
     const email = formBasicEmail.value;
     const password = formBasicPassword.value;
     dispatch(logInUser({ email, password }));
-    // const {
-    //   user: { name },
-    // } = data;
-    // console.log(data);
-    // localStorage.setItem("token", JSON.stringify(data.token));
-    // localStorage.setItem("user", JSON.stringify(data.user));
-    // localStorage.setItem("position", JSON.stringify(data.user.position));
     handleClose();
   };
 
@@ -48,7 +41,6 @@ export const AuthModal = ({ show, handleClose }) => {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header style={{ display: "flex", gap: "40px" }} closeButton>
-          {/* <Modal.Title>Зареєструйтесь</Modal.Title> */}
           <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
           <p style={{ margin: "0" }}> Або </p>
           <Button onClick={handleChangeLoginForm}>Увійти</Button>
@@ -81,14 +73,6 @@ export const AuthModal = ({ show, handleClose }) => {
             </Button>
           </Form>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

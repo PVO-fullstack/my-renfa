@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-// import parts from "../data/350.json";
 import css from "./Part.module.css";
 import { getModel } from "@/apiService/apiParts";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
-
-// const partsList = JSON.parse(parts);
 
 export const Part = ({ openModal, getAllParts }) => {
   const [part, setPart] = useState([]);
@@ -31,7 +28,7 @@ export const Part = ({ openModal, getAllParts }) => {
         getParts(modelName);
       }
     }
-  }, [model]);
+  }, [dispatch, model]);
 
   console.log("part", part);
   getAllParts(part);

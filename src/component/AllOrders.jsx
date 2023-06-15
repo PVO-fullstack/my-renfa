@@ -28,7 +28,6 @@ export const AllOrders = () => {
     const owner = order.map((el) => el.owner);
     setOwner(...owner);
     const partsOrder = order.flatMap((el) => el.partId);
-    // order.map((el) => el.id);
     const ft = partsOrder.flatMap((part) => {
       const root = part.id;
       root.map((el) => {
@@ -83,11 +82,6 @@ export const AllOrders = () => {
                     {el.close ? "Виконано" : "Закрити"}
                   </button>
                 </div>
-                {/* <div>
-                  <p>Замовник</p>
-                  <p>{el.owner.name}</p>
-                  <p>{el.owner.email}</p>
-                </div> */}
               </li>
             ))}
           </ul>

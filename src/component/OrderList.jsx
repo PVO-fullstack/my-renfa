@@ -28,12 +28,10 @@ export const OrderList = () => {
       await dispatch(refreshUser());
       const order = await dispatch(getUserOrders());
       console.log(order.payload);
-      // const we = order.map((el) => el.close);
-      // console.log("we", we);
       setOrders(order.payload);
     }
     getOrder();
-  }, []);
+  }, [dispatch]);
 
   const newOrder = [];
   console.log(orders);
@@ -84,10 +82,6 @@ export const OrderList = () => {
       [name]: value,
     };
     console.log(e.currentTarget.attributes.value);
-    // const name = e.currentTarget.name.value;
-    // const city = e.currentTarget.city.value;
-    // const NP = e.currentTarget.NP.value;
-    // const phone = e.currentTarget.phone.value;
     setUser({ ...user, ...changeUserData });
     if (user.name && user.phone && user.city && user.numberNewPost) {
       setDisabled(false);
@@ -109,20 +103,10 @@ export const OrderList = () => {
         console.log("newO", newO);
         allOrders.push(newO);
         return allOrders;
-        // console.log("all", allOrders);
-        // return newO;
       });
-      // return root;
     });
     setOrder(allOrders);
-
-    console.log("ft", ft);
-
-    console.log("order", order);
-    // console.log("order.partsId", order);
   };
-
-  // console.log(newPartsList);
 
   return (
     <div className={css.orderList}>
@@ -144,7 +128,6 @@ export const OrderList = () => {
                   value={newPartsList[Articul] || 0}
                   id=""
                 />
-                {/* <p className={css.orderItemP}>{Quantity}</p> */}
               </li>
             ))}
           </div>

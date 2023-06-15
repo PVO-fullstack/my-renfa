@@ -1,5 +1,3 @@
-import Layout from "@/app/layout";
-import cars from "../data/cars.json";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import css from "./CarOfBrend.module.css";
@@ -23,7 +21,6 @@ export const CarOfBrend = () => {
       async function getBrand(brand) {
         const brandID = await getModelBrand(brand);
         console.log("brand", brandID);
-        // const qwe = [];
         const allModel = brandID.flatMap((el) => el.Model);
         const uniqueModel = allModel.filter(
           (model, index, array) => array.indexOf(model) === index
@@ -31,31 +28,12 @@ export const CarOfBrend = () => {
         setModels(uniqueModel);
       }
       getBrand(brand);
-      // const allModell = getBrand(brand);
-      // console.log("allModell", allModell);
     }
   }, [brand, dispatch]);
 
   console.log("model", models);
 
-  // const model = cars.filter((car) => car.Brend === page);
-
-  // const uniquModels = [];
-
-  // for (let car of model) {
-  //   // console.log(car);
-  //   const qwe = uniquModels.map((item) => item.Model);
-  //   if (!qwe.includes(car.Model)) {
-  //     uniquModels.push(car);
-  //   }
-  // }
-
-  // const style = page.toLowerCase();
-
-  // console.log(style);
-
   return (
-    // <Layout>
     <div className={css.carList}>
       <h1 id="title" style={{ textAlign: "center" }}>
         {brand}
@@ -80,7 +58,6 @@ export const CarOfBrend = () => {
           >
             <li>
               <button
-                // onClick={<PartsList car={car.Model} />}
                 style={{
                   width: "200px",
                   height: "100px",
@@ -98,6 +75,5 @@ export const CarOfBrend = () => {
         ))}
       </ul>
     </div>
-    // </Layout>
   );
 };
