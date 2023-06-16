@@ -67,6 +67,33 @@ export const createModel = createAsyncThunk(
   }
 );
 
+export const changeImg = createAsyncThunk(
+  "part/newimg",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    const { id, img } = data;
+
+    try {
+      const res = await axios.patch(`/api/parts/${id}`, img, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getAllOrders = createAsyncThunk(
   "ordere/all",
   async (_, thunkAPI) => {

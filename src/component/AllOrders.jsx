@@ -62,8 +62,10 @@ export const AllOrders = () => {
         // justifyContent: "space-around",
       }}
     >
-      <div style={{ textAlign: "center", margin: "20px 0" }}>Замовлення</div>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
+        <h2>Замовлення</h2>
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
         <div>
           <h2>Список замовлень</h2>
           <ul className={css.order_list}>
@@ -87,49 +89,51 @@ export const AllOrders = () => {
           </ul>
         </div>
         <div>
-          <h2 id="nak">Накладна</h2>
-          <ul className={css.order_card}>
-            <li className={css.item_card}>
-              <p className={css.articul}>Каталожний номер</p>
-              <p className={css.part_name}>Назва</p>
-              <p className={css.ordered}>Кількість</p>
-              <p className={css.price}>Ціна, грн</p>
-            </li>
-            {order.map((el) => (
-              <li className={css.item_card} key={el.Part_Name}>
-                <p className={css.articul}>{el.Articul}</p>
-                <p className={css.part_name}>{el.Part_Name}</p>
-                <p className={css.ordered}>{el.ordered}</p>
-                <p className={css.price}>{Math.round(el.Price * 40)}</p>
+          <div>
+            <h2 id="nak">Накладна</h2>
+            <ul className={css.order_card}>
+              <li className={css.item_card}>
+                <p className={css.articul}>Каталожний номер</p>
+                <p className={css.part_name}>Назва</p>
+                <p className={css.ordered}>Кількість</p>
+                <p className={css.price}>Ціна, грн</p>
               </li>
-            ))}
-          </ul>
+              {order.map((el) => (
+                <li className={css.item_card} key={el.Part_Name}>
+                  <p className={css.articul}>{el.Articul}</p>
+                  <p className={css.part_name}>{el.Part_Name}</p>
+                  <p className={css.ordered}>{el.ordered}</p>
+                  <p className={css.price}>{Math.round(el.Price * 40)}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+          {owner && (
+            <div
+              style={{
+                display: "block",
+
+                marginTop: "20px",
+                marginRight: "20px",
+              }}
+            >
+              <h2>Замовник</h2>
+              <div className={css.conteiner}>
+                <p className={css.part_name}>Імя</p>
+                <p className={css.ordered}>Телефон</p>
+                <p className={css.ordered}>Місто</p>
+                <p className={css.post}>Нова пошта</p>
+              </div>
+              <div className={css.conteiner}>
+                <p className={css.part_name}>{owner.name}</p>
+                <p className={css.ordered}>{owner.phone}</p>
+                <p className={css.ordered}>{owner.city}</p>
+                <p className={css.post}>{owner.numberNewPost}</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      {owner && (
-        <div
-          style={{
-            display: "block",
-            marginLeft: "370px",
-            marginTop: "20px",
-            marginRight: "20px",
-          }}
-        >
-          <h2>Замовник</h2>
-          <div className={css.conteiner}>
-            <p className={css.part_name}>Імя</p>
-            <p className={css.ordered}>Телефон</p>
-            <p className={css.ordered}>Місто</p>
-            <p className={css.post}>Нова пошта</p>
-          </div>
-          <div className={css.conteiner}>
-            <p className={css.part_name}>{owner.name}</p>
-            <p className={css.ordered}>{owner.phone}</p>
-            <p className={css.ordered}>{owner.city}</p>
-            <p className={css.post}>{owner.numberNewPost}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

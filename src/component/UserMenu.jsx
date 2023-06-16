@@ -2,21 +2,10 @@ import React, { useEffect, useState } from "react";
 import NavLink from "next/link";
 import { Button } from "react-bootstrap";
 import css from "./UserMenu.module.scss";
-import {
-  selectAvatar,
-  selectPosition,
-  selectUser,
-} from "@/redux/auth/auth-selectors";
+import { selectUser } from "@/redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
-// import img from "../../public/cart.png"
 
-export const UserMenu = ({ userLog, logout, show }) => {
-  // const [avatar, setAvatar] = useState("");
-  // const [position, setPosition] = useState(null);
-  // const [user, setUser] = useState(null);
-
-  console.log(userLog);
-
+export const UserMenu = ({ logout, show }) => {
   const user = useSelector(selectUser);
 
   return (

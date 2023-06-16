@@ -61,6 +61,27 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
+export const updateUser = createAsyncThunk(
+  "user/update",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    try {
+      const user = await axios.patch("/api/auth/users/data", data);
+      return user.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
+  }
+);
+
 export const logOutUser = createAsyncThunk(
   "user/logout",
   async (credentials, thunkAPI) => {
