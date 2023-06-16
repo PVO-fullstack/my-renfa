@@ -5,11 +5,17 @@ import { useEffect, useState } from "react";
 import { getModelBrand } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
+import Image from "next/image";
+import Amulet from "../../public/amulet.webp";
+import Elara from "../../public/elara.webp";
+import Karry from "../../public/karry.webp";
 
 export const CarOfBrend = () => {
   const router = useRouter();
   const brand = router.query.slag;
   console.log(brand);
+
+  const cars = { Amulet, Elara, Karry };
 
   const [models, setModels] = useState([]);
 
@@ -57,7 +63,17 @@ export const CarOfBrend = () => {
             key={car}
           >
             <li>
-              <button
+              {car === "Amulet" && (
+                <Image src={cars.Amulet} height={200} width={200} alt="car" />
+              )}
+              {car === "Elara" && (
+                <Image src={cars.Elara} height={200} width={200} alt="car" />
+              )}
+              {car === "Karry" && (
+                <Image src={cars.Karry} height={200} width={200} alt="car" />
+              )}
+
+              {/* <button
                 style={{
                   width: "200px",
                   height: "100px",
@@ -69,7 +85,7 @@ export const CarOfBrend = () => {
                 }}
               >
                 {car}
-              </button>
+              </button> */}
             </li>
           </Link>
         ))}
