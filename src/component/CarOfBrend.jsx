@@ -9,42 +9,52 @@ import Image from "next/image";
 import Amulet from "../../public/amulet.webp";
 import Elara from "../../public/elara.webp";
 import Karry from "../../public/karry.webp";
+import { Chery } from "./Chery";
+import { MG } from "./MG";
+import { Geely } from "./Geely";
+import { Faw } from "./Faw";
+import { Jac } from "./Jac";
 
 export const CarOfBrend = () => {
   const router = useRouter();
   const brand = router.query.slag;
-  console.log(brand);
+  // console.log(brand);
 
-  const cars = { Amulet, Elara, Karry };
+  // const cars = { Amulet, Elara, Karry };
 
-  const [models, setModels] = useState([]);
+  // const [models, setModels] = useState([]);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshUser());
-    if (brand) {
-      async function getBrand(brand) {
-        const brandID = await getModelBrand(brand);
-        console.log("brand", brandID);
-        const allModel = brandID.flatMap((el) => el.Model);
-        const uniqueModel = allModel.filter(
-          (model, index, array) => array.indexOf(model) === index
-        );
-        setModels(uniqueModel);
-      }
-      getBrand(brand);
-    }
-  }, [brand, dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  //   if (brand) {
+  //     async function getBrand(brand) {
+  //       const brandID = await getModelBrand(brand);
+  //       console.log("brand", brandID);
+  //       const allModel = brandID.flatMap((el) => el.Model);
+  //       const uniqueModel = allModel.filter(
+  //         (model, index, array) => array.indexOf(model) === index
+  //       );
+  //       setModels(uniqueModel);
+  //     }
+  //     getBrand(brand);
+  //   }
+  // }, [brand, dispatch]);
 
-  console.log("model", models);
+  // console.log("model", models);
 
   return (
     <div className={css.carList}>
-      <h1 id="title" style={{ textAlign: "center" }}>
+      {/* <h1 id="title" style={{ textAlign: "center" }}>
         {brand}
-      </h1>
-      <ul
+      </h1> */}
+      {brand === "Chery" && <Chery />}
+      {brand === "MG" && <MG />}
+      {brand === "Geely" && <Geely />}
+      {brand === "FAW" && <Faw />}
+      {brand === "JAC" && <Jac />}
+      {/* <ul
         style={{
           display: "flex",
           gap: "20px",
@@ -71,9 +81,9 @@ export const CarOfBrend = () => {
               )}
               {car === "Karry" && (
                 <Image src={cars.Karry} height={200} width={200} alt="car" />
-              )}
+              )} */}
 
-              {/* <button
+      {/* <button
                 style={{
                   width: "200px",
                   height: "100px",
@@ -86,10 +96,10 @@ export const CarOfBrend = () => {
               >
                 {car}
               </button> */}
-            </li>
+      {/* </li>
           </Link>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };

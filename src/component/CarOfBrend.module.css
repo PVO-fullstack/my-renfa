@@ -6,8 +6,8 @@
 
 @media screen and (min-width: 1200px) {
   .carList {
-    padding: 0 10px 10px 350px;
-    position: fixed;
-    z-Index: 1;
+    padding: 10px 10px 10px 350px;
+    /* position: fixed; */
+    /* z-Index: 1; */
   }
 }

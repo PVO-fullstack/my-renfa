@@ -1,3 +1,4 @@
+import { AllModels } from "@/component/AllModels";
 import { refreshUser } from "@/redux/auth/auth-operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -9,5 +10,5 @@ export default function Model() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return <div>Model</div>;
+  return <AllModels />;
 }
