@@ -1,14 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import css from "./AllModels.module.css";
-import MG520 from "../../public/mg5.webp";
-import MG350 from "../../public/350.webp";
-import MG550 from "../../public/550.webp";
-import MG6 from "../../public/6.webp";
-import MG3 from "../../public/3.webp";
-import MG5 from "../../public/5.webp";
-import ZS from "../../public/ZS.webp";
-import HS from "../../public/HS.webp";
+// import MG520 from "/mg5.webp";
+// import MG350 from "/350.webp";
+// import MG550 from "/550.webp";
+// import MG6 from "/6.webp";
+// import MG3 from "/3.webp";
+// import MG5 from "/5.webp";
+// import ZS from "/ZS.webp";
+// import HS from "/HS.webp";
 import Link from "next/link";
 
 export const MG = () => {
@@ -22,28 +22,33 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src={MG350} width={200} height={200} alt="Chery Amulet" />
+            <Image
+              src="/350.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
             <p>350</p>
           </li>
         </Link>
         <li className={css.item}>
-          <Image src={MG550} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/550.webp" width={200} height={200} alt="Chery Amulet" />
           <p>550</p>
         </li>
         <li className={css.item}>
-          <Image src={MG6} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/6.webp" width={200} height={200} alt="Chery Amulet" />
           <p>6</p>
         </li>
         <li className={css.item}>
-          <Image src={MG3} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/3.webp" width={200} height={200} alt="Chery Amulet" />
           <p>3Cross</p>
         </li>
         <li className={css.item}>
-          <Image src={MG5} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/5.webp" width={200} height={200} alt="Chery Amulet" />
           <p>5</p>
         </li>
         <li className={css.item}>
-          <Image src={ZS} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/ZS.webp" width={200} height={200} alt="Chery Amulet" />
           <p>ZS</p>
         </li>
         <Link
@@ -52,12 +57,12 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src={HS} width={200} height={200} alt="Chery Amulet" />
+            <Image src="/HS.webp" width={200} height={200} alt="Chery Amulet" />
             <p>HS</p>
           </li>
         </Link>
         <li className={css.item}>
-          <Image src={MG520} width={200} height={200} alt="Chery Amulet" />
+          <Image src="/mg5.webp" width={200} height={200} alt="Chery Amulet" />
           <p>5(2020)</p>
         </li>
       </ul>
