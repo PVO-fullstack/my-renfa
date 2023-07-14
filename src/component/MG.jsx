@@ -48,7 +48,7 @@ export const MG = () => {
           <p>5</p>
         </li>
         <li className={css.item}>
-          <Image src="/ZS.webp" width={200} height={200} alt="Chery Amulet" />
+          <Image src="/zs.webp" width={200} height={200} alt="MG ZS" />
           <p>ZS</p>
         </li>
         <Link
