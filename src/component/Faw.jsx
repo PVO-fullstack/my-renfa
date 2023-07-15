@@ -1,25 +1,58 @@
 import React from "react";
 import Image from "next/image";
 import css from "./AllModels.module.css";
-import Amulet from "../../public/amulet.webp";
+import Link from "next/link";
 
 export const Faw = () => {
   return (
     <div className={css.brand}>
       <h1 className={css.title}>FAW</h1>
       <ul className={css.list}>
-        <li className={css.item}>
-          <Image src={Amulet} width={150} height={150} alt="Chery Amulet" />
-          <p>B30</p>
-        </li>
-        <li className={css.item}>
-          <Image src={Amulet} width={150} height={150} alt="Chery Amulet" />
-          <p>X40</p>
-        </li>
-        <li className={css.item}>
-          <Image src={Amulet} width={150} height={150} alt="Chery Amulet" />
-          <p>X80</p>
-        </li>
+        <Link
+          href={{
+            pathname: `/models/FAW/B30`,
+          }}
+        >
+          <li className={css.item}>
+            <Image
+              src="/b30.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
+            <p>B30</p>
+          </li>
+        </Link>
+        <Link
+          href={{
+            pathname: `/models/FAW/X40`,
+          }}
+        >
+          <li className={css.item}>
+            <Image
+              src="/x40.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
+            <p>X40</p>
+          </li>
+        </Link>
+        <Link
+          href={{
+            pathname: `/models/FAW/X80`,
+          }}
+        >
+          <li className={css.item}>
+            <Image
+              src="/x80.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
+            <p>X80</p>
+          </li>
+        </Link>
       </ul>
     </div>
   );

@@ -14,6 +14,7 @@ import { MG } from "./MG";
 import { Geely } from "./Geely";
 import { Faw } from "./Faw";
 import { Jac } from "./Jac";
+import { Ravon } from "./Ravon";
 
 export const CarOfBrend = () => {
   const router = useRouter();
@@ -54,6 +55,7 @@ export const CarOfBrend = () => {
       {brand === "Geely" && <Geely />}
       {brand === "FAW" && <Faw />}
       {brand === "JAC" && <Jac />}
+      {brand === "Ravon" && <Ravon />}
       {/* <ul
         style={{
           display: "flex",

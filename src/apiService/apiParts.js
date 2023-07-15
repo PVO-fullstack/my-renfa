@@ -1,8 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://renfa-api.onrender.com";
-// axios.defaults.baseURL = "http://localhost:3001";
+// axios.defaults.baseURL = "https://renfa-api.onrender.com";
+axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
@@ -60,6 +60,29 @@ export const createModel = createAsyncThunk(
 
     try {
       const res = await axios.post(`/api/parts`, part);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changePart = createAsyncThunk(
+  "part/change",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    const id = data._id;
+
+    try {
+      const res = await axios.put(`/api/parts/${id}`, data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

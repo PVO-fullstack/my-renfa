@@ -5,6 +5,7 @@ import { MG } from "./MG";
 import { Faw } from "./Faw";
 import { Jac } from "./Jac";
 import { Geely } from "./Geely";
+import { Ravon } from "./Ravon";
 
 export const AllModels = () => {
   return (
@@ -14,6 +15,7 @@ export const AllModels = () => {
       <Jac />
       <Chery />
       <Geely />
+      <Ravon />
     </div>
   );
 };

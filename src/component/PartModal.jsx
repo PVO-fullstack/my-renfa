@@ -4,13 +4,14 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import css from "./PartModal.module.css";
-import { changeImg, createModel } from "@/apiService/apiParts";
+import { changeImg, changePart, createModel } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
 
 export const PartModal = ({ show, handleClose, id }) => {
   const dispatch = useDispatch();
 
   const [partImg, setPartImg] = useState();
+  const [partPrice, setPartPrice] = useState();
   const [isPart, setIsPart] = useState(true);
 
   console.log("partImg", partImg);
@@ -24,7 +25,7 @@ export const PartModal = ({ show, handleClose, id }) => {
       Part_Name: { value: part_name },
       Description: { value: description },
       Price: { value: price },
-      Img: { value: img },
+      // Img: { value: img },
       In_stock: { value: in_stock },
       Country: { value: country },
       Quantity: { value: quantity },
@@ -37,16 +38,15 @@ export const PartModal = ({ show, handleClose, id }) => {
       Part_Name: part_name,
       Description: description,
       Price: price,
-      img:
-        partImg ||
-        "https://dummyimage.com/640x480/2a2a2a/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+      Img: "https://dummyimage.com/640x480/2a2a2a/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
       In_stock: in_stock || "&",
       Country: country || "China",
       Quantity: quantity || "1",
     };
 
-    console.log("newPart", formData);
+    // console.log("newPart", formData);
     dispatch(createModel(newPart));
+    setPartPrice();
     handleClose();
   };
 
@@ -82,6 +82,22 @@ export const PartModal = ({ show, handleClose, id }) => {
     const data = { id: partId, img: partImg };
     // formData.append("img", partImg);
     dispatch(changeImg(data));
+    handleClose();
+  };
+
+  const handleChangPrice = (e) => {
+    setPartPrice(e.target.value);
+  };
+
+  const handleChangePart = (e) => {
+    e.preventDefault();
+    // const partId = id[0]._id;
+    const data = {
+      ...id[0],
+      Price: partPrice,
+    };
+    dispatch(changePart(data));
+    setPartPrice();
     handleClose();
   };
 
@@ -156,9 +172,15 @@ export const PartModal = ({ show, handleClose, id }) => {
                   style={{ display: "flex" }}
                   className="mb-3"
                   controlId="Price"
+                  onChange={handleChangPrice}
                 >
                   <Form.Label className={css.label}>Price</Form.Label>
-                  <Form.Control type="text" name="Price" defaultValue={Price} />
+                  <Form.Control
+                    type="text"
+                    name="Price"
+                    value={partPrice}
+                    defaultValue={Price || partPrice}
+                  />
                 </Form.Group>
                 <Form.Group
                   style={{ display: "flex" }}
@@ -198,6 +220,13 @@ export const PartModal = ({ show, handleClose, id }) => {
                 </Form.Group>
                 <Button variant="primary" type="submit">
                   Створити
+                </Button>
+                <Button
+                  onClick={handleChangePart}
+                  variant="primary"
+                  type="submit"
+                >
+                  Змінити
                 </Button>
               </>
             ) : (
