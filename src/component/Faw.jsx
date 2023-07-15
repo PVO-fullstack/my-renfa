@@ -30,7 +30,7 @@ export const Faw = () => {
         >
           <li className={css.item}>
             <Image
-              src="/x40.webp"
+              src="/X40.webp"
               width={200}
               height={200}
               alt="Chery Amulet"
