@@ -33,29 +33,29 @@ export const Modal = ({ src, onClose }) => {
           style={{
             padding: "20px",
             borderRadius: "10px",
-            maxWidth: "700px",
-            maxHeight: "90vh",
+            maxWidth: "auto",
+            maxHeight: "auto",
             backgroundColor: "white",
           }}
         >
-          <p style={{ textAlign: "center" }}>Каталожний номер: {src.Articul}</p>
-          <p style={{ textAlign: "center" }}>Назва: {src.Part_Name}</p>
+          {/* <p style={{ textAlign: "center" }}>Каталожний номер: {src.Articul}</p>
+          <p style={{ textAlign: "center" }}>Назва: {src.Part_Name}</p> */}
           <img
             style={{
               display: "block",
               margin: "auto",
-              maxHeight: "250px",
-              maxWidth: "350px",
+              maxHeight: "1000px",
+              maxWidth: "1000px",
               padding: "10px",
             }}
             src={src.Img}
             alt=""
           />
-          <p style={{ textAlign: "center" }}>Опис: {src.Description}</p>
+          {/* <p style={{ textAlign: "center" }}>Опис: {src.Description}</p>
           <p style={{ textAlign: "center" }}>Ціна: {src.Price * kurs} грн</p>
           <p style={{ textAlign: "center" }}>Наявність: {src.Quantity} шт.</p>
-          <p style={{ textAlign: "center" }}>Виробник: {src.Country}</p>
-          <button
+          <p style={{ textAlign: "center" }}>Виробник: {src.Country}</p> */}
+          {/* <button
             onClick={handleOnClickBtn}
             style={{
               display: "block",
@@ -65,7 +65,7 @@ export const Modal = ({ src, onClose }) => {
             type="button"
           >
             Додати до корзини
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

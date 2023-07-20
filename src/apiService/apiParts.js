@@ -39,6 +39,11 @@ export const getModel = async (model) => {
   return res.data;
 };
 
+export const getOnePart = async (articul) => {
+  const res = await axios.get(`/api/car/${articul}`);
+  return res.data;
+};
+
 export const getAllModel = async (model) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));

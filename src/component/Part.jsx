@@ -4,6 +4,7 @@ import { getModel } from "@/apiService/apiParts";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
+import Link from "next/link";
 
 export const Part = ({ openModal, getAllParts }) => {
   const [part, setPart] = useState([]);
@@ -36,14 +37,20 @@ export const Part = ({ openModal, getAllParts }) => {
   return (
     <ul className={css.ImageGallery}>
       {part.map((part, index) => (
-        <li className={css.ImageGalleryItem} key={part._id}>
-          <a
+        <Link
+        href={{
+          pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
+        }}
+        key={part._id}
+      >
+<li className={css.ImageGalleryItem} >
+          {/* <a
             onClick={(e) => {
               e.preventDefault();
               openModal(index);
             }}
             href={part.Img}
-          >
+          > */}
             <p
               style={{
                 color: "black",
@@ -62,8 +69,9 @@ export const Part = ({ openModal, getAllParts }) => {
             <p style={{ color: "black", textAlign: "center" }}>
               Ціна: {Math.round(part.Price * kurs)} грн
             </p>
-          </a>
+          {/* </a> */}
         </li>
+</Link>
       ))}
     </ul>
   );
