@@ -19,7 +19,7 @@ export const getAllParts = async () => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get("/api/parts");
+  const res = await axios.get("https://my-renfa.vercel.app/api/parts");
   return res.data;
 };
 
@@ -35,12 +35,12 @@ export const getModel = async (model) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`/api/${model}`);
+  const res = await axios.get(`https://my-renfa.vercel.app/api/${model}`);
   return res.data;
 };
 
 export const getOnePart = async (articul) => {
-  const res = await axios.get(`/api/car/${articul}`);
+  const res = await axios.get(`https://my-renfa.vercel.app/api/car/${articul}`);
   return res.data;
 };
 
