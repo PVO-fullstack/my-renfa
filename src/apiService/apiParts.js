@@ -1,10 +1,14 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+// const API_URL = "http://localhost:3000"
+const API_URL = "https://renfa-apiup.vercel.app"
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
-axios.defaults.baseURL = "https://my-renfa.vercel.app/"
+// axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
+axios.defaults.baseURL = API_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
+
 
 const token = {
   set(token) {
@@ -19,7 +23,7 @@ export const getAllParts = async () => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get("https://my-renfa.vercel.app/api/parts");
+  const res = await axios.get("/api/parts");
   return res.data;
 };
 
@@ -35,12 +39,12 @@ export const getModel = async (model) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`https://my-renfa.vercel.app/api/${model}`);
+  const res = await axios.get(`${API_URL}/api/${model}`);
   return res.data;
 };
 
 export const getOnePart = async (articul) => {
-  const res = await axios.get(`https://my-renfa.vercel.app/api/car/${articul}`);
+  const res = await axios.get(`/api/car/${articul}`);
   return res.data;
 };
 

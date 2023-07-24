@@ -31,10 +31,10 @@ getPart()
     console.log(onePart)
     
   return (
-    <>
-    {onePart && <div style={{marginLeft: "350px", paddingTop: "50px", display:"flex", alignItems:"center", justifyContent:"space-around"}}>
-        <img style={{borderRadius:"20px", border:"3px solid red"}} onClick={openModal} src={onePart[0].Img} width={300} alt={onePart[0].Part_Name}/>
-<div style={{backgroundColor:"#d9cdcd78", padding:"20px", boxShadow: "10px 10px 5px 0px rgba(0,0,0,0.75)"}}>
+    <div className={css.conteiner}>
+    {onePart && <div className={css.partCard}>
+        <img className={css.img} onClick={openModal} src={onePart[0].Img} width={300} alt={onePart[0].Part_Name}/>
+<div className={css.card}>
 <p className={css.text}>Назва: {onePart[0].Part_Name}</p>
         <p className={css.text}>Каталожний номер: {onePart[0].Articul} </p>
         <p className={css.text}>Країна виробник: {onePart[0].Country}</p>
@@ -42,8 +42,13 @@ getPart()
         <p className={css.text}>Встановлюється на автомобілі: {model[0]} {onePart[0].Model.join( )}</p>
 </div>
     </div>}
+<div className={css.description}>
+  <p>
+    Магазин <span className={css.companyName}>Renfa</span> - завжди низькі ціни та висока якість. Якщо не знайшли потрібну Вам запчастину, звертайтесь по телефону або у viber. Приймаємо замовлення на доставку морем та літаком.
+  </p>
+</div>
     {showModal && <Modal src={onePart[0]} onClose={closeModal} />}
-    </>
+    </div>
     )
   
 }
