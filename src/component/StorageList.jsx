@@ -13,10 +13,11 @@ export const StorageList = () => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
 
+  console.log("filter", filter);
+
   useEffect(() => {
     async function getParts() {
       const parts = await getAllParts();
-      //   console.log("parts", parts);
       setAllParts(parts);
     }
     getParts();
@@ -123,6 +124,7 @@ export const StorageList = () => {
             <p className={css.articul}>Артикул</p>
             <p className={css.part_name}>Назва</p>
             <p className={css.price}>Кількість</p>
+            <p className={css.price}>Ціна</p>
           </li>
           {filter.length > 0 && filter.length < 10
             ? // {filter.length < 1 && parts.length > 0
@@ -142,6 +144,7 @@ export const StorageList = () => {
                   <p className={css.articul}>{el.Articul}</p>
                   <p className={css.part_name}>{el.Part_Name}</p>
                   <p className={css.price}>{el.Quantity}</p>
+                  <p className={css.price}>{el.Price}</p>
                 </li>
               ))
             : parts.map((el) => (
@@ -159,6 +162,7 @@ export const StorageList = () => {
                   <p className={css.articul}>{el.Articul}</p>
                   <p className={css.part_name}>{el.Part_Name}</p>
                   <p className={css.price}>{el.Quantity}</p>
+                  <p className={css.price}>{el.Price}</p>
                 </li>
               ))}
         </ul>

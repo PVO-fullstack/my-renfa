@@ -1,8 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// const API_URL = "http://localhost:3000";
-const API_URL = "https://my-renfa.vercel.app";
+const API_URL = "http://localhost:3000";
+// const API_URL = "https://my-renfa.vercel.app";
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
@@ -91,7 +91,10 @@ export const changePart = createAsyncThunk(
     const id = data._id;
 
     try {
-      const res = await axios.put(`/api/parts/${id}`, data);
+      const res = await axios.put(
+        `https://renfa-api.onrender.com/api/parts/${id}`,
+        data
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

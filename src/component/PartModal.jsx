@@ -8,13 +8,29 @@ import { changeImg, changePart, createModel } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
 
 export const PartModal = ({ show, handleClose, id }) => {
-  const dispatch = useDispatch();
+  const {
+    Brand,
+    Model,
+    Articul,
+    Part_Name,
+    Description,
+    Price,
+    Img,
+    In_stock,
+    Country,
+    Quantity,
+  } = { ...id[0] };
 
+  const dispatch = useDispatch();
   const [partImg, setPartImg] = useState();
-  const [partPrice, setPartPrice] = useState();
+  const [data, setData] = useState({
+    ...id[0],
+  });
+  // const [partPrice, setPartPrice] = useState();
+  // const [partQuantity, setPartQuantity] = useState();
   const [isPart, setIsPart] = useState(true);
 
-  console.log("partImg", partImg);
+  console.log("Model", data.Model, Model);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +49,7 @@ export const PartModal = ({ show, handleClose, id }) => {
 
     const newPart = {
       Brand: brand,
-      Model: model.split(", "),
+      Model: model.split(","),
       Articul: articul,
       Part_Name: part_name,
       Description: description,
@@ -50,54 +66,41 @@ export const PartModal = ({ show, handleClose, id }) => {
     handleClose();
   };
 
-  const {
-    Brand,
-    Model,
-    Articul,
-    Part_Name,
-    Description,
-    Price,
-    Img,
-    In_stock,
-    Country,
-    Quantity,
-  } = { ...id[0] };
-
   const handleChangeImg = (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
-    // const reader = new FileReader();
-    // reader.readAsDataURL(file);
     formData.append("img", file);
-    // reader.onloadend = (e) => {
     setPartImg(formData);
-    // };
   };
 
   const handleChangeImgBtn = (e) => {
     e.preventDefault();
     console.log("first");
     const partId = id[0]._id;
-    // const formData = new FormData();
     const data = { id: partId, img: partImg };
-    // formData.append("img", partImg);
     dispatch(changeImg(data));
     handleClose();
   };
 
-  const handleChangPrice = (e) => {
-    setPartPrice(e.target.value);
+  const handleChangData = (e) => {
+    const name = e.currentTarget.children[1].name;
+    const value = e.currentTarget.children[1].value;
+    if (name === "Model") {
+      const qwe = value.split(",");
+      console.log("qwe", qwe);
+      setData({ ...data, [name]: qwe });
+      return;
+    }
+    setData({ ...data, [name]: value });
   };
 
   const handleChangePart = (e) => {
     e.preventDefault();
-    // const partId = id[0]._id;
-    const data = {
+    const dataChange = {
       ...id[0],
-      Price: partPrice,
+      ...data,
     };
-    dispatch(changePart(data));
-    setPartPrice();
+    dispatch(changePart(dataChange));
     handleClose();
   };
 
@@ -128,9 +131,15 @@ export const PartModal = ({ show, handleClose, id }) => {
                   style={{ display: "flex" }}
                   className="mb-3"
                   controlId="Model"
+                  onChange={handleChangData}
                 >
                   <Form.Label className={css.label}>Model</Form.Label>
-                  <Form.Control type="text" name="Model" defaultValue={Model} />
+                  <Form.Control
+                    type="text"
+                    name="Model"
+                    value={data.Model}
+                    defaultValue={Model}
+                  />
                 </Form.Group>
                 <Form.Group
                   style={{ display: "flex" }}
@@ -172,14 +181,14 @@ export const PartModal = ({ show, handleClose, id }) => {
                   style={{ display: "flex" }}
                   className="mb-3"
                   controlId="Price"
-                  onChange={handleChangPrice}
+                  onChange={handleChangData}
                 >
                   <Form.Label className={css.label}>Price</Form.Label>
                   <Form.Control
                     type="text"
                     name="Price"
-                    value={partPrice}
-                    defaultValue={Price || partPrice}
+                    value={data.Price}
+                    defaultValue={Price || data.Price}
                   />
                 </Form.Group>
                 <Form.Group
@@ -210,12 +219,14 @@ export const PartModal = ({ show, handleClose, id }) => {
                   style={{ display: "flex" }}
                   className="mb-3"
                   controlId="Quantity"
+                  onChange={handleChangData}
                 >
                   <Form.Label className={css.label}>Quantity</Form.Label>
                   <Form.Control
                     type="text"
                     name="Quantity"
-                    defaultValue={Quantity}
+                    value={data.Quantity}
+                    defaultValue={data.Quantity || Quantity}
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit">
