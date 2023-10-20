@@ -68,7 +68,34 @@ export const createModel = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      const res = await axios.post(`/api/parts`, part);
+      const res = await axios.post(
+        `https://renfa-api.onrender.com/api/part/api/parts`,
+        part
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const insertParts = createAsyncThunk(
+  "part/newmany",
+  async (part, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    try {
+      const res = await axios.post(
+        `https://renfa-api.onrender.com/api/parts/parts`,
+        part
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

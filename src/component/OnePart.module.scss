@@ -1,7 +1,15 @@
 .conteiner {
-  height: 100vh;
-  margin-left: 350px;
   padding-top: 50px;
+
+  @media screen and (max-width: 485px) {
+    width: calc(100vw - 120px);
+  }
+
+  @media screen and (min-width: 768px) {
+    height: 100vh;
+    margin-left: 350px;
+  }
+
   /* background-image: linear-gradient(rgb(231 219 219 / 83%), rgb(165 194 143 / 73%)), url("/350.webp"); */
   /* filter: blur(8px); */
 }
@@ -9,18 +17,30 @@
 .partCard {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+
+  @media screen and (max-width: 485px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 768px) {
+
+    justify-content: space-around;
+  }
 }
 
 .description {
   text-align: center;
-  padding: 20px 100px;
   margin-top: 20px;
   margin-right: 20px;
   background-color: #caf1cf;
   /* border-top: 1px solid black; */
   /* box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75) */
   box-shadow: -8px 13px 6px 0px rgb(75 8 8 / 36%);
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 100px;
+
+  }
 }
 
 .text {

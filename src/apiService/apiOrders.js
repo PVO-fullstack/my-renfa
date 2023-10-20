@@ -58,7 +58,9 @@ export const getUserOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get("https://renfa-api.onrender.com/api/orders/userorder");
+      const res = await axios.get(
+        "https://renfa-api.onrender.com/api/orders/userorder"
+      );
       console.log(res);
       return res.data;
     } catch (error) {
@@ -95,7 +97,10 @@ export const createOrder = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.post("https://renfa-api.onrender.com/api/orders", part);
+      const res = await axios.post(
+        "https://renfa-api.onrender.com/api/orders",
+        part
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -107,6 +112,9 @@ export const patchOrder = async (id) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   const tokenLs = await JSON.parse(localStorage.getItem("token"));
   await token.set(tokenLs);
-  const res = await axios.patch(`https://renfa-api.onrender.com/api/orders/${id}/close`, { close: "true" });
+  const res = await axios.patch(
+    `https://renfa-api.onrender.com/api/orders/${id}/close`,
+    { close: "true" }
+  );
   return res.data;
 };

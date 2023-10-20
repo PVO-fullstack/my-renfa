@@ -44,7 +44,8 @@ export const Modal = ({ src, onClose }) => {
             style={{
               display: "block",
               margin: "auto",
-height:"500px",
+              // height: "500px",
+              width: "100vw",
               padding: "10px",
             }}
             src={src.Img}

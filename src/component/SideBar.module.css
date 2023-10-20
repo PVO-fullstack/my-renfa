@@ -1,56 +1,58 @@
 @media screen and (max-width: 1199px) {
-    .list {
-        top: 60px;
-        /* z-index: 2; */
-        list-style: none;
-        padding: 0;
-        background-color: inheryt;
-        min-width: 100px;
-        /* margin-left: 30px; */
-    }
-    .brend{
-        display: none;
-    }
-                        .logo {
-                            height: 40px;
-                            margin: 10px;
-                        }
+  .list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 60px;
+    /* z-index: 2; */
+    list-style: none;
+    padding: 0;
+    background-color: inheryt;
+    min-width: 100px;
+    /* margin-left: 30px; */
+  }
+  .brend {
+    display: none;
+  }
+  .logo {
+    height: 40px;
+    margin: 10px;
+  }
 }
-     @media screen and (min-width: 1200px) {
-        .list{
- position: fixed;
-                        top: 60px;
-                        z-index: 2;
-                        list-style: none;
-                        padding: 0;
-                        background-color: inheryt;
-                        min-width: 300px;
-                        margin-left: 30px;
-        }
+@media screen and (min-width: 1200px) {
+  .list {
+    position: fixed;
+    top: 60px;
+    z-index: 2;
+    list-style: none;
+    padding: 0;
+    background-color: inheryt;
+    min-width: 300px;
+    margin-left: 30px;
+  }
 
-.brend {
-                    font-size: 40px;
-                            margin: 10px;
-                            width: 100px;
-                            color: white;
-}
-.item {
-                background-color: rgb(64 224 208 / 41%);
-                margin: 10px 0;
-                        text-align: center;
-                        border: 2px solid red;
-                        border-radius: 20px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-evenly;
-}
+  .brend {
+    font-size: 40px;
+    margin: 10px;
+    width: 100px;
+    color: white;
+  }
+  .item {
+    background-color: rgb(64 224 208 / 41%);
+    margin: 10px 0;
+    text-align: center;
+    border: 2px solid red;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 
-.item:hover {
+  .item:hover {
     background-color: blueviolet;
+  }
+  .logo {
+    height: 40px;
+    margin: 10px;
+  }
 }
-                                                .logo {
-                                                    height: 40px;
-                                                    margin: 10px;
-                                                }
-    }
-

@@ -25,20 +25,7 @@ export default function Navbars() {
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        zIndex: "3",
-        display: "flex",
-        gap: "30px",
-        justifyContent: "space-around",
-        backgroundColor: "#4bd4bf",
-        borderRadius: "5px",
-        marginTop: "5px",
-        padding: "5px",
-        // boxShadow: "0 0 10px 5px #441d1d80;",
-      }}
-    >
+    <div className={css.conteiner}>
       <NavLink className={css.link} href="/">
         Home
       </NavLink>
