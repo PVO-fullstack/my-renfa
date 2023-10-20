@@ -39,9 +39,9 @@ export const Part = ({ openModal, getAllParts }) => {
   const filterPart = (e) => {
     e.preventDefault();
     const inputValue = e.target.value;
-    console.log(inputValue);
+    const inputToLowerCase = inputValue.toLowerCase();
     const qq = part.filter((item) =>
-      item.Part_Name.toLowerCase().includes(inputValue || "")
+      item.Part_Name.toLowerCase().includes(inputToLowerCase || "")
     );
     setFiltredParts(qq);
   };
