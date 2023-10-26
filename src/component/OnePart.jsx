@@ -14,8 +14,10 @@ export const OnePart = () => {
 
   useEffect(() => {
     const getPart = async () => {
-      const part = await getOnePart(model[2]);
-      setOnePart(part);
+      if (model) {
+        const part = await getOnePart(model[2]);
+        setOnePart(part);
+      }
     };
     getPart();
   }, [model]);

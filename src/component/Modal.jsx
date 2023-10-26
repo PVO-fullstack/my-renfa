@@ -1,4 +1,4 @@
-import css from "./Modal.module.css";
+import css from "./Modal.module.scss";
 
 export const Modal = ({ src, onClose }) => {
   const kurs = 40;
@@ -40,17 +40,7 @@ export const Modal = ({ src, onClose }) => {
         >
           {/* <p style={{ textAlign: "center" }}>Каталожний номер: {src.Articul}</p>
           <p style={{ textAlign: "center" }}>Назва: {src.Part_Name}</p> */}
-          <img
-            style={{
-              display: "block",
-              margin: "auto",
-              // height: "500px",
-              width: "100vw",
-              padding: "10px",
-            }}
-            src={src.Img}
-            alt=""
-          />
+          <img className={css.img} src={src.Img} alt="" />
           {/* <p style={{ textAlign: "center" }}>Опис: {src.Description}</p>
           <p style={{ textAlign: "center" }}>Ціна: {src.Price * kurs} грн</p>
           <p style={{ textAlign: "center" }}>Наявність: {src.Quantity} шт.</p>

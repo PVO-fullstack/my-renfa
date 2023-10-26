@@ -32,8 +32,12 @@ export default function Parts() {
     <>
       {/* <PartsList /> */}
       {/* <Part /> */}
-      
-      {model.length < 3 ? <Part openModal={openModal} getAllParts={getParts} /> : <OnePart/>}
+
+      {model && model.length < 3 ? (
+        <Part openModal={openModal} getAllParts={getParts} />
+      ) : (
+        <OnePart />
+      )}
       {/* {showModal && <Modal src={part[activeImgIdx]} onClose={closeModal} />} */}
     </>
   );
