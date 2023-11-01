@@ -25,7 +25,7 @@ export const OrderList = () => {
 
   const dispatch = useDispatch();
 
-  const kurs = 40;
+  const kurs = 45;
   const userBD = useSelector(selectUser);
 
   useEffect(() => {

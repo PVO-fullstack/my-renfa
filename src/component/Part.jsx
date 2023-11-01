@@ -16,7 +16,7 @@ export const Part = ({ openModal, getAllParts }) => {
 
   const dispatch = useDispatch();
 
-  const kurs = 40;
+  const kurs = 45;
   useEffect(() => {
     dispatch(refreshUser());
     if (model) {
@@ -91,6 +91,9 @@ export const Part = ({ openModal, getAllParts }) => {
                 />
                 <p style={{ color: "black", textAlign: "center" }}>
                   Ціна: {Math.round(part.Price * kurs)} грн
+                </p>
+                <p style={{ color: "black", textAlign: "center" }}>
+                  Кількість: {part.Quantity}
                 </p>
                 {/* </a> */}
               </li>

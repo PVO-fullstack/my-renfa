@@ -1,7 +1,7 @@
 import css from "./Modal.module.scss";
 
 export const Modal = ({ src, onClose }) => {
-  const kurs = 40;
+  const kurs = 45;
 
   console.log("src", src);
 
