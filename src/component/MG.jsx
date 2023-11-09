@@ -80,7 +80,7 @@ export const MG = () => {
         </Link>
         <Link
           href={{
-            pathname: `/models/MG/5NEW`,
+            pathname: `/models/MG/5(2020)`,
           }}
         >
           <li className={css.item}>
