@@ -1,8 +1,6 @@
 import css from "./Modal.module.scss";
 
 export const Modal = ({ src, onClose }) => {
-  const kurs = 45;
-
   console.log("src", src);
 
   const handleOverlayClick = (e) => {

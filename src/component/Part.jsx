@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
 import Link from "next/link";
+import { KURS } from "@/variable/variable";
 
 export const Part = ({ openModal, getAllParts }) => {
   const [part, setPart] = useState([]);
@@ -16,7 +17,6 @@ export const Part = ({ openModal, getAllParts }) => {
 
   const dispatch = useDispatch();
 
-  const kurs = 45;
   useEffect(() => {
     dispatch(refreshUser());
     if (model) {
@@ -90,7 +90,7 @@ export const Part = ({ openModal, getAllParts }) => {
                   alt={part.Description}
                 />
                 <p style={{ color: "black", textAlign: "center" }}>
-                  Ціна: {Math.round(part.Price * kurs)} грн
+                  Ціна: {Math.round(part.Price * KURS)} грн
                 </p>
                 <p style={{ color: "black", textAlign: "center" }}>
                   Кількість: {part.Quantity}

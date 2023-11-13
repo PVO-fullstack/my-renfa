@@ -40,9 +40,12 @@ export const AuthModal = ({ show, handleClose }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header style={{ display: "flex", gap: "40px" }} closeButton>
+        <Modal.Header
+          style={{ display: "flex", justifyContent: "space-between" }}
+          closeButton
+        >
           <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
-          <p style={{ margin: "0" }}> Або </p>
+          <p style={{ margin: "0 5px" }}> Або </p>
           <Button onClick={handleChangeLoginForm}>Увійти</Button>
         </Modal.Header>
         <Modal.Body>

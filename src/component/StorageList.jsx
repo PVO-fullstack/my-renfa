@@ -2,7 +2,8 @@ import { getAllParts } from "@/apiService/apiParts";
 import React, { useEffect, useState } from "react";
 import brand from "../data/model.json";
 import { PartModal } from "./PartModal";
-import css from "./StorageList.module.css";
+import css from "./StorageList.module.scss";
+import { KURS } from "@/variable/variable";
 
 export const StorageList = () => {
   const [allParts, setAllParts] = useState([]);
@@ -84,7 +85,7 @@ export const StorageList = () => {
   };
 
   return (
-    <div style={{ marginLeft: "350px" }}>
+    <div className={css.conteiner}>
       <div style={{ textAlign: "center", margin: "20px 0" }}>Склад</div>
       <label>
         Введіть каталожний номер або назву запчaстини
@@ -96,7 +97,14 @@ export const StorageList = () => {
           id=""
         />
       </label>
-      <ul style={{ display: "flex", gap: "20px", listStyle: "none" }}>
+      <ul
+        style={{
+          display: "flex",
+          gap: "20px",
+          listStyle: "none",
+          flexWrap: "wrap",
+        }}
+      >
         <li onClick={handleBrandClick}>Усі</li>
         {brand.map((el) => (
           <li onClick={handleBrandClick} key={el.Brend}>
@@ -105,7 +113,7 @@ export const StorageList = () => {
         ))}
         <button onClick={handlePartClick}>Створити новий запис</button>
       </ul>
-      <div style={{ display: "flex" }}>
+      <div>
         <ul className={css.model_list}>
           {models.length > 0
             ? models.map((el) => (
@@ -120,12 +128,12 @@ export const StorageList = () => {
             : ""}
         </ul>
         <ul className={css.order_list}>
-          <li className={css.item_cardN}>
-            <p className={css.articul}>Артикул</p>
+          {/* <li className={css.item_cardN}> */}
+          {/* <p className={css.articul}>Артикул</p>
             <p className={css.part_name}>Назва</p>
-            <p className={css.price}>Кількість</p>
-            <p className={css.price}>Ціна</p>
-          </li>
+            <p className={css.price}>Кількість</p> */}
+          {/* <p className={css.price}>Ціна</p> */}
+          {/* </li> */}
           {filter.length > 0 && filter.length < 10
             ? // {filter.length < 1 && parts.length > 0
 
@@ -143,8 +151,12 @@ export const StorageList = () => {
                 >
                   <p className={css.articul}>{el.Articul}</p>
                   <p className={css.part_name}>{el.Part_Name}</p>
-                  <p className={css.price}>{el.Quantity}</p>
-                  <p className={css.price}>{el.Price}</p>
+                  <p className={css.price}>
+                    <span>Кількість:</span> {el.Quantity}
+                  </p>
+                  <p className={css.price}>
+                    <span>Ціна:</span> {Math.round(el.Price * KURS)}грн
+                  </p>
                 </li>
               ))
             : parts.map((el) => (
@@ -162,7 +174,7 @@ export const StorageList = () => {
                   <p className={css.articul}>{el.Articul}</p>
                   <p className={css.part_name}>{el.Part_Name}</p>
                   <p className={css.price}>{el.Quantity}</p>
-                  <p className={css.price}>{el.Price}</p>
+                  {/* <p className={css.price}>{el.Price}</p> */}
                 </li>
               ))}
         </ul>

@@ -1,38 +1,53 @@
 .conteiner {
-  display: none;
+  // display: none;
 
-  @media screen and (min-width:768px) {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    gap: 30px;
-    justify-content: space-around;
-    background-color: #4bd4bf;
-    border-radius: 5px;
-    margin-top: 5px;
-    padding: 5px;
+  // @media screen and (min-width:768px) {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 30px;
+  justify-content: space-around;
+  background-color: #4bd4bf;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
 
-  }
+  // }
 
   // boxShadow: "0 0 10px 5px #441d1d80;",
 }
 
 .link {
-  color: black;
-  text-decoration: none;
-  font-size: 30px;
+  display: none;
 
-  &:active {
-    color: orange;
-    // text-decoration: none;
-  }
+  @media screen and (min-width:768px) {
 
-  &:hover {
-    color: red;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+
+    &:active {
+      color: orange;
+      // text-decoration: none;
+    }
+
+    &:hover {
+      color: red;
+    }
   }
 }
 
 .user_name {
   margin: 0;
   font-size: large;
+}
+
+.name {
+  margin: 0;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: aqua;
+  padding: 5px;
 }

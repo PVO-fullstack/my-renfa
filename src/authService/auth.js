@@ -14,7 +14,10 @@ const token = {
 };
 
 export const register = async (credential) => {
-  const res = await axios.post("/api/auth/users/register", credential);
+  const res = await axios.post(
+    "https://renfa-api.onrender.com/api/auth/users/register",
+    credential
+  );
   token.set(res.data.token);
   return res.data;
 };

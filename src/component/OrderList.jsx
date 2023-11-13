@@ -4,6 +4,7 @@ import { createOrder, getUserOrders } from "@/apiService/apiOrders";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser, updateUser } from "@/redux/auth/auth-operations";
 import { selectUser } from "@/redux/auth/auth-selectors";
+import { KURS } from "@/variable/variable";
 
 export const OrderList = () => {
   const cleanOrder = document.getElementById("order");
@@ -25,7 +26,6 @@ export const OrderList = () => {
 
   const dispatch = useDispatch();
 
-  const kurs = 45;
   const userBD = useSelector(selectUser);
 
   useEffect(() => {
@@ -145,7 +145,7 @@ export const OrderList = () => {
                 <li className={css.orderItem} key={_id}>
                   <p className={css.orderItemP}>{Articul}</p>
                   <p className={css.partsName}>{Part_Name}</p>
-                  <p className={css.partsPrice}>{Math.round(Price * kurs)}</p>
+                  <p className={css.partsPrice}>{Math.round(Price * KURS)}</p>
                   <input
                     className={css.quantity}
                     onChange={handleChangeValue}

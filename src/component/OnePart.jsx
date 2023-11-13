@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Modal } from "./Modal";
 import css from "./OnePart.module.scss";
+import { KURS } from "@/variable/variable";
 
 export const OnePart = () => {
   const [onePart, setOnePart] = useState();
@@ -47,7 +48,7 @@ export const OnePart = () => {
             <p className={css.text}>Каталожний номер: {onePart[0].Articul} </p>
             <p className={css.text}>Країна виробник: {onePart[0].Country}</p>
             <p className={css.text}>
-              Ціна: {Math.round(onePart[0].Price * 40)}, грн
+              Ціна: {Math.round(onePart[0].Price * KURS)}, грн
             </p>
             <p className={css.text}>
               Встановлюється на автомобілі: {model[0]} {onePart[0].Model.join()}

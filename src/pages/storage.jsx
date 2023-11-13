@@ -17,14 +17,16 @@ export default function Order() {
   return (
     <div>
       <div
-        style={{
-          marginLeft: 350,
-          alignItems: "center",
-          marginTop: 20,
-          display: "flex",
-          gap: 10,
-          justifyContent: "center",
-        }}
+        style={
+          {
+            // marginLeft: 350,
+            // alignItems: "center",
+            // marginTop: 20,
+            // display: "flex",
+            // gap: 10,
+            // justifyContent: "center",
+          }
+        }
       >
         <button onClick={() => setIsOrders(false)}>Склад</button>
         <button onClick={() => setIsOrders(true)}>Замовлення</button>

@@ -1,5 +1,15 @@
+.conteiner {
+  margin: 0;
+  max-width: calc(100vw - 100px);
+
+  @media screen and (min-width: 768px) {
+    margin-left: 350px;
+  }
+}
+
 .order_list {
   list-style: none;
+  padding: 0;
 }
 
 .item_cardN {
@@ -20,35 +30,42 @@
 
 .item_card {
   display: flex;
+  flex-wrap: wrap;
   border: 2px solid white;
 }
 
 .articul {
-  width: 200px;
+  width: 220px;
   padding: 5px 10px;
   margin: 0;
+  text-align: center;
+  text-decoration-line: underline;
 }
 
 .part_name {
-  width: 600px;
+  width: 220px;
   padding: 5px 10px;
-  border-left: 2px solid white;
-  border-right: 2px solid white;
+  // border-left: 2px solid white;
+  // border-right: 2px solid white;
   margin: 0;
+  text-align: center;
 }
 
 .price {
-  width: 100px;
+  width: 220px;
   padding: 5px 10px;
   margin: 0;
   text-align: center;
 }
 
 .model_list {
-  margin: 40px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
+  // margin: 40px 10px;
   list-style: none;
   padding: 0;
-  width: 70px;
+  // width: 70px;
 }
 
 .model_item {
@@ -58,4 +75,6 @@
   border-radius: 20px;
   text-align: center;
   margin-bottom: 5px;
+  padding: 5px;
+  min-width: 56px;
 }
