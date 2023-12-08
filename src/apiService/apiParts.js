@@ -2,11 +2,12 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // const API_URL = "http://localhost:3000";
-// const API_URL = process.env.API_URL;
-axios.defaults.baseURL = "https://renfa-api.onrender.com";
+// const API_URL = "https://renfa-api.onrender.com";
+const API_URL = "https://my-renfa.vercel.app/";
+// axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
-// axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = API_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
@@ -22,7 +23,7 @@ export const getAllParts = async () => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get("/api/parts");
+  const res = await axios.get(`${API_URL}/api/parts`);
   return res.data;
 };
 
@@ -30,7 +31,7 @@ export const getModelBrand = async (brand) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`/api/parts/model${brand}`);
+  const res = await axios.get(`${API_URL}/api/parts/model${brand}`);
   return res.data;
 };
 
@@ -43,7 +44,7 @@ export const getModel = async (model) => {
 };
 
 export const getOnePart = async (articul) => {
-  const res = await axios.get(`/api/car/${articul}`);
+  const res = await axios.get(`${API_URL}/api/car/${articul}`);
   return res.data;
 };
 
@@ -51,7 +52,7 @@ export const getAllModel = async (model) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`/api/parts/allmodel`);
+  const res = await axios.get(`${API_URL}/api/parts/allmodel`);
   return res.data;
 };
 
@@ -144,11 +145,15 @@ export const changeImg = createAsyncThunk(
     const { id, img } = data;
 
     try {
-      const res = await axios.patch(`/api/parts/${id}`, img, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.patch(
+        `https://renfa-api.onrender.com/api/parts/${id}`,
+        img,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -168,7 +173,7 @@ export const getAllOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get("/api/orders");
+      const res = await axios.get("https://renfa-api.onrender.com/api/orders");
       console.log("res", res);
       return res.data;
     } catch (error) {
