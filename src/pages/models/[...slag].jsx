@@ -32,21 +32,33 @@ export default function Parts() {
 
   return (
     <>
-      <Head>
-        <title>{`${onePart[0].Description} ${onePart[0].Articul}`}</title>
-        <meta
-          name="description"
-          content={`${onePart[0].Description} ${onePart[0].Articul}`}
-          key="desc"
-        />
-      </Head>
       {/* <PartsList /> */}
       {/* <Part /> */}
 
       {model && model.length < 3 ? (
-        <Part openModal={openModal} getAllParts={getParts} />
+        <>
+          <Head>
+            <title>{`Автомобіль ${model[0]} ${model[1]}`}</title>
+            <meta
+              name="description"
+              content={`Запчастини до автомобіля ${model[0]} ${model[1]}`}
+              key="desc"
+            />
+          </Head>
+          <Part openModal={openModal} getAllParts={getParts} />
+        </>
       ) : (
-        <OnePart />
+        <>
+          <Head>
+            <title>{`${onePart[0].Description} ${onePart[0].Articul}`}</title>
+            <meta
+              name="description"
+              content={`${onePart[0].Description} ${onePart[0].Articul}`}
+              key="desc"
+            />
+          </Head>
+          <OnePart />
+        </>
       )}
       {/* {showModal && <Modal src={part[activeImgIdx]} onClose={closeModal} />} */}
     </>
