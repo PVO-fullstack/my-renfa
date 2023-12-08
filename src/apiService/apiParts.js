@@ -2,11 +2,11 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // const API_URL = "http://localhost:3000";
-const API_URL = process.env.API_URL;
-// axios.defaults.baseURL = "https://renfa-api.onrender.com";
+// const API_URL = process.env.API_URL;
+axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
-axios.defaults.baseURL = API_URL;
+// axios.defaults.baseURL = API_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
