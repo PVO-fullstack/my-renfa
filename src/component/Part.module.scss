@@ -31,10 +31,29 @@
   }
 }
 
+.title {
+  text-align: left;
+
+  @media screen and (min-width: 768px) {
+    text-align: center;
+  }
+}
+
+.filter {
+  width: 200px;
+  margin-bottom: 50px;
+}
+
+.label {
+  width: 200px;
+  margin-top: 20px;
+}
+
 /*
  * Стили компонента ImageGalleryItem
  */
 .ImageGalleryItem {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

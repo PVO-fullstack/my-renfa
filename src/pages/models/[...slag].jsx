@@ -3,6 +3,7 @@ import { Modal } from "@/component/Modal";
 import { OnePart } from "@/component/OnePart";
 import { Part } from "@/component/Part";
 import { PartsList } from "@/component/PartsList";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
@@ -12,7 +13,7 @@ export default function Parts() {
   const [part, setPart] = useState([]);
   const router = useRouter();
   const model = router.query.slag;
-  console.log("model", model);
+  console.log("Model", model);
 
   const openModal = (index) => {
     setShowModal(true);
@@ -25,11 +26,20 @@ export default function Parts() {
     setPart(parts);
   };
 
-  // console.log("part", part);
+  const onePart = part.filter((item) => item.Articul === model[2]);
+  console.log("part", onePart);
   // console.log(activeImgIdx)
 
   return (
     <>
+      <Head>
+        <title>{`${onePart[0].Description} ${onePart[0].Articul}`}</title>
+        <meta
+          name="description"
+          content={`${onePart[0].Description} ${onePart[0].Articul}`}
+          key="desc"
+        />
+      </Head>
       {/* <PartsList /> */}
       {/* <Part /> */}
 

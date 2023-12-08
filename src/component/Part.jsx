@@ -51,12 +51,11 @@ export const Part = ({ openModal, getAllParts }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <input
-        className={css.filter}
-        onChange={filterPart}
-        style={{ width: "200px", marginTop: "50px", marginBottom: "50px" }}
-        type="text"
-      />
+      <h1 className={css.title}>{model}</h1>
+      <label className={css.label}>
+        Введіть назву або каталожний номер
+        <input className={css.filter} onChange={filterPart} type="text" />
+      </label>
       <ul className={css.ImageGallery}>
         {filterPart.length > 0 &&
           filtredParts.map((part, index) => (
