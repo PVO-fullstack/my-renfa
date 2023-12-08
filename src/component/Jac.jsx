@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import css from "./AllModels.module.css";
+import css from "./AllModels.module.scss";
 import Amulet from "../../public/amulet.webp";
 
 export const Jac = () => {

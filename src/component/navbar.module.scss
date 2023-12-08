@@ -38,6 +38,26 @@
   }
 }
 
+.form {
+  display: block;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  background-color: blueviolet;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+
+  &:active {
+    color: orange;
+    // text-decoration: none;
+  }
+
+  &:hover {
+    color: red;
+  }
+}
+
 .user_name {
   margin: 0;
   font-size: large;

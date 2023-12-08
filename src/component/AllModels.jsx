@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./AllModels.module.css";
+import css from "./AllModels.module.scss";
 import { Chery } from "./Chery";
 import { MG } from "./MG";
 import { Faw } from "./Faw";

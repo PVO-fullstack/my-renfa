@@ -44,6 +44,9 @@ export default function Navbars() {
       <NavLink className={css.link} href="/contacts">
         Contacts
       </NavLink>
+      <NavLink className={css.link + " " + css.form} href="/form">
+        Звернутися до нас
+      </NavLink>
       <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
       <AuthModal show={show} handleClose={handleClose} />
       <button className={css.name} onClick={handleShowMenu}>

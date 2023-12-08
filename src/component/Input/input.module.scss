@@ -1,0 +1,35 @@
+.input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 12px;
+    background-color: transparent;
+    color: black;
+
+    &:focus-visible {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: aqua;
+    }
+}
+
+.label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: white;
+    margin-bottom: -3px;
+}
+
+.error {
+    font-size: 12px;
+    font-weight: 500;
+    color: red;
+    height: 15px;
+    line-height: 1.2;
+    align-self: flex-end;
+}

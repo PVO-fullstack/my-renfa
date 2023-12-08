@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import css from "./AllModels.module.css";
+import css from "./AllModels.module.scss";
 import Link from "next/link";
 
 export const MG = () => {
@@ -15,6 +15,7 @@ export const MG = () => {
         >
           <li className={css.item}>
             <Image
+              className={css.img}
               src="/350.webp"
               width={200}
               height={200}
@@ -30,6 +31,7 @@ export const MG = () => {
         >
           <li className={css.item}>
             <Image
+              className={css.img}
               src="/550.webp"
               width={200}
               height={200}
@@ -44,7 +46,13 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src="/6.webp" width={200} height={200} alt="Chery Amulet" />
+            <Image
+              className={css.img}
+              src="/6.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
             <p>6</p>
           </li>
         </Link>
@@ -54,7 +62,13 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src="/3.webp" width={200} height={200} alt="Chery Amulet" />
+            <Image
+              className={css.img}
+              src="/3.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
             <p>3Cross</p>
           </li>
         </Link>
@@ -64,7 +78,13 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src="/5.webp" width={200} height={200} alt="Chery Amulet" />
+            <Image
+              className={css.img}
+              src="/5.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
             <p>5</p>
           </li>
         </Link>
@@ -74,7 +94,13 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src="/zs.webp" width={200} height={200} alt="MG ZS" />
+            <Image
+              className={css.img}
+              src="/zs.webp"
+              width={200}
+              height={200}
+              alt="MG ZS"
+            />
             <p>ZS</p>
           </li>
         </Link>
@@ -85,6 +111,7 @@ export const MG = () => {
         >
           <li className={css.item}>
             <Image
+              className={css.img}
               src="/mg5.webp"
               width={200}
               height={200}
@@ -99,7 +126,13 @@ export const MG = () => {
           }}
         >
           <li className={css.item}>
-            <Image src="/HS.webp" width={200} height={200} alt="Chery Amulet" />
+            <Image
+              className={css.img}
+              src="/HS.webp"
+              width={200}
+              height={200}
+              alt="Chery Amulet"
+            />
             <p>HS</p>
           </li>
         </Link>

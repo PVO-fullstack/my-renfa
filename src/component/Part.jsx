@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import css from "./Part.module.css";
+import css from "./Part.module.scss";
 import { getModel } from "@/apiService/apiParts";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -74,27 +74,18 @@ export const Part = ({ openModal, getAllParts }) => {
             }}
             href={part.Img}
           > */}
-                <p
-                  style={{
-                    color: "black",
-                    height: "40px",
-                    textAlign: "center",
-                    padding: "0 10px",
-                  }}
-                >
-                  {part.Part_Name}
-                </p>
-                <img
-                  className={css.ImageGalleryItem_image}
-                  src={part.Img}
-                  alt={part.Description}
-                />
-                <p style={{ color: "black", textAlign: "center" }}>
-                  Ціна: {Math.round(part.Price * KURS)} грн
-                </p>
-                <p style={{ color: "black", textAlign: "center" }}>
-                  Кількість: {part.Quantity}
-                </p>
+                <p className={css.text}>{part.Part_Name}</p>
+                <div>
+                  <img
+                    className={css.ImageGalleryItem_image}
+                    src={part.Img}
+                    alt={part.Description}
+                  />
+                  <p className={css.text}>
+                    Ціна: {Math.round(part.Price * KURS)} грн
+                  </p>
+                  {/* <p className={css.text}>Кількість: {part.Quantity}</p> */}
+                </div>
                 {/* </a> */}
               </li>
             </Link>
