@@ -12,7 +12,7 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin: 30px 0;
   padding: 0;
   border-bottom: 1px solid red;
@@ -23,12 +23,16 @@
 }
 
 .item:hover {
-  background-color: red;
+  background-color: rgb(215, 141, 141);
   border-radius: 20px;
 }
 
+.mod {
+  margin-bottom: 0;
+}
+
 .img {
-  width: 75px;
+  width: 110px;
 
   @media screen and (min-width: 768px) {
     width: 200px;

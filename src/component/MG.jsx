@@ -21,7 +21,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>350</p>
+            <p className={css.mod}>350</p>
           </li>
         </Link>
         <Link
@@ -37,7 +37,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>550</p>
+            <p className={css.mod}>550</p>
           </li>
         </Link>
         <Link
@@ -53,7 +53,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>6</p>
+            <p className={css.mod}>6</p>
           </li>
         </Link>
         <Link
@@ -69,7 +69,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>3Cross</p>
+            <p className={css.mod}>3Cross</p>
           </li>
         </Link>
         <Link
@@ -85,7 +85,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>5</p>
+            <p className={css.mod}>5</p>
           </li>
         </Link>
         <Link
@@ -101,7 +101,7 @@ export const MG = () => {
               height={200}
               alt="MG ZS"
             />
-            <p>ZS</p>
+            <p className={css.mod}>ZS</p>
           </li>
         </Link>
         <Link
@@ -117,7 +117,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>5(2020)</p>
+            <p className={css.mod}>5(2020)</p>
           </li>
         </Link>
         <Link
@@ -133,7 +133,7 @@ export const MG = () => {
               height={200}
               alt="Chery Amulet"
             />
-            <p>HS</p>
+            <p className={css.mod}>HS</p>
           </li>
         </Link>
       </ul>
