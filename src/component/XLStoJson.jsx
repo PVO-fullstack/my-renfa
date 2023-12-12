@@ -71,8 +71,8 @@ export const XLStoJson = () => {
           alignItems: "center",
         }}
       >
-        {parts.length > 0 &&
-          parts.map((part) => <Card key={part.Articul} part={part} />)}
+        {/* {parts.length > 0 &&
+          parts.map((part) => <Card key={part.Articul} part={part} />)} */}
       </ul>
     </div>
   );

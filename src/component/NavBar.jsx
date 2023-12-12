@@ -58,21 +58,20 @@ export default function Navbars() {
       <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
       <AuthModal show={show} handleClose={handleClose} />
       {userName && userName.name ? <Cart /> : ""}
-      {!userName ? (
+      {userName && userName.name ? (
+        <p className={css.name} onClick={handleLogout}>
+          {userName ? userName.name : ""}
+        </p>
+      ) : (
         <button className={css.name} onClick={handleShowMenu}>
           MENU
         </button>
-      ) : null}
+      )}
       <AuthModal show={showMenu} handleClose={handleClose} />
       {userName && userName.position === "admin" && (
         <NavLink className={css.name} href="/storage">
           Admin
         </NavLink>
-      )}
-      {userName && (
-        <p className={css.name} onClick={handleLogout}>
-          {userName ? userName.name : ""}
-        </p>
       )}
     </div>
   );
