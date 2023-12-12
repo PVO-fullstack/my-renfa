@@ -11,14 +11,17 @@
     min-width: 100px;
     /* margin-left: 30px; */
   }
+
   .brend {
     display: none;
   }
+
   .logo {
     height: 40px;
     margin: 10px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .list {
     position: fixed;
@@ -37,6 +40,7 @@
     width: 100px;
     color: white;
   }
+
   .item {
     background-color: rgb(64 224 208 / 41%);
     margin: 10px 0;
@@ -46,12 +50,14 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+      background-color: blueviolet;
+    }
   }
 
-  .item:hover {
-    background-color: blueviolet;
-  }
-  .logo {
+  .item .logo {
     height: 40px;
     margin: 10px;
   }

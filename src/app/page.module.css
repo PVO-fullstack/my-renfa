@@ -5,11 +5,12 @@
 }
 
 .main {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6rem; */
+  display: grid;
+  grid-template-columns: min-content;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  align-content: space-between;
+  /* padding: 6rem; */
   min-height: 100vh;
   /* position: absolute; */
   /* height: 100vh; */
@@ -27,6 +28,10 @@
         url(../img/hero.jpg); */
   background-size: auto;
   /* filter:blur(5px) */
+}
+
+.conteiner {
+  grid-column: 2;
 }
 
 .description {

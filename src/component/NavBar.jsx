@@ -1,17 +1,20 @@
 import NavLink from "next/link";
 import css from "./navbar.module.scss";
 import { useState } from "react";
-import { AuthModal } from "@/component/AuthModal";
+import { AuthModal } from "@/component/AuthModal/AuthModal";
 import { UserMenu } from "@/component/UserMenu";
 import { logOutUser } from "@/redux/auth/auth-operations";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "@/redux/auth/auth-selectors";
+import { useRouter } from "next/router";
+import { Cart } from "./Cart/Cart";
 
 export default function Navbars() {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(null);
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
+  const router = useRouter();
 
   const userName = useSelector(selectUser);
 
@@ -31,6 +34,7 @@ export default function Navbars() {
 
   const handleLogout = () => {
     dispatch(logOutUser());
+    router.push("/");
   };
 
   return (
@@ -53,9 +57,12 @@ export default function Navbars() {
       )}
       <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
       <AuthModal show={show} handleClose={handleClose} />
-      <button className={css.name} onClick={handleShowMenu}>
-        MENU
-      </button>
+      {userName && userName.name ? <Cart /> : ""}
+      {!userName ? (
+        <button className={css.name} onClick={handleShowMenu}>
+          MENU
+        </button>
+      ) : null}
       <AuthModal show={showMenu} handleClose={handleClose} />
       {userName && userName.position === "admin" && (
         <NavLink className={css.name} href="/storage">

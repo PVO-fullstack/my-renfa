@@ -1,4 +1,4 @@
-import { AllModels } from "@/component/AllModels";
+import { AllModels } from "@/component/AllModels/AllModels";
 import { refreshUser } from "@/redux/auth/auth-operations";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

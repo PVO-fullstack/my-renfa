@@ -1,4 +1,4 @@
-import { OrderList } from "@/component/OrderList";
+import { OrderList } from "@/component/OrderList/OrderList";
 
 export default function Order() {
   return (

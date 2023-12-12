@@ -1,0 +1,68 @@
+[
+    {
+        "link": "/models/Chery/Amulet",
+        "src": "/amulet.webp",
+        "alt": "Chery Amulet",
+        "model": "Amulet"
+    },
+    {
+        "link": "/models/Chery/Karry",
+        "src": "/karry.webp",
+        "alt": "Chery Karry",
+        "model": "Karry"
+    },
+    {
+        "link": "/models/Chery/Elara",
+        "src": "/elara.webp",
+        "alt": "Chery Elara",
+        "model": "Elara"
+    },
+    {
+        "link": "/models/Chery/Eastar",
+        "src": "/eastar.webp",
+        "alt": "Chery Eastar",
+        "model": "Eastar"
+    },
+    {
+        "link": "/models/Chery/Tiggo",
+        "src": "/tiggo.webp",
+        "alt": "Chery Tiggo",
+        "model": "Tiggo"
+    },
+    {
+        "link": "/models/Chery/QQ",
+        "src": "/qq.webp",
+        "alt": "Chery QQ",
+        "model": "QQ"
+    },
+    {
+        "link": "/models/Chery/Jaggi",
+        "src": "/jaggi.webp",
+        "alt": "Chery Jaggi",
+        "model": "Jaggi"
+    },
+    {
+        "link": "/models/Chery/Kimo",
+        "src": "/kimo.webp",
+        "alt": "Chery Kimo",
+        "model": "Kimo"
+    },
+    {
+        "link": "/models/Chery/M11",
+        "src": "/m11.webp",
+        "alt": "Chery M11",
+        "model": "M11"
+    },
+    {
+        "link": "/models/Chery/A13",
+        "src": "/a13.webp",
+        "alt": "Chery A13",
+        "model": "A13(ZAZ Forza)"
+    },
+    {
+        "link": "/models/Chery/Beat",
+        "src": "/beat.webp",
+        "alt": "Chery Beat",
+        "model": "Beat"
+    }
+]

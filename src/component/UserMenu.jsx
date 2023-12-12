@@ -4,6 +4,7 @@ import { Button } from "react-bootstrap";
 import css from "./UserMenu.module.scss";
 import { selectUser } from "@/redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
+import { Cart } from "./Cart/Cart";
 
 export const UserMenu = ({ logout, show }) => {
   const user = useSelector(selectUser);
@@ -31,30 +32,7 @@ export const UserMenu = ({ logout, show }) => {
             Register
           </Button>
         )}
-        {user && user.name ? (
-          <NavLink className={css.link} href="/order">
-            <img
-              className={css.cart}
-              src="/cart.png"
-              width={30}
-              // title="smart cart icons"
-            />
-          </NavLink>
-        ) : (
-          ""
-        )}
-      </div>
-      <div className={css.menu}>
-        {/* {user && user.position === "admin" && (
-          <NavLink className={css.link} href="/storage">
-            Admin
-          </NavLink>
-        )} */}
-        {/* {user && user.position === "admin" && (
-          <NavLink className={css.link} href="/orders">
-            Замовлення
-          </NavLink>
-        )} */}
+        {/* {user && user.name ? <Cart /> : ""} */}
       </div>
     </div>
   );

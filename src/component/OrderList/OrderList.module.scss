@@ -1,39 +1,55 @@
 .orderList {
   /* display: grid;
-        max-width: calc(100vw - 48px);
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        grid-gap: 20px; */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px; */
+  max-width: calc(100vw - 105px);
   padding: 0;
   list-style: none;
-  margin-left: 350px;
-  margin-right: 50px;
+
+  @media screen and (min-width: 1280px) {
+
+    margin-left: 350px;
+    margin-right: 50px;
+  }
 }
 
 .orderItem {
   display: flex;
-  width: 900px;
+  // width: max-content;
+  border: 1px solid white;
+  justify-content: space-between;
 }
 
 .orderItemP {
   padding: 0 10px;
-  width: 200px;
   margin: 0;
+
+  @media screen and (min-width:1280px) {
+    width: 200px;
+
+  }
 }
 
 .partsName {
   padding: 0 10px;
-  width: 400px;
   margin: 0;
+
+  @media screen and (min-width:1280px) {
+    width: 400px;
+
+  }
 }
 
 .partsPrice {
   padding: 0 10px;
-  width: 70px;
+  // width: 70px;
   margin: 0;
 }
 
 .quantity {
-  width: 40px;
+  width: 20px;
+  background-color: transparent;
+  border: none;
 }
 
 .false {
@@ -95,10 +111,14 @@
 
 .input {
   display: flex;
-  width: 450px;
   margin-bottom: 10px;
   padding: 0 10px;
   justify-content: space-between;
+
+  @media screen and (min-width:1280px) {
+    width: 450px;
+
+  }
 }
 
 .owner_title {

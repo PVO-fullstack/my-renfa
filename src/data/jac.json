@@ -1,0 +1,32 @@
+[
+    {
+        "link": "/models/JAC/J7",
+        "src": "/j7.webp",
+        "alt": "JAC J7",
+        "model": "J7"
+    },
+    {
+        "link": "/models/JAC/JS2",
+        "src": "/js2.webp",
+        "alt": "JAC JS2",
+        "model": "JS2"
+    },
+    {
+        "link": "/models/JAC/S3NEW",
+        "src": "/s3.webp",
+        "alt": "JAC S3 New",
+        "model": "S3 NEW"
+    },
+    {
+        "link": "/models/JAC/S4",
+        "src": "/s4.webp",
+        "alt": "JAC S4",
+        "model": "S4"
+    },
+    {
+        "link": "/models/JAC/IEVS4",
+        "src": "/ievs4.webp",
+        "alt": "JAC IEVS4",
+        "model": "IEVS4"
+    }
+]

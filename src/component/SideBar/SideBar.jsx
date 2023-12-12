@@ -1,6 +1,6 @@
 import Link from "next/link";
-import model from "../data/model.json";
-import css from "./SideBar.module.css";
+import model from "@/data/model.json";
+import css from "./SideBar.module.scss";
 
 export const SideBar = () => {
   return (

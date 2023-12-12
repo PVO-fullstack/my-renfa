@@ -51,7 +51,7 @@ export const Part = ({ openModal, getAllParts }) => {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <h1 className={css.title}>{model}</h1>
+      <h1 className={css.title}>{`${model[0]} ${model[1]}`}</h1>
       <label className={css.label}>
         Введіть назву або каталожний номер
         <input className={css.filter} onChange={filterPart} type="text" />

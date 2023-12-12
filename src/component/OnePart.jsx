@@ -9,6 +9,8 @@ import { KURS } from "@/variable/variable";
 export const OnePart = () => {
   const [onePart, setOnePart] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [orderParts, setOrderParts] = useState([]);
+  const [disabled, setDisabled] = useState(false);
   const router = useRouter();
   const model = router.query.slag;
   console.log("model", model);
@@ -17,45 +19,70 @@ export const OnePart = () => {
     const getPart = async () => {
       if (model) {
         const part = await getOnePart(model[2]);
-        setOnePart(part);
+        setOnePart(part[0]);
       }
     };
     getPart();
+    const order = localStorage.getItem("order");
+    if (order) {
+      setOrderParts(JSON.parse(order));
+    }
   }, [model]);
 
   const openModal = () => {
     setShowModal(true);
-    // setActiveImgIdx(index);
   };
 
   const closeModal = () => setShowModal(false);
 
-  console.log(onePart);
+  const handleClick = () => {
+    console.log("onePart", onePart);
+    if (orderParts && orderParts.length > 0) {
+      console.log("one", onePart);
+      // setOrderParts([...orderParts, onePart]);
+      console.log("orderParts", orderParts);
+      const partString = JSON.stringify([...orderParts, onePart]);
+      console.log("second", partString);
+      localStorage.setItem("order", partString);
+      setDisabled(true);
+      return;
+    }
+    console.log("first");
+    setOrderParts([onePart]);
+    const partString = JSON.stringify([onePart]);
+    localStorage.setItem("order", partString);
+    // console.log("orderParts", orderParts);
+    setDisabled(true);
+  };
 
   return (
     <div className={css.conteiner}>
       {onePart && (
         <div className={css.partCard}>
-          <img
+          <Image
             className={css.img}
             onClick={openModal}
-            src={onePart[0].Img}
+            src={onePart.Img}
             width={300}
-            alt={onePart[0].Part_Name}
+            height={200}
+            alt={onePart.Part_Name}
           />
           <div className={css.card}>
-            <p className={css.text}>Назва: {onePart[0].Part_Name}</p>
-            <p className={css.text}>Каталожний номер: {onePart[0].Articul} </p>
-            <p className={css.text}>Країна виробник: {onePart[0].Country}</p>
+            <p className={css.text}>Назва: {onePart.Part_Name}</p>
+            <p className={css.text}>Каталожний номер: {onePart.Articul} </p>
+            <p className={css.text}>Країна виробник: {onePart.Country}</p>
             <p className={css.text}>
-              Ціна: {Math.round(onePart[0].Price * KURS)}, грн
+              Ціна: {Math.round(onePart.Price * KURS)}, грн
             </p>
             <p className={css.text}>
-              Встановлюється на автомобілі: {model[0]} {onePart[0].Model.join()}
+              Встановлюється на автомобілі: {model[0]} {onePart.Model.join(" ")}
             </p>
           </div>
         </div>
       )}
+      <button disabled={disabled} onClick={handleClick} className={css.btn}>
+        {disabled ? "У корзині" : "Купити"}
+      </button>
       <div className={css.description}>
         <p>
           Магазин <span className={css.companyName}>Renfa</span> - завжди низькі
@@ -64,7 +91,7 @@ export const OnePart = () => {
           морем та літаком.
         </p>
       </div>
-      {showModal && <Modal src={onePart[0]} onClose={closeModal} />}
+      {showModal && <Modal src={onePart} onClose={closeModal} />}
     </div>
   );
 };

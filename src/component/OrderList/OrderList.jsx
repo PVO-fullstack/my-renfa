@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import css from "./OrderList.module.css";
+import css from "./OrderList.module.scss";
 import { createOrder, getUserOrders } from "@/apiService/apiOrders";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser, updateUser } from "@/redux/auth/auth-operations";
@@ -21,6 +21,7 @@ export const OrderList = () => {
   });
   const [oldOrders, setOldOrders] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const [result, setResult] = useState();
 
   console.log(user);
 
@@ -33,7 +34,7 @@ export const OrderList = () => {
   }, [userBD]);
 
   useEffect(() => {
-    const ls = localStorage.getItem("part");
+    const ls = localStorage.getItem("order");
     setRefresh(false);
     if (ls) {
       const partList = JSON.parse(ls);
@@ -45,6 +46,13 @@ export const OrderList = () => {
       setOrders(order.payload);
     }
     getOrder();
+    // console.log("newPartsList", newPartsList);
+    // if (newPartsList) {
+    //   const together = newPartsList.reduce(function (acc, item) {
+    //     return acc + item.Quantity * Math.round(item.Price * KURS);
+    //   }, 0);
+    //   setResult(together);
+    // }
   }, [dispatch, disabled, refresh]);
 
   const newOrder = [];
@@ -77,7 +85,7 @@ export const OrderList = () => {
         numberNewPost: user.numberNewPost,
       })
     );
-    localStorage.setItem("part", "");
+    localStorage.setItem("order", "");
     setDisabled(true);
     setOldOrders(true);
     setRefresh(true);
@@ -96,6 +104,15 @@ export const OrderList = () => {
     }
     setNewPartsList({ ...newPartsList, ...newPart });
   };
+  let add = 0;
+
+  partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => {
+    console.log("Ar", Articul);
+    console.log("Pr", Price);
+    const all = newPartsList[Articul] * Math.round(Price * KURS);
+    add = add + all;
+  });
+  console.log(add);
 
   const handleChangeUserValue = (e) => {
     const { name, value } = e.currentTarget;
@@ -140,25 +157,31 @@ export const OrderList = () => {
           <h2>Нове замовлення</h2>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div id="order">
+            <ul style={{ fontSize: "11px", paddingLeft: "0" }} id="order">
               {partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => (
                 <li className={css.orderItem} key={_id}>
-                  <p className={css.orderItemP}>{Articul}</p>
-                  <p className={css.partsName}>{Part_Name}</p>
-                  <p className={css.partsPrice}>{Math.round(Price * KURS)}</p>
-                  <input
-                    className={css.quantity}
-                    onChange={handleChangeValue}
-                    min={0}
-                    max={Quantity || 0}
-                    type="number"
-                    name={Articul}
-                    value={newPartsList[Articul] || 0}
-                    id=""
-                  />
+                  <div style={{ display: "flex" }}>
+                    <p className={css.orderItemP}>{Articul}</p>
+                    <p className={css.partsName}>{Part_Name}</p>
+                  </div>
+                  <div style={{ display: "flex" }}>
+                    <input
+                      className={css.quantity}
+                      onChange={handleChangeValue}
+                      min={0}
+                      max={Quantity || 0}
+                      type="number"
+                      name={Articul}
+                      value={newPartsList[Articul] || 0}
+                    />
+                    <p className={css.partsPrice}>
+                      {Math.round(Price * KURS)} грн
+                    </p>
+                  </div>
                 </li>
               ))}
-            </div>
+              <li className={css.orderItem}>Разом: {add} грн</li>
+            </ul>
             <div style={{ display: "flex", flexDirection: "column" }}>
               <h2 className={css.owner_title}>Інформація про замовника</h2>
               <label className={css.input}>
@@ -167,7 +190,7 @@ export const OrderList = () => {
                   onChange={handleChangeUserValue}
                   type="text"
                   name="name"
-                  value={user.name}
+                  value={user?.name}
                   id=""
                 />
               </label>
@@ -177,7 +200,7 @@ export const OrderList = () => {
                   onChange={handleChangeUserValue}
                   type="text"
                   name="city"
-                  value={user.city}
+                  value={user?.city}
                   id=""
                 />
               </label>
@@ -187,7 +210,7 @@ export const OrderList = () => {
                   onChange={handleChangeUserValue}
                   type="text"
                   name="numberNewPost"
-                  value={user.numberNewPost}
+                  value={user?.numberNewPost}
                   id=""
                 />
               </label>
@@ -197,7 +220,7 @@ export const OrderList = () => {
                   onChange={handleChangeUserValue}
                   type="tel"
                   name="phone"
-                  value={user.phone}
+                  value={user?.phone}
                   id=""
                 />
               </label>
