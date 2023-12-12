@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import path from "path";
-import { Card } from "./Card";
+// import { Card } from "./Card";
 import axios from "axios";
 import { createModel, insertParts } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
