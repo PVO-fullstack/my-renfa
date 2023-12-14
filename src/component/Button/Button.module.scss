@@ -1,9 +1,15 @@
 .btn {
     border-radius: 8px;
+    padding: 5px 12px;
     transition: all 300ms ease-in;
-    padding: 12px 24px;
     background-color: #c3c7f4;
     cursor: pointer;
+
+    @media screen and (min-width: 768px) {
+        padding: 12px 24px;
+
+    }
+
 
     &:disabled {
         cursor: auto;

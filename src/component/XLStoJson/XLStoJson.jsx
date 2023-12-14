@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import path from "path";
-// import { Card } from "./Card";
 import axios from "axios";
 import { createModel, insertParts } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
+import { CardFromXLS } from "../CardFromXLS/CardFromXLS";
 
 const contactsPath = path.resolve("1.json");
 
@@ -68,11 +68,11 @@ export const XLStoJson = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          marginLeft: "350px",
         }}
       >
-        {/* {parts.length > 0 &&
-          parts.map((part) => <Card key={part.Articul} part={part} />)} */}
+        {parts.length > 0 &&
+          parts.map((part, index) => <CardFromXLS key={index} part={part} />)}
       </ul>
     </div>
   );

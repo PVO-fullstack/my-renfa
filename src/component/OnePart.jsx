@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Modal } from "./Modal";
 import css from "./OnePart.module.scss";
 import { KURS } from "@/variable/variable";
+import Link from "next/link";
 
 export const OnePart = () => {
   const [onePart, setOnePart] = useState();
@@ -57,6 +58,16 @@ export const OnePart = () => {
 
   return (
     <div className={css.conteiner}>
+      <Link
+        className={css.link}
+        href={{
+          pathname: `/models/${model[0]}/${model[1]}`,
+        }}
+      >
+        <p>
+          Повернутись до: {model[0]} {model[1]}
+        </p>
+      </Link>
       {onePart && (
         <div className={css.partCard}>
           <Image

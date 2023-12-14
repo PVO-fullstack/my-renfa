@@ -8,7 +8,7 @@ import { logInUser } from "@/redux/auth/auth-operations";
 import { useDispatch } from "react-redux";
 
 export const AuthModal = ({ show, handleClose }) => {
-  const [signUp, setSignUp] = useState(false);
+  const [signUp, setSignUp] = useState(true);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -44,8 +44,8 @@ export const AuthModal = ({ show, handleClose }) => {
           style={{ display: "flex", justifyContent: "space-between" }}
           closeButton
         >
-          <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
-          <p style={{ margin: "0 5px" }}> Або </p>
+          {/* <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
+          <p style={{ margin: "0 5px" }}> Або </p> */}
           <Button onClick={handleChangeLoginForm}>Увійти</Button>
         </Modal.Header>
         <Modal.Body>
@@ -76,6 +76,10 @@ export const AuthModal = ({ show, handleClose }) => {
             </Button>
           </Form>
         </Modal.Body>
+        <Modal.Footer style={{ display: "flex", justifyContent: "flex-start" }}>
+          <p>Якщо ще не зареєстровані,</p>
+          <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
+        </Modal.Footer>
       </Modal>
     </>
   );

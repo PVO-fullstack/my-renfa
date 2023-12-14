@@ -7,7 +7,7 @@ import { selectUser } from "@/redux/auth/auth-selectors";
 import { KURS } from "@/variable/variable";
 
 export const OrderList = () => {
-  const cleanOrder = document.getElementById("order");
+  // const cleanOrder = document.getElementById("order");
   const [partList, setPartList] = useState([]);
   const [newPartsList, setNewPartsList] = useState(0);
   const [disabled, setDisabled] = useState(true);
@@ -21,16 +21,20 @@ export const OrderList = () => {
   });
   const [oldOrders, setOldOrders] = useState(false);
   const [refresh, setRefresh] = useState(false);
-  const [result, setResult] = useState();
-
-  console.log(user);
-
   const dispatch = useDispatch();
-
   const userBD = useSelector(selectUser);
 
   useEffect(() => {
     setUser(userBD);
+    if (
+      user.name.length > 1 &&
+      user.phone > 999999999 &&
+      user.city.length > 2 &&
+      user.numberNewPost.length > 0
+    ) {
+      console.log("first");
+      setDisabled(false);
+    }
   }, [userBD]);
 
   useEffect(() => {
@@ -46,14 +50,7 @@ export const OrderList = () => {
       setOrders(order.payload);
     }
     getOrder();
-    // console.log("newPartsList", newPartsList);
-    // if (newPartsList) {
-    //   const together = newPartsList.reduce(function (acc, item) {
-    //     return acc + item.Quantity * Math.round(item.Price * KURS);
-    //   }, 0);
-    //   setResult(together);
-    // }
-  }, [dispatch, disabled, refresh]);
+  }, [dispatch]);
 
   const newOrder = [];
   const allOrders = [];
@@ -89,7 +86,8 @@ export const OrderList = () => {
     setDisabled(true);
     setOldOrders(true);
     setRefresh(true);
-    cleanOrder.innerHTML = "";
+    setPartList([]);
+    // cleanOrder.innerHTML = "";
   };
 
   const handleChangeValue = (e) => {
@@ -106,20 +104,13 @@ export const OrderList = () => {
   };
   let add = 0;
 
-  partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => {
-    console.log("Ar", Articul);
-    console.log("Pr", Price);
+  partList?.map(({ Articul, Price }) => {
     const all = newPartsList[Articul] * Math.round(Price * KURS);
     add = add + all;
   });
-  console.log(add);
 
   const handleChangeUserValue = (e) => {
     const { name, value } = e.currentTarget;
-    // const changeUserData = {
-    //   [name]: value,
-    // };
-    // console.log(e.currentTarget.attributes.value);
     setUser({ ...user, [name]: value });
     if (user.name && user.phone && user.city && user.numberNewPost) {
       setDisabled(false);
@@ -150,93 +141,94 @@ export const OrderList = () => {
 
   return (
     <div className={css.orderList}>
-      <button onClick={handleClickBtn}>Нове замовлення</button>
-      <button onClick={handleClickBtn}>Список моїх замовлень</button>
-      {!oldOrders && (
-        <form>
-          <h2>Нове замовлення</h2>
-
+      {/* <button onClick={handleClickBtn}>Нове замовлення</button> */}
+      {/* <button onClick={handleClickBtn}>Список моїх замовлень</button> */}
+      {/* {!oldOrders && ( */}
+      <form>
+        {partList.length > 0 && <h2>Нове замовлення</h2>}
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <ul style={{ fontSize: "11px", paddingLeft: "0" }} id="order">
+            {partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => (
+              <li className={css.orderItem} key={_id}>
+                <div style={{ display: "flex" }}>
+                  <p className={css.orderItemP}>{Articul}</p>
+                  <p className={css.partsName}>{Part_Name}</p>
+                </div>
+                <div style={{ display: "flex" }}>
+                  <input
+                    className={css.quantity}
+                    onChange={handleChangeValue}
+                    min={0}
+                    max={Quantity || 0}
+                    type="number"
+                    name={Articul}
+                    value={newPartsList[Articul] || 0}
+                  />
+                  <p className={css.partsPrice}>
+                    {Math.round(Price * KURS)} грн
+                  </p>
+                </div>
+              </li>
+            ))}
+            {partList.length > 0 && (
+              <li className={css.orderItem}>Разом: {add || 0} грн</li>
+            )}
+          </ul>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <ul style={{ fontSize: "11px", paddingLeft: "0" }} id="order">
-              {partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => (
-                <li className={css.orderItem} key={_id}>
-                  <div style={{ display: "flex" }}>
-                    <p className={css.orderItemP}>{Articul}</p>
-                    <p className={css.partsName}>{Part_Name}</p>
-                  </div>
-                  <div style={{ display: "flex" }}>
-                    <input
-                      className={css.quantity}
-                      onChange={handleChangeValue}
-                      min={0}
-                      max={Quantity || 0}
-                      type="number"
-                      name={Articul}
-                      value={newPartsList[Articul] || 0}
-                    />
-                    <p className={css.partsPrice}>
-                      {Math.round(Price * KURS)} грн
-                    </p>
-                  </div>
-                </li>
-              ))}
-              <li className={css.orderItem}>Разом: {add} грн</li>
-            </ul>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <h2 className={css.owner_title}>Інформація про замовника</h2>
-              <label className={css.input}>
-                Імя та Прізвище
-                <input
-                  onChange={handleChangeUserValue}
-                  type="text"
-                  name="name"
-                  value={user?.name}
-                  id=""
-                />
-              </label>
-              <label className={css.input}>
-                Місто
-                <input
-                  onChange={handleChangeUserValue}
-                  type="text"
-                  name="city"
-                  value={user?.city}
-                  id=""
-                />
-              </label>
-              <label className={css.input}>
-                № відділення Нової пошти
-                <input
-                  onChange={handleChangeUserValue}
-                  type="text"
-                  name="numberNewPost"
-                  value={user?.numberNewPost}
-                  id=""
-                />
-              </label>
-              <label className={css.input}>
-                Телефон отримувача
-                <input
-                  onChange={handleChangeUserValue}
-                  type="tel"
-                  name="phone"
-                  value={user?.phone}
-                  id=""
-                />
-              </label>
-            </div>
+            <h2 className={css.owner_title}>Інформація про замовника</h2>
+            <label className={css.input}>
+              Імя та Прізвище
+              <input
+                onChange={handleChangeUserValue}
+                type="text"
+                name="name"
+                value={user?.name}
+                id=""
+              />
+            </label>
+            <label className={css.input}>
+              Місто
+              <input
+                onChange={handleChangeUserValue}
+                type="text"
+                name="city"
+                value={user?.city}
+                id=""
+              />
+            </label>
+            <label className={css.input}>
+              № відділення Нової пошти
+              <input
+                onChange={handleChangeUserValue}
+                type="text"
+                name="numberNewPost"
+                value={user?.numberNewPost}
+                id=""
+              />
+            </label>
+            <label className={css.input}>
+              Телефон отримувача
+              <input
+                onChange={handleChangeUserValue}
+                type="tel"
+                name="phone"
+                value={user?.phone}
+                id=""
+              />
+            </label>
           </div>
-          <button
-            style={{ display: "block" }}
-            disabled={disabled}
-            onClick={handleClickSubmit}
-            type="submit"
-          >
-            Замовити
-          </button>
-        </form>
-      )}
-      {oldOrders && (
+        </div>
+        <button
+          style={{ display: "block" }}
+          disabled={disabled}
+          onClick={handleClickSubmit}
+          type="submit"
+        >
+          Замовити
+        </button>
+      </form>
+      {/* )} */}
+      {/* {oldOrders && (
         <div
           style={{
             display: "flex",
@@ -278,7 +270,7 @@ export const OrderList = () => {
             </ul>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

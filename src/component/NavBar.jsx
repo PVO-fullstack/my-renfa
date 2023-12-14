@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "@/redux/auth/auth-selectors";
 import { useRouter } from "next/router";
 import { Cart } from "./Cart/Cart";
+import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 
 export default function Navbars() {
   const [show, setShow] = useState(false);
@@ -67,7 +68,7 @@ export default function Navbars() {
           MENU
         </button>
       )}
-      <AuthModal show={showMenu} handleClose={handleClose} />
+      <BurgerMenu show={showMenu} handleClose={handleClose} />
       {userName && userName.position === "admin" && (
         <NavLink className={css.name} href="/storage">
           Admin

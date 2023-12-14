@@ -1,4 +1,4 @@
-import { XLStoJson } from "@/component/XLStoJson";
+import { XLStoJson } from "@/component/XLStoJson/XLStoJson";
 import React from "react";
 
 export default function xls() {

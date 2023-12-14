@@ -1,16 +1,23 @@
 import PropTypes from "prop-types";
 import css from "./Button.module.scss";
 
-export const Button = ({ children, disabled = true, className = "" }) => {
+export const Button = ({
+  children,
+  disabled = true,
+  className,
+  type = "submit",
+  onClick,
+}) => {
   return (
     <button
-      type="submit"
+      type={type}
       disabled={disabled}
-      className={`rounded-lg transition duration-300 ease-in py-3 px-6 text-base font-medium ${
+      onClick={onClick}
+      className={` ${
         disabled
           ? "cursor-auto bg-btnDisabled"
           : "bg-btn hover:bg-btnHover cursor-pointer focus:bg-btnHover"
-      } ${css.btn} `}
+      } ${css.btn} ${className} `}
     >
       {children}
     </button>
