@@ -35,7 +35,7 @@ export const BurgerMenu = ({ show, handleClose }) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink href="viber://pa?chatURI=[521a48f893a7e466-4740805106926177-f23f9be4fd608c0b]&text=[Hello]">
+                <NavLink href="viber://add?number=+380939123221">
                   (093) 912 32 21
                 </NavLink>
               </li>
