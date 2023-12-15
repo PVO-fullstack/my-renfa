@@ -15,7 +15,7 @@ export const BurgerMenu = ({ show, handleClose }) => {
             <ul className={css.link_list}>
               <li>
                 <NavLink onClick={handleClose} className={css.link} href="/">
-                  Home
+                  На головну
                 </NavLink>
               </li>
               <li>
@@ -24,7 +24,7 @@ export const BurgerMenu = ({ show, handleClose }) => {
                   className={css.link}
                   href="/model"
                 >
-                  Model
+                  Модельний ряд
                 </NavLink>
               </li>
               <li>
@@ -33,7 +33,7 @@ export const BurgerMenu = ({ show, handleClose }) => {
                   className={css.link}
                   href="/contacts"
                 >
-                  Contacts
+                  Контакти
                 </NavLink>
               </li>
               <li

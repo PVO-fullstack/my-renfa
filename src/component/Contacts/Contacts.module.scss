@@ -1,5 +1,7 @@
 .conteiner {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex: auto;
     padding-top: 50px;
     font-size: 20px;
@@ -10,5 +12,20 @@
         padding-top: 100px;
         font-size: 30px;
 
+    }
+}
+
+.link {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    color: #0d6efd;
+    border-radius: 20px;
+    padding: 5px 15px;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+        color: aqua;
+        background-color: darkseagreen;
     }
 }
