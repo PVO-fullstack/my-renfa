@@ -14,6 +14,15 @@ export const XLStoJson = () => {
 
   const qwe = (e) => {
     e.preventDefault();
+    if (parts.length > 300) {
+      const index = parts.length / 300;
+      console.log(index);
+      for (let i = 0; i <= index; i++) {
+        const part = parts.slice(i * 300, (i + 1) * 300);
+        dispatch(insertParts(part));
+      }
+      return;
+    }
     dispatch(insertParts(parts));
   };
 

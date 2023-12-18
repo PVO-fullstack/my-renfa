@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { refreshUser } from "@/redux/auth/auth-operations";
 import Link from "next/link";
 import { KURS } from "@/variable/variable";
+import Image from "next/image";
 
 export const Part = ({ openModal, getAllParts }) => {
   const [part, setPart] = useState([]);
@@ -75,10 +76,16 @@ export const Part = ({ openModal, getAllParts }) => {
           > */}
                 <p className={css.text}>{part.Part_Name}</p>
                 <div>
-                  <img
-                    className={css.ImageGalleryItem_image}
+                  <Image
+                    className={
+                      part.Quantity > 0
+                        ? `${css.ImageGalleryItem_image}`
+                        : `${css.ImageGalleryItem_image_null}`
+                    }
                     src={part.Img}
                     alt={part.Description}
+                    width={100}
+                    height={100}
                   />
                   <p className={css.text}>
                     Ціна: {Math.round(part.Price * KURS)} грн

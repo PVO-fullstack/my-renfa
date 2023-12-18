@@ -25,7 +25,13 @@ export const UserMenu = ({ logout, show }) => {
             )
           : ""}
         {user && user.name ? (
-          <Button variant="primary" size="lg" onClick={logout}>
+          <Button
+            disabled={false}
+            type="button"
+            // variant="primary"
+            // size="lg"
+            onClick={logout}
+          >
             Logout
           </Button>
         ) : (
