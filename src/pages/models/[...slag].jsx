@@ -1,18 +1,24 @@
 import Layout from "@/app/layout";
 import { Modal } from "@/component/Modal";
 import { OnePart } from "@/component/OnePart";
-import { Part } from "@/component/Part";
-import { PartsList } from "@/component/PartsList";
+import { PartList } from "@/component/PartList/PartList";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Parts() {
   const [showModal, setShowModal] = useState(false);
   const [activeImgIdx, setActiveImgIdx] = useState(null);
   const [part, setPart] = useState([]);
+  const [model, setModel] = useState([]);
   const router = useRouter();
-  const model = router.query.slag;
+
+  useEffect(() => {
+    const modelName = router.query.slag;
+    console.log("modelName", modelName);
+    setModel(modelName);
+  }, [router.query.slag]);
+
   console.log("Model", model);
 
   const openModal = (index) => {
@@ -45,7 +51,7 @@ export default function Parts() {
               key="desc"
             />
           </Head>
-          <Part openModal={openModal} getAllParts={getParts} />
+          <PartList openModal={openModal} getAllParts={getParts} />
         </>
       ) : (
         <>

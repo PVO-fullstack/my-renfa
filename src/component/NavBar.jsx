@@ -5,10 +5,11 @@ import { AuthModal } from "@/component/AuthModal/AuthModal";
 import { UserMenu } from "@/component/UserMenu";
 import { logOutUser } from "@/redux/auth/auth-operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "@/redux/auth/auth-selectors";
+import { selectLoad, selectUser } from "@/redux/auth/auth-selectors";
 import { useRouter } from "next/router";
 import { Cart } from "./Cart/Cart";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
+import { Loader } from "./Loader/Loader";
 
 export default function Navbars() {
   const [show, setShow] = useState(false);
@@ -18,6 +19,7 @@ export default function Navbars() {
   const router = useRouter();
 
   const userName = useSelector(selectUser);
+  const isLoad = useSelector(selectLoad);
 
   console.log("user", user);
 
@@ -74,6 +76,7 @@ export default function Navbars() {
           Admin
         </NavLink>
       )}
+      {isLoad && <Loader />}
     </div>
   );
 }

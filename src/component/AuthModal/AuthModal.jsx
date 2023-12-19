@@ -6,9 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { register } from "@/authService/auth";
 import { logInUser } from "@/redux/auth/auth-operations";
 import { useDispatch } from "react-redux";
+import { Loader } from "../Loader/Loader";
 
 export const AuthModal = ({ show, handleClose }) => {
   const [signUp, setSignUp] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -25,7 +27,8 @@ export const AuthModal = ({ show, handleClose }) => {
     }
     const email = formBasicEmail.value;
     const password = formBasicPassword.value;
-    dispatch(logInUser({ email, password }));
+    setIsLoading(true);
+    dispatch(logInUser({ email, password })).then(setIsLoading(false));
     handleClose();
   };
 
@@ -81,6 +84,7 @@ export const AuthModal = ({ show, handleClose }) => {
           <Button onClick={handleChangeRegisterForm}>Зареєструватись</Button>
         </Modal.Footer>
       </Modal>
+      {isLoading && <Loader />}
     </>
   );
 };
