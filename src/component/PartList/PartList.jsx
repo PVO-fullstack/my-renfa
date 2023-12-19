@@ -23,20 +23,12 @@ export const PartList = ({ openModal, getAllParts }) => {
 
   const dispatch = useDispatch();
 
-  const qw = (sd) => {
-    if (sd.length > 8) {
-      const pages = sd.length / 8;
-      setPages(pages - 1);
-      const onePage = sd.slice(8 * page, 8 * (page + 1));
-      console.log("onePage", onePage);
-      setSortedParts(onePage);
-      setPart(sd);
-      return;
-    }
-    setPart(sd);
-    setSortedParts(sd);
-    console.log("allParts", allParts);
-  };
+  //   const qw = (sd) => {
+  //             if (sortedAllParts.length > 8) {
+  //             const pages = sortedAllParts.length / 8;
+  //             setPages(pages - 1);
+  //             const onePage = sortedAllParts.slice(8 * page, 8 * (page + 1));
+  // }
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -48,7 +40,6 @@ export const PartList = ({ openModal, getAllParts }) => {
           const sortedAllParts = allParts.sort((first, second) =>
             first.Part_Name.localeCompare(second.Part_Name)
           );
-          // qw(sortedAllParts);
           if (sortedAllParts.length > 8) {
             const pages = sortedAllParts.length / 8;
             setPages(pages - 1);
@@ -60,12 +51,12 @@ export const PartList = ({ openModal, getAllParts }) => {
           }
           setPart(sortedAllParts);
           setFiltredParts(sortedAllParts);
-          console.log("allParts", allParts);
+          // console.log("allParts", allParts);
         }
         getParts(modelName);
       }
     }
-  }, [dispatch, model]);
+  }, [dispatch, model, page]);
 
   console.log("part", part);
   getAllParts(part);
@@ -76,17 +67,14 @@ export const PartList = ({ openModal, getAllParts }) => {
     e.preventDefault();
     const inputValue = e.target.value;
     const inputToLowerCase = inputValue.toLowerCase();
-    const filtred = part.filter((item) =>
+    const qq = part.filter((item) =>
       item.Part_Name.toLowerCase().includes(inputToLowerCase || "")
     );
-    setSortedParts(filtred);
-
-    // setPage(0);
-    // setPages(qq.length / 8);
-    // const onePage = qq.slice(8 * page, 8 * (page + 1));
-    // setSortedParts(onePage);
-    // if (inputValue === "") {
-    // }
+    setPage(0);
+    setPages(qq.length / 8);
+    const onePage = qq.slice(8 * page, 8 * (page + 1));
+    setFiltredParts(qq);
+    setSortedParts(onePage);
   };
 
   const nextPage = () => {
@@ -107,54 +95,54 @@ export const PartList = ({ openModal, getAllParts }) => {
         <input className={style.filter} onChange={filterPart} type="text" />
       </label>
       <ul className={style.ImageGallery}>
-        {sortedParts.length > 0 &&
-          sortedParts.map((part, index) => (
-            <Link
-              href={{
-                pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
-              }}
-              key={part._id}
-            >
-              <Part part={part} />
-            </Link>
-            // ))
-            // : sortedParts.map((part, index) => (
-            //     <Link
-            //       href={{
-            //         pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
-            //       }}
-            //       key={part._id}
-            //     >
-            //       <Part part={part} />
-            //     </Link>
-          ))}
+        {filtredParts.length > 0
+          ? filtredParts.map((part, index) => (
+              <Link
+                href={{
+                  pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
+                }}
+                key={part._id}
+              >
+                <Part part={part} />
+              </Link>
+            ))
+          : sortedParts.map((part, index) => (
+              <Link
+                href={{
+                  pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
+                }}
+                key={part._id}
+              >
+                <Part part={part} />
+              </Link>
+            ))}
       </ul>
-      {sortedParts.length > 8 ||
-        (filtredParts.length > 8 && (
-          <div
-            style={{
-              display: "flex",
-              gap: "20px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <Button
-              disabled={page === 0 ? true : false}
-              type={"button"}
-              onClick={prevPage}
-            >
-              Prev
-            </Button>
-            <Button
-              disabled={page === pages || page > pages ? true : false}
-              type={"button"}
-              onClick={nextPage}
-            >
-              Next
-            </Button>
-          </div>
-        ))}
+      {/* {sortedParts.length > 8 ||
+        (filtredParts.length > 8 && ( */}
+      <div
+        style={{
+          display: "flex",
+          gap: "20px",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        <Button
+          disabled={page === 0 ? true : false}
+          type={"button"}
+          onClick={prevPage}
+        >
+          Prev
+        </Button>
+        <Button
+          disabled={page === pages || page > pages ? true : false}
+          type={"button"}
+          onClick={nextPage}
+        >
+          Next
+        </Button>
+      </div>
+      {/* ))} */}
     </div>
   );
 };
