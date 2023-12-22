@@ -4,9 +4,10 @@ import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { register } from "@/authService/auth";
-import { logInUser } from "@/redux/auth/auth-operations";
+import { logInUser, registerUser } from "@/redux/auth/auth-operations";
 import { useDispatch } from "react-redux";
 import { Loader } from "../Loader/Loader";
+import { toast } from "react-hot-toast";
 
 export const AuthModal = ({ show, handleClose }) => {
   const [signUp, setSignUp] = useState(true);
@@ -15,20 +16,34 @@ export const AuthModal = ({ show, handleClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (signUp === false) {
-      const name = formBasicName.value;
-      const email = formBasicEmail.value;
-      const password = formBasicPassword.value;
-      const data = await register({ name, email, password });
-      localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("user", JSON.stringify(data.user));
-      handleClose(data.user);
-      return;
-    }
     const email = formBasicEmail.value;
     const password = formBasicPassword.value;
     setIsLoading(true);
-    dispatch(logInUser({ email, password })).then(setIsLoading(false));
+    if (signUp === false) {
+      const name = formBasicName.value;
+      dispatch(registerUser({ name, email, password })).then((result) => {
+        console.log("result", result.message);
+        if (result.error) {
+          toast.error("Такий користувач вже існує");
+        }
+      });
+      // const data = await register({ name, email, password });
+      // localStorage.setItem("token", JSON.stringify(data.token));
+      // localStorage.setItem("user", JSON.stringify(data.user));
+      // handleClose(data.user);
+      setIsLoading(false);
+      handleClose();
+      return;
+    }
+    // const email = formBasicEmail.value;
+    // const password = formBasicPassword.value;
+    dispatch(logInUser({ email, password })).then((result) => {
+      console.log("result", result.message);
+      if (result.error) {
+        toast.error("Невірний логін або пароль");
+      }
+    });
+    setIsLoading(false);
     handleClose();
   };
 

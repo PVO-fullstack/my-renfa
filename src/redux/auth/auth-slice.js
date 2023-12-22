@@ -32,11 +32,17 @@ export const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         userIn(state, action);
       })
+      .addCase(registerUser.rejected, (state, action) => {
+        state.isLoad = false;
+      })
       .addCase(logInUser.pending, (state, action) => {
         state.isLoad = true;
       })
       .addCase(logInUser.fulfilled, (state, action) => {
         userIn(state, action);
+      })
+      .addCase(logInUser.rejected, (state, action) => {
+        state.isLoad = false;
       })
       .addCase(refreshUser.pending, (state, action) => {
         state.isRefresh = true;
