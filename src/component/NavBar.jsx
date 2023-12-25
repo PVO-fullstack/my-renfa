@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import { Cart } from "./Cart/Cart";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
 import { Loader } from "./Loader/Loader";
+import { Logo } from "./New/Logo/Logo";
+import { FindInput } from "./New/FindInput/FindInput";
 
 export default function Navbars() {
   const [show, setShow] = useState(false);

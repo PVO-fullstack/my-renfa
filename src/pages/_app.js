@@ -1,7 +1,7 @@
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "@/redux/store";
-import "../../styles/globals.css";
+import "../../styles/globals.scss";
 import Layout from "@/app/layout";
 
 export default function App({ Component, pageProps }) {
