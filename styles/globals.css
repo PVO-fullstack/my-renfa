@@ -1,7 +1,9 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
 body.main {
   font-family: sans-serif;
   line-height: 1.5;
-  background-color: #FFF;
+  background-color: #fff;
   /* background-image: url(/bg.jpg); */
   background-size: cover;
   background-position: center;

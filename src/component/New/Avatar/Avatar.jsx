@@ -1,8 +1,8 @@
 import React from "react";
 
-export const Avatar = () => {
+export const Avatar = ({ show }) => {
   return (
-    <div>
+    <div onClick={show}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="29"

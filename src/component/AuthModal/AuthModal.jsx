@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Form } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { register } from "@/authService/auth";
 import { logInUser, registerUser } from "@/redux/auth/auth-operations";
 import { useDispatch } from "react-redux";

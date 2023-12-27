@@ -14,6 +14,8 @@ export const Input = ({
   className = "",
 }) => {
   const typeIsPhone = type === "phone";
+  const typeIsEmail = type === "email";
+  const typeIsPassword = type === "password";
 
   const nameRegisterValidation = {
     required: errorMessages.required || "Обов'язкове поле",
@@ -39,6 +41,23 @@ export const Input = ({
       message: errorMessages.minLength || "Повинно бути мінімум 11 цифр ",
     },
   };
+
+  const passwordRegisterValidation = {
+    required: errorMessages.required || "Обов'язкове поле'",
+    minLength: {
+      value: 6,
+      message: errorMessages.minLength || "Повинно бути мінімум 6 символів ",
+    },
+  };
+
+  const emailRegisterValidation = {
+    required: errorMessages.required || "Обов'язкове поле",
+    pattern: {
+      value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+      message: errorMessages.pattern || "Невірний email",
+    },
+  };
+
   const getHandleChange = (normalizeMethod) => {
     const fn = (event) => {
       const { value } = event.target;
@@ -52,23 +71,26 @@ export const Input = ({
   };
 
   return (
-    <label
-      className={`w-full flex flex-col gap-[4px] text-[16px] leading-[1.25] font-[400] text-primary bg-transparent ${css.label}`}
-    >
+    <label className={css.label}>
       {labelText}
       <input
         className={`w-full py-[8px] px-[12px] rounded-[12px] bg-primaryBg placeholder:text-placeholder focus-visible:outline-none ${
           css.input
         } ${errors[name] && "text-error"}`}
-        type={typeIsPhone ? "tel" : "text"}
+        type={
+          (typeIsPhone && "tel") ||
+          (typeIsEmail && "email") ||
+          (typeIsPassword ? "password" : "text")
+        }
         id={name}
         name={name}
         placeholder={placeholderText}
         {...register(
           name,
-          type === "phone"
-            ? { ...telRegisterValidation }
-            : { ...nameRegisterValidation }
+          (type === "phone" && { ...telRegisterValidation }) ||
+            (type === "email" && { ...emailRegisterValidation }) ||
+            (type === "password" && { ...passwordRegisterValidation }) ||
+            (type === "name" && { ...nameRegisterValidation })
         )}
         {...onChangeProps}
         autoComplete="off"
@@ -86,7 +108,7 @@ Input.propTypes = {
   labelText: PropTypes.string,
   placeholderText: PropTypes.string,
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["name", "phone"]).isRequired,
+  type: PropTypes.oneOf(["name", "email", "password", "phone"]).isRequired,
   setValue: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   register: PropTypes.func,

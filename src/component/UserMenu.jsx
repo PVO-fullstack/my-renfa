@@ -6,6 +6,7 @@ import { selectUser } from "@/redux/auth/auth-selectors";
 import { useSelector } from "react-redux";
 import { Cart } from "./Cart/Cart";
 import { Button } from "./Button";
+import { Avatar } from "./New/Avatar/Avatar";
 
 export const UserMenu = ({ logout, show }) => {
   const user = useSelector(selectUser);
@@ -35,15 +36,16 @@ export const UserMenu = ({ logout, show }) => {
             Logout
           </Button>
         ) : (
-          <Button
-            disabled={false}
-            type="button"
-            // variant="primary"
-            // size="lg"
-            onClick={show}
-          >
-            Register
-          </Button>
+          <Avatar show={show} />
+          // <Button
+          //   disabled={false}
+          //   type="button"
+          //   // variant="primary"
+          //   // size="lg"
+          //   onClick={show}
+          // >
+          //   Register
+          // </Button>
         )}
         {/* {user && user.name ? <Cart /> : ""} */}
       </div>

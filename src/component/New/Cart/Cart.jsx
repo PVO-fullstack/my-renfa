@@ -1,8 +1,9 @@
+import Link from "next/link";
 import React from "react";
 
 export const Cart = () => {
   return (
-    <div>
+    <Link href="/order">
       <svg
         width="29"
         height="28"
@@ -22,6 +23,6 @@ export const Cart = () => {
           strokeWidth="1.25"
         />
       </svg>
-    </div>
+    </Link>
   );
 };

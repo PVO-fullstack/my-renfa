@@ -14,31 +14,6 @@
     align-items: center;
 }
 
-.user_menu {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.header_part_down {
-    display: flex;
-    width: 100vw;
-    padding-inline: 76px;
-    justify-content: space-between;
-    align-items: flex-start;
-    background-color: #1E1E1E;
-}
-
-.model {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    flex-shrink: 0;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .link {
     display: none;
 
@@ -47,7 +22,7 @@
         display: block;
         color: #fff;
         text-decoration: none;
-        font-size: 30px;
+        font-size: 17px;
         transition: all 0.5s ease-in-out;
 
         &:active {
@@ -61,65 +36,31 @@
     }
 }
 
-@media screen and (max-width: 1199px) {
-    .list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        top: 60px;
-        /* z-index: 2; */
-        list-style: none;
-        padding: 0;
-        background-color: inheryt;
-        min-width: 100px;
-        /* margin-left: 30px; */
-    }
-
-    .brend {
-        display: none;
-    }
-
-    .logo {
-        height: 40px;
-        margin: 10px;
-    }
+.user_menu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
 }
 
-@media screen and (min-width: 1200px) {
-    .list {
-        position: fixed;
-        top: 60px;
-        z-index: 2;
-        list-style: none;
-        padding: 0;
-        background-color: inheryt;
-        min-width: 300px;
-        margin-left: 30px;
-    }
+.header_part_down {
+    display: flex;
+    width: 100vw;
+    padding: 24px 76px;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #1E1E1E;
+}
 
-    .brend {
-        margin: 0;
-        padding: 0;
-    }
+.logo {
+    display: flex;
+}
 
-    .item {
-        background-color: rgb(64 224 208 / 41%);
-        margin: 10px 0;
-        text-align: center;
-        border: 2px solid red;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        transition: all 0.5s ease-in-out;
+.text {
+    color: #201F20;
 
-        &:hover {
-            background-color: blueviolet;
-        }
-    }
-
-    .item .logo {
-        height: 40px;
-        margin: 10px;
-    }
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }

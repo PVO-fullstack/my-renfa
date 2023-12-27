@@ -9,14 +9,16 @@ export const Footer = () => {
   return (
     <div className={style.conteiner}>
       <div className={style.nav}>
-        <Logo fill={"#fff"} />
-        <div className={style.link}>
+        <Logo fill={"#fff"} width={"46"} height={"46"} footer={true} />
+        <div className={style.brand}>
           <Brand model={model} />
           <Link className={style.link} href="/contacts">
             Contacts
           </Link>
         </div>
-        <p className={style.text}>Звернутися до нас</p>
+        <Link className={style.text} href="/form">
+          Звернутися до нас
+        </Link>
       </div>
       <p className={style.text}>@Сайт вироблено силами Renfa</p>
     </div>

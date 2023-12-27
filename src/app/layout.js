@@ -9,9 +9,9 @@ import { Footer } from "@/component/New/Footer/Footer";
 export default function Layout({ children }) {
   return (
     <>
-      <div>
-        <Toaster />
-      </div>
+      {/* <div> */}
+      <Toaster />
+      {/* </div> */}
       <Header />
       <div className={css.main}>
         {/* <SideBar /> */}
