@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import style from "./Brand.module.scss";
 import Image from "next/image";
+import { FilterItem } from "../New/FilterItem/FilterItem";
 
 export const Brand = ({ title, data }) => {
   return (

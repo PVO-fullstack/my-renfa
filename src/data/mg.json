@@ -1,50 +1,61 @@
-[
-    {
-        "link": "/models/MG/350",
-        "src": "/350.webp",
-        "alt": "MG 350",
-        "model": "350"
-    },
-    {
-        "link": "/models/MG/550",
-        "src": "/550.webp",
-        "alt": "MG 550",
-        "model": "550"
-    },
-    {
-        "link": "/models/MG/6",
-        "src": "/6.webp",
-        "alt": "MG 6",
-        "model": "6"
-    },
-    {
-        "link": "/models/MG/3",
-        "src": "/3.webp",
-        "alt": "MG 3",
-        "model": "3"
-    },
-    {
-        "link": "/models/MG/5",
-        "src": "/5.webp",
-        "alt": "MG 5",
-        "model": "5"
-    },
-    {
-        "link": "/models/MG/ZS",
-        "src": "/zs.webp",
-        "alt": "MG ZS",
-        "model": "ZS"
-    },
-    {
-        "link": "/models/MG/5(2020)",
-        "src": "/mg5.webp",
-        "alt": "MG 5(2020)",
-        "model": "5(2020)"
-    },
-    {
-        "link": "/models/MG/HS",
-        "src": "/hs.webp",
-        "alt": "MG HS",
-        "model": "HS"
-    }
-]
+{
+    "title": "MG",
+    "cars": [
+        {
+            "link": "/models/MG/350",
+            "src": "/350.webp",
+            "alt": "MG 350",
+            "model": "350",
+            "name": "MG 350 (МГ 350)"
+        },
+        {
+            "link": "/models/MG/550",
+            "src": "/550.webp",
+            "alt": "MG 550",
+            "model": "550",
+            "name": "MG 550 (МГ 550)"
+        },
+        {
+            "link": "/models/MG/6",
+            "src": "/6.webp",
+            "alt": "MG 6",
+            "model": "6",
+            "name": "MG 6 (МГ 6)"
+        },
+        {
+            "link": "/models/MG/3",
+            "src": "/3.webp",
+            "alt": "MG 3",
+            "model": "3",
+            "name": "MG 3 (МГ 3)"
+        },
+        {
+            "link": "/models/MG/5",
+            "src": "/5.webp",
+            "alt": "MG 5",
+            "model": "5",
+            "name": "MG 5 (МГ 5)"
+        },
+        {
+            "link": "/models/MG/ZS",
+            "src": "/zs.webp",
+            "alt": "MG ZS",
+            "model": "ZS",
+            "name": "MG ZS (МГ ЗетЕс)"
+        },
+        {
+            "link": "/models/MG/5(2020)",
+            "src": "/mg5.webp",
+            "alt": "MG 5(2020)",
+            "model": "5(2020)",
+            "name": "MG 5(2020) (МГ 5(2020))"
+        },
+        {
+            "link": "/models/MG/HS",
+            "src": "/hs.webp",
+            "alt": "MG HS",
+            "model": "HS",
+            "name": "MG HS (МГ АшЕс)"
+        }
+    ]
+}

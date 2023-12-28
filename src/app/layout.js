@@ -13,10 +13,10 @@ export default function Layout({ children }) {
       <Toaster />
       {/* </div> */}
       <Header />
-      <div className={css.main}>
-        {/* <SideBar /> */}
-        <div className={css.conteiner}>{children}</div>
-      </div>
+      {/* <div className={css.main}> */}
+      {/* <SideBar /> */}
+      <div className={css.conteiner}>{children}</div>
+      {/* </div> */}
       <Footer />
     </>
   );

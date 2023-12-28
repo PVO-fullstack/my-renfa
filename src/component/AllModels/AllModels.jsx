@@ -10,7 +10,7 @@ import chery from "@/data/chery.json";
 export const AllModels = () => {
   return (
     <div className={css.conteiner}>
-      <Brand title={"MG"} data={mg} />
+      <Brand title={"MG"} data={mg.cars} />
       <Brand title={"FAW"} data={faw} />
       <Brand title={"JAC"} data={jac} />
       <Brand title={"Chery"} data={chery} />

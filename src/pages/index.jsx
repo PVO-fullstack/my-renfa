@@ -13,9 +13,5 @@ export default function Home() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div>
-      <HomePage />
-    </div>
-  );
+  return <HomePage />;
 }

@@ -31,7 +31,9 @@
 }
 
 .conteiner {
-  grid-column: 2;
+  padding-left: 76px;
+  padding-right: 76px;
+  background-color: #f6f7f9;
 }
 
 .description {

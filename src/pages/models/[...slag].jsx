@@ -1,5 +1,7 @@
 import Layout from "@/app/layout";
 import { Modal } from "@/component/Modal";
+import { Filter } from "@/component/New/Filter/Filter";
+import { FilterItem } from "@/component/New/FilterItem/FilterItem";
 import { OnePart } from "@/component/OnePart";
 import { PartList } from "@/component/PartList/PartList";
 import Head from "next/head";
@@ -51,7 +53,10 @@ export default function Parts() {
               key="desc"
             />
           </Head>
-          <PartList openModal={openModal} getAllParts={getParts} />
+          <div style={{ display: "flex" }}>
+            <Filter model={model[1]} open={model[0]} />
+            <PartList openModal={openModal} getAllParts={getParts} />
+          </div>
         </>
       ) : (
         <>
@@ -63,7 +68,10 @@ export default function Parts() {
               key="desc"
             />
           </Head>
-          <OnePart />
+          <div style={{ display: "flex" }}>
+            <Filter model={model[1]} open={model[0]} />
+            <OnePart />
+          </div>
         </>
       )}
       {/* {showModal && <Modal src={part[activeImgIdx]} onClose={closeModal} />} */}

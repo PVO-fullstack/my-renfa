@@ -1,0 +1,16 @@
+.brand_list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.conteiner {
+    display: flex;
+    width: 274px;
+    padding: 37px 15px 25px 15px;
+    flex-direction: column;
+    background-color: #fff;
+    // align-items: flex-start;
+    gap: 20px;
+    flex-shrink: 0;
+}
