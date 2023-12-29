@@ -1,20 +1,26 @@
-[
-    {
-        "link": "/models/FAW/B30",
-        "src": "/b30.webp",
-        "alt": "FAW B30",
-        "model": "B30"
-    },
-    {
-        "link": "/models/FAW/X40",
-        "src": "/x40.webp",
-        "alt": "FAW X40",
-        "model": "X40"
-    },
-    {
-        "link": "/models/FAW/X80",
-        "src": "/x80.webp",
-        "alt": "FAW X80",
-        "model": "X80"
-    }
-]
+{
+    "title": "FAW",
+    "cars": [
+        {
+            "link": "/models/FAW/B30",
+            "src": "/b30.webp",
+            "alt": "FAW B30",
+            "model": "B30",
+            "name": "FAW B30 (Фав Б30)"
+        },
+        {
+            "link": "/models/FAW/X40",
+            "src": "/x40.webp",
+            "alt": "FAW X40",
+            "model": "X40",
+            "name": "FAW X40 (Фав Ікс40)"
+        },
+        {
+            "link": "/models/FAW/X80",
+            "src": "/x80.webp",
+            "alt": "FAW X80",
+            "model": "X80",
+            "name": "FAW X80 (Фав Ікс80)"
+        }
+    ]
+}

@@ -6,77 +6,77 @@
             "src": "/amulet.webp",
             "alt": "Chery Amulet",
             "model": "Amulet",
-            "name": "Chery Amulet (Чери Амулет)"
+            "name": "Chery Amulet (Чері Амулет)"
         },
         {
             "link": "/models/Chery/Karry",
             "src": "/karry.webp",
             "alt": "Chery Karry",
             "model": "Karry",
-            "name": "Chery Karry (Чери Карі)"
+            "name": "Chery Karry (Чері Карі)"
         },
         {
             "link": "/models/Chery/Elara",
             "src": "/elara.webp",
             "alt": "Chery Elara",
             "model": "Elara",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Elara (Чері Елара)"
         },
         {
             "link": "/models/Chery/Eastar",
             "src": "/eastar.webp",
             "alt": "Chery Eastar",
             "model": "Eastar",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Eastar (Чері Істар)"
         },
         {
             "link": "/models/Chery/Tiggo",
             "src": "/tiggo.webp",
             "alt": "Chery Tiggo",
             "model": "Tiggo",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Tiggo (Чері Тіго)"
         },
         {
             "link": "/models/Chery/QQ",
             "src": "/qq.webp",
             "alt": "Chery QQ",
             "model": "QQ",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery QQ (Чері Куку)"
         },
         {
             "link": "/models/Chery/Jaggi",
             "src": "/jaggi.webp",
             "alt": "Chery Jaggi",
             "model": "Jaggi",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Jaggi (Чері Джагі)"
         },
         {
             "link": "/models/Chery/Kimo",
             "src": "/kimo.webp",
             "alt": "Chery Kimo",
             "model": "Kimo",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Kimo (Чері Кімо)"
         },
         {
             "link": "/models/Chery/M11",
             "src": "/m11.webp",
             "alt": "Chery M11",
             "model": "M11",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery M11 (Чері М11)"
         },
         {
             "link": "/models/Chery/A13",
             "src": "/a13.webp",
             "alt": "Chery A13",
             "model": "A13(ZAZ Forza)",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery A13, ZAZ Forza (Чері А13, ЗАЗ Форза)"
         },
         {
             "link": "/models/Chery/Beat",
             "src": "/beat.webp",
             "alt": "Chery Beat",
             "model": "Beat",
-            "name": "Chery Elara (Чери Елара)"
+            "name": "Chery Beat (Чері Біт)"
         }
     ]
 }

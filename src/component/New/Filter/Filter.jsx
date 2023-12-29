@@ -8,13 +8,13 @@ import geely from "@/data/geely.json";
 import chery from "@/data/chery.json";
 
 export const Filter = ({ open, model }) => {
-  const allCars = [mg, chery];
+  const allCars = [mg, chery, faw, geely, jac];
 
   console.log("model", model, open);
 
   return (
     <div className={style.conteiner}>
-      <h2>Фільтер</h2>
+      <h2>Фільтр</h2>
       <div className={style.brand_list}>
         {allCars.map((car) => (
           <FilterItem

@@ -53,22 +53,22 @@ export default function Parts() {
               key="desc"
             />
           </Head>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", paddingBlock: "50px" }}>
             <Filter model={model[1]} open={model[0]} />
             <PartList openModal={openModal} getAllParts={getParts} />
           </div>
         </>
       ) : (
         <>
-          <Head>
+          {/* <Head>
             <title>{`${onePart[0].Description} ${onePart[0].Articul}`}</title>
             <meta
               name="description"
               content={`${onePart[0].Description} ${onePart[0].Articul}`}
               key="desc"
             />
-          </Head>
-          <div style={{ display: "flex" }}>
+          </Head> */}
+          <div style={{ display: "flex", paddingBlock: "50px" }}>
             <Filter model={model[1]} open={model[0]} />
             <OnePart />
           </div>

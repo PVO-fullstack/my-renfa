@@ -13,7 +13,7 @@ import { Filter } from "../New/Filter/Filter";
 export const CarOfBrend = () => {
   const router = useRouter();
   const [first, setFirst] = useState({});
-  const allCars = [mg, chery];
+  const allCars = [mg, chery, faw, geely, jac];
 
   useEffect(() => {
     const takeBrand = async () => {
@@ -29,10 +29,10 @@ export const CarOfBrend = () => {
         case "Geely":
           setFirst(geely);
           break;
-        case "Faw":
+        case "FAW":
           setFirst(faw);
           break;
-        case "Jac":
+        case "JAC":
           setFirst(jac);
           break;
         default:

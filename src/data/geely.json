@@ -1,32 +1,40 @@
-[
-    {
-        "link": "/models/Geely/CK",
-        "src": "/ck.webp",
-        "alt": "Geely CK",
-        "model": "CK"
-    },
-    {
-        "link": "/models/Geely/MK",
-        "src": "/mk.webp",
-        "alt": "Geely MK",
-        "model": "MK"
-    },
-    {
-        "link": "/models/Geely/EC7",
-        "src": "/ec7.webp",
-        "alt": "Geely EC7",
-        "model": "Emgrand EC-7"
-    },
-    {
-        "link": "/models/Geely/EC8",
-        "src": "/ec8.webp",
-        "alt": "Geely EC8",
-        "model": "Emgrand EC-8"
-    },
-    {
-        "link": "/models/Geely/EX7",
-        "src": "/ex7.webp",
-        "alt": "Geely EX7",
-        "model": "EX7"
-    }
-]
+{
+    "title": "Geely",
+    "cars": [
+        {
+            "link": "/models/Geely/CK",
+            "src": "/ck.webp",
+            "alt": "Geely CK",
+            "model": "CK",
+            "name": "Geely CK (Джилі ЦК)"
+        },
+        {
+            "link": "/models/Geely/MK",
+            "src": "/mk.webp",
+            "alt": "Geely MK",
+            "model": "MK",
+            "name": "Geely MK (Джилі МК)"
+        },
+        {
+            "link": "/models/Geely/EC7",
+            "src": "/ec7.webp",
+            "alt": "Geely EC7",
+            "model": "Emgrand EC-7",
+            "name": "Emgrand EC-7 (Емгранд ЄЦ-7)"
+        },
+        {
+            "link": "/models/Geely/EC8",
+            "src": "/ec8.webp",
+            "alt": "Geely EC8",
+            "model": "Emgrand EC-8",
+            "name": "Emgrand EC-8 (Емгранд ЄЦ-8)"
+        },
+        {
+            "link": "/models/Geely/EX7",
+            "src": "/ex7.webp",
+            "alt": "Geely EX7",
+            "model": "EX7",
+            "name": "Emgrand EX-7 (Емгранд ЄІкс-7)"
+        }
+    ]
+}

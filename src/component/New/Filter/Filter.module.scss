@@ -7,10 +7,11 @@
 .conteiner {
     display: flex;
     width: 274px;
+    height: 100%;
     padding: 37px 15px 25px 15px;
     flex-direction: column;
-    background-color: #fff;
-    // align-items: flex-start;
+    border-radius: 5px;
+    background: #FFF;
     gap: 20px;
     flex-shrink: 0;
 }
