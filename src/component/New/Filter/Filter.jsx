@@ -14,7 +14,7 @@ export const Filter = ({ open, model }) => {
 
   return (
     <div className={style.conteiner}>
-      <h2>Фільтр</h2>
+      <h2 className={style.title}>Фільтр</h2>
       <div className={style.brand_list}>
         {allCars.map((car) => (
           <FilterItem

@@ -9,6 +9,8 @@ import { KURS } from "@/variable/variable";
 import Image from "next/image";
 import { Button } from "../Button";
 import { Part } from "../Part/Part";
+import { PartListItem } from "../New/PartListItem/PartListItem";
+import { SortPanel } from "../New/SortPanel/SortPanel";
 
 export const PartList = ({ openModal, getAllParts }) => {
   const [part, setPart] = useState([]);
@@ -41,9 +43,9 @@ export const PartList = ({ openModal, getAllParts }) => {
             first.Part_Name.localeCompare(second.Part_Name)
           );
           if (sortedAllParts.length > 8) {
-            const pages = sortedAllParts.length / 8;
+            const pages = sortedAllParts.length / 6;
             setPages(pages - 1);
-            const onePage = sortedAllParts.slice(8 * page, 8 * (page + 1));
+            const onePage = sortedAllParts.slice(6 * page, 6 * (page + 1));
             console.log("onePage", onePage);
             setSortedParts(onePage);
             setPart(sortedAllParts);
@@ -72,7 +74,7 @@ export const PartList = ({ openModal, getAllParts }) => {
     );
     setPage(0);
     setPages(qq.length / 8);
-    const onePage = qq.slice(8 * page, 8 * (page + 1));
+    const onePage = qq.slice(6 * page, 6 * (page + 1));
     setFiltredParts(qq);
     setSortedParts(onePage);
   };
@@ -89,32 +91,19 @@ export const PartList = ({ openModal, getAllParts }) => {
 
   return (
     <div className={style.conteiner}>
-      <h1 className={style.title}>{`${model[0]} ${model[1]}`}</h1>
-      <label className={style.label}>
+      <h1 className={style.title}>Запчастини {`${model[0]} ${model[1]}`}</h1>
+      <SortPanel />
+      {/* <label className={style.label}>
         Введіть назву або каталожний номер
         <input className={style.filter} onChange={filterPart} type="text" />
-      </label>
+      </label> */}
       <ul className={style.ImageGallery}>
         {filtredParts.length > 0
           ? filtredParts.map((part, index) => (
-              <Link
-                href={{
-                  pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
-                }}
-                key={part._id}
-              >
-                <Part part={part} />
-              </Link>
+              <PartListItem key={part._id} model={model} part={part} />
             ))
           : sortedParts.map((part, index) => (
-              <Link
-                href={{
-                  pathname: `/models/${model[0]}/${model[1]}/${part.Articul}`,
-                }}
-                key={part._id}
-              >
-                <Part part={part} />
-              </Link>
+              <PartListItem key={part._id} model={model} part={part} />
             ))}
       </ul>
       {/* {sortedParts.length > 8 ||

@@ -53,7 +53,7 @@ export default function Parts() {
               key="desc"
             />
           </Head>
-          <div style={{ display: "flex", paddingBlock: "50px" }}>
+          <div style={{ display: "flex", paddingBlock: "50px", gap: "38px" }}>
             <Filter model={model[1]} open={model[0]} />
             <PartList openModal={openModal} getAllParts={getParts} />
           </div>
