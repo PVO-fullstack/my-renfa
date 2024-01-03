@@ -47,12 +47,24 @@ export const Slider = ({
   const settings = {
     // className: "center",
     // centerMode: true,
+    dots: true,
     infinite: true,
     // centerPadding: "60px",
     slidesToShow: 1,
     speed: 500,
     rows: 2,
-    slidesPerRow: 2,
+    slidesPerRow: 4,
+    appendDots: (dots) => (
+      <div
+        style={{
+          // backgroundColor: "#F6F7F9;",
+          borderRadius: "10px",
+          padding: "5px",
+        }}
+      >
+        <ul style={{ margin: "0px" }}> {dots} </ul>
+      </div>
+    ),
     // className: className,
     // centerMode: centralMode,
     // speed: 500,
@@ -60,8 +72,8 @@ export const Slider = ({
     // centerPadding: "0px",
     // slidesToScroll: 1,
     // initialSlide: 0,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
     // responsive: [
     //   {
     //     breakpoint: 3860,

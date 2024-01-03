@@ -4,6 +4,11 @@
     gap: 21px;
     background-color: #fff;
     padding-block: 21px;
+
+    @media screen and (min-width: 768px) {
+        padding-block: 73px;
+        gap: 0;
+    }
 }
 
 .text_conteiner {
@@ -11,6 +16,10 @@
     flex-direction: column;
     gap: 17px;
     padding-inline: 21px;
+
+    @media screen and (min-width: 768px) {
+        padding-inline: 89px 172px;
+    }
 }
 
 .title {
@@ -20,6 +29,10 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @media screen and (min-width: 768px) {
+        font-size: 40px;
+    }
 }
 
 .text {
@@ -29,6 +42,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    color: #000;
+
+    @media screen and (min-width: 768px) {
+        font-size: 25px;
+    }
 }
 
 .text::before {
@@ -42,6 +61,13 @@
     flex-shrink: 0;
     border-radius: 0.2px;
     background: #1E1E1E;
+
+
+    @media screen and (min-width: 768px) {
+        width: 11.105px;
+        height: 11.105px;
+        left: -14px;
+    }
 }
 
 .order {
@@ -51,10 +77,21 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+
+    @media screen and (min-width: 768px) {
+        font-size: 14px;
+    }
 }
 
 .img {
     width: 292px;
+
+    @media screen and (min-width: 768px) {
+        width: 422px;
+        margin-left: 224px;
+        margin-bottom: 51px;
+    }
 }
 
 .brand {
@@ -63,6 +100,11 @@
     justify-content: center;
     gap: 12px;
     padding-inline: 21px;
+
+    @media screen and (min-width: 768px) {
+        gap: 15px;
+        padding-inline: 138px;
+    }
 }
 
 .brand_logo {
@@ -72,7 +114,12 @@
     padding: 1.199px 1.162px;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+
+    @media screen and (min-width: 768px) {
+        width: 98px;
+        height: 58px;
+        padding: 2.674px 2.649px;
+    }
 }
 
 .brand_conteiner {
@@ -86,4 +133,11 @@
     flex-shrink: 0;
     border-radius: 3px;
     background: #1E1E1E;
+
+    @media screen and (min-width: 768px) {
+        width: 134px;
+        height: 82px;
+        padding: 8px 0px 15px 0px;
+        gap: 7px;
+    }
 }

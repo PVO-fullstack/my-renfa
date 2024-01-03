@@ -10,6 +10,7 @@ export const SelectBrand = () => {
       <div className={style.conteiner}>
         {brand.map((item) => (
           <div key={item.brand} className={style.brand_conteiner}>
+            <p className={style.brand_name}>{item.brand}</p>
             <Image
               className={style.brand_logo}
               alt={`Логотип ${item.brand}`}

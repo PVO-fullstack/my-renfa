@@ -6,4 +6,9 @@
     font-weight: 600;
     line-height: normal;
     margin-bottom: 30px;
+
+    @media screen and (min-width:768px) {
+        font-size: 40px;
+        padding-inline: 126px;
+    }
 }

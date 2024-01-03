@@ -1,16 +1,22 @@
 .ImageGalleryItem {
     display: flex;
-    width: 288px;
-    height: 100%;
-    padding: 30px 16px;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    flex-shrink: 0;
     border-radius: 6px;
     border: 1px solid #ECEEF2;
     background-color: #FFF;
+    width: 146px;
+    height: 100%;
+    padding: 15px;
+
+    @media screen and (min-width:1280px) {
+        width: 288px;
+        height: 100%;
+        padding: 30px 16px;
+    }
+
 }
 
 .desc_conteiner {
@@ -25,29 +31,46 @@
 
 .img_conteiner {
     display: flex;
-    width: 252px;
-    height: 176px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    gap: 3px;
+    width: 108px;
+    height: 108px;
+
+    @media screen and (min-width:1280px) {
+        width: 252px;
+        height: 176px;
+        gap: 3px;
+
+    }
 }
 
 .imageGalleryItem_image {
-    width: 174px;
-    height: 176px;
-    flex-shrink: 0;
+    width: 108px;
+    height: 108px;
     object-fit: cover;
+
+    @media screen and (min-width:1280px) {
+
+        width: 174px;
+        height: 176px;
+    }
+
 }
 
 .text {
+    font-size: 10px;
     color: #1E1E1E;
     text-align: center;
-    font-family: Exo 2;
-    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        font-size: 20px;
+
+    }
+
 }
 
 .bottom_conteiner {
@@ -60,8 +83,12 @@
     color: #1E1E1E;
     text-align: center;
     font-family: Exo 2;
-    font-size: 26px;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
+    font-size: 15px;
+
+    @media screen and (min-width:1280px) {
+        font-size: 26px;
+    }
 }

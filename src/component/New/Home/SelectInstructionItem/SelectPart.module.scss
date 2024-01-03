@@ -3,6 +3,15 @@
     gap: 25px;
     align-items: center;
     padding-left: 10px;
+
+    @media screen and (min-width:768px) {
+        gap: 50px;
+        padding-inline: 65px 45px;
+
+        &:nth-child(2n) {
+            flex-direction: row-reverse;
+        }
+    }
 }
 
 .square {
@@ -15,6 +24,11 @@
     flex-shrink: 0;
     border-radius: 4px;
     background: #1E1E1E;
+
+    @media screen and (min-width:768px) {
+        width: 90px;
+        height: 90px;
+    }
 }
 
 .text {
@@ -29,6 +43,10 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @media screen and (min-width:768px) {
+        font-size: 30px;
+    }
 }
 
 .description {
@@ -37,4 +55,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (min-width:768px) {
+        font-size: 24px;
+    }
 }

@@ -10,10 +10,19 @@
 
 .img {
     transform: rotate(45deg);
+
+    @media screen and (min-width:768px) {
+        width: 42px;
+        height: 42px;
+    }
 }
 
 .part_list {
     display: flex;
     flex-direction: column;
     gap: 30px;
+
+    @media screen and (min-width:768px) {
+        gap: 109px;
+    }
 }
