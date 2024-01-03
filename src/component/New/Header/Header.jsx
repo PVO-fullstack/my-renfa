@@ -18,6 +18,10 @@ import { Modal } from "../Modal/Modal";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { Auth } from "../Auth/Auth";
 import { Loader } from "@/component/Loader/Loader";
+import { SearchBtn } from "../SearchBtn/SearchBtn";
+import { MenuIcon } from "../MenuIcon/MenuIcon";
+import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
+import { SearchIcon } from "../SearchIcon/SearchIcon";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -35,7 +39,7 @@ export const Header = () => {
 
   const handleClose = () => {
     setShow(false);
-    // setShowMenu(false);
+    setShowMenu(false);
     // setUser(user);
   };
 
@@ -51,6 +55,16 @@ export const Header = () => {
   return (
     <div className={style.conteiner}>
       <div className={style.header_part_up}>
+        <div className={style.menu_conteiner}>
+          {/* <div className={style.name} onClick={handleShowMenu}> */}
+          <MenuIcon click={handleShowMenu} />
+          {/* </div> */}
+          {/* <button className={style.name} onClick={handleShowMenu}>
+          MENU
+        </button> */}
+          <SearchIcon />
+        </div>
+        <BurgerMenu show={showMenu} handleClose={handleClose} />
         <Logo className={style.logo} text={style.text} />
         <FindInput />
         <div className={style.user_menu}>

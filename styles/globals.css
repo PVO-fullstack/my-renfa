@@ -35,6 +35,17 @@ img {
   height: auto;
 }
 
+.slick-initialized .slick-slide.slick-active,
+.slick-initialized .slick-slide.slick-cloned {
+  display: flex;
+  height: 450px;
+}
+
+.slick-list .slick-track {
+  height: 900px;
+}
+
+/* @import "@/component//New/Slider/Slider.module.scss"; */
 /* :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -109,7 +120,6 @@ img {
     --card-border-rgb: 200, 200, 200;
   }
 } */
-
 * {
   box-sizing: border-box;
   padding: 0;

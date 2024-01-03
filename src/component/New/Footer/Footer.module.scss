@@ -1,32 +1,54 @@
 .conteiner {
     width: 100vw;
+    padding: 20px 10px;
     background-color: #1E1E1E;
-    display: flex;
-    padding: 40px 115px;
-    flex-direction: column;
-    // align-items: center;
-    gap: 34px;
+    display: grid;
+    grid-auto-columns: auto;
+    grid-auto-rows: auto;
+    // gap: 34px;
+
+    @media screen and (min-width:768px) {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    @media screen and (min-width:1280px) {
+        padding: 40px 115px;
+
+    }
 }
 
 .nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .brand {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
     display: flex;
-    gap: 40px;
+    flex-direction: column;
+    gap: 15px;
+
+    @media screen and (min-width:768px) {
+        flex-direction: row;
+        gap: 20px;
+    }
 }
 
 .link {
-    display: none;
+    color: #FFF;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 
     @media screen and (min-width:768px) {
 
         display: block;
-        color: #fff;
-        font-size: 17px;
         transition: all 0.5s ease-in-out;
 
         &:active {
@@ -40,8 +62,17 @@
     }
 }
 
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
 .text {
-    color: #fff;
-    text-align: center;
-    font-size: 17px;
+    grid-column-start: 1;
+    color: #FFF;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }

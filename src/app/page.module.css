@@ -31,9 +31,12 @@
 }
 
 .conteiner {
-  padding-left: 76px;
-  padding-right: 76px;
+  padding-inline: 10px;
   background-color: #f6f7f9;
+
+  @media screen and (min-width: 1280px) {
+    padding-inline: 76px;
+  }
 }
 
 .description {

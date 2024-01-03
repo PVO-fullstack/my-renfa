@@ -29,14 +29,15 @@ export const FilterItem = ({ data, fara, selected }) => {
         <div className={open ? style.list_open : style.list}>
           <div className={style.conteiner}>
             <Link
+              className={style.link}
               href={{
                 pathname: `/models/[car]`,
                 query: { car: data.title },
               }}
             >
-              <p>{data.title}</p>
+              {data.title}
             </Link>
-            <span onClick={handleOpen}>
+            <span className={style.arrow} onClick={handleOpen}>
               <Arrow open={open} />
             </span>
           </div>

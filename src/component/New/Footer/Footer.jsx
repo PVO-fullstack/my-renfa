@@ -9,18 +9,19 @@ export const Footer = () => {
   return (
     <div className={style.conteiner}>
       <div className={style.nav}>
-        <Logo fill={"#fff"} width={"46"} height={"46"} footer={true} />
-        <div className={style.brand}>
-          <Brand model={model} />
-          <Link className={style.link} href="/contacts">
-            Contacts
-          </Link>
-        </div>
-        <Link className={style.text} href="/form">
+        <Logo className={style.logo} fill={"#fff"} footer={true} />
+        <Link className={style.link} href="/form">
           Звернутися до нас
+        </Link>
+        <Link className={style.link} href="/contacts">
+          Contacts
         </Link>
       </div>
       <p className={style.text}>@Сайт вироблено силами Renfa</p>
+
+      <div className={style.brand}>
+        <Brand model={model} />
+      </div>
     </div>
   );
 };

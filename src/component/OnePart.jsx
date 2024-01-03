@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Modal } from "./Modal";
-import css from "./OnePart.module.scss";
+import style from "./OnePart.module.scss";
 import { KURS } from "@/variable/variable";
 import Link from "next/link";
 
@@ -57,9 +57,9 @@ export const OnePart = () => {
   };
 
   return (
-    <div className={css.conteiner}>
+    <div className={style.conteiner}>
       <Link
-        className={css.link}
+        className={style.link}
         href={{
           pathname: `/models/${model[0]}/${model[1]}`,
         }}
@@ -69,35 +69,35 @@ export const OnePart = () => {
         </p>
       </Link>
       {onePart && (
-        <div className={css.partCard}>
+        <div className={style.partCard}>
           <Image
-            className={css.img}
+            className={style.img}
             onClick={openModal}
             src={onePart.Img}
             width={300}
             height={200}
             alt={onePart.Part_Name}
           />
-          <div className={css.card}>
-            <p className={css.text}>Назва: {onePart.Part_Name}</p>
-            <p className={css.text}>Каталожний номер: {onePart.Articul} </p>
-            <p className={css.text}>Країна виробник: {onePart.Country}</p>
-            <p className={css.text}>
+          <div className={style.card}>
+            <p className={style.text}>Назва: {onePart.Part_Name}</p>
+            <p className={style.text}>Каталожний номер: {onePart.Articul} </p>
+            <p className={style.text}>Країна виробник: {onePart.Country}</p>
+            <p className={style.text}>
               Ціна: {Math.round(onePart.Price * KURS)}, грн
             </p>
-            <p className={css.text}>
+            <p className={style.text}>
               Встановлюється на автомобілі: {model[0]} {onePart.Model.join(" ")}
             </p>
           </div>
         </div>
       )}
-      <button disabled={disabled} onClick={handleClick} className={css.btn}>
+      <button disabled={disabled} onClick={handleClick} className={style.btn}>
         {disabled ? "У корзині" : "Купити"}
       </button>
-      <div className={css.description}>
+      <div className={style.description}>
         <p>
-          Магазин <span className={css.companyName}>Renfa</span> - завжди низькі
-          ціни та висока якість. Якщо не знайшли потрібну Вам запчастину,
+          Магазин <span className={style.companyName}>Renfa</span> - завжди
+          низькі ціни та висока якість. Якщо не знайшли потрібну Вам запчастину,
           звертайтесь по телефону або у viber. Приймаємо замовлення на доставку
           морем та літаком.
         </p>

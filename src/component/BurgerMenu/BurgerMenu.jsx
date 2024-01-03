@@ -5,7 +5,7 @@ import { UserMenu } from "../UserMenu";
 import { Viber } from "../Svg/Viber";
 import { Telegram } from "../Svg/Telegram";
 
-export const BurgerMenu = ({ show, handleClose }) => {
+export const BurgerMenu = ({ show, handleClose, children }) => {
   return (
     <>
       {show && (

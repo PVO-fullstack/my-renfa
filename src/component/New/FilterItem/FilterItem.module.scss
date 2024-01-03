@@ -1,4 +1,5 @@
 .list {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -6,6 +7,7 @@
 }
 
 .list_open {
+    position: relative;
     display: flex;
     padding: 10px 0px;
     flex-direction: column;
@@ -14,19 +16,23 @@
 }
 
 .conteiner {
-    display: flex;
+    // display: flex;
     width: 244px;
     padding: 11px 5px;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
     color: #1E1E1E;
-    background: #ECEEF2;
+    background: #F6F7F9;
     font-family: Exo 2;
     font-size: 13px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    &:active {
+        background: #ECEEF2;
+    }
 }
 
 .item {
@@ -57,6 +63,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    transition: all 0.5s ease-in-out;
+
+    &:hover {
+        background: #444444;
+        color: #FFF
+    }
 }
 
 .model_selected {
@@ -71,4 +83,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.arrow {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    transform: translateY(50%);
+}
+
+.link {
+    display: block;
 }

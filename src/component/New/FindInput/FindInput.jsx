@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import style from "./FindInput.module.scss";
 import { useRouter } from "next/router";
+import { SearchBtn } from "../SearchBtn/SearchBtn";
 
 export const FindInput = ({ className, inputClass }) => {
   const [value, setValue] = useState("");
@@ -33,9 +34,10 @@ export const FindInput = ({ className, inputClass }) => {
         value={value}
         placeholder="Пошук"
       />
-      <button type="submit" className={style.searchform_button}>
+      <SearchBtn />
+      {/* <button type="submit" className={style.searchform_button}>
         <span className={style.searchform_button_label}>Search</span>
-      </button>
+      </button> */}
     </form>
   );
 };

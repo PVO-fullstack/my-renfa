@@ -1,0 +1,22 @@
+[
+    {
+        "brand": "chery",
+        "src": "/chery.png"
+    },
+    {
+        "brand": "geely",
+        "src": "/geely.png"
+    },
+    {
+        "brand": "mg",
+        "src": "/mg.png"
+    },
+    {
+        "brand": "faw",
+        "src": "/faw.png"
+    },
+    {
+        "brand": "jac",
+        "src": "/jac.png"
+    }
+]

@@ -1,13 +1,26 @@
 .conteiner {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 13px;
     text-decoration: none;
 }
 
+// .conteiner::after {
+//     content: "";
+//     position: absolute;
+//     right: -8.873px;
+
+//     bottom: 5.608px;
+//     width: 4.86px;
+//     height: 4.86px;
+//     transform: rotate(-45.737deg);
+//     border-radius: 0.2px;
+//     background: #FF6900;
+// }
+
 .header_text {
-    color: #201F20;
-    font-family: Inter;
+    color: #1e1e1e;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
@@ -16,9 +29,30 @@
 
 .footer_text {
     color: #FFF;
-    font-family: Inter;
-    font-size: 32px;
+
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        font-size: 32px;
+    }
+}
+
+.text {
+    position: relative;
+}
+
+.text::after {
+    content: "";
+    position: absolute;
+    right: -8.873px;
+
+    bottom: 0;
+    width: 4.86px;
+    height: 4.86px;
+    transform: rotate(-45.737deg);
+    border-radius: 0.2px;
+    background: #FF6900;
 }
