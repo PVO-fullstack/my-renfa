@@ -2,6 +2,7 @@ import Layout from "@/app/layout";
 import { Modal } from "@/component/Modal";
 import { Filter } from "@/component/New/Filter/Filter";
 import { FilterItem } from "@/component/New/FilterItem/FilterItem";
+import { PartListComponent } from "@/component/New/PartList/PartListComponent";
 import { OnePart } from "@/component/OnePart";
 import { PartList } from "@/component/PartList/PartList";
 import Head from "next/head";
@@ -45,7 +46,8 @@ export default function Parts() {
 
       {model && model.length < 3 ? (
         <>
-          <Head>
+          <PartListComponent model={model} getParts={getParts} />
+          {/* <Head>
             <title>{`Автомобіль ${model[0]} ${model[1]}`}</title>
             <meta
               name="description"
@@ -56,7 +58,7 @@ export default function Parts() {
           <div style={{ display: "flex", paddingBlock: "50px", gap: "38px" }}>
             <Filter model={model[1]} open={model[0]} />
             <PartList openModal={openModal} getAllParts={getParts} />
-          </div>
+          </div> */}
         </>
       ) : (
         <>
@@ -69,7 +71,7 @@ export default function Parts() {
             />
           </Head> */}
           <div style={{ display: "flex", paddingBlock: "50px" }}>
-            <Filter model={model[1]} open={model[0]} />
+            {/* <Filter model={model[1]} open={model[0]} /> */}
             <OnePart />
           </div>
         </>
