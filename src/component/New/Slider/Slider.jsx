@@ -3,11 +3,17 @@ import ReactSlider from "react-slick";
 // import PropTypes from "prop-types";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import style from "./Slider.module.scss";
 import { Part } from "@/component/Part/Part";
+import { Says } from "../Home/Says/Says";
 
 export const Slider = ({
   // centralMode = true,
-  className,
+  className = "center",
+  title,
+  rows = 2,
+  slidesPerRow = 4,
+  says = false,
   // infinite = true,
   parts,
 }) => {
@@ -44,20 +50,24 @@ export const Slider = ({
     );
   };
 
+  console.log("parts", parts);
+
   const settings = {
-    // className: "center",
+    className: className,
     // centerMode: true,
     dots: true,
     infinite: true,
     // centerPadding: "60px",
     slidesToShow: 1,
     speed: 500,
-    rows: 2,
-    slidesPerRow: 4,
+    rows: rows,
+    slidesPerRow: slidesPerRow,
     appendDots: (dots) => (
       <div
         style={{
           // backgroundColor: "#F6F7F9;",
+          // width: "5px",
+          // height: "5px",
           borderRadius: "10px",
           padding: "5px",
         }}
@@ -106,12 +116,13 @@ export const Slider = ({
   };
   return (
     <div className={className}>
-      <h2> Single Item</h2>
+      <h2 className={style.title}>{title}</h2>
       <ReactSlider {...settings}>
         {/* <ul style={{ display: "flex" }}> */}
-        {parts.map((item) => (
-          <Part key={item._id} part={item} />
-        ))}
+        {says
+          ? parts.map((item) => <Says key={item.say} say={item} />)
+          : parts.map((item) => <Part key={item._id} part={item} />)}
+
         {/* </ul> */}
       </ReactSlider>
     </div>

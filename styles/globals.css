@@ -35,18 +35,50 @@ img {
   height: auto;
 }
 
-.slick-initialized .slick-slide.slick-active,
-.slick-initialized .slick-slide.slick-cloned {
+.slick-initialized.center .slick-slide {
   display: flex;
-  height: 280px;
+  justify-content: space-between;
+  /* height: 280px; */
 
   @media screen and (min-width: 1280px) {
     height: 450px;
   }
 }
 
+.slick-initialized.center .slick-slide > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .slick-list .slick-track {
-  height: 1150px;
+  height: 1180px;
+}
+
+.say .slick-list .slick-track {
+  height: 440px;
+}
+
+.center .slick-dots li button::before,
+.say .slick-dots li button::before {
+  content: "";
+  background-image: url(/dot.svg);
+  /* background-color: red; */
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 19px;
+  height: 14px;
+  padding: 5px;
+  cursor: pointer;
+  border: 0;
+  outline: none;
+}
+
+.center .slick-dots li.slick-active button::before,
+.say .slick-dots li.slick-active button::before {
+  /* content: ""; */
+  background-image: url(/dot_active.svg);
 }
 
 /* @import "@/component//New/Slider/Slider.module.scss"; */

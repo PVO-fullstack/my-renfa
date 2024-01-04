@@ -1,0 +1,18 @@
+.conteiner {
+    display: flex;
+    padding: 40px 30px;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    flex: 1 0 0;
+}
+
+.star_conteiner {
+    display: flex;
+    gap: 6px;
+    // margin-block: 23px 35px;
+}
+
+.text {
+    text-align: center;
+}

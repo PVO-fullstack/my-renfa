@@ -3,6 +3,7 @@ import React from "react";
 export const MenuIcon = ({ click }) => {
   return (
     <svg
+      onClick={click}
       xmlns="http://www.w3.org/2000/svg"
       width="28"
       height="28"

@@ -1,0 +1,38 @@
+.conteiner {
+    height: 506px;
+    border-radius: 12px;
+    background: #000;
+}
+
+.img {
+    width: 200.059px;
+    // height: 134.024px;
+    // transform: rotate(-19.272deg);
+}
+
+.text_conteiner {
+    display: flex;
+    // width: 247px;
+    margin-inline: 42px 11px;
+    flex-direction: column;
+    // align-items: flex-start;
+    gap: 31px;
+}
+
+.title {
+    color: #FFF;
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.description {
+    color: #969696;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

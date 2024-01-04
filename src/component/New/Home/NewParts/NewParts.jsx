@@ -5,18 +5,30 @@ import style from "./NewParts.module.scss";
 import { Button } from "@/component/Button";
 import { KURS } from "@/variable/variable";
 
-export const NewParts = ({ data }) => {
+export const NewParts = ({ parts }) => {
   return (
     <>
-      {data.map((item, index) => (
-        <div key={index}>
-          <Image
-            // className="block m-auto rounded-3xl w-80 h-[264px] md:w-[342px] xl:w-[324px] xl:h-[264px] "
-            src={item.Img}
-            alt={item.Description}
-            width={320}
-            height={264}
-          />
+      {parts.map((item) => (
+        <div key={item._id} className={style.ImageGalleryItem}>
+          <div className={style.img_conteiner}>
+            <Image
+              className={style.imageGalleryItem_image}
+              src={item.Img}
+              alt={item.Description}
+              width={100}
+              height={100}
+            />
+          </div>
+          <div className={style.desc_conteiner}>
+            <p className={style.text}>{item.Part_Name}</p>
+            <div className={style.bottom_conteiner}>
+              <p className={style.price}>{Math.round(item.Price * KURS)} ₴</p>
+              <Button type="button" disabled={false}>
+                Купити
+              </Button>
+            </div>
+          </div>
+          {/* </a> */}
         </div>
       ))}
     </>

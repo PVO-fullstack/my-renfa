@@ -1,15 +1,21 @@
 .link {
-    // text-decoration: none;
     display: flex;
-    width: 220px;
-    height: 201px;
+    width: 146px;
+    height: 133px;
     padding: 8px 0px 15px 0px;
     flex-direction: column;
     align-items: center;
     gap: 7px;
-    border-radius: 11px;
-    border: 1px solid #ECEEF2;
-    background: #FFF;
+
+    @media screen and (min-width:1280px) {
+        width: 220px;
+        height: 201px;
+        padding: 8px 0px 15px 0px;
+        border-radius: 11px;
+        border: 1px solid #ECEEF2;
+        background: #FFF;
+
+    }
 }
 
 .list {
@@ -49,12 +55,17 @@
 
 .img {
     display: flex;
-    width: 173px;
-    height: 130px;
-    padding: 5px 0px 4.038px 0px;
+    width: 98px;
+    height: 76px;
+    padding: 2.923px 0px 2.361px 0px;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
     object-fit: cover;
+
+    @media screen and (min-width:1280px) {
+        width: 173px;
+        height: 130px;
+        padding: 5px 0px 4.038px 0px;
+    }
 
 }
