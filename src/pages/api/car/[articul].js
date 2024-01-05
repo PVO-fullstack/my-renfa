@@ -30,7 +30,7 @@ export default async function (req, res) => {
         // .find({ Articul: articul })
         // .find({ $text: { $search: articul } })
         // .find({ $text: { $search: regexp } })
-        .find({ Part_Name: { $regex: regexp } })
+       // .find({ Part_Name: { $regex: regexp } })
         .limit(limit)
         .skip(skip)
         // .find({ $text: { $search: \ articul \ } })
