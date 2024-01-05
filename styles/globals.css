@@ -37,7 +37,9 @@ img {
 
 .slick-initialized.center .slick-slide {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px;
+  /* justify-content: space-between; */
   /* height: 280px; */
 
   @media screen and (min-width: 1280px) {

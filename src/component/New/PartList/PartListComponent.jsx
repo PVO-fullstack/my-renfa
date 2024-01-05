@@ -1,10 +1,25 @@
 import Head from "next/head";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Filter } from "../Filter/Filter";
 import { PartList } from "@/component/PartList/PartList";
 import style from "./PartListComponent.module.scss";
+import { useRouter } from "next/router";
 
-export const PartListComponent = ({ model, getParts }) => {
+export const PartListComponent = ({ getParts }) => {
+  const [model, setModel] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const getData = async () => {
+      const modelName = await router.query.slag;
+      console.log("modelName", modelName);
+      setModel(modelName);
+    };
+    getData();
+  }, [router.query.slag]);
+
+  console.log("modelList", model);
+
   return (
     <div>
       <Head>

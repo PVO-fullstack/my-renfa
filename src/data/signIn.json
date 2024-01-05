@@ -1,5 +1,5 @@
 {
-    "title": "Зареєструватися",
+    "title": "Увійти в акаунт",
     "contactsBlock": [
         {
             "id": 1,
@@ -44,7 +44,7 @@
             }
         },
         "buttonSubmit": {
-            "labelText": "Зареєструватися"
+            "labelText": "Увійти"
         }
     }
 }

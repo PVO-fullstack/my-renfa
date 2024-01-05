@@ -18,47 +18,47 @@ export const PartList = ({ openModal, getAllParts }) => {
   const [sortedParts, setSortedParts] = useState([]);
   const [page, setPage] = useState(0);
   const [pages, setPages] = useState();
+  const [model, setModel] = useState([]);
 
   const router = useRouter();
-  const model = router.query.slag;
   console.log("model", model);
 
   const dispatch = useDispatch();
 
-  //   const qw = (sd) => {
-  //             if (sortedAllParts.length > 8) {
-  //             const pages = sortedAllParts.length / 8;
-  //             setPages(pages - 1);
-  //             const onePage = sortedAllParts.slice(8 * page, 8 * (page + 1));
-  // }
-
   useEffect(() => {
     dispatch(refreshUser());
-    if (model) {
-      const modelName = model[1];
+    const getData = async () => {
+      const modelName = await router.query.slag;
+      console.log("modelName", modelName);
+      setModel(modelName);
       if (modelName) {
-        async function getParts(modelName) {
-          const allParts = await getModel(modelName);
-          const sortedAllParts = allParts.sort((first, second) =>
-            first.Part_Name.localeCompare(second.Part_Name)
-          );
-          if (sortedAllParts.length > 8) {
-            const pages = sortedAllParts.length / 6;
-            setPages(pages - 1);
-            const onePage = sortedAllParts.slice(6 * page, 6 * (page + 1));
-            console.log("onePage", onePage);
-            setSortedParts(onePage);
+        setModel(modelName);
+        const modelPart = modelName[1];
+        if (modelPart) {
+          async function getParts(modePart) {
+            const allParts = await getModel(modelPart);
+            const sortedAllParts = allParts.sort((first, second) =>
+              first.Part_Name.localeCompare(second.Part_Name)
+            );
+            if (sortedAllParts.length > 8) {
+              const pages = sortedAllParts.length / 6;
+              setPages(pages - 1);
+              const onePage = sortedAllParts.slice(6 * page, 6 * (page + 1));
+              console.log("onePage", onePage);
+              setSortedParts(onePage);
+              setPart(sortedAllParts);
+              return;
+            }
             setPart(sortedAllParts);
-            return;
+            setFiltredParts(sortedAllParts);
+            // console.log("allParts", allParts);
           }
-          setPart(sortedAllParts);
-          setFiltredParts(sortedAllParts);
-          // console.log("allParts", allParts);
+          getParts(modelName);
         }
-        getParts(modelName);
       }
-    }
-  }, [dispatch, model, page]);
+    };
+    getData();
+  }, [dispatch, model, page, router.query.slag]);
 
   console.log("part", part);
   getAllParts(part);

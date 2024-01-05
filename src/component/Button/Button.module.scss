@@ -1,20 +1,27 @@
 .btn {
-    // width: 403px;
     display: flex;
-    padding: 6px 10px;
+    padding: 16px 60px;
     justify-content: center;
     align-items: center;
-    gap: 2px;
+    gap: 10px;
+    align-self: stretch;
     border-radius: 6px;
-    border: 1px solid #1E1E1E;
+    border: 2px solid #1E1E1E;
     background: #1E1E1E;
 
-    // height: 47px;
+
+    // padding: 6px 10px;
+    // gap: 2px;
+    // border: 1px solid #1E1E1E;
     color: #FFF;
-    font-size: 12px;
+    font-size: 19px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    // height: 47px;
+
+    // font-size: 12px;
+
 
     transition: all 300ms ease-in;
     cursor: pointer;

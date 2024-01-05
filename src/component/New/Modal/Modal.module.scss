@@ -14,8 +14,15 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    width: 574px;
-    height: 635px;
+    width: 301px;
+    // height: 465px;
+
+    @media screen and (min-width:1280px) {
+        width: 574px;
+        height: 635px;
+
+    }
+
     overflow-y: hidden;
     overflow-x: hidden;
     border-radius: 10px;

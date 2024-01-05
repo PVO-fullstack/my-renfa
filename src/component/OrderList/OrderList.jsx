@@ -148,14 +148,16 @@ export const OrderList = () => {
         {partList.length > 0 && <h2>Нове замовлення</h2>}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <ul style={{ fontSize: "11px", paddingLeft: "0" }} id="order">
-            {partList.map(({ _id, Articul, Part_Name, Price, Quantity }) => (
-              <li className={css.orderItem} key={_id}>
-                <div style={{ display: "flex" }}>
-                  <p className={css.orderItemP}>{Articul}</p>
-                  <p className={css.partsName}>{Part_Name}</p>
-                </div>
-                <div style={{ display: "flex" }}>
-                  <input
+            {partList.map(
+              ({ _id, Articul, Part_Name, Price, count, Quantity }) => (
+                <li className={css.orderItem} key={_id}>
+                  <div style={{ display: "flex" }}>
+                    <p className={css.orderItemP}>{Articul}</p>
+                    <p className={css.partsName}>{Part_Name}</p>
+                  </div>
+                  <div style={{ display: "flex" }}>
+                    <p className={css.quantity}>{count}</p>
+                    {/* <input
                     className={css.quantity}
                     onChange={handleChangeValue}
                     min={0}
@@ -163,13 +165,14 @@ export const OrderList = () => {
                     type="number"
                     name={Articul}
                     value={newPartsList[Articul] || 0}
-                  />
-                  <p className={css.partsPrice}>
-                    {Math.round(Price * KURS)} грн
-                  </p>
-                </div>
-              </li>
-            ))}
+                  /> */}
+                    <p className={css.partsPrice}>
+                      {Math.round(Price * KURS)} грн
+                    </p>
+                  </div>
+                </li>
+              )
+            )}
             {partList.length > 0 && (
               <li className={css.orderItem}>Разом: {add || 0} грн</li>
             )}

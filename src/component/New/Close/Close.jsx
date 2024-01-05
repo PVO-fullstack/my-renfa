@@ -3,7 +3,6 @@ import style from "./Close.module.scss";
 
 export const Close = ({ close }) => {
   const handleClose = () => {
-    console.log("Hello");
     close();
   };
 

@@ -135,11 +135,11 @@ export const RegisterForm = ({ close, show }) => {
           errors={errors}
           errorMessages={password.errorMessages}
         />
-        <Button type="button" disabled={false}>
-          Зареєструватися
-        </Button>
-        <p>У Вас вже є аккаунт</p>
-        <p onClick={() => show()}>Увійти</p>
+        <Button disabled={false}>{buttonSubmit.labelText}</Button>
+        <p className={style.question}>У вас вже є акаунт?</p>
+        <p className={style.text} onClick={() => show()}>
+          Увійти
+        </p>
       </form>
       {isLoading && <Loader />}
     </div>

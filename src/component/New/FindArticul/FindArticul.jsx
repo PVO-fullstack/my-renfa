@@ -9,12 +9,16 @@ import { Filter } from "../Filter/Filter";
 import { getOnePart } from "@/apiService/apiParts";
 import { Part } from "@/component/Part/Part";
 import Link from "next/link";
+import style from "./FindArticul.module.scss";
 
 export const FindArticul = () => {
   const router = useRouter();
   const [first, setFirst] = useState();
   const [onePart, setOnePart] = useState();
+  const [page, setPage] = useState(1);
   const allCars = [mg, chery, faw, geely, jac];
+  // const q = router.query.slag;
+  // const slag = q.split("&");
 
   useEffect(() => {
     const takeBrand = async () => {
@@ -24,27 +28,27 @@ export const FindArticul = () => {
       if (articul) {
         const part = await getOnePart(articul);
         console.log("part", part);
-        setOnePart(part);
+        setOnePart(part.parts);
       }
     };
     takeBrand();
   }, [router.query.slag]);
 
+  const handleNext = () => {
+    const slag = first.split("page");
+    const newSlag = slag[0] + "page" + (page + 1);
+    setPage(page + 1);
+    router.push(`/search/${newSlag}`);
+  };
+
   console.log("first", first);
   return (
     <>
       {first && (
-        <div style={{ display: "flex" }}>
+        <div className={style.carList}>
           <Filter />
 
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "10px",
-              padding: "50px",
-            }}
-          >
+          <div className={style.gallery}>
             {onePart &&
               onePart.map((part) => (
                 <Link
@@ -57,6 +61,9 @@ export const FindArticul = () => {
                 </Link>
               ))}
           </div>
+          <button onClick={handleNext} type="button">
+            Next
+          </button>
           {/* <Brand title={first.title} data={first.cars} /> */}
         </div>
       )}

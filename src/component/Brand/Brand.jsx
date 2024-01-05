@@ -11,7 +11,7 @@ export const Brand = ({ title, data }) => {
       <h1 className={style.title}>Запчастини {title}</h1>
       <ul className={style.list}>
         {data.map((item) => (
-          <BrandItem key={item} item={item} />
+          <BrandItem key={item.model} item={item} />
         ))}
       </ul>
     </div>

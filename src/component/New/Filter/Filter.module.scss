@@ -14,6 +14,11 @@
     background: #FFF;
     gap: 20px;
     margin-top: 25px;
+
+    @media screen and (min-width:1280px) {
+        margin-top: 0;
+        width: 274px;
+    }
 }
 
 .title {

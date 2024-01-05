@@ -14,7 +14,7 @@ export const Footer = () => {
           Звернутися до нас
         </Link>
         <Link className={style.link} href="/contacts">
-          Contacts
+          Контакти
         </Link>
       </div>
       <p className={style.text}>@Сайт вироблено силами Renfa</p>

@@ -1,14 +1,50 @@
 .conteiner {
+    position: relative;
     display: flex;
-    align-items: center;
+    padding: 30px 20px;
     flex-direction: column;
-    padding: 48px;
+    align-items: center;
+
+    @media screen and (min-width:1280px) {
+        align-items: center;
+        padding: 48px;
+
+    }
 }
 
 .input_conteiner {
-    width: 403px;
+    display: contents;
+    width: 100%;
 }
 
 .title {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+    color: #1E1E1E;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        margin-bottom: 50px;
+    }
+}
+
+.question {
+    margin-top: 35px;
+    color: #1E1E1E;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.text {
+    margin-top: 12px;
+    color: #192BC2;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

@@ -1,7 +1,7 @@
 import { Input } from "@/component/Input";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import registerData from "@/data/register.json";
+import registerData from "@/data/signIn.json";
 import style from "./SingInForm.module.scss";
 import { Close } from "../Close/Close";
 import { Button } from "@/component/Button";
@@ -70,9 +70,11 @@ export const SignInForm = ({ close, show }) => {
           errors={errors}
           errorMessages={password.errorMessages}
         />
-        <Button disabled={false}>Увійти</Button>
-        <p>У Вас вже є аккаунт</p>
-        <p onClick={() => show()}>Увійти</p>{" "}
+        <Button disabled={false}>{buttonSubmit.labelText}</Button>
+        <p className={style.question}>Ще не зареєстровані?</p>
+        <p className={style.text} onClick={() => show()}>
+          Зареєструватись
+        </p>
       </form>
     </div>
   );

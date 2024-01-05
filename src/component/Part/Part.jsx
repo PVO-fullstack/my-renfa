@@ -21,7 +21,7 @@ export const Part = ({ part }) => {
         <p className={style.text}>{part.Part_Name}</p>
         <div className={style.bottom_conteiner}>
           <p className={style.price}>{Math.round(part.Price * KURS)} ₴</p>
-          <Button type="button" disabled={false}>
+          <Button className={style.btn} type="button" disabled={false}>
             Купити
           </Button>
         </div>
