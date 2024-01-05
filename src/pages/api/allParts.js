@@ -13,7 +13,7 @@
 import clientPromise from "../../../lib/mongodb";
 import axios from "axios";
 
-export default async (req, res) => {
+export default async function (req, res) {
   try {
     if (req.method === "POST") {
       const client = await clientPromise;
@@ -26,4 +26,4 @@ export default async (req, res) => {
   } catch (e) {
     console.error(e);
   }
-};
+}
