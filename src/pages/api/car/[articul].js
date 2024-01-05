@@ -1,6 +1,6 @@
 import clientPromise from "../../../../lib/mongodb";
 
-export default async function (req, res) => {
+export default async function (req, res) {
   try {
     const client = await clientPromise;
     const db = client.db("parts_list");
@@ -12,7 +12,7 @@ export default async function (req, res) => {
     const skip = (page - 1) * limit;
     // console.log(articul);
     // console.log(page);
-   // let regexp = new RegExp(`${query[0]}`, "ig");
+    // let regexp = new RegExp(`${query[0]}`, "ig");
     const modelParts = await db
       .collection("parts")
       .find({ Articul: articul }, "-createdAt -updatedAt", {
@@ -30,7 +30,7 @@ export default async function (req, res) => {
         // .find({ Articul: articul })
         // .find({ $text: { $search: articul } })
         // .find({ $text: { $search: regexp } })
-       // .find({ Part_Name: { $regex: regexp } })
+        // .find({ Part_Name: { $regex: regexp } })
         .limit(limit)
         .skip(skip)
         // .find({ $text: { $search: \ articul \ } })
@@ -38,7 +38,7 @@ export default async function (req, res) => {
 
       const count = await db
         .collection("parts")
-       // .find({ Part_Name: { $regex: regexp } })
+        // .find({ Part_Name: { $regex: regexp } })
         .count();
 
       console.log("parts", parts);
@@ -51,4 +51,4 @@ export default async function (req, res) => {
   } catch (e) {
     console.error(e);
   }
-};
+}
