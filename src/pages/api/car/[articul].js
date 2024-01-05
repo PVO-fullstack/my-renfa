@@ -12,7 +12,7 @@ export default async function (req, res) => {
     const skip = (page - 1) * limit;
     // console.log(articul);
     // console.log(page);
-    let regexp = new RegExp(`${query[0]}`, "ig");
+   // let regexp = new RegExp(`${query[0]}`, "ig");
     const modelParts = await db
       .collection("parts")
       .find({ Articul: articul }, "-createdAt -updatedAt", {
@@ -38,7 +38,7 @@ export default async function (req, res) => {
 
       const count = await db
         .collection("parts")
-        .find({ Part_Name: { $regex: regexp } })
+       // .find({ Part_Name: { $regex: regexp } })
         .count();
 
       console.log("parts", parts);
