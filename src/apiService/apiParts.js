@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+// import { init } from "next/dist/compiled/@vercel/og/satori";
 
 // const API_URL = "http://localhost:3000";
 // const API_URL = "https://renfa-api.onrender.com";
@@ -20,9 +21,6 @@ const token = {
 };
 
 export const getAllParts = async () => {
-  // localStorage.setItem("token", JSON.stringify(res.data.token));
-  // const tokenLs = await JSON.parse(localStorage.getItem("token"));
-  // await token.set(tokenLs);
   const res = await axios.get(`${API_URL}/api/parts`);
   return res.data;
 };
@@ -35,17 +33,24 @@ export const getModelBrand = async (brand) => {
   return res.data;
 };
 
-export const getModel = async (model) => {
-  // localStorage.setItem("token", JSON.stringify(res.data.token));
-  // const tokenLs = await JSON.parse(localStorage.getItem("token"));
-  // await token.set(tokenLs);
-  const res = await axios.get(`${API_URL}/api/${model}`);
-  return res.data;
+export const getModel = async (model, page = 1, limit = 6, init) => {
+  const res = await fetch(
+    `${API_URL}/api/${model}?page=${page}&limit=${limit}`,
+    init
+  );
+
+  const data = await res.json();
+  return data;
 };
 
-export const getOnePart = async (articul) => {
-  const res = await axios.get(`${API_URL}/api/car/${articul}`);
-  return res.data;
+export const getOnePart = async (articul, page = 1, limit = 6, init) => {
+  const res = await fetch(
+    `${API_URL}/api/car/${articul}?page=${page}&limit=${limit}`,
+    init
+  );
+
+  const data = await res.json();
+  return data;
 };
 
 export const getAllModel = async (model) => {
