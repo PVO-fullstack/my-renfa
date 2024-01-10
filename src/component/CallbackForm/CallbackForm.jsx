@@ -12,7 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import messages from "@/data/telegram.json";
 import sectionData from "@/data/contactSection.json";
 import { ToastContainer } from "react-toastify";
-import css from "./CallbackForm.module.scss";
+import style from "./CallbackForm.module.scss";
+import { Thanks } from "../New/Thanks/Thanks";
 
 const { title, contactsBlock } = sectionData;
 
@@ -24,6 +25,7 @@ const {
 
 export const CallbackForm = ({ className }) => {
   const [isPending, setIsPending] = useState(false);
+  const [send, setSend] = useState(false);
   const {
     register,
     handleSubmit,
@@ -41,6 +43,8 @@ export const CallbackForm = ({ className }) => {
 
   console.log("isPanding", isPending);
 
+  console.log("send", send);
+
   const onSubmit = async (data) => {
     try {
       setIsPending(true);
@@ -56,7 +60,8 @@ export const CallbackForm = ({ className }) => {
           render() {
             console.log("Da");
             reset({ name: "", phone: "", message: "" });
-            return messages.queryResolved;
+            setSend(true);
+            return;
           },
         },
         error: {
@@ -73,57 +78,69 @@ export const CallbackForm = ({ className }) => {
 
   return (
     <>
-      <form
-        className={`flex flex-col max-w-[424px] p-[16px] md:px-[64px] md:py-[36px] rounded-[24px] bg-block ${css.form}`}
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-      >
-        <Input
-          className="mb-[-3px]"
-          name="name"
-          labelText={name.labelText}
-          placeholderText={name.placeholderText}
-          type="name"
-          setValue={setValue}
-          register={register}
-          errors={errors}
-          errorMessages={name.errorMessages}
-        />
+      <div className={style.conteiner}>
+        {!send ? (
+          <div className={style.form_conteiner}>
+            <h1 className={style.title}>
+              Задайте своє питання – Ми готові допомогти!
+            </h1>
+            <form
+              className={`flex flex-col max-w-[424px] p-[16px] md:px-[64px] md:py-[36px] rounded-[24px] bg-block ${style.form}`}
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+            >
+              <div className={style.input_conteiner}>
+                <Input
+                  className="mb-[-3px]"
+                  name="name"
+                  labelText={name.labelText}
+                  placeholderText={name.placeholderText}
+                  type="name"
+                  setValue={setValue}
+                  register={register}
+                  errors={errors}
+                  errorMessages={name.errorMessages}
+                />
+                <Input
+                  className="mb-[-3px]"
+                  name="phone"
+                  labelText={phone.labelText}
+                  placeholderText={phone.placeholderText}
+                  type="phone"
+                  setValue={setValue}
+                  register={register}
+                  errors={errors}
+                  errorMessages={phone.errorMessages}
+                />
+              </div>
+              <InputMessage
+                className="mb-[-3px]"
+                name="message"
+                labelText={message.labelText}
+                placeholderText={message.placeholderText}
+                setValue={setValue}
+                register={register}
+                errors={errors}
+                errorMessages={message.errorMessages}
+              />
 
-        <Input
-          className="mb-[-3px]"
-          name="phone"
-          labelText={phone.labelText}
-          placeholderText={phone.placeholderText}
-          type="phone"
-          setValue={setValue}
-          register={register}
-          errors={errors}
-          errorMessages={phone.errorMessages}
-        />
-        <InputMessage
-          className="mb-[-3px]"
-          name="message"
-          labelText={message.labelText}
-          placeholderText={message.placeholderText}
-          setValue={setValue}
-          register={register}
-          errors={errors}
-          errorMessages={message.errorMessages}
-        />
-
-        <Button
-          className="w-full md:w-[147px] mt-[5px] md:ml-auto"
-          disabled={isPending}
-        >
-          {buttonSubmit.labelText}
-        </Button>
-      </form>
-      <ToastContainer
-        theme="colored"
-        pauseOnFocusLoss={false}
-        pauseOnHover={false}
-      />
+              <Button
+                className="w-full md:w-[147px] mt-[5px] md:ml-auto"
+                disabled={isPending}
+              >
+                {buttonSubmit.labelText}
+              </Button>
+            </form>
+            <ToastContainer
+              theme="colored"
+              pauseOnFocusLoss={false}
+              pauseOnHover={false}
+            />
+          </div>
+        ) : (
+          <Thanks />
+        )}
+      </div>
     </>
   );
 };

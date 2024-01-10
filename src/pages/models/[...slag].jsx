@@ -3,10 +3,12 @@ import { OnePart } from "@/component/New/OnePart/OnePart";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-export default function Parts() {
+export default function Parts({ params }) {
   const [part, setPart] = useState([]);
   const [model, setModel] = useState([]);
   const router = useRouter();
+
+  // console.log("params", params.slag);
 
   useEffect(() => {
     const getData = async () => {
@@ -17,19 +19,5 @@ export default function Parts() {
     getData();
   }, [router.query.slag]);
 
-  console.log("Model", model);
-
-  const getParts = (parts) => {
-    setPart(parts);
-  };
-
-  return (
-    <>
-      {model && model.length < 3 ? (
-        <PartListComponent modelName={model} getParts={getParts} />
-      ) : (
-        <OnePart />
-      )}
-    </>
-  );
+  return <>{model && model.length < 3 ? <PartListComponent /> : <OnePart />}</>;
 }

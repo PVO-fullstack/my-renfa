@@ -4,50 +4,38 @@ export default async function (req, res) {
   try {
     const client = await clientPromise;
     const db = client.db("parts_list");
-    const { articul, limit = 6 } = req.query;
-    // const {  } = req.query;
-    const query = articul.split("page");
-    // console.log("query", query);
-    const page = query[1] || 1;
+    const { articul, page, limit } = req.query;
     const skip = (page - 1) * limit;
-    // console.log(articul);
-    // console.log(page);
-    let regexp = new RegExp(`${query[0]}`, "ig");
+    let regexp = new RegExp(`${articul}`, "ig");
     const modelParts = await db
       .collection("parts")
-      .find({ Articul: articul }, "-createdAt -updatedAt", {
-        skip,
-        limit,
-      })
-      //   .find({ $text: { $search: "Фильтр" } })
+      .find({ Articul: { $regex: regexp } }, { skip, limit })
+      .limit(parseInt(limit))
+      .skip(skip)
       .toArray();
 
-    // console.log(modelParts);
+    const count = await db
+      .collection("parts")
+      .find({ Articul: { $regex: regexp } })
+      .count();
 
     if (modelParts.length === 0) {
       const parts = await db
         .collection("parts")
-        // .find({ Articul: articul })
-        // .find({ $text: { $search: articul } })
-        // .find({ $text: { $search: regexp } })
-        .find({ Part_Name: { $regex: regexp } })
-        .limit(limit)
+        .find({ Part_Name: { $regex: regexp } }, { skip, limit })
+        .limit(parseInt(limit))
         .skip(skip)
-        // .find({ $text: { $search: \ articul \ } })
         .toArray();
 
       const count = await db
         .collection("parts")
         .find({ Part_Name: { $regex: regexp } })
         .count();
-
-      console.log("parts", parts);
-      console.log("count", count);
       res.json({ parts: parts, count: count });
       return;
     }
 
-    res.json(modelParts);
+    res.json({ modelParts: modelParts, count: count });
   } catch (e) {
     console.error(e);
   }

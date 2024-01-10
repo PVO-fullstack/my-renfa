@@ -4,6 +4,7 @@
     gap: 30px;
 
     @media screen and (min-width: 1200px) {
+        flex-direction: row;
         padding-block: 50px;
         gap: 38px;
         // padding: 10px 10px 10px 0;
@@ -29,15 +30,6 @@
     }
 
     @media screen and (min-width:1280px) {
-        display: grid;
-        // max-width: calc(100vw - 48px);
-        grid-template-columns: 30vw 30vw;
-        grid-gap: 1rem;
-        /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); */
-        // grid-gap: 20px;
-        padding: 0;
-        list-style: none;
-        // margin-right: 50px;
-
+        // padding: 0;
     }
 }

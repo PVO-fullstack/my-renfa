@@ -1,6 +1,6 @@
 import { textareaNormalize } from "@/utils";
 import PropTypes from "prop-types";
-import css from "./inputMessage.module.scss";
+import style from "./inputMessage.module.scss";
 
 export const InputMessage = ({
   labelText = "",
@@ -20,12 +20,12 @@ export const InputMessage = ({
 
   return (
     <label
-      className={`flex flex-col gap-[4px] text-[16px] leading-[1.25] font-[400] text-primary bg-transparent ${css.label}`}
+      className={`flex flex-col gap-[4px] text-[16px] leading-[1.25] font-[400] bg-transparent ${style.label}`}
     >
       {labelText}
       <textarea
         className={` ${
-          css.text
+          style.text
         } w-full h-[169px] py-[8px] px-[12px] rounded-[12px] bg-primaryBg placeholder:text-placeholder focus-visible:outline-none resize-none ${
           errors[name] && "text-error"
         }`}
@@ -44,7 +44,7 @@ export const InputMessage = ({
       ></textarea>
 
       <span
-        className={`text-[12px] font-[500] text-error leading-[1.2] h-[15px] self-end ${css.error}`}
+        className={`text-[12px] font-[500] text-error leading-[1.2] h-[15px] self-end ${style.error}`}
       >
         {errors[name]?.message}
       </span>

@@ -10,7 +10,13 @@
     padding: 8px 12px;
     border-radius: 12px;
     background-color: transparent;
-    color: black;
+    color: #1E1E1E;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+    letter-spacing: 0.4px;
     resize: none;
 
     &:focus-visible {
@@ -18,19 +24,25 @@
     }
 
     &::placeholder {
-        color: aqua;
+        color: #6c6c6c;
+        opacity: 0.5;
     }
 
     // w-full h-[169px] py-[8px] px-[12px] rounded-[12px] bg-primaryBg placeholder:text-placeholder focus-visible:outline-none resize-none
 }
 
 .label {
+    color: #1E1E1E;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    /* 142.857% */
+    letter-spacing: 0.4px;
+    // background-color: white;
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-size: 16px;
-    line-height: 1.25;
-    font-weight: 400;
     background-color: transparent;
 }
 

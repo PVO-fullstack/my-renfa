@@ -22,6 +22,7 @@ import { SearchBtn } from "../SearchBtn/SearchBtn";
 import { MenuIcon } from "../MenuIcon/MenuIcon";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { SearchIcon } from "../SearchIcon/SearchIcon";
+import { usePathname, useSearchParams } from "next/navigation";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -29,9 +30,15 @@ export const Header = () => {
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const search = useSearchParams();
+
+  const get = search.getAll("query").toString();
 
   const userName = useSelector(selectUser);
   const isLoad = useSelector(selectLoad);
+
+  console.log("pathname", pathname, get);
 
   console.log("user", user);
 

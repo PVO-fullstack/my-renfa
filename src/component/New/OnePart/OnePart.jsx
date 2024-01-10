@@ -9,6 +9,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { Plus } from "@/component/Svg/Plus";
 import { Minus } from "@/component/Svg/Minus";
+import { ArrowBack } from "@/component/Svg/ArrowBack";
 
 export const OnePart = () => {
   const [onePart, setOnePart] = useState();
@@ -102,7 +103,7 @@ export const OnePart = () => {
               pathname: `/models/${model[0]}/${model[1]}`,
             }}
           >
-            &#8592;
+            <ArrowBack />
           </Link>
         </div>
         {onePart && (

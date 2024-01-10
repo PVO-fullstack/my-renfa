@@ -4,21 +4,25 @@ import faw from "@/data/faw.json";
 import jac from "@/data/jac.json";
 import geely from "@/data/geely.json";
 import chery from "@/data/chery.json";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Filter } from "../Filter/Filter";
 import { getOnePart } from "@/apiService/apiParts";
 import { Part } from "@/component/Part/Part";
 import Link from "next/link";
 import style from "./FindArticul.module.scss";
+import { usePathname, useSearchParams } from "next/navigation";
+import { Pagination } from "../Pagination/Pagination";
+import { SortPanel } from "../SortPanel/SortPanel";
+import { PartListItem } from "../PartListItem/PartListItem";
 
 export const FindArticul = () => {
   const router = useRouter();
   const [first, setFirst] = useState();
   const [onePart, setOnePart] = useState();
+  const [count, setCount] = useState();
   const [page, setPage] = useState(1);
-  const allCars = [mg, chery, faw, geely, jac];
-  // const q = router.query.slag;
-  // const slag = q.split("&");
+  const [limit, setLimit] = useState(6);
+  const pathName = usePathname();
 
   useEffect(() => {
     const takeBrand = async () => {
@@ -26,19 +30,38 @@ export const FindArticul = () => {
       console.log("brand", articul);
       setFirst(articul);
       if (articul) {
-        const part = await getOnePart(articul);
-        console.log("part", part);
-        setOnePart(part.parts);
+        if (articul !== first) {
+          setPage(1);
+        }
+
+        const part = await getOnePart(articul, page || 1, limit || 6);
+        setOnePart(part.modelParts || part.parts);
+        setCount(part.count);
       }
     };
     takeBrand();
-  }, [router.query.slag]);
+  }, [first, limit, page, router.query.slag]);
+
+  const createQueryString = useCallback((name, value) => {
+    const params = new URLSearchParams();
+    params.set(name, value);
+
+    return params.toString();
+  }, []);
+
+  const handleClickPage = (pege) => {
+    console.log("pege", pege);
+    setPage(pege);
+    router.push(
+      pathName + "?" + createQueryString("page", pege) + "limit=" + limit
+    );
+  };
 
   const handleNext = () => {
-    const slag = first.split("page");
-    const newSlag = slag[0] + "page" + (page + 1);
-    setPage(page + 1);
-    router.push(`/search/${newSlag}`);
+    setPage(page + 3);
+    router.push(
+      pathName + "?" + createQueryString("page", page + 3) + "limit=" + limit
+    );
   };
 
   console.log("first", first);
@@ -47,24 +70,28 @@ export const FindArticul = () => {
       {first && (
         <div className={style.carList}>
           <Filter />
-
           <div className={style.gallery}>
+            <SortPanel />
             {onePart &&
               onePart.map((part) => (
-                <Link
-                  href={{
-                    pathname: `/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
-                  }}
-                  key={part._id}
-                >
-                  <Part part={part} />
-                </Link>
+                <PartListItem key={part._id} part={part} />
+                // <Link
+                //   href={{
+                //     pathname: `/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
+                //   }}
+                //   key={part._id}
+                // >
+                //   <Part part={part} />
+                // </Link>
               ))}
+            <Pagination
+              pageClick={handleClickPage}
+              next={handleNext}
+              limit={limit}
+              count={count}
+              page={page}
+            />
           </div>
-          <button onClick={handleNext} type="button">
-            Next
-          </button>
-          {/* <Brand title={first.title} data={first.cars} /> */}
         </div>
       )}
     </>
