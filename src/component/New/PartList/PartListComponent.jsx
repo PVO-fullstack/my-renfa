@@ -33,7 +33,7 @@ export const PartListComponent = () => {
       }
     };
     getData();
-  }, [model, router.query.slag]);
+  }, [limit, model, page, router.query.slag]);
 
   console.log("modelList", model);
 

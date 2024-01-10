@@ -64,36 +64,55 @@ export const FindArticul = () => {
     );
   };
 
+  const handlePrev = () => {
+    if (page < 4) {
+      setPage(1);
+      router.push(
+        pathName + "?" + createQueryString("page", 1) + "limit=" + limit
+      );
+      return;
+    }
+    setPage(page - 3);
+    router.push(
+      pathName + "?" + createQueryString("page", page - 3) + "limit=" + limit
+    );
+  };
+
   console.log("first", first);
   return (
-    <>
-      {first && (
-        <div className={style.carList}>
-          <Filter />
-          <div className={style.gallery}>
-            <SortPanel />
-            {onePart &&
-              onePart.map((part) => (
-                <PartListItem key={part._id} part={part} />
-                // <Link
-                //   href={{
-                //     pathname: `/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
-                //   }}
-                //   key={part._id}
-                // >
-                //   <Part part={part} />
-                // </Link>
-              ))}
-            <Pagination
-              pageClick={handleClickPage}
-              next={handleNext}
-              limit={limit}
-              count={count}
-              page={page}
-            />
+    <div className={style.conteiner}>
+      <h1 className={style.title}>Пошуковий запит: &quot;{first}&quot;</h1>
+      {/* <SortPanel /> */}
+      <ul className={style.ImageGallery}>
+        {first && (
+          <div className={style.carList}>
+            <Filter />
+            <div className={style.gallery}>
+              <SortPanel />
+              {onePart &&
+                onePart.map((part) => (
+                  <PartListItem key={part._id} part={part} />
+                  // <Link
+                  //   href={{
+                  //     pathname: `/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
+                  //   }}
+                  //   key={part._id}
+                  // >
+                  //   <Part part={part} />
+                  // </Link>
+                ))}
+            </div>
           </div>
-        </div>
-      )}
-    </>
+        )}
+      </ul>
+      <Pagination
+        pageClick={handleClickPage}
+        nextPage={handleNext}
+        prevPage={handlePrev}
+        limit={limit}
+        count={count}
+        page={page}
+      />
+    </div>
   );
 };

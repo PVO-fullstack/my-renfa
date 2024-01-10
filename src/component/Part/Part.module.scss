@@ -30,6 +30,7 @@
 }
 
 .img_conteiner {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -45,10 +46,16 @@
     }
 }
 
+.brand {
+    position: absolute;
+    top: 0;
+    color: violet;
+}
+
 .imageGalleryItem_image {
     width: 108px;
     height: 108px;
-    object-fit: cover;
+    object-fit: contain;
 
     @media screen and (min-width:1280px) {
 

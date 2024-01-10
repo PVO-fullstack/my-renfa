@@ -11,7 +11,7 @@ import { Plus } from "@/component/Svg/Plus";
 import { Minus } from "@/component/Svg/Minus";
 import { ArrowBack } from "@/component/Svg/ArrowBack";
 
-export const OnePart = () => {
+export const OnePart = ({ part }) => {
   const [onePart, setOnePart] = useState();
   const [showModal, setShowModal] = useState(false);
   const [orderParts, setOrderParts] = useState([]);
@@ -19,14 +19,17 @@ export const OnePart = () => {
   const [model, setModel] = useState([]);
   const [count, setCount] = useState(1);
   const router = useRouter();
+  const modelName = router.query.slag;
   console.log("model", model);
 
   useEffect(() => {
     const getPart = async () => {
-      const modelName = await router.query.slag;
-      if (modelName) {
-        const part = await getOnePart(modelName[2]);
-        setOnePart(part[0]);
+      if (modelName || part) {
+        const part = await getOnePart(modelName[2] || part);
+        console.log("part", part);
+        if (part) {
+          setOnePart(part?.modelParts[0] || part);
+        }
         setModel(modelName);
         console.log("onepart", part);
       }
@@ -36,7 +39,7 @@ export const OnePart = () => {
     if (order) {
       setOrderParts(JSON.parse(order));
     }
-  }, [router.query.slag]);
+  }, []);
 
   const openModal = () => {
     setShowModal(true);
@@ -93,19 +96,19 @@ export const OnePart = () => {
         </Head>
       )}
       <div className={style.conteiner}>
-        <div className={style.btn_conteiner}>
+        <Link
+          className={style.btn_conteiner}
+          href={{
+            pathname: `/models/${model[0]}/${model[1]}`,
+          }}
+        >
+          {/* <div className={style.btn_conteiner}> */}
           <p>
             Повернутись до: {model[0]} {model[1]}
           </p>
-          <Link
-            className={style.link}
-            href={{
-              pathname: `/models/${model[0]}/${model[1]}`,
-            }}
-          >
-            <ArrowBack />
-          </Link>
-        </div>
+          <ArrowBack className={style.link} />
+          {/* </div> */}
+        </Link>
         {onePart && (
           <div className={style.partCard}>
             <Image
@@ -122,8 +125,8 @@ export const OnePart = () => {
                 <p className={style.text}>Код: {onePart.Articul}</p>
                 <p className={style.text}>Країна виробник: {onePart.Country}</p>
                 <p className={style.text}>
-                  Встановлюється на автомобілі: {model[0]}
-                  {onePart.Model.join(" ")}
+                  Встановлюється на автомобілі: {model[0]}{" "}
+                  {onePart.Model.join(", ")}
                 </p>
               </div>
               <div className={style.name_conteiner}>

@@ -14,10 +14,18 @@ export default function Parts({ params }) {
     const getData = async () => {
       const modelName = await router.query.slag;
       console.log("modelName", modelName);
-      setModel(modelName);
+      await setModel(modelName);
     };
     getData();
   }, [router.query.slag]);
 
-  return <>{model && model.length < 3 ? <PartListComponent /> : <OnePart />}</>;
+  return (
+    <>
+      {model && model.length < 3 ? (
+        <PartListComponent />
+      ) : (
+        model && <OnePart part={model[2]} />
+      )}
+    </>
+  );
 }

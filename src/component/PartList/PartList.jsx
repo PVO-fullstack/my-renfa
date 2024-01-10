@@ -80,6 +80,20 @@ export const PartList = () => {
       pathName + "?" + createQueryString("page", page + 3) + "limit=" + limit
     );
   };
+
+  const handlePrev = () => {
+    if (page < 4) {
+      setPage(1);
+      router.push(
+        pathName + "?" + createQueryString("page", 1) + "limit=" + limit
+      );
+      return;
+    }
+    setPage(page - 3);
+    router.push(
+      pathName + "?" + createQueryString("page", page - 3) + "limit=" + limit
+    );
+  };
   // console.log("part", part);
   // getAllParts(part);
 
@@ -139,7 +153,8 @@ export const PartList = () => {
       >
         <Pagination
           pageClick={handleClickPage}
-          next={handleNext}
+          nextPage={handleNext}
+          prevPage={handlePrev}
           limit={limit}
           count={count}
           page={page}

@@ -16,6 +16,9 @@ export const Part = ({ part }) => {
           width={100}
           height={100}
         />
+        <p className={style.brand}>
+          {part.Brand} {part.Model[0]}
+        </p>
       </div>
       <div className={style.desc_conteiner}>
         <p className={style.text}>{part.Part_Name}</p>
