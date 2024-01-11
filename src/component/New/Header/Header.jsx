@@ -91,7 +91,7 @@ export const Header = () => {
         <Brand model={model} />
         <div>
           <Link className={style.link} href="/contacts">
-            Contacts
+            Контакти
           </Link>
         </div>
       </div>

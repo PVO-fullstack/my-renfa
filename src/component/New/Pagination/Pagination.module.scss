@@ -1,4 +1,30 @@
 .conteiner {
     display: flex;
-    gap: 20px
+    // gap: 20px
+}
+
+.dot {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    padding: 16px 18px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #1E1E1E;
+    color: #fff;
+}
+
+.none {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    padding: 16px 18px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #1E1E1E
 }

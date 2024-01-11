@@ -5,6 +5,7 @@ import { PartList } from "@/component/PartList/PartList";
 import style from "./PartListComponent.module.scss";
 import { useRouter } from "next/router";
 import { getModel } from "@/apiService/apiParts";
+import { PartsLayout } from "../PartsLayout/PartsLayout";
 
 export const PartListComponent = () => {
   const [model, setModel] = useState([]);
@@ -47,10 +48,11 @@ export const PartListComponent = () => {
           key="desc"
         />
       </Head>
-      <div className={style.carList}>
+      <PartsLayout model={model[1]} open={model[0]} />
+      {/* <div className={style.carList}>
         <Filter model={model[1]} open={model[0]} />
-        <PartList filtredParts={filtredParts} count={count} />
-      </div>
+        <PartList />
+      </div> */}
     </div>
   );
 };

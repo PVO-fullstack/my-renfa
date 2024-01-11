@@ -5,7 +5,7 @@ import style from "./Part.module.scss";
 import { KURS } from "@/variable/variable";
 import { Button } from "../Button";
 
-export const Part = ({ part }) => {
+export const Part = ({ part, find }) => {
   return (
     <li className={style.ImageGalleryItem}>
       <div className={style.img_conteiner}>
@@ -16,9 +16,11 @@ export const Part = ({ part }) => {
           width={100}
           height={100}
         />
-        <p className={style.brand}>
-          {part.Brand} {part.Model[0]}
-        </p>
+        {find && (
+          <p className={style.brand}>
+            {part.Brand} {part.Model[0]}
+          </p>
+        )}
       </div>
       <div className={style.desc_conteiner}>
         <p className={style.text}>{part.Part_Name}</p>

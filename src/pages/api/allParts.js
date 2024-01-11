@@ -10,20 +10,20 @@
 //   return NextResponse.json(data);
 // }
 
-import clientPromise from "../../../lib/mongodb";
-import axios from "axios";
+// import clientPromise from "../../../lib/mongodb";
+// import axios from "axios";
 
-export default async function (req, res) {
-  try {
-    if (req.method === "POST") {
-      const client = await clientPromise;
-      const db = client.db("parts_list");
+// export default async function (req, res) {
+//   try {
+//     if (req.method === "POST") {
+//       const client = await clientPromise;
+//       const db = client.db("parts_list");
 
-      const parts = await db.insertMany({ ...req.body });
+//       const parts = await db.insertMany({ ...req.body });
 
-      res.json(parts);
-    }
-  } catch (e) {
-    console.error(e);
-  }
-}
+//       res.json(parts);
+//     }
+//   } catch (e) {
+//     console.error(e);
+//   }
+// }

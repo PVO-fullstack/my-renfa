@@ -1,5 +1,5 @@
-import { FindArticul } from "@/component/New/FindArticul/FindArticul";
+import { PartsLayout } from "@/component/New/PartsLayout/PartsLayout";
 
 export default function CheryList() {
-  return <FindArticul />;
+  return <PartsLayout find={true} />;
 }

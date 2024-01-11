@@ -7,7 +7,7 @@ import Link from "next/link";
 export const FilterItem = ({ data, fara, selected }) => {
   const [open, setOpen] = useState(false);
 
-  console.log("selected", selected);
+  // console.log("selected", selected);
 
   useEffect(() => {
     if (fara) {
@@ -19,7 +19,7 @@ export const FilterItem = ({ data, fara, selected }) => {
     setOpen(!open);
   };
 
-  console.log("data", fara);
+  // console.log("data", fara);
 
   const brand = data.cars;
 

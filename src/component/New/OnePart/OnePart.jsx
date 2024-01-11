@@ -11,7 +11,7 @@ import { Plus } from "@/component/Svg/Plus";
 import { Minus } from "@/component/Svg/Minus";
 import { ArrowBack } from "@/component/Svg/ArrowBack";
 
-export const OnePart = ({ part }) => {
+export const OnePart = ({ partName }) => {
   const [onePart, setOnePart] = useState();
   const [showModal, setShowModal] = useState(false);
   const [orderParts, setOrderParts] = useState([]);
@@ -19,16 +19,16 @@ export const OnePart = ({ part }) => {
   const [model, setModel] = useState([]);
   const [count, setCount] = useState(1);
   const router = useRouter();
-  const modelName = router.query.slag;
   console.log("model", model);
 
   useEffect(() => {
     const getPart = async () => {
-      if (modelName || part) {
-        const part = await getOnePart(modelName[2] || part);
+      const modelName = router.query.slag;
+      if (modelName || partName) {
+        const part = await getOnePart(modelName[2] || partName);
         console.log("part", part);
-        if (part) {
-          setOnePart(part?.modelParts[0] || part);
+        if (part && part.modelParts) {
+          setOnePart(part.modelParts[0] || partName);
         }
         setModel(modelName);
         console.log("onepart", part);
@@ -39,7 +39,10 @@ export const OnePart = ({ part }) => {
     if (order) {
       setOrderParts(JSON.parse(order));
     }
-  }, []);
+    return () => {
+      console.log("first");
+    };
+  }, [partName, router.query.slag]);
 
   const openModal = () => {
     setShowModal(true);

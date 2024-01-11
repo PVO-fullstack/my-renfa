@@ -92,14 +92,6 @@ export const FindArticul = () => {
               {onePart &&
                 onePart.map((part) => (
                   <PartListItem key={part._id} part={part} />
-                  // <Link
-                  //   href={{
-                  //     pathname: `/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
-                  //   }}
-                  //   key={part._id}
-                  // >
-                  //   <Part part={part} />
-                  // </Link>
                 ))}
             </div>
           </div>

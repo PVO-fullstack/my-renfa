@@ -9,6 +9,7 @@ import chery from "@/data/chery.json";
 import { FilterItem } from "../New/FilterItem/FilterItem";
 import { useEffect, useState } from "react";
 import { Filter } from "../New/Filter/Filter";
+import { BrandLayout } from "../New/BrandLayout/BrandLayout";
 
 export const CarOfBrend = () => {
   const router = useRouter();
@@ -47,22 +48,9 @@ export const CarOfBrend = () => {
   return (
     <>
       {first.title && (
-        <div className={style.carList}>
-          <Filter open={first.title} />
-          {/* <div className={style.conteiner}>
-            <h2>Фільтер</h2>
-            <div className={style.brand_list}>
-              {allCars.map((car) => (
-                <FilterItem
-                  key={car.title}
-                  fara={first.title === car.title}
-                  data={car}
-                />
-              ))}
-            </div>
-          </div> */}
+        <BrandLayout open={first.title}>
           <Brand title={first.title} data={first.cars} />
-        </div>
+        </BrandLayout>
       )}
     </>
   );

@@ -13,7 +13,7 @@ export const Pagination = ({
   const [pages, setPages] = useState();
   const [countPages, setCountPages] = useState();
 
-  console.log("prev", prevPage, nextPage);
+  console.log("prev", page);
 
   useEffect(() => {
     const countOfPages = count / limit;
@@ -22,16 +22,21 @@ export const Pagination = ({
     for (let i = 1; i <= Math.ceil(countOfPages); i++) {
       allPages.push(i);
     }
-    const onePaginate = allPages.splice(page - 1, 3);
-    setPages(onePaginate);
+    if (allPages.length > 3) {
+      const onePaginate = allPages.splice(page - 1, 3);
+      setPages(onePaginate);
+      return;
+    }
+    setPages(allPages);
   }, [count, limit, page, paginate]);
 
-  console.log("count", pages, countPages);
+  //   console.log("count", pages, countPages);
 
   return (
     <div className={style.conteiner}>
       {countPages > 3 && (
         <button
+          className={style.none}
           disabled={pages[0] === 1}
           type="button"
           onClick={() => prevPage()}
@@ -40,12 +45,13 @@ export const Pagination = ({
         </button>
       )}
       {pages?.map((item) => (
-        <div key={item}>
+        <div className={item === page ? style.dot : style.none} key={item}>
           <p onClick={() => pageClick(item)}>{item}</p>
         </div>
       ))}
       {countPages > 3 && (
         <button
+          className={style.none}
           disabled={
             pages[0] === countPages ||
             pages[1] === countPages ||
