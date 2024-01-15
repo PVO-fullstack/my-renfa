@@ -31,17 +31,17 @@
 }
 
 .brand_logo {
-    display: flex;
+    // display: flex;
     width: 98px;
-    height: 58px;
-    padding: 2.674px 2.649px;
-    justify-content: center;
-    align-items: center;
+    // height: 58px;
+    // padding: 2.674px 2.649px;
+    // justify-content: center;
+    // align-items: center;
 
     @media screen and (min-width:768px) {
         width: 175px;
-        height: 103px;
-        padding: 4.749px 4.73px;
+        // height: 103px;
+        // padding: 4.749px 4.73px;
 
     }
 }

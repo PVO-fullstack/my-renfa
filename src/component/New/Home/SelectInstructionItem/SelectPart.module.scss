@@ -1,5 +1,7 @@
 .conteiner {
+    position: relative;
     display: flex;
+
     gap: 25px;
     align-items: center;
     padding-left: 10px;
@@ -16,11 +18,12 @@
 
 .square {
     display: flex;
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
     justify-content: center;
     align-items: center;
-    width: 58.11px;
-    height: 58.11px;
-    transform: rotate(-45deg);
+    width: 82px;
+    height: 82px;
+    // transform: rotate(-45deg);
     flex-shrink: 0;
     border-radius: 4px;
     background: #1E1E1E;
@@ -29,7 +32,31 @@
         width: 90px;
         height: 90px;
     }
+
+    // &::before {
+    //     content: "";
+    //     position: absolute;
+    //     height: 60px;
+    //     border: 1px dashed black;
+    //     display: inline-flex;
+    //     border-bottom: none;
+    //     left: 39px;
+    //     top: -60px;
+    // }
+
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     display: inline-flex;
+    //     border: 10px solid pink;
+    //     border-top: 10px solid black;
+    //     border-bottom: none;
+    //     left: 30px;
+    //     top: 0;
+    // }
+
 }
+
 
 .text {
     display: flex;

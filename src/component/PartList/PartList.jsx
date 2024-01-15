@@ -118,8 +118,9 @@ export const PartList = ({ find }) => {
       ) : (
         <div className={style.conteiner}>
           <h1 className={style.title}>
-            Запчастини
-            {/* {`${model[0]} ${model[1]}`} */}
+            {find
+              ? `Пошуковий запит: "${model}"`
+              : `Запчастини ${model[0]} ${model[1]}`}
           </h1>
           <SortPanel />
           <ul className={style.ImageGallery}>

@@ -7,9 +7,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Toaster />
-      <Header />
+      {/* <Header /> */}
       <div className={style.conteiner}>{children}</div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

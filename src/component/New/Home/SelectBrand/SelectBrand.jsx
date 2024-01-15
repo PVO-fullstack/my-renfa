@@ -23,8 +23,8 @@ export const SelectBrand = () => {
                 className={style.brand_logo}
                 alt={`Логотип ${item.brand}`}
                 src={item.src}
-                width={100}
-                height={100}
+                width={134}
+                height={82}
               />
             </div>
           </Link>

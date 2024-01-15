@@ -33,14 +33,16 @@
 .conteiner {
   padding-inline: 10px;
   background-color: #f6f7f9;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 390px) {
+  .conteiner {
     padding-inline: 30px;
   }
+}
 
-  @media screen and (min-width: 1280px) {
-    padding-inline: 76px;
-  }
+@media screen and (min-width: 1280px) {
+  padding-inline: 76px;
 }
 
 .description {

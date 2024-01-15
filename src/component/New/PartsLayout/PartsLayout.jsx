@@ -4,6 +4,7 @@ import { PartList } from "@/component/PartList/PartList";
 import { Filter } from "../Filter/Filter";
 
 export const PartsLayout = ({ model, open, find }) => {
+  console.log("model", model, open);
   return (
     <div className={style.carList}>
       <Filter model={model} open={open} />

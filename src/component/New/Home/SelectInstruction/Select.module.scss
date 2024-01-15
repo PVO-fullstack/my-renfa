@@ -9,7 +9,8 @@
 }
 
 .img {
-    transform: rotate(45deg);
+    // clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    // transform: rotate(45deg);
 
     @media screen and (min-width:768px) {
         width: 42px;
@@ -25,4 +26,38 @@
     @media screen and (min-width:768px) {
         gap: 109px;
     }
+}
+
+.arrow::before {
+    content: "";
+    position: absolute;
+    height: 60px;
+    border: 1px dashed black;
+    display: inline-flex;
+    border-bottom: none;
+    left: 50px;
+    top: -60px;
+
+}
+
+.next_arrow::before {
+    left: 50px;
+    top: -37px;
+}
+
+.arrow::after {
+    content: "";
+    position: absolute;
+    display: inline-flex;
+    border: 10px solid transparent;
+    border-top: 10px solid black;
+    border-bottom: none;
+    left: 42px;
+    top: 0;
+
+}
+
+.next_arrow::after {
+    left: 42px;
+    top: 25px;
 }

@@ -5,7 +5,7 @@ import style from "./Benefits.module.scss";
 
 export const Benefits = () => {
   return (
-    <div>
+    <div className={style.section_conteiner}>
       <h2 className={style.title}>Наші переваги</h2>
       <p className={style.description}>Якість, Гарантія та Безпечна Доставка</p>
       {benefits.map((item) => (
@@ -19,8 +19,10 @@ export const Benefits = () => {
               height={50}
             />
           </div>
-          <h3 className={style.title}>{item.title}</h3>
-          <p className={style.description}>{item.description}</p>
+          <div>
+            <h3 className={style.title}>{item.title}</h3>
+            <p className={style.description}>{item.description}</p>
+          </div>
         </div>
       ))}
     </div>

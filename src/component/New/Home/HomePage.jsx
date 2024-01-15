@@ -12,6 +12,7 @@ import { NewParts } from "./NewParts/NewParts";
 import { Order } from "./Order/Order";
 import { Says } from "./Says/Says";
 import says from "@/data/says.json";
+import { WorksInstruction } from "./WorksInstruction/WorksInstruction";
 
 export const HomePage = () => {
   const [parts, setParts] = useState([]);
@@ -21,9 +22,9 @@ export const HomePage = () => {
   useEffect(() => {
     const takeParts = async () => {
       const allParts = await getAllParts();
-      const newParts = allParts.slice(0, 32);
-      const popParts = allParts.slice(33, 65);
-      const viewParts = allParts.slice(66, 98);
+      const newParts = allParts.slice(0, 8);
+      const popParts = allParts.slice(8, 16);
+      const viewParts = allParts.slice(16, 24);
       console.log("newParts", newParts);
       setParts(newParts);
       setPopular(popParts);
@@ -55,6 +56,7 @@ export const HomePage = () => {
         slidesPerRow={1}
         parts={says}
       />
+      <WorksInstruction />
     </div>
   );
 };

@@ -47,6 +47,10 @@ img {
   }
 }
 
+/* .say {
+  padding-bottom: 50px;
+} */
+
 .slick-initialized.center .slick-slide > div {
   display: flex;
   flex-direction: column;
@@ -54,7 +58,7 @@ img {
 }
 
 .slick-list .slick-track {
-  height: 1180px;
+  height: 350px;
 }
 
 .say .slick-list .slick-track {

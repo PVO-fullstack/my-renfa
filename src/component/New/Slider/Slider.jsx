@@ -12,43 +12,43 @@ export const Slider = ({
   className = "center",
   title,
   rows = 2,
-  slidesPerRow = 4,
+  slidesPerRow = 1,
   says = false,
   // infinite = true,
   parts,
 }) => {
-  const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          display: "block",
-          position: "absolute",
-          width: "24px",
-          height: "24px",
-        }}
-        onClick={onClick}
-      />
-    );
-  };
+  // const SampleNextArrow = (props) => {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{
+  //         ...style,
+  //         display: "block",
+  //         position: "absolute",
+  //         width: "24px",
+  //         height: "24px",
+  //       }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // };
 
-  const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{
-          ...style,
-          display: "block",
-          width: "24px",
-          height: "24px",
-        }}
-        onClick={onClick}
-      />
-    );
-  };
+  // const SamplePrevArrow = (props) => {
+  //   const { className, style, onClick } = props;
+  //   return (
+  //     <div
+  //       className={className}
+  //       style={{
+  //         ...style,
+  //         display: "block",
+  //         width: "24px",
+  //         height: "24px",
+  //       }}
+  //       onClick={onClick}
+  //     />
+  //   );
+  // };
 
   console.log("parts", parts);
 
@@ -70,6 +70,7 @@ export const Slider = ({
           // height: "5px",
           borderRadius: "10px",
           padding: "5px",
+          bottom: "0",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>

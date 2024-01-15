@@ -1,0 +1,26 @@
+[
+    {
+        "src": "/call.svg",
+        "alt": "call",
+        "title": "Надійна Якість",
+        "description": "Ви дзвонете або надсилаєте запит"
+    },
+    {
+        "src": "/operator.svg",
+        "alt": "operator",
+        "title": "Гарантія 90 днів",
+        "description": "Ми підбираємо автозапчастини"
+    },
+    {
+        "src": "/cart.svg",
+        "alt": "cart",
+        "title": "Безпечна Доставка",
+        "description": "Ви вибираєте найкращий варіант"
+    },
+    {
+        "src": "/smile.svg",
+        "alt": "smile",
+        "title": "Безпечна Доставка",
+        "description": "Ви задоволені і щасливі"
+    }
+]

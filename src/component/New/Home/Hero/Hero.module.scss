@@ -1,9 +1,9 @@
 .conteiner {
     display: flex;
     flex-direction: column;
-    gap: 21px;
+    gap: 23px;
     background-color: #fff;
-    padding-block: 21px;
+    padding-block: 22px;
 
     @media screen and (min-width: 768px) {
         padding-block: 73px;
@@ -108,17 +108,17 @@
 }
 
 .brand_logo {
-    display: flex;
+    // display: flex;
     width: 43px;
-    height: 26px;
-    padding: 1.199px 1.162px;
-    justify-content: center;
-    align-items: center;
+    // height: 26px;
+    // padding: 1.199px 1.162px;
+    // justify-content: center;
+    // align-items: center;
 
     @media screen and (min-width: 768px) {
         width: 98px;
-        height: 58px;
-        padding: 2.674px 2.649px;
+        // height: 58px;
+        // padding: 2.674px 2.649px;
     }
 }
 

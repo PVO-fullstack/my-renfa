@@ -6,6 +6,7 @@ import { Car } from "@/component/Svg/Car";
 import { Car2 } from "@/component/Svg/Car2";
 import { Car3 } from "@/component/Svg/Car3";
 import { Section } from "../Section/Section";
+import { UpArrow } from "@/component/Svg/UpArrow";
 
 export const Select = () => {
   console.log("part", part);
@@ -15,10 +16,13 @@ export const Select = () => {
         <SelectPart part={part.first}>
           <Car className={style.img} />
         </SelectPart>
-        <SelectPart part={part.second}>
+        <SelectPart className={style.arrow} part={part.second}>
           <Car2 className={style.img} />
         </SelectPart>
-        <SelectPart part={part.third}>
+        <SelectPart
+          className={style.arrow + " " + style.next_arrow}
+          part={part.third}
+        >
           <Car3 className={style.img} />
         </SelectPart>
       </div>
