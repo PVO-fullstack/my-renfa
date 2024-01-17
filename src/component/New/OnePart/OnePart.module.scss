@@ -79,14 +79,14 @@
   }
 }
 
-.text {
-  color: #1E1E1E;
+// .text {
+//   color: #1E1E1E;
 
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
+//   font-size: 20px;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+// }
 
 .price {
   color: #1E1E1E;
@@ -142,6 +142,10 @@
     border: 3px solid green;
   }
 
+}
+
+.articul {
+  font-style: italic;
 }
 
 .btn {
@@ -218,6 +222,18 @@
 .count {
   color: #1E1E1E;
   font-size: 27px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text_conteiner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #1E1E1E;
+
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

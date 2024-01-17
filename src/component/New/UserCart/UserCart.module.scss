@@ -1,0 +1,30 @@
+.conteiner {
+    padding-block: 25px;
+}
+
+.conteiner_2 {
+    display: flex;
+    width: 300px;
+    padding: 20px 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    border-radius: 9px;
+    background: #FFF;
+}
+
+.sum {
+    display: flex;
+    padding: 20px 10px;
+    align-items: flex-start;
+    align-self: stretch;
+    justify-content: space-between;
+    border-radius: 6px;
+    border: 1px solid #D2D6E8;
+    color: #1E1E1E;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.88px;
+}

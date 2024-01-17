@@ -10,6 +10,7 @@ import Head from "next/head";
 import { Plus } from "@/component/Svg/Plus";
 import { Minus } from "@/component/Svg/Minus";
 import { ArrowBack } from "@/component/Svg/ArrowBack";
+import { Counter } from "../Counter/Counter";
 
 export const OnePart = ({ partName }) => {
   const [onePart, setOnePart] = useState();
@@ -73,18 +74,22 @@ export const OnePart = ({ partName }) => {
     setDisabled(true);
   };
 
-  const increment = () => {
-    setCount(count + 1);
+  // const increment = () => {
+  //   setCount(count + 1);
+  // };
+
+  // const decriment = () => {
+  //   if (count === 1) {
+  //     return;
+  //   }
+  //   setCount(count - 1);
+  // };
+
+  const getCount = (data) => {
+    setCount(data);
   };
 
-  const decriment = () => {
-    if (count === 1) {
-      return;
-    }
-    setCount(count - 1);
-  };
-
-  console.log("onePart", onePart);
+  console.log("onePart", count);
 
   return (
     <>
@@ -125,22 +130,27 @@ export const OnePart = ({ partName }) => {
             <div className={style.card}>
               <div className={style.name_conteiner}>
                 <h3 className={style.title}>{onePart.Part_Name}</h3>
-                <p className={style.text}>Код: {onePart.Articul}</p>
-                <p className={style.text}>Країна виробник: {onePart.Country}</p>
-                <p className={style.text}>
-                  Встановлюється на автомобілі: {model[0]}{" "}
-                  {onePart.Model.join(", ")}
-                </p>
+                <div className={style.text_conteiner}>
+                  <p className={style.articul}>Код: {onePart.Articul}</p>
+                  <p className={style.text}>
+                    Країна виробник: {onePart.Country}
+                  </p>
+                  <p className={style.text}>
+                    Встановлюється на автомобілі: {model[0]}{" "}
+                    {onePart.Model.join(", ")}
+                  </p>
+                </div>
               </div>
               <div className={style.name_conteiner}>
                 <p className={style.price}>
                   {Math.round(onePart.Price * KURS)} ₴
                 </p>
-                <div className={style.counter}>
+                <Counter data={count} get={getCount} />
+                {/* <div className={style.counter}>
                   <Minus click={decriment} />
                   <p className={style.count}>{count}</p>
                   <Plus click={increment} />
-                </div>
+                </div> */}
                 <button
                   disabled={disabled}
                   onClick={handleClick}

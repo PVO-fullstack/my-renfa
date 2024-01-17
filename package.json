@@ -9,17 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mui/material": "^5.13.2",
     "@reduxjs/toolkit": "^1.9.5",
-    "@sanity/dashboard": "^3.1.5",
     "axios": "^1.4.0",
-    "bootstrap": "^5.2.3",
     "eslint": "8.39.0",
     "eslint-config-next": "13.4.0",
     "mongodb": "^5.7.0",
     "next": "13.4.0",
     "react": "18.2.0",
-    "react-bootstrap": "^2.7.4",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.48.2",
     "react-hook-form-persist": "^3.0.0",
