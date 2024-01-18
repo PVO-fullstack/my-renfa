@@ -29,6 +29,8 @@ export const UserCart = () => {
     );
     await setParts(newParts);
     sum(newParts);
+    const string = JSON.stringify(newParts);
+    localStorage.setItem("order", string);
   };
 
   const delPart = (id) => {
@@ -50,7 +52,7 @@ export const UserCart = () => {
               del={delPart}
               key={item._id}
               part={item}
-              count={count}
+              count={item.count}
               get={getCount}
             />
           ))}

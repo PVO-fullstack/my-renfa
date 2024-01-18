@@ -3,12 +3,23 @@ import { Plus } from "@/component/Svg/Plus";
 import React, { useEffect, useState } from "react";
 import style from "./Counter.module.scss";
 
-export const Counter = ({ get, counterStyle, countStyle, width, height }) => {
+export const Counter = ({
+  get,
+  counterStyle,
+  countStyle,
+  width,
+  height,
+  newCount,
+}) => {
   const [count, setCount] = useState(1);
 
-  //   useEffect(() => {
-  //     setCount(data);
-  //   }, [data]);
+  useEffect(() => {
+    if (newCount) {
+      setCount(newCount);
+    }
+  }, [newCount]);
+
+  console.log("count", newCount);
 
   const increment = () => {
     setCount(count + 1);

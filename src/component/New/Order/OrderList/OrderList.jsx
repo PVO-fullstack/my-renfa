@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./OrderList.module.scss";
 import { OnePartInCart } from "../../OnePartInCart/OnePartInCart";
+import { OnePart } from "../OnePart/OnePart";
 
 export const OrderList = ({ parts }) => {
   return (
@@ -8,7 +9,7 @@ export const OrderList = ({ parts }) => {
       <div>Вартість замовленого товару:</div>
       {parts?.length > 0 &&
         parts.map((item) => (
-          <OnePartInCart
+          <OnePart
             // del={delPart}
             key={item._id}
             part={item}
