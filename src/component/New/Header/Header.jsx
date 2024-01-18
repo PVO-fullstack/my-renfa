@@ -29,6 +29,7 @@ export const Header = () => {
   const [name, setName] = useState(null);
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
   const search = useSearchParams();
@@ -52,6 +53,8 @@ export const Header = () => {
 
   const handleShow = () => setShow(true);
 
+  const handleSearch = () => setIsSearch(true);
+
   const handleShowMenu = () => setShowMenu(true);
 
   const handleLogout = () => {
@@ -61,32 +64,36 @@ export const Header = () => {
 
   return (
     <div className={style.conteiner}>
-      <div className={style.header_part_up}>
-        <div className={style.menu_conteiner}>
-          {/* <div className={style.name} onClick={handleShowMenu}> */}
-          <MenuIcon click={handleShowMenu} />
-          {/* </div> */}
-          {/* <button className={style.name} onClick={handleShowMenu}>
+      {!isSearch ? (
+        <div className={style.header_part_up}>
+          <div className={style.menu_conteiner}>
+            {/* <div className={style.name} onClick={handleShowMenu}> */}
+            <MenuIcon click={handleShowMenu} />
+            {/* </div> */}
+            {/* <button className={style.name} onClick={handleShowMenu}>
           MENU
         </button> */}
-          <SearchIcon />
+            <SearchIcon click={handleSearch} />
+          </div>
+          <BurgerMenu show={showMenu} handleClose={handleClose} />
+          <Logo className={style.logo} text={style.text} />
+          <FindInput />
+          <div className={style.user_menu}>
+            <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
+            {/* <AuthModal show={show} handleClose={handleClose} /> */}
+            {show && (
+              <Modal>
+                <Auth close={handleClose} />
+              </Modal>
+            )}
+            {/* <Avatar /> */}
+            <AskMe />
+            <Cart />
+          </div>
         </div>
-        <BurgerMenu show={showMenu} handleClose={handleClose} />
-        <Logo className={style.logo} text={style.text} />
-        <FindInput />
-        <div className={style.user_menu}>
-          <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
-          {/* <AuthModal show={show} handleClose={handleClose} /> */}
-          {show && (
-            <Modal>
-              <Auth close={handleClose} />
-            </Modal>
-          )}
-          {/* <Avatar /> */}
-          <AskMe />
-          <Cart />
-        </div>
-      </div>
+      ) : (
+        <FindInput click={true} />
+      )}
       <div className={style.header_part_down}>
         <Brand model={model} />
         <div>

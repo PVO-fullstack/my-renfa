@@ -4,7 +4,7 @@ import style from "./FindInput.module.scss";
 import { useRouter } from "next/router";
 import { SearchBtn } from "../SearchBtn/SearchBtn";
 
-export const FindInput = ({ className, inputClass }) => {
+export const FindInput = ({ className, inputClass, click }) => {
   const [value, setValue] = useState("");
   const router = useRouter();
 
@@ -24,7 +24,10 @@ export const FindInput = ({ className, inputClass }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className={style.searchform}>
+    <form
+      onSubmit={handleSubmit}
+      className={click ? style.searchform_click : style.searchform}
+    >
       <input
         onChange={handleInput}
         className={style.searchform_input}
