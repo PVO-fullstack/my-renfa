@@ -1,14 +1,9 @@
-import { UserCart } from "@/component/New/UserCart/UserCart";
-import { OrderList } from "@/component/OrderList/OrderList";
+import { Order } from "@/component/New/Order/Order";
 
-export default function Order() {
+export default function OrderPage() {
   return (
     <>
-      {/* <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <h2>Замовлення</h2>
-      </div> */}
-      <UserCart />
-      {/* <OrderList /> */}
+      <Order />
     </>
   );
 }

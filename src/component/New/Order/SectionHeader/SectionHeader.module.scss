@@ -1,0 +1,35 @@
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px
+}
+
+.contact {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.contect_title {
+    width: 215px;
+    color: #1E1E1E;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.contect_title:before {
+    content: "1";
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background-color: #1E1E1E;
+    color: #FFF;
+}

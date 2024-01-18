@@ -42,7 +42,9 @@
 }
 
 @media screen and (min-width: 1280px) {
-  padding-inline: 76px;
+  .conteiner {
+    padding-inline: 77px;
+  }
 }
 
 .description {

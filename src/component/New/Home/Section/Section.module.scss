@@ -12,4 +12,10 @@
         font-size: 40px;
         padding-inline: 126px;
     }
+
+    @media screen and (min-width:1280px) {
+        font-size: 48px;
+        padding-inline: 415px;
+        margin-bottom: 70px;
+    }
 }

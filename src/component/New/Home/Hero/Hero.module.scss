@@ -9,6 +9,18 @@
         padding-block: 73px;
         gap: 0;
     }
+
+    @media screen and (min-width: 1280px) {
+        border-radius: 12px;
+        padding-top: 0;
+        padding-bottom: 100px
+    }
+}
+
+.hero {
+    @media screen and (min-width:1280px) {
+        display: flex;
+    }
 }
 
 .text_conteiner {
@@ -19,6 +31,12 @@
 
     @media screen and (min-width: 768px) {
         padding-inline: 89px 172px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        padding-right: 0;
+        padding-top: 73px;
+        gap: 31px;
     }
 }
 
@@ -92,6 +110,15 @@
         margin-left: 224px;
         margin-bottom: 51px;
     }
+
+    @media screen and (min-width: 1280px) {
+        width: 728px;
+        height: 454px;
+        flex-shrink: 0;
+        margin: 0;
+        padding-top: 3px;
+        padding-right: 48px;
+    }
 }
 
 .brand {
@@ -139,5 +166,10 @@
         height: 82px;
         padding: 8px 0px 15px 0px;
         gap: 7px;
+    }
+
+    @media screen and (min-width: 1280px) {
+
+        border-radius: 11px;
     }
 }

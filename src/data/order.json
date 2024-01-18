@@ -1,0 +1,71 @@
+{
+    "title": "Зареєструватися",
+    "contactsBlock": [
+        {
+            "id": 1,
+            "title": "Телефон",
+            "type": "phone"
+        },
+        {
+            "id": 2,
+            "title": "Адреса",
+            "type": "location"
+        },
+        {
+            "id": 3,
+            "title": "Соціальна мережа",
+            "type": "social"
+        }
+    ],
+    "registerForm": {
+        "name": {
+            "labelText": "Ім'я*",
+            "placeholderText": "Іван Іванов",
+            "errorMessages": {
+                "required": "Обов'язкове поле",
+                "minLength": "Мінімум одна буква",
+                "maxLength": "Максимум 70 символів",
+                "pattern": "Невірне ім'я"
+            }
+        },
+        "city": {
+            "labelText": "Місто*",
+            "placeholderText": "Київ",
+            "errorMessages": {
+                "required": "Обов'язкове поле",
+                "minLength": "Мінімум одна буква",
+                "maxLength": "Максимум 70 символів",
+                "pattern": "Невірне ім'я"
+            }
+        },
+        "post": {
+            "labelText": "№ відділення Нової пошти*",
+            "placeholderText": "Відділення №1",
+            "errorMessages": {
+                "required": "Обов'язкове поле",
+                "minLength": "Мінімум одна буква",
+                "maxLength": "Максимум 70 символів",
+                "pattern": "Невірне ім'я"
+            }
+        },
+        "email": {
+            "labelText": "Електронна пошта*",
+            "placeholderText": "name@company.com",
+            "errorMessages": {
+                "required": "Обов'язкове поле",
+                "minLength": "Мінімум 11 цифр"
+            }
+        },
+        "phone": {
+            "labelText": "Телефон*",
+            "placeholderText": "+38 050 123 45 67",
+            "errorMessages": {
+                "required": "Обов'язкове поле",
+                "minLength": "Мінімум 11 цифр"
+            }
+        },
+        "buttonSubmit": {
+            "labelText": "Зареєструватися"
+        }
+    }
+}

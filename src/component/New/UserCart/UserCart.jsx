@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import style from "./UserCart.module.scss";
 import { OnePartInCart } from "../OnePartInCart/OnePartInCart";
 import { KURS } from "@/variable/variable";
+import { Button } from "@/component/Button";
+import Link from "next/link";
 
 export const UserCart = () => {
   const [count, setCount] = useState(1);
@@ -55,9 +57,14 @@ export const UserCart = () => {
         <div className={style.sum}>
           <p>Всього:</p> <p>{allSum * KURS}₴</p>
         </div>
-        <div>
-          <button>ggkug</button>
-          <button>giugiugl</button>
+        <div className={style.btn_conteiner}>
+          <Link className={style.btn} href="/order">
+            Оформити замовлення
+          </Link>
+          <Link href="/" className={style.btn_go}>
+            Продовжити покупки
+          </Link>
+          {/* <Button disabled={false}></Button> */}
         </div>
       </div>
     </div>

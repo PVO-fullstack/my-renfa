@@ -3,7 +3,7 @@ import React from "react";
 
 export const Cart = () => {
   return (
-    <Link href="/order">
+    <Link href="/cart">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
