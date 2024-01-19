@@ -8,6 +8,10 @@ import orderData from "@/data/order.json";
 import { SectionHeader } from "./SectionHeader/SectionHeader";
 import { Button } from "@/component/Button";
 import { OrderList } from "./OrderList/OrderList";
+import { sendTelegramOrder } from "@/utils";
+import { toast } from "react-toastify";
+import messages from "@/data/telegram.json";
+import { KURS } from "@/variable/variable";
 
 const LOCAL_STORAGE_KEY = "user_order";
 
@@ -32,6 +36,13 @@ export const Order = () => {
   useEffect(() => {
     const getParts = JSON.parse(localStorage.getItem("order"));
     setParts(getParts);
+    const forTG = getParts.map((part) => ({
+      Назва: part.Part_Name,
+      Кількість: part.count,
+      Ціна: part.Price * KURS,
+    }));
+    localStorage.setItem("tg", JSON.stringify(forTG));
+    console.log("forTG", forTG);
     // sum(getParts);
   }, []);
 
@@ -48,28 +59,28 @@ export const Order = () => {
   const onSubmit = async (data) => {
     try {
       setIsPending(true);
-      //   await toast.promise(sendTelegramMessage(data), {
-      //     pending: {
-      //       render() {
-      //         console.log("Ura");
-      //         return messages.queryPending;
-      //       },
-      //       type: "info",
-      //     },
-      //     success: {
-      //       render() {
-      //         console.log("Da");
-      //         reset({ name: "", phone: "", message: "" });
-      //         setSend(true);
-      //         return;
-      //       },
-      //     },
-      //     error: {
-      //       render({ data }) {
-      //         return messages.queryRejected;
-      //       },
-      //     },
-      //   });
+      await toast.promise(sendTelegramOrder(data), {
+        pending: {
+          render() {
+            console.log("Ura");
+            return messages.queryPending;
+          },
+          type: "info",
+        },
+        success: {
+          render() {
+            console.log("Da");
+            reset({ name: "", phone: "", message: "" });
+            setSend(true);
+            return;
+          },
+        },
+        error: {
+          render({ data }) {
+            return messages.queryRejected;
+          },
+        },
+      });
       setIsPending(false);
     } catch {
       setIsPending(false);

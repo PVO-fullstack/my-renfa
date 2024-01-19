@@ -1,5 +1,6 @@
 {
   "greetingsMessage": "Повідомлення з сайту",
+  "orderMessage": "Замовлення з сайту",
   "queryPending": "Відправка повідомлення",
   "queryResolved": "Успішно відправлено",
   "queryRejected": "Упс, щось пішло не так. Спробуйте ще раз",

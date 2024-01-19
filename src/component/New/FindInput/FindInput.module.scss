@@ -24,7 +24,7 @@
         display: flex;
         flex-shrink: 0;
         border-radius: 4px;
-        border: 1px solid var(--light-gray-4, #CCC);
+        border: 1px solid #CCC;
         background: #FFF;
         width: 649px;
 
@@ -33,6 +33,10 @@
 
 .searchform_click {
     display: flex;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    background: #FFF;
 }
 
 .searchform_input {

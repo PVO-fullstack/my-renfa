@@ -4,7 +4,7 @@ import style from "./FindInput.module.scss";
 import { useRouter } from "next/router";
 import { SearchBtn } from "../SearchBtn/SearchBtn";
 
-export const FindInput = ({ className, inputClass, click }) => {
+export const FindInput = ({ className, inputClass, click, close }) => {
   const [value, setValue] = useState("");
   const router = useRouter();
 
@@ -21,6 +21,7 @@ export const FindInput = ({ className, inputClass, click }) => {
     router.push(`/search/${value}`);
     // submit(value);
     setValue("");
+    close();
   };
 
   return (

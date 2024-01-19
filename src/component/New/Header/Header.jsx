@@ -55,6 +55,8 @@ export const Header = () => {
 
   const handleSearch = () => setIsSearch(true);
 
+  const handleCloseSearch = () => setIsSearch(false);
+
   const handleShowMenu = () => setShowMenu(true);
 
   const handleLogout = () => {
@@ -92,7 +94,7 @@ export const Header = () => {
           </div>
         </div>
       ) : (
-        <FindInput click={true} />
+        <FindInput close={handleCloseSearch} click={true} />
       )}
       <div className={style.header_part_down}>
         <Brand model={model} />
