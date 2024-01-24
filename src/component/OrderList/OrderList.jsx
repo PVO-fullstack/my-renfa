@@ -1,9 +1,11 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import css from "./OrderList.module.scss";
 import { createOrder, getUserOrders } from "@/apiService/apiOrders";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshUser, updateUser } from "@/redux/auth/auth-operations";
-import { selectUser } from "@/redux/auth/auth-selectors";
+import { refreshUser, updateUser } from "@/lib/auth/auth-operations";
+import { selectUser } from "@/lib/auth/auth-selectors";
 import { KURS } from "@/variable/variable";
 
 export const OrderList = () => {
@@ -32,7 +34,7 @@ export const OrderList = () => {
       user.city.length > 2 &&
       user.numberNewPost.length > 0
     ) {
-      console.log("first");
+      // console.log("first");
       setDisabled(false);
     }
   }, [userBD]);
@@ -69,7 +71,7 @@ export const OrderList = () => {
     const filteredOrder = newOrder.filter(
       (part) => part.In_stock !== undefined && part.In_stock !== "0"
     );
-    console.log(filteredOrder);
+    // console.log(filteredOrder);
     const partId = filteredOrder.map((el) => {
       return { id: el._id, ordered: el.In_stock };
     });
@@ -95,7 +97,7 @@ export const OrderList = () => {
     const newPart = {
       [name]: value,
     };
-    console.log("newPart", newPart);
+    // console.log("newPart", newPart);
     if (!newPartsList) {
       setNewPartsList(newPart);
       return;
@@ -127,7 +129,7 @@ export const OrderList = () => {
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
-        console.log("newO", newO);
+        // console.log("newO", newO);
         allOrders.push(newO);
         return allOrders;
       });

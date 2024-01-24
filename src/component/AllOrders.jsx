@@ -1,3 +1,5 @@
+"use client";
+
 import { getAllOrders, patchOrder } from "@/apiService/apiOrders";
 import React, { useEffect, useState } from "react";
 import css from "./AllOrders.module.css";
@@ -16,7 +18,7 @@ export const AllOrders = () => {
   useEffect(() => {
     async function allOrders() {
       const orders = await dispatch(getAllOrders());
-      console.log("orders", orders.payload);
+      // console.log("orders", orders.payload);
       setOrders(orders.payload);
     }
     allOrders();
@@ -32,7 +34,7 @@ export const AllOrders = () => {
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
-        console.log("newO", newO);
+        // console.log("newO", newO);
         allOrders.push(newO);
         const h2 = document.getElementById("nak");
         h2.textContent = `Накладна №${orderN}`;
@@ -45,13 +47,13 @@ export const AllOrders = () => {
   const handleClose = (e) => {
     e.preventDefault();
     const id = e.currentTarget.attributes.data_atr.value;
-    console.log(id);
+    // console.log(id);
     patchOrder(id);
     setNeworder(neworder + 1);
     e.currentTarget.innerText = "Готово";
   };
 
-  console.log("owner", owner);
+  // console.log("owner", owner);
 
   return (
     <div

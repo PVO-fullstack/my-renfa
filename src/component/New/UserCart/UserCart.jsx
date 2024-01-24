@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import style from "./UserCart.module.scss";
 import { OnePartInCart } from "../OnePartInCart/OnePartInCart";
@@ -34,13 +36,13 @@ export const UserCart = () => {
   };
 
   const delPart = (id) => {
-    console.log("first");
+    // console.log("first");
     const newParts = parts.filter((part) => part._id !== id);
     setParts(newParts);
     sum(newParts);
   };
 
-  console.log("parts", parts);
+  // console.log("parts", parts);
 
   return (
     <div className={style.conteiner}>

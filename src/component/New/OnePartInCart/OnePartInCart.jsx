@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Counter } from "../Counter/Counter";
 import Image from "next/image";
@@ -17,7 +19,7 @@ export const OnePartInCart = ({ part, get, count, del }) => {
     del(part._id);
   };
 
-  console.log("new", part);
+  // console.log("new", part);
 
   return (
     <div className={style.conteiner}>

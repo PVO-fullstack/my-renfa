@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import style from "./Order.module.scss";
 import Link from "next/link";
@@ -37,12 +39,13 @@ export const Order = () => {
     const getParts = JSON.parse(localStorage.getItem("order"));
     setParts(getParts);
     const forTG = getParts.map((part) => ({
-      Назва: part.Part_Name,
+      Артикул: part.Articul,
+      Назва: part.Part_Name + part.Brand + part.Model[0],
       Кількість: part.count,
       Ціна: part.Price * KURS,
     }));
     localStorage.setItem("tg", JSON.stringify(forTG));
-    console.log("forTG", forTG);
+    // console.log("forTG", forTG);
     // sum(getParts);
   }, []);
 
@@ -52,9 +55,9 @@ export const Order = () => {
     storage: typeof window !== "undefined" && window.localStorage,
   });
 
-  console.log("isPanding", isPending);
-
-  console.log("send", send);
+  // console.log("isPanding", isPending);
+  //
+  // console.log("send", send);
 
   const onSubmit = async (data) => {
     try {
@@ -62,14 +65,14 @@ export const Order = () => {
       await toast.promise(sendTelegramOrder(data), {
         pending: {
           render() {
-            console.log("Ura");
+            // console.log("Ura");
             return messages.queryPending;
           },
           type: "info",
         },
         success: {
           render() {
-            console.log("Da");
+            // console.log("Da");
             reset({ name: "", phone: "", message: "" });
             setSend(true);
             return;

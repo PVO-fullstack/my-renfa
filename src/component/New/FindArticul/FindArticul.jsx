@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/router";
 import mg from "@/data/mg.json";
 import faw from "@/data/faw.json";
@@ -27,7 +29,7 @@ export const FindArticul = () => {
   useEffect(() => {
     const takeBrand = async () => {
       const articul = await router.query.slag;
-      console.log("brand", articul);
+      // console.log("brand", articul);
       setFirst(articul);
       if (articul) {
         if (articul !== first) {
@@ -50,7 +52,7 @@ export const FindArticul = () => {
   }, []);
 
   const handleClickPage = (pege) => {
-    console.log("pege", pege);
+    // console.log("pege", pege);
     setPage(pege);
     router.push(
       pathName + "?" + createQueryString("page", pege) + "limit=" + limit
@@ -78,7 +80,7 @@ export const FindArticul = () => {
     );
   };
 
-  console.log("first", first);
+  // console.log("first", first);
   return (
     <div className={style.conteiner}>
       <h1 className={style.title}>Пошуковий запит: &quot;{first}&quot;</h1>

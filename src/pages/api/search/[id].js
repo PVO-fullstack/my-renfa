@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 import clientPromise from "../../../../lib/mongodb";
 
 export default async function (req, res) {
@@ -9,8 +10,8 @@ export default async function (req, res) {
     //   Part_Name: "text",
     //   default_language: "ru",
     // });
-    const { articul } = req.query;
-    console.log(articul);
+    const { id } = req.query;
+    // console.log(id);
     // const modelParts = await db.parts.aggregate([
     //   {
     //     $project: {
@@ -23,16 +24,16 @@ export default async function (req, res) {
 
     const modelParts = await db
       .collection("parts")
-      .find({ $text: { $search: "Фильтр" } })
+      .findOne({ _id: new ObjectId(id) });
 
-      // const modelParts = await db
-      //   .collection("parts")
-      //   .find({ Articul: articul })
+    // const modelParts = await db
+    //   .collection("parts")
+    //   .find({ Articul: articul })
 
-      // .find({ $regex: /articul/ })
-      .toArray();
+    // .find({ $regex: /articul/ })
+    // .toArray();
 
-    console.log("first", modelParts);
+    // console.log("first", modelParts);
     res.json(modelParts);
   } catch (e) {
     console.error(e);

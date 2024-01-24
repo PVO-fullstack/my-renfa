@@ -1,3 +1,5 @@
+"use client";
+
 import { Minus } from "@/component/Svg/Minus";
 import { Plus } from "@/component/Svg/Plus";
 import React, { useEffect, useState } from "react";
@@ -18,8 +20,6 @@ export const Counter = ({
       setCount(newCount);
     }
   }, [newCount]);
-
-  console.log("count", newCount);
 
   const increment = () => {
     setCount(count + 1);

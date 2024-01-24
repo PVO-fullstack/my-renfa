@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import model from "@/data/model.json";
 import css from "./SideBar.module.scss";
@@ -10,10 +12,12 @@ export const SideBar = () => {
           key={item.Brend}
           // href={"/models/MG"}
 
-          href={{
-            pathname: `/models/[car]`,
-            query: { car: item.Brend },
-          }}
+          href={`/models/${item.Brend}`}
+
+          // href={{
+          //   pathname: `/models/[car]`,
+          //   query: { car: item.Brend },
+          // }}
         >
           <li className={css.item}>
             <img className={css.logo} src={item.logo} alt="" />

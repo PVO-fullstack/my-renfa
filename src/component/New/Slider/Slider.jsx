@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ReactSlider from "react-slick";
 // import PropTypes from "prop-types";
@@ -50,7 +52,7 @@ export const Slider = ({
   //   );
   // };
 
-  console.log("parts", parts);
+  // console.log("parts", parts);
 
   const settings = {
     className: className,
@@ -60,7 +62,7 @@ export const Slider = ({
     // centerPadding: "60px",
     slidesToShow: 1,
     speed: 500,
-    rows: rows,
+    rows: 4,
     slidesPerRow: slidesPerRow,
     appendDots: (dots) => (
       <div
@@ -70,7 +72,7 @@ export const Slider = ({
           // height: "5px",
           borderRadius: "10px",
           padding: "5px",
-          bottom: "0",
+          // bottom: "0",
         }}
       >
         <ul style={{ margin: "0px" }}> {dots} </ul>
@@ -85,35 +87,36 @@ export const Slider = ({
     // initialSlide: 0,
     // nextArrow: <SampleNextArrow />,
     // prevArrow: <SamplePrevArrow />,
-    // responsive: [
-    //   {
-    //     breakpoint: 3860,
-    //     settings: {
-    //       centerMode: centralMode,
-    //       infinite: infinite,
-    //       slidesToShow: 2,
-    //       slidesToScroll: 1,
-    //       rows: 2,
-    //       slidesPerRow: 2,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 1279,
-    //     settings: {
-    //       infinite: infinite,
-    //       centerMode: false,
-    //       slidesToShow: 2,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 767,
-    //     settings: {
-    //       centerMode: false,
-    //       infinite: infinite,
-    //       slidesToShow: 1,
-    //     },
-    //   },
-    // ],
+    responsive: [
+      // {
+      //   breakpoint: 3860,
+      //   settings: {
+      //     centerMode: centralMode,
+      //     infinite: infinite,
+      //     slidesToShow: 2,
+      //     slidesToScroll: 1,
+      //     rows: 2,
+      //     slidesPerRow: 2,
+      //   },
+      // },
+      {
+        breakpoint: 1279,
+        settings: {
+          infinite: true,
+          rows: 4,
+          slidesPerRow: 1,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          // centerMode: false,
+          infinite: true,
+          rows: 2,
+          slidesPerRow: 1,
+        },
+      },
+    ],
   };
   return (
     <div className={className}>

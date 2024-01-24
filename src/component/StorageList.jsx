@@ -1,3 +1,5 @@
+"use client";
+
 import { getAllParts } from "@/apiService/apiParts";
 import React, { useEffect, useState } from "react";
 import brand from "../data/model.json";
@@ -14,7 +16,7 @@ export const StorageList = () => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
 
-  console.log("filter", filter);
+  // console.log("filter", filter);
 
   useEffect(() => {
     async function getParts() {
@@ -41,11 +43,8 @@ export const StorageList = () => {
   const handleModelClick = (e) => {
     const modelName = e.currentTarget.innerText;
     setFilter([]);
-    // console.log("model", modelName);
-    // console.log("brandModels", brandModels);
     const modelParts = brandModels.filter((el) => el.Model.includes(modelName));
     setParts(modelParts);
-    // console.log("modelParts", modelParts);
   };
 
   const handleChange = (e) => {

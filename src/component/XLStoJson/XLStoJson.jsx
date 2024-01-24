@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import path from "path";
@@ -16,7 +18,7 @@ export const XLStoJson = () => {
     e.preventDefault();
     if (parts.length > 300) {
       const index = parts.length / 300;
-      console.log(index);
+      // console.log(index);
       for (let i = 0; i <= index; i++) {
         const part = parts.slice(i * 300, (i + 1) * 300);
         dispatch(insertParts(part));
@@ -47,7 +49,7 @@ export const XLStoJson = () => {
           Model: item.Model.toString().split(", "),
           Price: item.Price.toString(),
         }));
-        console.log("result", result);
+        // console.log("result", result);
         setParts(result);
         // fs.writeFile(contactsPath, JSON.stringify(jsonXls, null, 2));
       });
@@ -62,7 +64,7 @@ export const XLStoJson = () => {
     reader.readAsBinaryString(selectedFile);
   };
 
-  console.log("parts", parts);
+  // console.log("parts", parts);
 
   return (
     <div>

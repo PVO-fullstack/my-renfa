@@ -9,7 +9,9 @@ export const Hero = () => {
       <div className={style.hero}>
         <div className={style.text_conteiner}>
           <p className={style.text}>Великий асортимент</p>
-          <p className={style.title}>Запчастини до китайських авто</p>
+          <p className={style.title}>
+            Запчастини до <br /> китайських авто
+          </p>
           <p className={style.order}>Можливе замовлення запчастин з Китаю</p>
         </div>
         <Image

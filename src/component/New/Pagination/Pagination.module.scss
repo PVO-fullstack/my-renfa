@@ -26,5 +26,12 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: #1E1E1E
+    color: #1E1E1E;
+    transition: all 0.5s ease-in-out;
+
+    &:hover,
+    &:active {
+        background-color: #7C7A7A;
+        border-radius: 8px;
+    }
 }

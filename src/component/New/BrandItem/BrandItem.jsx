@@ -8,9 +8,10 @@ export const BrandItem = ({ item }) => {
     <Link
       className={style.link}
       key={item.model}
-      href={{
-        pathname: `${item.link}`,
-      }}
+      href={`${item.link}`}
+      // href={{
+      //   pathname: `${item.link}`,
+      // }}
     >
       <li className={style.item}>
         <p className={style.model}>{item.model}</p>

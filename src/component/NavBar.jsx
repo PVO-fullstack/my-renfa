@@ -1,11 +1,13 @@
+"use client";
+
 import NavLink from "next/link";
 import css from "./navbar.module.scss";
 import { useState } from "react";
 import { AuthModal } from "@/component/AuthModal/AuthModal";
 import { UserMenu } from "@/component/UserMenu";
-import { logOutUser } from "@/redux/auth/auth-operations";
+import { logOutUser } from "@/lib/auth/auth-operations";
 import { useDispatch, useSelector } from "react-redux";
-import { selectLoad, selectUser } from "@/redux/auth/auth-selectors";
+import { selectLoad, selectUser } from "@/lib/auth/auth-selectors";
 import { useRouter } from "next/router";
 import { Cart } from "./Cart/Cart";
 import { BurgerMenu } from "./BurgerMenu/BurgerMenu";
@@ -23,7 +25,7 @@ export default function Navbars() {
   const userName = useSelector(selectUser);
   const isLoad = useSelector(selectLoad);
 
-  console.log("user", user);
+  // console.log("user", user);
 
   const dispatch = useDispatch();
 

@@ -5,6 +5,13 @@
     height: 619px;
     border-radius: 12px;
     background: linear-gradient(180deg, #C9CCD1 0%, rgba(206, 209, 214, 0.40) 100%);
+
+    @media screen and (min-width:1280px) {
+        height: 575px;
+        padding: 38.281px 60px 38.875px 11.694px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .img {
@@ -12,6 +19,12 @@
     height: 211.084px;
     transform: rotate(-19.272deg);
     flex-shrink: 0;
+
+    @media screen and (min-width:1280px) {
+        width: 517.276px;
+        height: 346.534px;
+        transform: rotate(-19.272deg);
+    }
 }
 
 .text_conteiner {
@@ -21,6 +34,10 @@
     align-items: center;
     gap: 16px;
     align-self: stretch;
+
+    @media screen and (min-width:1280px) {
+        align-items: flex-start;
+    }
 }
 
 .title {
@@ -30,6 +47,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        font-size: 25px;
+    }
 }
 
 .description {
@@ -39,6 +60,11 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        font-size: 40px;
+        text-align: left;
+    }
 }
 
 .btn {
@@ -57,4 +83,13 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width:1280px) {
+        width: 612px;
+    }
 }

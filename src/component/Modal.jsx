@@ -1,7 +1,7 @@
 import css from "./Modal.module.scss";
 
 export const Modal = ({ src, onClose }) => {
-  console.log("src", src);
+  // console.log("src", src);
 
   const handleOverlayClick = (e) => {
     if (e.currentTarget === e.target) {

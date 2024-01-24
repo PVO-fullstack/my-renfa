@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import brand from "@/data/brand.json";
 import Image from "next/image";
@@ -11,10 +13,11 @@ export const SelectBrand = () => {
       <div className={style.conteiner}>
         {brand.map((item) => (
           <Link
-            href={{
-              pathname: `/models/[car]`,
-              query: { car: item.brand },
-            }}
+            href={`/models/${item.brand}`}
+            // href={{
+            //   pathname: `/models/[car]`,
+            //   query: { car: item.brand },
+            // }}
             key={item.brand}
           >
             <div className={style.brand_conteiner}>

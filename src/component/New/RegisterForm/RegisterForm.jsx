@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/component/Input";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,7 +8,7 @@ import style from "./RegisterForm.module.scss";
 import { Close } from "../Close/Close";
 import { Button } from "@/component/Button";
 import { useDispatch } from "react-redux";
-import { registerUser } from "@/redux/auth/auth-operations";
+import { registerUser } from "@/lib/auth/auth-operations";
 import { toast } from "react-hot-toast";
 import { Loader } from "@/component/Loader/Loader";
 
@@ -66,7 +68,7 @@ export const RegisterForm = ({ close, show }) => {
     setIsLoading(true);
     try {
       dispatch(registerUser(data)).then((result) => {
-        console.log("result", result.message);
+        // console.log("result", result.message);
         if (result.error) {
           toast.error("Такий користувач вже існує");
         }
@@ -74,14 +76,14 @@ export const RegisterForm = ({ close, show }) => {
         {
           pending: {
             render() {
-              console.log("Ura");
+              // console.log("Ura");
               return messages.queryPending;
             },
             type: "info",
           },
           success: {
             render() {
-              console.log("Da");
+              // console.log("Da");
               reset({ name: "", phone: "", message: "" });
               return messages.queryResolved;
             },
@@ -95,7 +97,7 @@ export const RegisterForm = ({ close, show }) => {
     }
   };
 
-  console.log("isLoading", isLoading);
+  // console.log("isLoading", isLoading);
 
   return (
     <div className={style.conteiner}>

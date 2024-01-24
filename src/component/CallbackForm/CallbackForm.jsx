@@ -41,9 +41,9 @@ export const CallbackForm = ({ className }) => {
     storage: typeof window !== "undefined" && window.localStorage,
   });
 
-  console.log("isPanding", isPending);
+  // console.log("isPanding", isPending);
 
-  console.log("send", send);
+  // console.log("send", send);
 
   const onSubmit = async (data) => {
     try {
@@ -51,14 +51,14 @@ export const CallbackForm = ({ className }) => {
       await toast.promise(sendTelegramMessage(data), {
         pending: {
           render() {
-            console.log("Ura");
+            // console.log("Ura");
             return messages.queryPending;
           },
           type: "info",
         },
         success: {
           render() {
-            console.log("Da");
+            // console.log("Da");
             reset({ name: "", phone: "", message: "" });
             setSend(true);
             return;

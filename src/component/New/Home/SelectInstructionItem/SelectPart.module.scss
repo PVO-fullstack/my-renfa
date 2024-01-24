@@ -15,13 +15,14 @@
         }
     }
 
-    @media screen and (min-width:768px) {
+    @media screen and (min-width:1280px) {
         gap: 31px;
         width: 618px;
         padding: 0;
 
         &:nth-child(2n) {
             align-self: flex-end;
+            flex-direction: row;
         }
     }
 }

@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import style from "./Pagination.module.scss";
+"use client";
 
-export const Pagination = ({
-  count,
-  limit,
-  page,
-  pageClick,
-  nextPage,
-  prevPage,
-}) => {
+import React, { useCallback, useEffect, useState } from "react";
+import style from "./Pagination.module.scss";
+import { usePathname, useRouter } from "next/navigation";
+
+export const Pagination = ({ count, limit, page }) => {
   const [paginate, setPaginate] = useState(1);
   const [pages, setPages] = useState();
   const [countPages, setCountPages] = useState();
+  const [firstPage, setFirstPage] = useState(1);
 
-  console.log("prev", page);
+  const router = useRouter();
+  const pathName = usePathname();
+
+  console.log("prev", pathName);
 
   useEffect(() => {
     const countOfPages = count / limit;
@@ -23,14 +23,60 @@ export const Pagination = ({
       allPages.push(i);
     }
     if (allPages.length > 3) {
-      const onePaginate = allPages.splice(page - 1, 3);
+      const onePaginate = allPages.splice(firstPage - 1, 3);
       setPages(onePaginate);
       return;
     }
     setPages(allPages);
-  }, [count, limit, page, paginate]);
+  }, [count, limit, page]);
 
-  //   console.log("count", pages, countPages);
+  const createQueryString = useCallback((name, value) => {
+    const params = new URLSearchParams();
+    params.set(name, value);
+
+    return params.toString();
+  }, []);
+
+  const handleClickPage = (item) => {
+    // console.log("pege", pege);
+    // setPage(pege);
+    router.push(
+      pathName + "?" + createQueryString("page", item) + "&" + "limit=" + limit
+    );
+  };
+
+  const handleNext = () => {
+    setFirstPage(firstPage + 3);
+    router.push(
+      pathName +
+        "?" +
+        createQueryString("page", firstPage + 3) +
+        "&" +
+        "limit=" +
+        limit
+    );
+  };
+
+  const handlePrev = () => {
+    if (page < 4) {
+      setFirstPage(1);
+      router.push(
+        pathName + "?" + createQueryString("page", 1) + "&" + "limit=" + limit
+      );
+      return;
+    }
+    setFirstPage(firstPage - 3);
+    router.push(
+      pathName +
+        "?" +
+        createQueryString("page", firstPage - 3) +
+        "&" +
+        "limit=" +
+        limit
+    );
+  };
+
+  console.log("count", pages, countPages);
 
   return (
     <div className={style.conteiner}>
@@ -39,14 +85,14 @@ export const Pagination = ({
           className={style.none}
           disabled={pages[0] === 1}
           type="button"
-          onClick={() => prevPage()}
+          onClick={() => handlePrev()}
         >
           {"<"}
         </button>
       )}
       {pages?.map((item) => (
         <div className={item === page ? style.dot : style.none} key={item}>
-          <p onClick={() => pageClick(item)}>{item}</p>
+          <p onClick={() => handleClickPage(item)}>{item}</p>
         </div>
       ))}
       {countPages > 3 && (
@@ -58,7 +104,7 @@ export const Pagination = ({
             pages[2] === countPages
           }
           type="button"
-          onClick={() => nextPage()}
+          onClick={() => handleNext()}
         >
           {">"}
         </button>

@@ -9,11 +9,11 @@ import { Section } from "../Section/Section";
 import { UpArrow } from "@/component/Svg/UpArrow";
 
 export const Select = () => {
-  console.log("part", part);
+  // console.log("part", part);
   return (
     <Section title={"Виберіть запчастини за 3 простими етапами"}>
       <div className={style.part_list}>
-        <SelectPart part={part.first}>
+        <SelectPart className={style.first_arrow} part={part.first}>
           <Car className={style.img} />
         </SelectPart>
         <SelectPart className={style.arrow} part={part.second}>

@@ -1,15 +1,20 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import NavLink from "next/link";
 // import { Button } from "react-bootstrap";
 import css from "./UserMenu.module.scss";
-import { selectUser } from "@/redux/auth/auth-selectors";
-import { useSelector } from "react-redux";
+import { selectUser } from "@/lib/auth/auth-selectors";
 import { Cart } from "./Cart/Cart";
 import { Button } from "./Button";
 import { Avatar } from "./New/Avatar/Avatar";
+import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
 
 export const UserMenu = ({ logout, show }) => {
-  const user = useSelector(selectUser);
+  const user = useAppSelector(selectUser);
+  const store = useAppStore();
+
+  // console.log("user", user, store);
 
   return (
     <div>

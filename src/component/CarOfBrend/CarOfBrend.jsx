@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+// "use client";
+
+// import { useRouter } from "next/navigation";
 import style from "./CarOfBrend.module.scss";
 import { Brand } from "../Brand/Brand";
 import mg from "@/data/mg.json";
@@ -7,43 +9,42 @@ import jac from "@/data/jac.json";
 import geely from "@/data/geely.json";
 import chery from "@/data/chery.json";
 import { FilterItem } from "../New/FilterItem/FilterItem";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Filter } from "../New/Filter/Filter";
 import { BrandLayout } from "../New/BrandLayout/BrandLayout";
 
-export const CarOfBrend = () => {
-  const router = useRouter();
-  const [first, setFirst] = useState({});
-  const allCars = [mg, chery, faw, geely, jac];
+export const CarOfBrend = ({ brand }) => {
+  // const router = useRouter();
+  let first = {};
+  // const allCars = [mg, chery, faw, geely, jac];
 
-  useEffect(() => {
-    const takeBrand = async () => {
-      const brand = await router.query.slag;
-      console.log("brand", brand);
-      switch (brand) {
-        case "MG":
-          setFirst(mg);
-          break;
-        case "Chery":
-          setFirst(chery);
-          break;
-        case "Geely":
-          setFirst(geely);
-          break;
-        case "FAW":
-          setFirst(faw);
-          break;
-        case "JAC":
-          setFirst(jac);
-          break;
-        default:
-          setFirst({});
-      }
-    };
-    takeBrand();
-  }, [router.query.slag]);
+  const takeBrand = async () => {
+    // const brand = await router.query.slag;
+    // console.log("brand", brand);
+    switch (brand) {
+      case "MG":
+        first = mg;
+        break;
+      case "Chery":
+        first = chery;
+        break;
+      case "Geely":
+        first = geely;
+        break;
+      case "FAW":
+        first = faw;
+        break;
+      case "JAC":
+        first = jac;
+        break;
+      default:
+        first = {};
+    }
+  };
 
-  console.log("first", first);
+  takeBrand();
+
+  // console.log("first", first);
 
   return (
     <>

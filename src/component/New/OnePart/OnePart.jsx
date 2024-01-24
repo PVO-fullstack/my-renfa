@@ -1,7 +1,9 @@
-import { getOnePart } from "@/apiService/apiParts";
+// "use client";
+
+import { getOnePart, getPartById } from "@/apiService/apiParts";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+// import { useRouter } from "next/router";
+import React from "react";
 import { Modal } from "../../Modal";
 import style from "./OnePart.module.scss";
 import { KURS } from "@/variable/variable";
@@ -11,68 +13,91 @@ import { Plus } from "@/component/Svg/Plus";
 import { Minus } from "@/component/Svg/Minus";
 import { ArrowBack } from "@/component/Svg/ArrowBack";
 import { Counter } from "../Counter/Counter";
+import { Button } from "./Button/Button";
+import { BuyBlock } from "./BuyBlock/BuyBlock";
 
-export const OnePart = ({ partName }) => {
-  const [onePart, setOnePart] = useState();
-  const [showModal, setShowModal] = useState(false);
-  const [orderParts, setOrderParts] = useState([]);
-  const [disabled, setDisabled] = useState(false);
-  const [model, setModel] = useState([]);
-  const [count, setCount] = useState(1);
-  const router = useRouter();
-  console.log("model", model);
+export async function generateMetadata({ params, searchParams }, parent) {
+  const id = params.id;
 
-  useEffect(() => {
-    const getPart = async () => {
-      const modelName = router.query.slag;
-      if (modelName || partName) {
-        const part = await getOnePart(modelName[2] || partName);
-        console.log("part", part);
-        if (part && part.modelParts) {
-          setOnePart(part.modelParts[0] || partName);
-        }
-        setModel(modelName);
-        console.log("onepart", part);
-      }
-    };
-    getPart();
-    const order = localStorage.getItem("order");
-    if (order) {
-      setOrderParts(JSON.parse(order));
-    }
-    return () => {
-      console.log("first");
-    };
-  }, [partName, router.query.slag]);
+  toLocal();
 
-  const openModal = () => {
-    setShowModal(true);
+  // fetch data
+  const product = await getOnePart(id);
+
+  // console.log("product", product);
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: product[0].Description,
+    // openGraph: {
+    //   images: ["/some-specific-page-image.jpg", ...previousImages],
+    // },
   };
+}
 
-  const closeModal = () => setShowModal(false);
+export const OnePart = async ({ partName, brand, model, get, count }) => {
+  // const [onePart, setOnePart] = useState();
+  // const [showModal, setShowModal] = useState(false);
+  // const [orderParts, setOrderParts] = useState([]);
+  // const [disabled, setDisabled] = useState(false);
+  // const [model, setModel] = useState([]);
+  // const [count, setCount] = useState(1);
+  // const router = useRouter();
 
-  const handleClick = () => {
-    console.log("onePart", onePart);
-    if (orderParts && orderParts.length > 0) {
-      console.log("one", onePart);
-      // setOrderParts([...orderParts, onePart]);
-      console.log("orderParts", orderParts);
-      const partString = JSON.stringify([
-        ...orderParts,
-        { ...onePart, count: count },
-      ]);
-      console.log("second", partString);
-      localStorage.setItem("order", partString);
-      setDisabled(true);
-      return;
-    }
-    console.log("first");
-    setOrderParts([onePart]);
-    const partString = JSON.stringify([{ ...onePart, count: count }]);
-    localStorage.setItem("order", partString);
-    // console.log("orderParts", orderParts);
-    setDisabled(true);
-  };
+  // useEffect(() => {
+  //   const getPart = async () => {
+  //     // const modelName = router.query.slag;
+  //     if (partName) {
+  const allPart = await getPartById(partName);
+  // const part = allPart.modelParts[0];
+  // console.log("part", allPart);
+  //     if (part && part.modelParts) {
+  //       setOnePart(part.modelParts[0] || partName);
+  //     }
+  //     // setModel(modelName);
+  //     console.log("onepart", part);
+  //   }
+  // };
+  // getPart();
+  // const order = await localStorage.getItem("order");
+  // const orderParts = await JSON.parse(order);
+  // if (order) {
+  //   setOrderParts(JSON.parse(order));
+  // }
+  //   return () => {
+  //     console.log("first");
+  //   };
+  // }, [partName]);
+
+  // const openModal = () => {
+  //   setShowModal(true);
+  // };
+
+  // const closeModal = () => setShowModal(false);
+
+  // const handleClick = () => {
+  //   console.log("onePart", onePart);
+  //   if (orderParts && orderParts.length > 0) {
+  //     console.log("one", onePart);
+  //     // setOrderParts([...orderParts, onePart]);
+  //     console.log("orderParts", orderParts);
+  //     const partString = JSON.stringify([
+  //       ...orderParts,
+  //       { ...onePart, count: count },
+  //     ]);
+  //     console.log("second", partString);
+  //     localStorage.setItem("order", partString);
+  //     // setDisabled(true);
+  //     return;
+  //   }
+  //   console.log("first");
+  //   // setOrderParts([onePart]);
+  //   const partString = JSON.stringify([{ ...onePart, count: count }]);
+  //   localStorage.setItem("order", partString);
+  //   // console.log("orderParts", orderParts);
+  //   // setDisabled(true);
+  // };
 
   // const increment = () => {
   //   setCount(count + 1);
@@ -85,20 +110,22 @@ export const OnePart = ({ partName }) => {
   //   setCount(count - 1);
   // };
 
-  const getCount = (data) => {
-    setCount(data);
-  };
+  // let count;
 
-  console.log("onePart", count);
+  // const getCount = (data) => {
+  //   count = data;
+  // };
+
+  // console.log("onePart", count);
 
   return (
     <>
-      {onePart && (
+      {allPart && (
         <Head>
-          <title>{`${onePart.Description} ${onePart.Articul}`}</title>
+          <title>{`${allPart.Description} ${allPart.Articul}`}</title>
           <meta
             name="description"
-            content={`${onePart.Description} ${onePart.Articul}`}
+            content={`${allPart.Description} ${allPart.Articul}`}
             key="desc"
           />
         </Head>
@@ -107,57 +134,59 @@ export const OnePart = ({ partName }) => {
         <Link
           className={style.btn_conteiner}
           href={{
-            pathname: `/models/${model[0]}/${model[1]}`,
+            pathname: `/models/${brand}/${model}`,
           }}
         >
           {/* <div className={style.btn_conteiner}> */}
           <p>
-            Повернутись до: {model[0]} {model[1]}
+            Повернутись до: {brand} {model}
           </p>
           <ArrowBack className={style.link} />
           {/* </div> */}
         </Link>
-        {onePart && (
+        {allPart && (
           <div className={style.partCard}>
             <Image
               className={style.img}
-              onClick={openModal}
-              src={onePart.Img}
+              // onClick={openModal}
+              src={allPart.Img}
               width={300}
               height={200}
-              alt={onePart.Part_Name}
+              alt={allPart.Part_Name}
             />
             <div className={style.card}>
               <div className={style.name_conteiner}>
-                <h3 className={style.title}>{onePart.Part_Name}</h3>
+                <h3 className={style.title}>{allPart.Part_Name}</h3>
                 <div className={style.text_conteiner}>
-                  <p className={style.articul}>Код: {onePart.Articul}</p>
+                  <p className={style.articul}>Код: {allPart.Articul}</p>
                   <p className={style.text}>
-                    Країна виробник: {onePart.Country}
+                    Країна виробник: {allPart.Country}
                   </p>
                   <p className={style.text}>
-                    Встановлюється на автомобілі: {model[0]}{" "}
-                    {onePart.Model.join(", ")}
+                    Встановлюється на автомобілі: {brand}{" "}
+                    {allPart.Model.join(", ")}
                   </p>
                 </div>
               </div>
               <div className={style.name_conteiner}>
                 <p className={style.price}>
-                  {Math.round(onePart.Price * KURS)} ₴
+                  {Math.round(allPart.Price * KURS)} ₴
                 </p>
-                <Counter data={count} get={getCount} />
+                <BuyBlock part={allPart} />
+                {/* <Counter get={get} /> */}
                 {/* <div className={style.counter}>
                   <Minus click={decriment} />
                   <p className={style.count}>{count}</p>
                   <Plus click={increment} />
                 </div> */}
-                <button
-                  disabled={disabled}
-                  onClick={handleClick}
-                  className={style.btn}
-                >
-                  {disabled ? "У корзині" : "Купити"}
-                </button>
+                {/* <Button part={allPart} count={count || 1} /> */}
+                {/* <button */}
+                {/* // disabled={disabled}
+                // onClick={handleClick}
+                // className={style.btn} */}
+                {/* > */}
+                {/* {disabled ? "У корзині" : "Купити"} */}
+                {/* </button> */}
               </div>
             </div>
             <p className={style.availability}>В наявності</p>
@@ -171,7 +200,7 @@ export const OnePart = ({ partName }) => {
             замовлення на доставку морем та літаком.
           </p>
         </div>
-        {showModal && <Modal src={onePart} onClose={closeModal} />}
+        {/* {showModal && <Modal src={onePart} onClose={closeModal} />} */}
       </div>
     </>
   );

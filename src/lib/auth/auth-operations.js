@@ -38,7 +38,7 @@ export const logInUser = createAsyncThunk(
         credentials
       );
       token.set(res.data.token);
-      console.log(res);
+      // console.log(res);
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -50,9 +50,9 @@ export const refreshUser = createAsyncThunk(
   "user/refresh",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    console.log("state", state);
+    // console.log("state", state);
     const tokenSt = state.auth.token;
-    console.log("token", tokenSt);
+    // console.log("token", tokenSt);
 
     if (tokenSt === null) {
       return thunkAPI.rejectWithValue();

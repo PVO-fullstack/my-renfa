@@ -12,10 +12,11 @@ export const Brand = ({ model }) => {
             key={item.Brend}
             // href={"/models/MG"}
 
-            href={{
-              pathname: `/models/[car]`,
-              query: { car: item.Brend },
-            }}
+            href={`/models/${item.Brend}`}
+            // href={{
+            //   pathname: `/models/[car]`,
+            //   query: { car: item.Brend },
+            // }}
           >
             <li>
               {/* <img className={style.logo} src={item.logo} alt="" /> */}

@@ -29,8 +29,8 @@ export default async function (req, res) {
 
       const count = await db
         .collection("parts")
-        .find({ Part_Name: { $regex: regexp } })
-        .count();
+        // .find()
+        .countDocuments({ Part_Name: { $regex: regexp } });
       res.json({ parts: parts, count: count });
       return;
     }

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import mg from "../../../data/mg.json";
 import style from "./FilterItem.module.scss";
@@ -30,10 +32,11 @@ export const FilterItem = ({ data, fara, selected }) => {
           <div className={style.conteiner}>
             <Link
               className={style.link}
-              href={{
-                pathname: `/models/[car]`,
-                query: { car: data.title },
-              }}
+              href={`/models/${data.title}`}
+              // href={{
+              //   pathname: `/models/[car]`,
+              //   query: { car: data.title },
+              // }}
             >
               {data.title}
             </Link>

@@ -2,8 +2,8 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import { init } from "next/dist/compiled/@vercel/og/satori";
 
-// const API_URL = "http://localhost:3000";
-const API_URL = "https://www.renfa.pp.ua";
+const API_URL = "http://localhost:3000";
+// const API_URL = "https://www.renfa.pp.ua";
 // const API_URL = "https://renfa-api.onrender.com";
 // const API_URL = "https://my-renfa.vercel.app/";
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
@@ -22,8 +22,10 @@ const token = {
 };
 
 export const getAllParts = async () => {
-  const res = await axios.get(`${API_URL}/api/parts`);
-  return res.data;
+  const res = await fetch(`${API_URL}/api/parts`);
+
+  const data = await res.json();
+  return data;
 };
 
 export const getModelBrand = async (brand) => {
@@ -54,12 +56,21 @@ export const getOnePart = async (articul, page = 1, limit = 6, init) => {
   return data;
 };
 
-export const getAllModel = async (model) => {
+export const getPartById = async (id, init) => {
+  const res = await fetch(`${API_URL}/api/search/${id}`, init);
+
+  const data = await res.json();
+  return data;
+};
+
+export const getAllModel = async () => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`${API_URL}/api/parts/allmodel`);
-  return res.data;
+  const res = await fetch(`${API_URL}/api/parts/allmodel`);
+
+  const data = await res.json();
+  return data;
 };
 
 export const createModel = createAsyncThunk(
@@ -180,7 +191,7 @@ export const getAllOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("https://renfa-api.onrender.com/api/orders");
-      console.log("res", res);
+      // console.log("res", res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

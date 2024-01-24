@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Logo } from "../Logo/Logo";
 import { FindInput } from "../FindInput/FindInput";
@@ -12,8 +14,8 @@ import { UserMenu } from "@/component/UserMenu";
 import { AuthModal } from "@/component/AuthModal/AuthModal";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { logOutUser } from "@/redux/auth/auth-operations";
-import { selectLoad, selectUser } from "@/redux/auth/auth-selectors";
+import { logOutUser } from "@/lib/auth/auth-operations";
+import { selectLoad, selectUser } from "@/lib/auth/auth-selectors";
 import { Modal } from "../Modal/Modal";
 import { RegisterForm } from "../RegisterForm/RegisterForm";
 import { Auth } from "../Auth/Auth";
@@ -23,6 +25,7 @@ import { MenuIcon } from "../MenuIcon/MenuIcon";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { SearchIcon } from "../SearchIcon/SearchIcon";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -30,20 +33,20 @@ export const Header = () => {
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
-  const router = useRouter();
+  // const router = useRouter();
   const pathname = usePathname();
   const search = useSearchParams();
 
   const get = search.getAll("query").toString();
 
-  const userName = useSelector(selectUser);
-  const isLoad = useSelector(selectLoad);
+  const userName = useAppSelector(selectUser);
+  const isLoad = useAppSelector(selectLoad);
 
-  console.log("pathname", pathname, get);
+  // console.log("pathname", pathname, get);
 
-  console.log("user", user);
+  // console.log("user", user);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleClose = () => {
     setShow(false);
@@ -61,7 +64,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     dispatch(logOutUser());
-    router.push("/");
+    // router.push("/");
   };
 
   return (
@@ -104,7 +107,7 @@ export const Header = () => {
           </Link>
         </div>
       </div>
-      {isLoad && <Loader />}
+      {/* {isLoad && <Loader />} */}
     </div>
   );
 };

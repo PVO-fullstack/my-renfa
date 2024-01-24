@@ -38,7 +38,7 @@ export const getAllOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("https://renfa-api.onrender.com/api/orders");
-      console.log("res", res);
+      // console.log("res", res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -61,7 +61,7 @@ export const getUserOrders = createAsyncThunk(
       const res = await axios.get(
         "https://renfa-api.onrender.com/api/orders/userorder"
       );
-      console.log(res);
+      // console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

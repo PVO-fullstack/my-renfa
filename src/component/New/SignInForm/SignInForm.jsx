@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/component/Input";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,7 +8,7 @@ import style from "./SingInForm.module.scss";
 import { Close } from "../Close/Close";
 import { Button } from "@/component/Button";
 import { useDispatch } from "react-redux";
-import { logInUser, registerUser } from "@/redux/auth/auth-operations";
+import { logInUser, registerUser } from "@/lib/auth/auth-operations";
 import { toast } from "react-hot-toast";
 import { Loader } from "@/component/Loader/Loader";
 
@@ -30,9 +32,9 @@ export const SignInForm = ({ close, show }) => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-    console.log("hello");
+    // console.log("hello");
     dispatch(logInUser(data)).then((result) => {
-      console.log("result", result.message);
+      // console.log("result", result.message);
       if (result.error) {
         toast.error("Невірний логін або пароль");
       }
@@ -41,7 +43,7 @@ export const SignInForm = ({ close, show }) => {
     close();
   };
 
-  console.log("isLoading", isLoading);
+  // console.log("isLoading", isLoading);
 
   return (
     <div className={style.conteiner}>
