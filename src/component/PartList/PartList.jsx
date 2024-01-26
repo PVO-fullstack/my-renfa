@@ -64,7 +64,11 @@ export const PartList = async ({
   let count;
   if (modelName) {
     if (find) {
-      const part = await getOnePart(modelName, page || 1, limit || 6);
+      const part = await getOnePart(modelName, page || 1, limit || 6, {
+        next: {
+          revalidate: 3600,
+        },
+      });
       // if (modelName !== model) {
       //   setPage(1);
       // }
