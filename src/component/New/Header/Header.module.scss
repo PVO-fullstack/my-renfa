@@ -40,7 +40,7 @@
         }
 
         &:hover {
-            color: red;
+            color: #7C7A7A;
         }
     }
 }
@@ -60,6 +60,7 @@
     display: none;
 
     @media screen and (min-width:1280px) {
+        position: relative;
         display: flex;
         width: 100vw;
         padding: 24px 76px;
@@ -96,4 +97,11 @@
     @media screen and (min-width:1280px) {
         display: none;
     }
+}
+
+.car_list {
+    position: absolute;
+    top: 74px;
+    left: 0;
+    width: 100vw;
 }

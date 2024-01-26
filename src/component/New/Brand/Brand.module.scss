@@ -19,7 +19,7 @@
         }
 
         &:hover {
-            color: red;
+            color: #7C7A7A;
         }
     }
 }
@@ -53,11 +53,16 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    transition: all 0.5s ease-in-out;
 
     // display: none;
     @media screen and (min-width:1280px) {
         font-size: 17px;
 
+    }
+
+    &:hover {
+        color: #7C7A7A;
     }
 
 }

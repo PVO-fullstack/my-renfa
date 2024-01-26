@@ -1,8 +1,19 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./Brand.module.scss";
 
-export const Brand = ({ model }) => {
+export const Brand = ({ model, get }) => {
+  // useEffect(() => {
+  //   if (document) {
+  //     const brand = document.getElementById("#brand");
+  //     brand.addEventListener("hover", getBrandName)
+  //   }
+
+  //   console.log("brand", brand);
+  // }, []);
+
   return (
     <div>
       <ul className={style.model}>
@@ -20,7 +31,14 @@ export const Brand = ({ model }) => {
           >
             <li>
               {/* <img className={style.logo} src={item.logo} alt="" /> */}
-              <p className={style.brend}>{item.Brend}</p>
+              <p
+                onMouseEnter={(e) => get(e.currentTarget.lastChild.data)}
+                onMouseOut={() => get(false)}
+                id="brand"
+                className={style.brend}
+              >
+                {item.Brend}
+              </p>
             </li>
           </Link>
         ))}

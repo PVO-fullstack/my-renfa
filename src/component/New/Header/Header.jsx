@@ -26,10 +26,12 @@ import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { SearchIcon } from "../SearchIcon/SearchIcon";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
+import { CarList } from "../CarList/CarList";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(null);
+  const [brandName, setBrandName] = useState();
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
@@ -67,6 +69,14 @@ export const Header = () => {
     // router.push("/");
   };
 
+  const getBrandName = (name) => {
+    // setTimeout(() => {
+    setBrandName(name);
+    // }, 500);
+  };
+
+  console.log("brandName", brandName);
+
   return (
     <div className={style.conteiner}>
       {!isSearch ? (
@@ -100,12 +110,17 @@ export const Header = () => {
         <FindInput close={handleCloseSearch} click={true} />
       )}
       <div className={style.header_part_down}>
-        <Brand model={model} />
+        <Brand model={model} get={getBrandName} />
         <div>
           <Link className={style.link} href="/contacts">
             Контакти
           </Link>
         </div>
+        {brandName && (
+          <div className={style.car_list}>
+            <CarList brand={brandName} />
+          </div>
+        )}
       </div>
       {/* {isLoad && <Loader />} */}
     </div>

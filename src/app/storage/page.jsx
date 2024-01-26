@@ -19,7 +19,7 @@ export default function Order() {
   return (
     <div>
       Storage
-      {/* <div
+      <div
         style={
           {
             // marginLeft: 350,
@@ -34,8 +34,7 @@ export default function Order() {
         <button onClick={() => setIsOrders(false)}>Склад</button>
         <button onClick={() => setIsOrders(true)}>Замовлення</button>
       </div>
-
-      {!isOrders ? <StorageList /> : <AllOrders />} */}
+      {!isOrders ? <StorageList /> : <AllOrders />}
     </div>
   );
 }
