@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import { init } from "next/dist/compiled/@vercel/og/satori";
 
 // const API_URL = "http://localhost:3000";
 const API_URL = "https://www.renfa.pp.ua";
@@ -39,7 +38,7 @@ export const getModelBrand = async (brand) => {
 export const getModel = async (model, page = 1, limit = 6, init) => {
   const res = await fetch(
     `${API_URL}/api/${model}?page=${page}&limit=${limit}`,
-    init
+    { next: { revalidate: 5 } }
   );
 
   const data = await res.json();
@@ -49,7 +48,7 @@ export const getModel = async (model, page = 1, limit = 6, init) => {
 export const getOnePart = async (articul, page = 1, limit = 6, init) => {
   const res = await fetch(
     `${API_URL}/api/car/${articul}?page=${page}&limit=${limit}`,
-    init
+    { next: { revalidate: 5 } }
   );
 
   const data = await res.json();
