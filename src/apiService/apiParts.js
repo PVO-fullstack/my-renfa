@@ -56,7 +56,7 @@ export const getOnePart = async (articul, page = 1, limit = 6, init) => {
 };
 
 export const getPartById = async (id, init) => {
-  const res = await fetch(`${API_URL}/api/search/${id}`, {
+  const res = await fetch(`${API_URL}/api/part/${id}`, {
     next: { revalidate: 600 },
   });
 

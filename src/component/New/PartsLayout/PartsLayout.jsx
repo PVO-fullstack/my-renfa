@@ -12,7 +12,6 @@ export const PartsLayout = ({
   page,
   limit,
 }) => {
-  console.log("modelLayout", limit, page);
   return (
     <div className={style.carList}>
       <Filter model={model} open={brand} />

@@ -16,8 +16,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 export default function ModelsList({ params, searchParams }) {
-  console.log("searchParams", searchParams?.page);
-
   return (
     <div>
       <CarOfBrend brand={params.brand} />;

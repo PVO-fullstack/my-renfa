@@ -27,6 +27,7 @@ import { SearchIcon } from "../SearchIcon/SearchIcon";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
 import { CarList } from "../CarList/CarList";
+import { FindArticul } from "../FindArticul/FindArticul";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -74,8 +75,6 @@ export const Header = () => {
     setBrandName(name);
     // }, 500);
   };
-
-  console.log("brandName", brandName);
 
   return (
     <div className={style.conteiner}>

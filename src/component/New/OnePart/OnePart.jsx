@@ -16,26 +16,6 @@ import { Counter } from "../Counter/Counter";
 import { Button } from "./Button/Button";
 import { BuyBlock } from "./BuyBlock/BuyBlock";
 
-export async function generateMetadata({ params, searchParams }, parent) {
-  const id = params.id;
-
-  toLocal();
-
-  // fetch data
-  const product = await getOnePart(id);
-
-  // console.log("product", product);
-  // optionally access and extend (rather than replace) parent metadata
-  // const previousImages = (await parent).openGraph?.images || [];
-
-  return {
-    title: product[0].Description,
-    // openGraph: {
-    //   images: ["/some-specific-page-image.jpg", ...previousImages],
-    // },
-  };
-}
-
 export const OnePart = async ({ partName, brand, model, get, count }) => {
   // const [onePart, setOnePart] = useState();
   // const [showModal, setShowModal] = useState(false);
@@ -115,8 +95,6 @@ export const OnePart = async ({ partName, brand, model, get, count }) => {
   // const getCount = (data) => {
   //   count = data;
   // };
-
-  // console.log("onePart", count);
 
   return (
     <>

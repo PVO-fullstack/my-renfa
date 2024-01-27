@@ -3,12 +3,16 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import style from "./FindInput.module.scss";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { SearchBtn } from "../SearchBtn/SearchBtn";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { getOnePart } from "@/apiService/apiParts";
 
 export const FindInput = ({ className, inputClass, click, close }) => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const { replace } = useRouter();
   const [value, setValue] = useState("");
-  // const router = useRouter();
 
   const handleInput = (e) => {
     setValue(e.currentTarget.value);
@@ -20,10 +24,22 @@ export const FindInput = ({ className, inputClass, click, close }) => {
       toast.error("Будь ласка, введіть назву або каталожний номер");
       return;
     }
-    // router.push(`/search/${value}`);
-    // submit(value);
+
+    // const part = getOnePart(value);
+    //       const params = new URLSearchParams(searchParams);
+    //   if (term) {
+    //     params.set('query', term);
+    //   } else {
+    //     params.delete('query');
+    //   }
+    //   replace(`${pathname}?${params.toString()}`);
+    // }
+    replace(`/search/${value}`);
+    // // submit(value);
     setValue("");
-    close();
+    if (close) {
+      close();
+    }
   };
 
   return (

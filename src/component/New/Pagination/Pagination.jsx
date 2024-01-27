@@ -13,8 +13,6 @@ export const Pagination = ({ count, limit, page }) => {
   const router = useRouter();
   const pathName = usePathname();
 
-  console.log("prev", pathName);
-
   useEffect(() => {
     const countOfPages = count / limit;
     setCountPages(Math.ceil(countOfPages));
@@ -75,8 +73,6 @@ export const Pagination = ({ count, limit, page }) => {
         limit
     );
   };
-
-  console.log("count", pages, countPages);
 
   return (
     <div className={style.conteiner}>

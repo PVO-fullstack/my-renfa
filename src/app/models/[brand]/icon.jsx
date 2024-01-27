@@ -7,9 +7,7 @@ export const size = {
 
 export const contentType = "image/png";
 
-export default function icon({ params }) {
-  console.log("model", params.brand);
-
+export default function icon() {
   return new ImageResponse(
     (
       <div

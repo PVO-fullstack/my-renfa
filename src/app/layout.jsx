@@ -16,7 +16,6 @@ const exo2 = Exo_2({
 });
 
 export default function RootLayout({ children }) {
-  console.log("Render");
   return (
     <html lang="ua">
       <head>

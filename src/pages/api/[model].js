@@ -5,9 +5,6 @@ export default async function (req, res) {
     const client = await clientPromise;
     const db = client.db("parts_list");
     const { model, page, limit } = req.query;
-
-    console.log("page", page, limit);
-
     const skip = (page - 1) * limit;
     const modelParts = await db
       .collection("parts")
