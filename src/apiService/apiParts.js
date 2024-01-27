@@ -38,7 +38,7 @@ export const getModelBrand = async (brand) => {
 export const getModel = async (model, page = 1, limit = 6, init) => {
   const res = await fetch(
     `${API_URL}/api/${model}?page=${page}&limit=${limit}`,
-    { next: { revalidate: 5 } }
+    { next: { revalidate: 600 } }
   );
 
   const data = await res.json();
@@ -48,7 +48,7 @@ export const getModel = async (model, page = 1, limit = 6, init) => {
 export const getOnePart = async (articul, page = 1, limit = 6, init) => {
   const res = await fetch(
     `${API_URL}/api/car/${articul}?page=${page}&limit=${limit}`,
-    { next: { revalidate: 5 } }
+    { next: { revalidate: 600 } }
   );
 
   const data = await res.json();
@@ -56,7 +56,9 @@ export const getOnePart = async (articul, page = 1, limit = 6, init) => {
 };
 
 export const getPartById = async (id, init) => {
-  const res = await fetch(`${API_URL}/api/search/${id}`, init);
+  const res = await fetch(`${API_URL}/api/search/${id}`, {
+    next: { revalidate: 600 },
+  });
 
   const data = await res.json();
   return data;
