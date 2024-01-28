@@ -5,8 +5,15 @@ export default async function sitemap() {
   const baseURL = "https://www.renfa.pp.ua/";
 
   const parts = await getAllParts();
-  const partsUrls = parts.map((part) => ({
-    url: `${baseURL}/models/${part.Brand}/${part.Model[0]}/${part.Articul}`,
+
+  const allParts = parts.flatMap((part) =>
+    part.Model.map((item) => ({ ...part, Model: item }))
+  );
+
+  //   console.log("allParts", allParts);
+
+  const partsUrls = allParts.flatMap((part) => ({
+    url: `${baseURL}/models/${part.Brand}/${part.Model}/${part.Articul}`,
     lastModified: new Date(),
   }));
 
