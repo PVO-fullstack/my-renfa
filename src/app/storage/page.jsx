@@ -19,7 +19,7 @@ export default function Order() {
   return (
     <div>
       Storage
-      <div
+      {/* <div
         style={
           {
             // marginLeft: 350,
@@ -29,11 +29,11 @@ export default function Order() {
             // gap: 10,
             // justifyContent: "center",
           }
-        }
+        } */}
       >
-        {/* <button onClick={() => setIsOrders(false)}>Склад</button>
+      {/* <button onClick={() => setIsOrders(false)}>Склад</button>
         <button onClick={() => setIsOrders(true)}>Замовлення</button> */}
-      </div>
+      {/* </div> */}
       {/* {!isOrders ? <StorageList /> : <AllOrders />} */}
     </div>
   );
