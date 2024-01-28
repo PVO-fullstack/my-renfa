@@ -21,7 +21,9 @@ const token = {
 };
 
 export const getAllParts = async () => {
-  const res = await fetch(`${API_URL}/api/parts`);
+  const res = await fetch(`${API_URL}/api/parts`, {
+    next: { revalidate: 600 },
+  });
 
   const data = await res.json();
   return data;
