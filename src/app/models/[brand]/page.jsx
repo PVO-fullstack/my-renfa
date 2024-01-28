@@ -9,6 +9,8 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
   return {
     title: `Запчастини на автомобілі ${id}`,
+    keywords:
+      "Morris, Garages, MG, Morris Garages MG, запчасти, автозапчасти,  Morris Garages MG 3, Morris Garages MG 350, Morris Garages MG 5, Morris Garages MG 550, Morris Garages MG 6, Morris Garages MG 750, Morris Garages MG 3SW, автомобили morris garages mg, MG HS, MG ZS, запчастини, купити, запчастини мг ",
     // openGraph: {
     //   images: ["/some-specific-page-image.jpg", ...previousImages],
     // },
