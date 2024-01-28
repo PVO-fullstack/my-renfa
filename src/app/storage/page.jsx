@@ -30,7 +30,7 @@ export default function Order() {
             // justifyContent: "center",
           }
         } */}
-      >
+      {/* > */}
       {/* <button onClick={() => setIsOrders(false)}>Склад</button>
         <button onClick={() => setIsOrders(true)}>Замовлення</button> */}
       {/* </div> */}
