@@ -2,11 +2,7 @@ import style from "./page.module.css";
 import { Toaster } from "react-hot-toast";
 import { Header } from "@/component/New/Header/Header";
 import { Footer } from "@/component/New/Footer/Footer";
-import Head from "next/head";
 import { Exo_2 } from "next/font/google";
-// import { PersistGate } from "redux-persist/integration/react";
-// import { Provider } from "react-redux";
-// import { store, persistor } from "@/redux/store";
 import "../../styles/globals.css";
 import StoreProvider from "./StoreProvider";
 

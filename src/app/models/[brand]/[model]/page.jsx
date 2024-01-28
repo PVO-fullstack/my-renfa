@@ -17,8 +17,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
     .map((item) => item.Part_Name)
     .join(` ${brand} ${model}, `);
 
-  console.log("partsName", partsName);
-
   return {
     title: `Запчастини на автомобілі ${brand} ${model}`,
     // description: "MG",

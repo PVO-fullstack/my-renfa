@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 
 import Layout from "@/app/layout";
 import { AllOrders } from "@/component/AllOrders";
@@ -8,13 +8,13 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 
 export default function Order() {
-  const [isOrders, setIsOrders] = useState(false);
+  // const [isOrders, setIsOrders] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(refreshUser());
+  // }, [dispatch]);
 
   return (
     <div>
@@ -31,10 +31,10 @@ export default function Order() {
           }
         }
       >
-        <button onClick={() => setIsOrders(false)}>Склад</button>
-        <button onClick={() => setIsOrders(true)}>Замовлення</button>
+        {/* <button onClick={() => setIsOrders(false)}>Склад</button>
+        <button onClick={() => setIsOrders(true)}>Замовлення</button> */}
       </div>
-      {!isOrders ? <StorageList /> : <AllOrders />}
+      {/* {!isOrders ? <StorageList /> : <AllOrders />} */}
     </div>
   );
 }
