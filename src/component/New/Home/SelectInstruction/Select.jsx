@@ -11,7 +11,10 @@ import { UpArrow } from "@/component/Svg/UpArrow";
 export const Select = () => {
   // console.log("part", part);
   return (
-    <Section title={"Виберіть запчастини за 3 простими етапами"}>
+    <Section
+      titleClassname={style.title}
+      title={"Виберіть запчастини за 3 простими етапами"}
+    >
       <div className={style.part_list}>
         <SelectPart className={style.first_arrow} part={part.first}>
           <Car className={style.img} />

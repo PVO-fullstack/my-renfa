@@ -1,5 +1,9 @@
 .conteiner {
     padding-block: 25px;
+
+    @media screen and (min-width:1280px) {
+        padding-block: 50px;
+    }
 }
 
 .order_conteiner {
@@ -13,6 +17,12 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    border-radius: 5px;
+
+    @media screen and (min-width:1280px) {
+        padding: 50px 30px 80px 30px;
+        gap: 60px;
+    }
 }
 
 .title_conteiner {
@@ -39,6 +49,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        font-size: 19px;
+    }
 }
 
 .order_description {
@@ -46,6 +60,12 @@
     display: flex;
     gap: 50px;
     flex-direction: column;
+
+    @media screen and (min-width:1280px) {
+        flex-direction: row;
+        gap: 178px;
+        justify-content: center;
+    }
 }
 
 .form {
@@ -54,12 +74,20 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @media screen and (min-width:1280px) {
+        width: 490px;
+    }
 }
 
 .contact {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    @media screen and (min-width:1280px) {
+        justify-content: center;
+    }
 }
 
 .contect_title {
@@ -70,6 +98,10 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        width: auto;
+    }
 }
 
 .deliver:before {

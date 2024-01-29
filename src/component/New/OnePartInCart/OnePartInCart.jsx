@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Counter } from "../Counter/Counter";
 import Image from "next/image";
 import { Trash } from "../Trash/Trash";
@@ -9,6 +9,16 @@ import { KURS } from "@/variable/variable";
 
 export const OnePartInCart = ({ part, get, count, del }) => {
   const [newCount, setNewCount] = useState(part);
+  const [width, setWidth] = useState(320);
+  const [height, setHeight] = useState(480);
+
+  useEffect(() => {
+    setWidth(document.documentElement.clientWidth);
+    setHeight(document.documentElement.clientHeight);
+  }, []);
+
+  console.log(width);
+  console.log(height);
 
   const changeCount = (data) => {
     setNewCount({ ...part, count: data });
@@ -38,8 +48,8 @@ export const OnePartInCart = ({ part, get, count, del }) => {
         <div className={style.counter_conteiner}>
           <p className={style.price}>{part.Price * KURS}₴</p>
           <Counter
-            width={20}
-            height={20}
+            width={width >= 1280 ? 30 : 20}
+            height={width >= 1280 ? 30 : 20}
             counterStyle={style.counter}
             countStyle={style.count}
             get={changeCount}

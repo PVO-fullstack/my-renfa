@@ -18,17 +18,19 @@ import { SortPanel } from "../SortPanel/SortPanel";
 import { PartListItem } from "../PartListItem/PartListItem";
 
 export const FindArticul = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const [first, setFirst] = useState();
   const [onePart, setOnePart] = useState();
   const [count, setCount] = useState();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(6);
   const pathName = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
 
   useEffect(() => {
     const takeBrand = async () => {
-      const articul = await router.query.slag;
+      // const articul = await router.query.slag;
       // console.log("brand", articul);
       setFirst(articul);
       if (articul) {

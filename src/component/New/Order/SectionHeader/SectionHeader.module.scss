@@ -8,6 +8,10 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+
+    @media screen and (min-width:1280px) {
+        justify-content: center;
+    }
 }
 
 .contect_title {
@@ -18,6 +22,11 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+
+    @media screen and (min-width:1280px) {
+        width: auto;
+        font-size: 22px;
+    }
 }
 
 .contect_title:before {

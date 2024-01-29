@@ -6,4 +6,41 @@
     border-radius: 5px;
     border: 1px solid #D2D6E8;
     background: #FFF;
+
+    @media screen and (min-width:1280px) {
+        height: fit-content;
+        width: 438px;
+    }
+}
+
+.cost {
+    display: flex;
+    padding: 10px 14px 14px 14px;
+    align-items: center;
+    justify-content: space-between;
+    align-self: stretch;
+    background: #F6F7F9;
+    color: #1E1E1E;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    @media screen and (min-width:1280px) {}
+}
+
+.delivery {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 14px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    color: #1E1E1E;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    @media screen and (min-width:1280px) {}
 }

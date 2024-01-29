@@ -1,5 +1,7 @@
 // "use client";
 
+import { Storage } from "@/component/Storage/Storage";
+
 // import Layout from "@/app/layout";
 // import { AllOrders } from "@/component/AllOrders";
 // import { StorageList } from "@/component/StorageList";
@@ -16,25 +18,5 @@ export default function Order() {
   //   dispatch(refreshUser());
   // }, [dispatch]);
 
-  return (
-    <div>
-      Storage
-      {/* <div
-        style={
-          {
-            // marginLeft: 350,
-            // alignItems: "center",
-            // marginTop: 20,
-            // display: "flex",
-            // gap: 10,
-            // justifyContent: "center",
-          }
-        } */}
-      {/* > */}
-      {/* <button onClick={() => setIsOrders(false)}>Склад</button>
-        <button onClick={() => setIsOrders(true)}>Замовлення</button> */}
-      {/* </div> */}
-      {/* {!isOrders ? <StorageList /> : <AllOrders />} */}
-    </div>
-  );
+  return <Storage />;
 }

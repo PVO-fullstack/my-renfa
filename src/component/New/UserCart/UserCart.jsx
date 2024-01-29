@@ -48,6 +48,12 @@ export const UserCart = () => {
     <div className={style.conteiner}>
       <div className={style.conteiner_2}>
         <h2>Кошик</h2>
+        <div className={style.head}>
+          <span className={style.name}>Товар</span>
+          <span className={style.price}>Ціна</span>
+          <span className={style.count}>Кількість</span>
+          <span className={style.all}>Сума</span>
+        </div>
         {parts?.length > 0 &&
           parts.map((item) => (
             <OnePartInCart
