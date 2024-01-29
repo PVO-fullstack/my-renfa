@@ -176,7 +176,7 @@ export const Order = () => {
                     type="checkbox"
                     name="pay"
                     // setValue={setValue}
-                    register={...register}
+                    // register={...register}
                     // errors={errors}
                   />
                   <p className={style.pay_text}>
