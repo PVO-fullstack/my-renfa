@@ -14,7 +14,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
   const modelParts = await getModel(model, 1, 1000);
 
   const partsName = modelParts.modelParts
-    .map((item) => item.Part_Name)
+    .map((item) => item.Articul + " " + item.Part_Name)
     .join(` ${brand} ${model}, `);
 
   return {
