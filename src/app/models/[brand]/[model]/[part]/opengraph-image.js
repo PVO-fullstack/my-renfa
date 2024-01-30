@@ -24,7 +24,7 @@ export const contentType = "image/webp";
 
 export const runtime = "edge";
 
-export const alt = "About Acme";
+export const alt = "Renfa";
 export const size = {
   width: 1200,
   height: 630,
