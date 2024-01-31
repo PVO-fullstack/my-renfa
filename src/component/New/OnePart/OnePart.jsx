@@ -137,14 +137,20 @@ export const OnePart = async ({ partName, brand, model, get, count }) => {
                 <h3 className={style.title}>{allPart.Part_Name}</h3>
                 <div className={style.text_conteiner}>
                   <p className={style.articul}>
-                    Код: <span className={style.dots}>{allPart.Articul}</span>
+                    <span className={style.dots}>Код: </span>
+                    <span className={style.value}>{allPart.Articul}</span>
                   </p>
                   <p className={style.text}>
-                    Країна виробник: {allPart.Country}
+                    <span className={style.dots}>Країна виробник: </span>
+                    <span className={style.value}>{allPart.Country}</span>
                   </p>
                   <p className={style.text}>
-                    Встановлюється на автомобілі: {brand}{" "}
-                    {allPart.Model.join(", ")}
+                    <span className={style.dots}>
+                      Встановлюється на автомобілі:{" "}
+                    </span>
+                    <span className={style.value}>
+                      {brand} {allPart.Model.join(", ")}
+                    </span>
                   </p>
                 </div>
               </div>

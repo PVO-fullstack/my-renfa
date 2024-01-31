@@ -176,10 +176,11 @@
   cursor: pointer;
   object-fit: contain;
   transition: all 0.5s ease-in-out;
+  object-fit: cover;
 
-  &:hover {
-    border: 3px solid green;
-  }
+  // &:hover {
+  //   transform: scale(1.1);
+  // }
 
   @media screen and (min-width:1280px) {
     width: 408px;
@@ -191,19 +192,32 @@
 
 .articul {
   font-style: italic;
-  float: left;
-  padding: 0 .4em 0 0;
-  margin: 0;
+  // display: grid;
+  // grid-template-columns: minmax(100px, 1fr);
+}
 
+.value {
+  float: right;
+  padding-left: .2em;
+  float: right;
+  min-width: 20%;
+  box-sizing: border-box;
 }
 
 .dots {
-  float: right;
-  padding: 0 0 0 .4em;
-  margin: 0;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  float: left;
+  min-width: 80%;
 
-  &::before {
-    content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-bottom: .1em dotted;
+    // content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
   }
 
 }
