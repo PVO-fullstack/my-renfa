@@ -100,10 +100,10 @@ export const OnePart = async ({ partName, brand, model, get, count }) => {
     <>
       {allPart && (
         <Head>
-          <title>{`${allPart.Description} ${allPart.Articul}`}</title>
+          <title>{`${allPart.Part_Name} ${allPart.Articul}`}</title>
           <meta
             name="description"
-            content={`${allPart.Description} ${allPart.Articul}`}
+            content={`${allPart.Part_Name} ${allPart.Articul}`}
             key="desc"
           />
         </Head>
@@ -136,7 +136,9 @@ export const OnePart = async ({ partName, brand, model, get, count }) => {
               <div className={style.name_conteiner}>
                 <h3 className={style.title}>{allPart.Part_Name}</h3>
                 <div className={style.text_conteiner}>
-                  <p className={style.articul}>Код: {allPart.Articul}</p>
+                  <p className={style.articul}>
+                    Код: <span className={style.dots}>{allPart.Articul}</span>
+                  </p>
                   <p className={style.text}>
                     Країна виробник: {allPart.Country}
                   </p>
@@ -146,25 +148,11 @@ export const OnePart = async ({ partName, brand, model, get, count }) => {
                   </p>
                 </div>
               </div>
-              <div className={style.name_conteiner}>
+              <div className={style.buy_conteiner}>
                 <p className={style.price}>
                   {Math.round(allPart.Price * KURS)} ₴
                 </p>
                 <BuyBlock part={allPart} />
-                {/* <Counter get={get} /> */}
-                {/* <div className={style.counter}>
-                  <Minus click={decriment} />
-                  <p className={style.count}>{count}</p>
-                  <Plus click={increment} />
-                </div> */}
-                {/* <Button part={allPart} count={count || 1} /> */}
-                {/* <button */}
-                {/* // disabled={disabled}
-                // onClick={handleClick}
-                // className={style.btn} */}
-                {/* > */}
-                {/* {disabled ? "У корзині" : "Купити"} */}
-                {/* </button> */}
               </div>
             </div>
             <p className={style.availability}>В наявності</p>

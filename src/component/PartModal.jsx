@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
@@ -56,9 +56,9 @@ export const PartModal = ({ show, handleClose, id }) => {
       Part_Name: part_name,
       Description: description,
       Price: price,
-      Img: "https://dummyimage.com/640x480/2a2a2a/ffffff&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
+      Img: "https://dummyimage.com/600x400/ffffff/000000.png&text=%D0%A4%D0%BE%D1%82%D0%BE+%D0%BE%D1%87%D1%96%D0%BA%D1%83%D1%94%D1%82%D1%8C%D1%81%D1%8F",
       In_stock: in_stock || "&",
-      Country: country || "China",
+      Country: country || "Китай",
       Quantity: quantity || "1",
     };
 

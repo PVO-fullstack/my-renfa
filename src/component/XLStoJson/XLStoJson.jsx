@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
@@ -16,11 +16,11 @@ export const XLStoJson = () => {
 
   const qwe = (e) => {
     e.preventDefault();
-    if (parts.length > 300) {
-      const index = parts.length / 300;
+    if (parts.length > 10) {
+      const index = parts.length / 100;
       // console.log(index);
       for (let i = 0; i <= index; i++) {
-        const part = parts.slice(i * 300, (i + 1) * 300);
+        const part = parts.slice(i * 100, (i + 1) * 100);
         dispatch(insertParts(part));
       }
       return;
