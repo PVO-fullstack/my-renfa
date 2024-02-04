@@ -1,22 +1,14 @@
-// "use client";
+"use client";
 
+// import { useGetPartByIdQuery } from "@/apiService/apiPartsRTK";
 import { Storage } from "@/component/Storage/Storage";
 
-// import Layout from "@/app/layout";
-// import { AllOrders } from "@/component/AllOrders";
-// import { StorageList } from "@/component/StorageList";
-// import { refreshUser } from "@/lib/auth/auth-operations";
-// import { useEffect, useState } from "react";
-// import { useDispatch } from "react-redux";
+export default function StoragePage() {
+  // const { data, error, isLoading } = useGetPartByIdQuery(
+  //   "65ba3cdc7b62dda2c0c6c2e8"
+  // );
 
-export default function Order() {
-  // const [isOrders, setIsOrders] = useState(false);
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  // console.log("data", data);
 
   return <Storage />;
 }

@@ -3,8 +3,9 @@
 import { refreshUser } from "@/lib/auth/auth-operations";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { StorageList } from "../StorageList";
+// import { StorageList } from "../StorageList";
 import { AllOrders } from "../AllOrders";
+import { StorageList } from "../New/Storage/StorageList/StorageList";
 
 export const Storage = () => {
   const [isOrders, setIsOrders] = useState(false);

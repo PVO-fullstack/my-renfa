@@ -11,6 +11,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { authSlice } from "./auth/auth-slice";
+import { partsApi } from "@/apiService/apiPartsRTK";
 // import { contactsApi } from "./contacts/contactsSlice";
 // import { filterSlice } from "./contacts/filterSlice";
 
@@ -23,6 +24,7 @@ const persistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authSlice.reducer),
+    [partsApi.reducerPath]: partsApi.reducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
@@ -30,6 +32,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
+    partsApi.middleware,
   ],
 });
 

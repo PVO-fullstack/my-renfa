@@ -1,0 +1,93 @@
+.conteiner {
+  display: flex;
+  flex-direction: column;
+  // margin: 0;
+  // max-width: calc(100vw - 100px);
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    // margin-left: 350px;
+  }
+}
+
+.parts_conteiner {
+  width: 100%;
+
+
+  @media screen and (min-width:768px) {
+    padding: 30px;
+
+  }
+}
+
+.order_list {
+  list-style: none;
+  padding: 0;
+}
+
+.item_cardN {
+  display: flex;
+  border: 2px solid white;
+  background-color: #d2b6ec;
+}
+
+.order_card {
+  border: 2px solid green;
+  border-radius: 5px;
+  background-color: aquamarine;
+  list-style: none;
+  width: fit-content;
+  margin: auto;
+  padding: 0;
+}
+
+.item_card {
+  display: flex;
+  flex-wrap: wrap;
+  border: 2px solid white;
+}
+
+.articul {
+  width: 220px;
+  padding: 5px 10px;
+  margin: 0;
+  text-align: center;
+  text-decoration-line: underline;
+}
+
+.part_name {
+  width: max-content;
+  padding: 5px 10px;
+  // border-left: 2px solid white;
+  // border-right: 2px solid white;
+  margin: 0;
+  text-align: center;
+}
+
+.price {
+  width: 220px;
+  padding: 5px 10px;
+  margin: 0;
+  text-align: center;
+}
+
+.model_list {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
+  // margin: 40px 10px;
+  list-style: none;
+  padding: 0;
+  // width: 70px;
+}
+
+.model_item {
+  background-color: #0d6efd;
+  color: #ffffff;
+  border: 1px solid red;
+  border-radius: 20px;
+  text-align: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  min-width: 56px;
+}

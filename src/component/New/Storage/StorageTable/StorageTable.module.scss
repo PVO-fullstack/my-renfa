@@ -1,0 +1,14 @@
+.table {
+    margin-top: 20px;
+    width: 100%;
+    table-layout: auto;
+}
+
+.table_head {
+    border: 1px solid black;
+    background-color: aquamarine;
+
+    &:nth-child(3) {
+        width: 80px;
+    }
+}

@@ -1,0 +1,16 @@
+.row {
+    background-color: #e4e4db;
+
+    &:nth-child(2n) {
+        background-color: #f4f42b;
+    }
+}
+
+.row_item {
+    border: 1px solid black;
+
+    &:nth-child(3) {
+        width: 80px;
+        text-align: center;
+    }
+}

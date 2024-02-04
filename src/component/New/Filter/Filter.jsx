@@ -7,8 +7,10 @@ import jac from "@/data/jac.json";
 import geely from "@/data/geely.json";
 import chery from "@/data/chery.json";
 
-export const Filter = ({ open, model }) => {
+export const Filter = ({ open, model, storage, get }) => {
   const allCars = [mg, chery, faw, geely, jac];
+
+  console.log("storage", storage);
 
   return (
     <div className={style.conteiner}>
@@ -16,6 +18,8 @@ export const Filter = ({ open, model }) => {
       <div className={style.brand_list}>
         {allCars.map((car) => (
           <FilterItem
+            get={get}
+            storage={storage}
             key={car.title}
             selected={model}
             fara={car.title === open}

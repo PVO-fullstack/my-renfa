@@ -41,8 +41,6 @@ export const XLStoJson = () => {
         const XL_row_object = XLSX.utils.sheet_to_row_object_array(
           workbook.Sheets[sheetName]
         );
-        // let jsonXls = JSON.stringify(XL_row_object);
-        // console.log(XL_row_object);
         const result = XL_row_object.map((item) => ({
           ...item,
           Articul: item.Articul.toString(),

@@ -8,25 +8,34 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import css from "./PartModal.module.css";
 import { changeImg, changePart, createModel } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
+import {
+  useChangePartMutation,
+  useGetPartByIdQuery,
+} from "@/apiService/apiPartsRTK";
 
 export const PartModal = ({ show, handleClose, id }) => {
-  const {
-    Brand,
-    Model,
-    Articul,
-    Part_Name,
-    Description,
-    Price,
-    Img,
-    In_stock,
-    Country,
-    Quantity,
-  } = { ...id[0] };
+  const { data: part } = useGetPartByIdQuery(id);
+  // const {
+  //   Brand,
+  //   Model,
+  //   Articul,
+  //   Part_Name,
+  //   Description,
+  //   Price,
+  //   Img,
+  //   In_stock,
+  //   Country,
+  //   Quantity,
+  // } = data;
+
+  console.log("part", part);
+
+  const [update, result] = useChangePartMutation();
 
   const dispatch = useDispatch();
   const [partImg, setPartImg] = useState();
   const [data, setData] = useState({
-    ...id[0],
+    ...part,
   });
   // const [partPrice, setPartPrice] = useState();
   // const [partQuantity, setPartQuantity] = useState();
@@ -78,7 +87,7 @@ export const PartModal = ({ show, handleClose, id }) => {
   const handleChangeImgBtn = (e) => {
     e.preventDefault();
     // console.log("first");
-    const partId = id[0]._id;
+    const partId = part._id;
     const data = { id: partId, img: partImg };
     dispatch(changeImg(data));
     handleClose();
@@ -99,10 +108,12 @@ export const PartModal = ({ show, handleClose, id }) => {
   const handleChangePart = (e) => {
     e.preventDefault();
     const dataChange = {
-      ...id[0],
+      ...part,
       ...data,
     };
-    dispatch(changePart(dataChange));
+    // const { data, error, isLoading } = useChangePartMutation(dataChange);
+    update(dataChange);
+    // dispatch(changePart(dataChange));
     handleClose();
   };
 
@@ -115,7 +126,7 @@ export const PartModal = ({ show, handleClose, id }) => {
               setIsPart(!isPart);
             }}
           >
-            {isPart ? "Part" : "IMG"}
+            {!isPart ? "Part" : "IMG"}
           </Button>
 
           <Form onSubmit={handleSubmit}>
@@ -127,7 +138,11 @@ export const PartModal = ({ show, handleClose, id }) => {
                   controlId="Brand"
                 >
                   <Form.Label className={css.label}>Brand</Form.Label>
-                  <Form.Control type="text" name="Brand" defaultValue={Brand} />
+                  <Form.Control
+                    type="text"
+                    name="Brand"
+                    defaultValue={part?.Brand}
+                  />
                 </Form.Group>
                 <Form.Group
                   style={{ display: "flex" }}
@@ -140,7 +155,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                     type="text"
                     name="Model"
                     value={data.Model}
-                    defaultValue={Model}
+                    defaultValue={part?.Model}
                   />
                 </Form.Group>
                 <Form.Group
@@ -152,7 +167,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Articul"
-                    defaultValue={Articul}
+                    defaultValue={part?.Articul}
                   />
                 </Form.Group>
                 <Form.Group
@@ -164,7 +179,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Part_Name"
-                    defaultValue={Part_Name}
+                    defaultValue={part?.Part_Name}
                   />
                 </Form.Group>
                 <Form.Group
@@ -176,7 +191,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Description"
-                    defaultValue={Description}
+                    defaultValue={part?.Description}
                   />
                 </Form.Group>
                 <Form.Group
@@ -190,7 +205,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                     type="text"
                     name="Price"
                     value={data.Price}
-                    defaultValue={Price || data.Price}
+                    defaultValue={part?.Price || data.Price}
                   />
                 </Form.Group>
                 <Form.Group
@@ -202,7 +217,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="In_stock"
-                    defaultValue={In_stock}
+                    defaultValue={part?.In_stock}
                   />
                 </Form.Group>
                 <Form.Group
@@ -214,7 +229,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Country"
-                    defaultValue={Country}
+                    defaultValue={part?.Country}
                   />
                 </Form.Group>
                 <Form.Group
@@ -228,7 +243,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                     type="text"
                     name="Quantity"
                     value={data.Quantity}
-                    defaultValue={data.Quantity || Quantity}
+                    defaultValue={part?.Quantity || data.Quantity}
                   />
                 </Form.Group>
                 <Button variant="primary" type="submit">
