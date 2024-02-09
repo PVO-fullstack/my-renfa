@@ -5,6 +5,7 @@ import { Footer } from "@/component/New/Footer/Footer";
 import { Exo_2 } from "next/font/google";
 import "../../styles/globals.css";
 import StoreProvider from "./StoreProvider";
+import { Analytics } from "@vercel/analytics/react";
 
 const exo2 = Exo_2({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
             <div className={style.conteiner}>{children}</div>
             <Footer />
           </main>
+          <Analytics />
         </body>
       </StoreProvider>
       {/* </PersistGate>
