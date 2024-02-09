@@ -13,7 +13,7 @@ import {
   useGetPartByIdQuery,
 } from "@/apiService/apiPartsRTK";
 
-export const PartModal = ({ show, handleClose, id }) => {
+export const PartModal = ({ show, handleClose, id, click }) => {
   const { data: part } = useGetPartByIdQuery(id);
   // const {
   //   Brand,
@@ -105,14 +105,15 @@ export const PartModal = ({ show, handleClose, id }) => {
     setData({ ...data, [name]: value });
   };
 
-  const handleChangePart = (e) => {
+  const handleChangePart = async (e) => {
     e.preventDefault();
     const dataChange = {
       ...part,
       ...data,
     };
     // const { data, error, isLoading } = useChangePartMutation(dataChange);
-    update(dataChange);
+    await update(dataChange);
+    click(dataChange.Model[0]);
     // dispatch(changePart(dataChange));
     handleClose();
   };
@@ -154,7 +155,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Model"
-                    value={data.Model}
+                    // value={data.Model}
                     defaultValue={part?.Model}
                   />
                 </Form.Group>
@@ -204,8 +205,8 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Price"
-                    value={data.Price}
-                    defaultValue={part?.Price || data.Price}
+                    // value={data.Price}
+                    defaultValue={data?.Price || part?.Price}
                   />
                 </Form.Group>
                 <Form.Group
@@ -242,7 +243,7 @@ export const PartModal = ({ show, handleClose, id }) => {
                   <Form.Control
                     type="text"
                     name="Quantity"
-                    value={data.Quantity}
+                    // value={data.Quantity}
                     defaultValue={part?.Quantity || data.Quantity}
                   />
                 </Form.Group>

@@ -10,6 +10,8 @@ import { getModel } from "@/apiService/apiParts";
 export const FilterItem = ({ data, fara, selected, storage, get }) => {
   const [open, setOpen] = useState(false);
 
+  // const { data, error, isLoading, isFetching, refetch } = useGetPartsQuery();
+
   // console.log("selected", selected);
 
   useEffect(() => {

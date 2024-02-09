@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import headers from "../../../../data/storageTable.json";
 import { TableRow } from "../TableRow/TableRow";
 import style from "./StorageTable.module.scss";
 
 export const StorageTable = ({ parts, onClick }) => {
+  const [modelParts, setModelParts] = useState();
+
+  useEffect(() => {
+    setModelParts(parts);
+  }, [parts]);
+
   return (
     <div>
       <table className={style.table}>
@@ -17,7 +23,7 @@ export const StorageTable = ({ parts, onClick }) => {
           </tr>
         </thead>
         <tbody>
-          {parts?.map((part) => (
+          {modelParts?.map((part) => (
             <TableRow key={part._id} part={part} click={onClick} />
           ))}
         </tbody>

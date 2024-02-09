@@ -6,11 +6,29 @@
     }
 }
 
+.articul {
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+        background-color: aqua;
+    }
+}
+
 .row_item {
+    padding: 5px;
     border: 1px solid black;
 
     &:nth-child(3) {
         width: 80px;
         text-align: center;
     }
+}
+
+.btn {
+    display: block;
+    margin-inline: auto;
 }

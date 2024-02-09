@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllParts } from "@/apiService/apiParts";
+import { getAllParts, getModel } from "@/apiService/apiParts";
 import React, { useEffect, useState } from "react";
 import brand from "../../../../data/model.json";
 import { PartModal } from "../../../PartModal";
@@ -78,12 +78,15 @@ export const StorageList = () => {
     }
   };
 
-  const handlePartClick = (data) => {
+  const handlePartClick = async (data) => {
+    const parts = await getModel(data, 1, 1000);
+    console.log("parts", parts);
+    setParts(parts.modelParts);
     // const id = e.currentTarget;
     // console.log("id", data);
     // const partId = allParts.filter((el) => el._id === data);
-    setId(data);
-    setShow(true);
+    // setId(data);
+    // setShow(true);
   };
 
   // console.log("filter", models);
@@ -101,7 +104,7 @@ export const StorageList = () => {
       <Filter storage={true} get={getParts} />
       <div className={style.parts_conteiner}>
         <div style={{ textAlign: "center", margin: "20px 0" }}>Склад</div>
-        <label>
+        {/* <label>
           Введіть каталожний номер або назву запчaстини
           <input
             style={{ display: "block" }}
@@ -110,82 +113,9 @@ export const StorageList = () => {
             name="search"
             id=""
           />
-        </label>
-        {/* <ul
-          style={{
-            display: "flex",
-            gap: "20px",
-            listStyle: "none",
-            flexWrap: "wrap",
-          }}
-        >
-          <li onClick={handleBrandClick}>Усі</li>
-          {brand.map((el) => (
-            <li onClick={handleBrandClick} key={el.Brend}>
-              {el.Brend}
-            </li>
-          ))}
-          <button onClick={handlePartClick}>Створити новий запис</button>
-        </ul> */}
+        </label> */}
         <div>
           <StorageTable parts={parts} onClick={handlePartClick} />
-          {/* <ul className={style.model_list}>
-            {models.length > 0
-              ? models.map((el) => (
-                  <li
-                    className={style.model_item}
-                    onClick={handleModelClick}
-                    key={el}
-                  >
-                    {el}
-                  </li>
-                ))
-              : ""}
-          </ul> */}
-          <ul className={style.order_list}>
-            {/* {filter.length > 0 && filter.length < 10
-              ? // {filter.length < 1 && parts.length > 0
-
-                filter.map((el) => (
-                  <li
-                    className={style.item_card}
-                    id={el._id}
-                    onClick={handlePartClick}
-                    // style={{
-                    //   display: "flex",
-                    //   gap: "20px",
-                    //   border: "2px solid blue",
-                    // }}
-                    key={el._id}
-                  >
-                    <p className={style.articul}>{el.Articul}</p>
-                    <p className={style.part_name}>{el.Part_Name}</p>
-                    <p className={style.price}>
-                      <span>Кількість:</span> {el.Quantity}
-                    </p>
-                    <p className={style.price}>
-                      <span>Ціна:</span> {Math.round(el.Price * KURS)}грн
-                    </p>
-                  </li>
-                ))
-              : parts.map((el) => (
-                  <li
-                    className={style.item_card}
-                    id={el._id}
-                    onClick={handlePartClick(el._id)}
-                    // style={{
-                    //   display: "flex",
-                    //   gap: "20px",
-                    //   border: "2px solid blue",
-                    // }}
-                    key={el._id}
-                  >
-                    <p className={style.articul}>{el.Articul}</p>
-                    <p className={style.part_name}>{el.Part_Name}</p>
-                    <p className={style.price}>{el.Quantity}</p>
-                    {/* <p className={style.price}>{el.Price}</p> */}
-            {/* </li> */}
-          </ul>
         </div>
       </div>
 

@@ -19,7 +19,7 @@ export const partsApi = createApi({
   endpoints: (builder) => ({
     getParts: builder.query({
       query: () => "/parts",
-      providesTags: ["Parts"],
+      // providesTags: ["Parts"],
     }),
     getModel: builder.query({
       query: (model) => `/model/${model}`,
