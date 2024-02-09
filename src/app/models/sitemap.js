@@ -14,5 +14,12 @@ export default async function sitemap() {
     lastModified: new Date(),
   }));
 
-  return [...partsUrls];
+  return [
+    { url: `${baseURL}/models/Chery`, lastModified: new Date() },
+    { url: `${baseURL}/models/Geely`, lastModified: new Date() },
+    { url: `${baseURL}/models/MG`, lastModified: new Date() },
+    { url: `${baseURL}/models/FAW`, lastModified: new Date() },
+    { url: `${baseURL}/models/JAC`, lastModified: new Date() },
+    ...partsUrls,
+  ];
 }

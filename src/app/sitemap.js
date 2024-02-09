@@ -1,6 +1,4 @@
-import { getAllParts } from "@/apiService/apiParts";
-
-export default async function sitemap() {
+export default function sitemap() {
   const baseURL = "https://www.renfa.pp.ua/";
 
   return [
