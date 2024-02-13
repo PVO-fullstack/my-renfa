@@ -10,9 +10,11 @@ import { Button } from "./Button";
 import { Avatar } from "./New/Avatar/Avatar";
 import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
 
-export const UserMenu = ({ logout, show }) => {
+export const UserMenu = ({ logout, show, adminClick }) => {
   const user = useAppSelector(selectUser);
   const store = useAppStore();
+
+  const [admin, setAdmin] = useState(false);
 
   // console.log("user", user, store);
 
@@ -21,9 +23,9 @@ export const UserMenu = ({ logout, show }) => {
       <div className={css.menu}>
         {user && user.name ? <img width={40} src={user.avatar} alt="" /> : ""}
         {user && user.position === "admin" && (
-          <NavLink className={css.link} href="/storage">
+          <p onClick={adminClick} className={css.link}>
             Admin
-          </NavLink>
+          </p>
         )}
         {user && user.name
           ? <img src={user.avatar} alt="" /> && (

@@ -19,7 +19,7 @@ export const StorageList = () => {
   const [brandModels, setBrandModels] = useState([]);
   const [models, setModels] = useState([]);
   const [parts, setParts] = useState([]);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState();
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
   const { data, error, isLoading, isFetching, refetch } = useGetPartsQuery();
@@ -69,13 +69,13 @@ export const StorageList = () => {
       setFilter(filtredParts);
       return;
     }
-    if (allParts.length > 0) {
-      const filtredParts = allParts.filter((el) =>
-        el.Articul.toLowerCase().includes(searchValue)
-      );
-      setFilter(filtredParts);
-      // console.log("filtredParts", filtredParts);
-    }
+    // if (allParts.length > 0) {
+    //   const filtredParts = allParts.filter((el) =>
+    //     el.Articul.toLowerCase().includes(searchValue)
+    //   );
+    //   setFilter(filtredParts);
+    //   // console.log("filtredParts", filtredParts);
+    // }
   };
 
   const handlePartClick = async (data) => {
@@ -104,28 +104,19 @@ export const StorageList = () => {
       <Filter storage={true} get={getParts} />
       <div className={style.parts_conteiner}>
         <div style={{ textAlign: "center", margin: "20px 0" }}>Склад</div>
-        {/* <label>
+        <label>
           Введіть каталожний номер або назву запчaстини
           <input
             style={{ display: "block" }}
             onChange={handleChange}
             type="search"
             name="search"
-            id=""
           />
-        </label> */}
+        </label>
         <div>
-          <StorageTable parts={parts} onClick={handlePartClick} />
+          <StorageTable parts={filter || parts} onClick={handlePartClick} />
         </div>
       </div>
-
-      {/* <PartModal
-        show={show}
-        handleClose={handleClose}
-        update={update}
-        part={part}
-        id={id}
-      /> */}
     </div>
   );
 };

@@ -25,19 +25,17 @@ import { MenuIcon } from "../MenuIcon/MenuIcon";
 import { BurgerMenu } from "../BurgerMenu/BurgerMenu";
 import { SearchIcon } from "../SearchIcon/SearchIcon";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useAppSelector, useAppStore, useAppDispatch } from "@/lib/hooks";
+import { useAppSelector, useAppDispatch } from "@/lib/hooks";
 import { CarList } from "../CarList/CarList";
-import { FindArticul } from "../FindArticul/FindArticul";
+import { AdminPanel } from "../AdminPanel/AdminPanel";
 
 export const Header = () => {
   const [show, setShow] = useState(false);
-  const [name, setName] = useState(null);
+  const [admin, setAdmin] = useState(false);
   const [brandName, setBrandName] = useState();
   const [user, setUser] = useState(null);
   const [showMenu, setShowMenu] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
-  // const router = useRouter();
-  const pathname = usePathname();
   const search = useSearchParams();
 
   const get = search.getAll("query").toString();
@@ -45,16 +43,11 @@ export const Header = () => {
   const userName = useAppSelector(selectUser);
   const isLoad = useAppSelector(selectLoad);
 
-  // console.log("pathname", pathname, get);
-
-  // console.log("user", user);
-
   const dispatch = useAppDispatch();
 
   const handleClose = () => {
     setShow(false);
     setShowMenu(false);
-    // setUser(user);
   };
 
   const handleShow = () => setShow(true);
@@ -67,13 +60,18 @@ export const Header = () => {
 
   const handleLogout = () => {
     dispatch(logOutUser());
-    // router.push("/");
   };
 
   const getBrandName = (name) => {
-    // setTimeout(() => {
     setBrandName(name);
-    // }, 500);
+  };
+
+  const handleAdminClick = () => {
+    setAdmin(true);
+  };
+
+  const handleAdminClose = () => {
+    setAdmin(false);
   };
 
   return (
@@ -93,7 +91,12 @@ export const Header = () => {
           <Logo className={style.logo} text={style.text} />
           <FindInput />
           <div className={style.user_menu}>
-            <UserMenu userLog={user} logout={handleLogout} show={handleShow} />
+            <UserMenu
+              adminClick={handleAdminClick}
+              userLog={user}
+              logout={handleLogout}
+              show={handleShow}
+            />
             {/* <AuthModal show={show} handleClose={handleClose} /> */}
             {show && (
               <Modal>
@@ -108,6 +111,7 @@ export const Header = () => {
       ) : (
         <FindInput close={handleCloseSearch} click={true} />
       )}
+      {admin && <AdminPanel />}
       <div className={style.header_part_down}>
         <Brand model={model} get={getBrandName} />
         <div>

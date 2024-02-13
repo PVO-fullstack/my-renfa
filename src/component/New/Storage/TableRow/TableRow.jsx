@@ -1,6 +1,6 @@
 import { useGetPartByIdQuery } from "@/apiService/apiPartsRTK";
 import { PartModal } from "@/component/PartModal";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./TableRow.module.scss";
 import { PhotoModal } from "../../PhotoModal/PhotoModal";
 
@@ -8,10 +8,21 @@ export const TableRow = ({ part, click }) => {
   const [show, setShow] = useState(false);
   const [img, setImg] = useState(false);
   const [id, setId] = useState();
+  const [disabled, setDisabled] = useState(false);
+  const [change, setChange] = useState(false);
 
-  //   const { data } = useGetPartByIdQuery(id);
+  useEffect(() => {
+    const getLS = localStorage.getItem("newAdd");
+    if (getLS) {
+      const parts = JSON.parse(getLS);
 
-  //   console.log("data", data);
+      const qwe = parts.filter((item) => item._id === part._id);
+      if (qwe.length > 0) {
+        console.log("qwe", qwe);
+        setDisabled(true);
+      }
+    }
+  }, [change]);
 
   const showImg = (e) => {
     const idPart = e.currentTarget.id;
@@ -36,6 +47,23 @@ export const TableRow = ({ part, click }) => {
     setShow(true);
   };
 
+  const onAddClick = () => {
+    const getLS = localStorage.getItem("newAdd");
+    if (getLS) {
+      const parts = JSON.parse(getLS);
+      const newParts = [...parts, part];
+      localStorage.setItem("newAdd", JSON.stringify(newParts));
+      console.log("id", newParts);
+      setChange(!change);
+      return;
+    }
+    const newParts = [part];
+    localStorage.setItem("newAdd", JSON.stringify(newParts));
+    setChange(!change);
+    console.log("id", newParts);
+    console.log("part", part);
+  };
+
   console.log("idAAAA", id);
 
   return (
@@ -48,8 +76,13 @@ export const TableRow = ({ part, click }) => {
         <td className={style.row_item}>{part.Quantity}</td>
         <td className={style.row_item}>{part.Price}</td>
         <td className={style.row_item}>
-          <button id={part._id} onClick={showImg} className={style.btn}>
-            Фото
+          <button
+            disabled={disabled}
+            id={part._id}
+            onClick={onAddClick}
+            className={style.btn}
+          >
+            {!disabled ? "Додати" : "Додано"}
           </button>
         </td>
       </tr>

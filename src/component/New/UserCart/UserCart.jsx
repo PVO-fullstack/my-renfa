@@ -13,9 +13,11 @@ export const UserCart = () => {
   const [allSum, setAllSum] = useState(0);
 
   useEffect(() => {
-    const getParts = JSON.parse(localStorage.getItem("order"));
-    setParts(getParts);
-    sum(getParts);
+    if (localStorage.getItem("order")) {
+      const getParts = JSON.parse(localStorage.getItem("order"));
+      setParts(getParts);
+      sum(getParts);
+    }
   }, []);
 
   const sum = (parts) => {

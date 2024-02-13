@@ -2,20 +2,12 @@ import Link from "next/link";
 import React from "react";
 import style from "./Logo.module.scss";
 
-export const Logo = ({
-  fill = "#201F20",
-  footer = false,
-  // width = "33",
-  // height = "32",
-  className,
-}) => {
+export const Logo = ({ fill = "#201F20", footer = false, className }) => {
   return (
     <Link href="/" className={style.conteiner}>
       <svg
         className={className}
         xmlns="http://www.w3.org/2000/svg"
-        // width={width}
-        // height={height}
         viewBox="0 0 33 32"
         fill="none"
       >

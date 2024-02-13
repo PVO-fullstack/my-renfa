@@ -4,6 +4,7 @@ import { getAllOrders, patchOrder } from "@/apiService/apiOrders";
 import React, { useEffect, useState } from "react";
 import css from "./AllOrders.module.css";
 import { useDispatch } from "react-redux";
+import { KURS } from "@/variable/variable";
 
 export const AllOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -31,6 +32,7 @@ export const AllOrders = () => {
     setOwner(...owner);
     const partsOrder = order.flatMap((el) => el.partId);
     const ft = partsOrder.flatMap((part) => {
+      console.log("part", part);
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
@@ -53,12 +55,12 @@ export const AllOrders = () => {
     e.currentTarget.innerText = "Готово";
   };
 
-  // console.log("owner", owner);
+  console.log("owner", orders);
 
   return (
     <div
       style={{
-        marginLeft: "350px",
+        // marginLeft: "350px",
         // display: "flex",
         paddingTop: "30px",
         // justifyContent: "space-around",
@@ -72,7 +74,8 @@ export const AllOrders = () => {
           <h2>Список замовлень</h2>
           <ul className={css.order_list}>
             {orders.map((el) => (
-              <li key={el._id}>
+              <li style={{ display: "flex", gap: "20px" }} key={el._id}>
+                <p>{el.createdAt}</p>
                 <div className={css[el.close]}>
                   <p onClick={handleOrderClick} className={css.order_name}>
                     {el._id}
@@ -105,7 +108,7 @@ export const AllOrders = () => {
                   <p className={css.articul}>{el.Articul}</p>
                   <p className={css.part_name}>{el.Part_Name}</p>
                   <p className={css.ordered}>{el.ordered}</p>
-                  <p className={css.price}>{Math.round(el.Price * 40)}</p>
+                  <p className={css.price}>{Math.round(el.Price * KURS)}</p>
                 </li>
               ))}
             </ul>

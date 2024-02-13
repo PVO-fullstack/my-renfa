@@ -3,9 +3,9 @@ import { Toaster } from "react-hot-toast";
 import { Header } from "@/component/New/Header/Header";
 import { Footer } from "@/component/New/Footer/Footer";
 import { Exo_2 } from "next/font/google";
-import "../../styles/globals.css";
 import StoreProvider from "./StoreProvider";
 import { Analytics } from "@vercel/analytics/react";
+import "../../styles/globals.css";
 
 const exo2 = Exo_2({
   subsets: ["latin"],

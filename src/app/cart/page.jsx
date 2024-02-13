@@ -1,4 +1,5 @@
 import { UserCart } from "@/component/New/UserCart/UserCart";
+import { OrderList } from "@/component/OrderList/OrderList";
 
 export default function Cart() {
   return (
@@ -7,7 +8,7 @@ export default function Cart() {
         <h2>Замовлення</h2>
       </div> */}
       <UserCart />
-      {/* <OrderList /> */}
+      <OrderList />
     </>
   );
 }

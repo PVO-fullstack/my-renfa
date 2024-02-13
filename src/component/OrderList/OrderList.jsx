@@ -28,15 +28,16 @@ export const OrderList = () => {
 
   useEffect(() => {
     setUser(userBD);
-    if (
-      user.name.length > 1 &&
-      user.phone > 999999999 &&
-      user.city.length > 2 &&
-      user.numberNewPost.length > 0
-    ) {
-      // console.log("first");
-      setDisabled(false);
-    }
+    console.log("user", user);
+    // if (
+    //   user?.name.length > 1 &&
+    //   user?.phone > 999999999 &&
+    //   user?.city.length > 2 &&
+    //   user?.numberNewPost.length > 0
+    // ) {
+    //   // console.log("first");
+    //   setDisabled(false);
+    // }
   }, [userBD]);
 
   useEffect(() => {
@@ -73,8 +74,9 @@ export const OrderList = () => {
     );
     // console.log(filteredOrder);
     const partId = filteredOrder.map((el) => {
-      return { id: el._id, ordered: el.In_stock };
+      return { id: el._id, ordered: el.count };
     });
+    console.log("partId", partId);
     await dispatch(createOrder({ partId }));
     await dispatch(
       updateUser({
@@ -187,7 +189,7 @@ export const OrderList = () => {
                 onChange={handleChangeUserValue}
                 type="text"
                 name="name"
-                value={user?.name}
+                defaultValue={user?.name}
                 id=""
               />
             </label>
@@ -197,7 +199,7 @@ export const OrderList = () => {
                 onChange={handleChangeUserValue}
                 type="text"
                 name="city"
-                value={user?.city}
+                defaultValue={user?.city}
                 id=""
               />
             </label>
@@ -207,7 +209,7 @@ export const OrderList = () => {
                 onChange={handleChangeUserValue}
                 type="text"
                 name="numberNewPost"
-                value={user?.numberNewPost}
+                defaultValue={user?.numberNewPost}
                 id=""
               />
             </label>
@@ -217,7 +219,7 @@ export const OrderList = () => {
                 onChange={handleChangeUserValue}
                 type="tel"
                 name="phone"
-                value={user?.phone}
+                defaultValue={user?.phone}
                 id=""
               />
             </label>

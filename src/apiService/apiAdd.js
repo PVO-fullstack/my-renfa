@@ -25,26 +25,23 @@ const getToken = () => {
   token.set(tokenSt);
 };
 
-export const getAllOrders = createAsyncThunk(
-  "ordere/all",
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const tokenSt = state.auth.token;
+export const getAllAdds = createAsyncThunk("add/all", async (_, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const tokenSt = state.auth.token;
 
-    if (tokenSt === null) {
-      return thunkAPI.rejectWithValue();
-    }
-
-    token.set(tokenSt);
-    try {
-      const res = await axios.get("http://localhost:3001/api/orders");
-      // console.log("res", res);
-      return res.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+  if (tokenSt === null) {
+    return thunkAPI.rejectWithValue();
   }
-);
+
+  token.set(tokenSt);
+  try {
+    const res = await axios.get("http://localhost:3001/api/add");
+    // console.log("res", res);
+    return res.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
 
 export const getUserOrders = createAsyncThunk(
   "order/user",

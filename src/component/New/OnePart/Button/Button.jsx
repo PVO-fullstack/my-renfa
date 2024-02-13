@@ -10,13 +10,15 @@ export const Button = ({ part, count = 1 }) => {
   useEffect(() => {
     const getLocal = async () => {
       const order = await localStorage.getItem("order");
-      const orderParts = await JSON.parse(order);
-      const inCart = orderParts.find((item) => part._id === item._id);
-      if (inCart) {
-        setDisabled(true);
-        return;
+      if (order) {
+        const orderParts = await JSON.parse(order);
+        const inCart = orderParts.find((item) => part._id === item._id);
+        if (inCart) {
+          setDisabled(true);
+          return;
+        }
+        setOrder(orderParts);
       }
-      setOrder(orderParts);
     };
     getLocal();
   }, []);
