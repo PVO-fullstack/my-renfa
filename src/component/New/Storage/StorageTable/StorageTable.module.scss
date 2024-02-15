@@ -11,4 +11,21 @@
     &:nth-child(3) {
         width: 80px;
     }
+
+    &:nth-child(5) {
+        display: none;
+    }
+}
+
+.table_head_add {
+    border: 1px solid black;
+    background-color: aquamarine;
+
+    &:nth-child(3) {
+        width: 80px;
+    }
+
+    &:nth-child(5) {
+        display: block;
+    }
 }

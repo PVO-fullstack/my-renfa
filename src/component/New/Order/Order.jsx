@@ -15,6 +15,10 @@ import { ToastContainer, toast } from "react-toastify";
 import messages from "@/data/telegram.json";
 import { KURS } from "@/variable/variable";
 import { Thanks } from "../Thanks/Thanks";
+import { useDispatch, useSelector } from "react-redux";
+import { createOrder } from "@/apiService/apiOrders";
+import { refreshUser, updateUser } from "@/lib/auth/auth-operations";
+import { selectUser } from "@/lib/auth/auth-selectors";
 
 const LOCAL_STORAGE_KEY = "user_order";
 
@@ -27,6 +31,9 @@ export const Order = () => {
   const [parts, setParts] = useState([]);
   const [allSum, setAllSum] = useState(0);
   const [send, setSend] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  console.log("user", user);
   const {
     register,
     handleSubmit,
@@ -37,15 +44,35 @@ export const Order = () => {
   } = useForm();
 
   useEffect(() => {
-    const getParts = JSON.parse(localStorage.getItem("order"));
-    setParts(getParts);
-    const forTG = getParts.map((part) => ({
-      Артикул: part.Articul,
-      Назва: part.Part_Name + part.Brand + part.Model[0],
-      Кількість: part.count,
-      Ціна: part.Price * KURS,
-    }));
-    localStorage.setItem("tg", JSON.stringify(forTG));
+    dispatch(refreshUser());
+    // .then((data) => {
+    //   return data.payload;
+    // })
+    // .then((data) => {
+    //   localStorage.setItem(
+    //     LOCAL_STORAGE_KEY,
+    //     JSON.stringify({
+    //       city: data?.city || "",
+    //       email: data?.email || "",
+    //       name: data?.name || "",
+    //       phone: data?.phone || "",
+    //       post: data?.numberNewPost || "",
+    //     })
+    //   );
+    // });
+    const getLocal = async () => {
+      const getParts = localStorage.getItem("order");
+      const parseParts = await JSON.parse(getParts);
+      setParts(parseParts);
+      const forTG = parseParts.map((part) => ({
+        Артикул: part.Articul,
+        Назва: part.Part_Name + part.Brand + part.Model[0],
+        Кількість: part.count,
+        Ціна: part.Price * KURS,
+      }));
+      localStorage.setItem("tg", JSON.stringify(forTG));
+    };
+    getLocal();
     // console.log("forTG", forTG);
     // sum(getParts);
   }, []);
@@ -61,13 +88,29 @@ export const Order = () => {
   // console.log("send", send);
 
   const onSubmit = async (data) => {
+    console.log("data", data);
+
+    const partId = parts.map((el) => {
+      return { id: el._id, ordered: el.count };
+    });
+    console.log("partId", partId);
+    await dispatch(createOrder({ partId }));
+    await dispatch(
+      updateUser({
+        phone: data.phone,
+        city: data.city,
+        name: data.name,
+        numberNewPost: data.post,
+      })
+    );
+
     try {
-      // setIsPending(true);
+      setIsPending(true);
       await toast.promise(sendTelegramOrder(data), {
         pending: {
           render() {
             console.log("Ura", data);
-            // return messages.queryPending;
+            return messages.queryPending;
           },
           type: "info",
         },
@@ -85,9 +128,9 @@ export const Order = () => {
           },
         },
       });
-      // setIsPending(false);
+      setIsPending(false);
     } catch {
-      // setIsPending(false);
+      setIsPending(false);
     }
   };
 
@@ -120,6 +163,7 @@ export const Order = () => {
                     errors={errors}
                     errorMessages={name.errorMessages}
                   />
+
                   <Input
                     className="mb-[-3px]"
                     name="email"
@@ -162,7 +206,7 @@ export const Order = () => {
                     name="post"
                     labelText={post.labelText}
                     placeholderText={post.placeholderText}
-                    type="name"
+                    type="post"
                     setValue={setValue}
                     register={register}
                     errors={errors}
@@ -172,13 +216,7 @@ export const Order = () => {
               </SectionHeader>
               <SectionHeader className={style.pay} title="Спосіб оплати">
                 <label className={style.checkbox}>
-                  <input
-                    type="checkbox"
-                    name="pay"
-                    // setValue={setValue}
-                    // register={...register}
-                    // errors={errors}
-                  />
+                  <input type="checkbox" name="pay" />
                   <p className={style.pay_text}>
                     Оплата готівкою при отриманні
                   </p>
@@ -186,7 +224,7 @@ export const Order = () => {
               </SectionHeader>
               <Button disabled={false}>Завершити</Button>
             </form>
-            <OrderList parts={parts} />
+            <OrderList />
           </div>
           <ToastContainer
             theme="colored"

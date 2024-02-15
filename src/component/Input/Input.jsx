@@ -7,6 +7,8 @@ export const Input = ({
   placeholderText = "",
   name,
   type,
+  values,
+  defautValues,
   setValue,
   errors,
   register,
@@ -16,6 +18,7 @@ export const Input = ({
   const typeIsPhone = type === "phone";
   const typeIsEmail = type === "email";
   const typeIsPassword = type === "password";
+  const typeIsPost = type === "post";
 
   const nameRegisterValidation = {
     required: errorMessages.required || "Обов'язкове поле",
@@ -58,11 +61,21 @@ export const Input = ({
     },
   };
 
+  const postRegisterValidation = {
+    required: errorMessages.required || "Обов'язкове поле",
+    minLength: {
+      value: 1,
+      message: errorMessages.minLength || "Мінімум 1 символ",
+    },
+  };
+
   const getHandleChange = (normalizeMethod) => {
     const fn = (event) => {
       const { value } = event.target;
       event.target.value = normalizeMethod ? normalizeMethod(value) : value;
-      setValue(name, event.target.value, { shouldValidate: true });
+      setValue(name, value || event.target.value, {
+        shouldValidate: true,
+      });
     };
     return fn;
   };
@@ -80,8 +93,10 @@ export const Input = ({
         type={
           (typeIsPhone && "tel") ||
           (typeIsEmail && "email") ||
+          (typeIsPost && "post") ||
           (typeIsPassword ? "password" : "text")
         }
+        values={values}
         id={name}
         name={name}
         placeholder={placeholderText}
@@ -90,6 +105,7 @@ export const Input = ({
           (type === "phone" && { ...telRegisterValidation }) ||
             (type === "email" && { ...emailRegisterValidation }) ||
             (type === "password" && { ...passwordRegisterValidation }) ||
+            (type === "post" && { ...postRegisterValidation }) ||
             (type === "name" && { ...nameRegisterValidation })
         )}
         {...onChangeProps}
@@ -108,7 +124,8 @@ Input.propTypes = {
   labelText: PropTypes.string,
   placeholderText: PropTypes.string,
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(["name", "email", "password", "phone"]).isRequired,
+  type: PropTypes.oneOf(["name", "email", "password", "phone", "post"])
+    .isRequired,
   setValue: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   register: PropTypes.func,

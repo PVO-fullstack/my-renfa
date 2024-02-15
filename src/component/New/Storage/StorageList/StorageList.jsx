@@ -14,7 +14,7 @@ import {
   useGetPartsQuery,
 } from "@/apiService/apiPartsRTK";
 
-export const StorageList = () => {
+export const StorageList = ({ add_style }) => {
   const [allParts, setAllParts] = useState([]);
   const [brandModels, setBrandModels] = useState([]);
   const [models, setModels] = useState([]);
@@ -114,7 +114,11 @@ export const StorageList = () => {
           />
         </label>
         <div>
-          <StorageTable parts={filter || parts} onClick={handlePartClick} />
+          <StorageTable
+            add_style={add_style}
+            parts={filter || parts}
+            onClick={handlePartClick}
+          />
         </div>
       </div>
     </div>

@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { Filter } from "../Filter/Filter";
-import { getAllAdds } from "@/apiService/apiAdd";
+import { getAllAdds, patchAdd } from "@/apiService/apiAdd";
 import { useDispatch } from "react-redux";
 import style from "./Add.module.scss";
 import { KURS } from "@/variable/variable";
 import { Counter } from "../Counter/Counter";
 import { StorageList } from "../Storage/StorageList/StorageList";
+import { AddModal } from "./AddModal/AddModal";
+import { changePartCount } from "@/apiService/apiParts";
+import { refreshUser } from "@/lib/auth/auth-operations";
+import { Button } from "@/component/Button";
 
 export const Add = () => {
   const [adds, setAdds] = useState();
   const [owner, setOwner] = useState();
   const [order, setOrder] = useState();
+  const [close, setClose] = useState(false);
   const [newNakl, setNewNakl] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [id, setId] = useState();
   const dispatch = useDispatch();
 
   console.log("adds", adds);
@@ -19,18 +26,22 @@ export const Add = () => {
   const allOrders = [];
 
   useEffect(() => {
+    dispatch(refreshUser());
     async function allAdd() {
       const adds = await dispatch(getAllAdds());
       console.log("orders", adds.payload);
       setAdds(adds.payload);
     }
     allAdd();
-  }, [dispatch]);
+  }, [dispatch, newNakl]);
 
   const handleAddClick = (e) => {
     const addN = e.currentTarget.innerText;
+    setId(addN);
     const add = adds.filter((el) => el._id === addN);
-    console.log("addN", addN);
+    const state = add.map((el) => el.close);
+    setClose(state[0]);
+    console.log("addN", add);
     const owner = add.map((el) => el.owner);
     setOwner(...owner);
     const partsAdd = add.flatMap((el) => el.partId);
@@ -49,26 +60,51 @@ export const Add = () => {
     setOrder(allOrders);
   };
 
-  const getCount = (data) => {
-    console.log("data", data);
+  console.log("order", order, close);
+
+  const clickNew = () => setNewNakl(!newNakl);
+
+  const onBtnClick = () => {
+    setIsOpen(true);
   };
 
-  const clickNew = () => setNewNakl(true);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const closeState = () => {
+    order.map((part) =>
+      dispatch(changePartCount({ id: part._id, count: part.ordered }))
+        .then(dispatch(patchAdd(id)))
+        .then(setClose(true))
+    );
+  };
 
   return (
     <>
-      <button onClick={clickNew}>Додати нову накладну</button>
+      <div className={style.btn_conteiner}>
+        <Button disabled={false} onClick={clickNew}>
+          {newNakl ? "До накладних" : "Додати нову накладну"}
+        </Button>
+        <Button disabled={false} onClick={onBtnClick}>
+          Створити
+        </Button>
+      </div>
       {newNakl ? (
-        <StorageList />
+        <StorageList add_style={true} />
       ) : (
         <div className={style.conteiner}>
           <ul>
             <h2>Прихідні накладні</h2>
             {adds &&
               adds.map((item) => (
-                <li key={item._id}>
-                  <p>{item.createdAt}</p>
-                  <p onClick={handleAddClick}>{item._id}</p>
+                <li className={style.nakl} key={item._id}>
+                  <p className={style[item.close]}>
+                    {item.createdAt.split("T")[0]}
+                  </p>
+                  <p className={style[item.close]} onClick={handleAddClick}>
+                    {item._id}
+                  </p>
                 </li>
               ))}
           </ul>
@@ -86,15 +122,18 @@ export const Add = () => {
                   <li className={style.item_card} key={el.Part_Name}>
                     <p className={style.articul}>{el.Articul}</p>
                     <p className={style.part_name}>{el.Part_Name}</p>
-                    {/* <Counter get={getCount} /> */}
                     <p className={style.ordered}>{el.ordered}</p>
                     <p className={style.price}>{Math.round(el.Price * KURS)}</p>
                   </li>
                 ))}
             </ul>
+            <Button onClick={closeState} disabled={close}>
+              {close ? "Проведено" : "Провести"}
+            </Button>
           </div>
         </div>
       )}
+      {isOpen && <AddModal close={handleClose} />}
     </>
   );
 };

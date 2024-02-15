@@ -5,6 +5,13 @@
     justify-content: space-around;
 }
 
+.btn_conteiner {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    margin-block: 20px;
+}
+
 .order_card {
     border: 2px solid green;
     border-radius: 5px;
@@ -52,4 +59,17 @@
     border-right: 2px solid white;
     margin: 0;
     text-align: center;
+}
+
+.nakl {
+    display: flex;
+    gap: 10px;
+}
+
+.true {
+    background-color: greenyellow;
+}
+
+.false {
+    background-color: red;
 }

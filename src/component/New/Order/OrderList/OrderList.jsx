@@ -4,49 +4,48 @@ import { OnePartInCart } from "../../OnePartInCart/OnePartInCart";
 import { OnePart } from "../OnePart/OnePart";
 import { KURS } from "@/variable/variable";
 
-export const OrderList = ({ parts }) => {
-  // const [parts, setParts] = useState([]);
+export const OrderList = () => {
   const [allSum, setAllSum] = useState(0);
-
-  const sum = (parts) => {
-    const qwe = parts.reduce((all, item) => {
-      return all + item.count * item.Price;
-    }, 0);
-    setAllSum(qwe * KURS);
-  };
+  const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    // setParts(parts);
-    sum(parts);
+    const getLocal = async () => {
+      const getParts = localStorage.getItem("order");
+      const parseParts = await JSON.parse(getParts);
+      setParts(parseParts);
+      const qwe = parseParts.reduce((all, item) => {
+        return all + item.count * item.Price;
+      }, 0);
+      setAllSum(qwe * KURS);
+    };
+    getLocal();
   }, []);
 
   return (
     <>
-      {parts?.length > 0 && (
-        <div className={style.conteiner}>
-          <div className={style.cost}>
-            <p>Вартість замовленого товару:</p>
-            <span>{allSum}₴</span>
-          </div>
-          {parts.map((item) => (
-            <OnePart
-              // del={delPart}
-              key={item._id}
-              part={item}
-              // count={count}
-              // get={getCount}
-            />
-          ))}
-          <div className={style.delivery}>
-            <p>Доставка (Нова Пошта):</p>
-            <span>0₴</span>
-          </div>
-          <div className={style.cost}>
-            <p>Всього:</p>
-            <span>{allSum}₴</span>
-          </div>
+      <div className={style.conteiner}>
+        <div className={style.cost}>
+          <p>Вартість замовленого товару:</p>
+          <span>{allSum}₴</span>
         </div>
-      )}
+        {parts.map((item) => (
+          <OnePart
+            // del={delPart}
+            key={item._id}
+            part={item}
+            // count={count}
+            // get={getCount}
+          />
+        ))}
+        <div className={style.delivery}>
+          <p>Доставка (Нова Пошта):</p>
+          <span>0₴</span>
+        </div>
+        <div className={style.cost}>
+          <p>Всього:</p>
+          <span>{allSum}₴</span>
+        </div>
+      </div>
     </>
   );
 };

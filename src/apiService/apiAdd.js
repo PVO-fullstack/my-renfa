@@ -35,7 +35,7 @@ export const getAllAdds = createAsyncThunk("add/all", async (_, thunkAPI) => {
 
   token.set(tokenSt);
   try {
-    const res = await axios.get("http://localhost:3001/api/add");
+    const res = await axios.get("https://renfa-api.onrender.com/api/add");
     // console.log("res", res);
     return res.data;
   } catch (error) {
@@ -82,8 +82,8 @@ export const getUserOrders = createAsyncThunk(
 //   return res.data;
 // };
 
-export const createOrder = createAsyncThunk(
-  "order/neworder",
+export const createAdds = createAsyncThunk(
+  "adds/newadds",
   async (part, thunkAPI) => {
     const state = thunkAPI.getState();
     const tokenSt = state.auth.token;
@@ -94,7 +94,10 @@ export const createOrder = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.post("http://localhost:3001/api/orders", part);
+      const res = await axios.post(
+        "https://renfa-api.onrender.com/api/add",
+        part
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -102,13 +105,36 @@ export const createOrder = createAsyncThunk(
   }
 );
 
-export const patchOrder = async (id) => {
-  // localStorage.setItem("token", JSON.stringify(res.data.token));
-  const tokenLs = await JSON.parse(localStorage.getItem("token"));
-  await token.set(tokenLs);
-  const res = await axios.patch(
-    `https://renfa-api.onrender.com/api/orders/${id}/close`,
-    { close: "true" }
-  );
-  return res.data;
-};
+export const patchAdd = createAsyncThunk(
+  "adds/putchadd",
+  async (id, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+    try {
+      const res = await axios.patch(
+        `https://renfa-api.onrender.com/api/add/${id}/close`,
+        { close: "true" }
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// export const patchAdd = async (id) => {
+//   // localStorage.setItem("token", JSON.stringify(res.data.token));
+//   const tokenLs = await JSON.parse(localStorage.getItem("token"));
+//   await token.set(tokenLs);
+//   const res = await axios.patch(
+//     `https://renfa-api.onrender.com/api/add/${id}/close`,
+//     { close: "true" }
+//   );
+//   return res.data;
+// };

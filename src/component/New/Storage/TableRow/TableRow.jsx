@@ -3,8 +3,10 @@ import { PartModal } from "@/component/PartModal";
 import React, { useEffect, useState } from "react";
 import style from "./TableRow.module.scss";
 import { PhotoModal } from "../../PhotoModal/PhotoModal";
+import { Counter } from "../../Counter/Counter";
+import { KURS } from "@/variable/variable";
 
-export const TableRow = ({ part, click }) => {
+export const TableRow = ({ part, click, add_style, modal, get }) => {
   const [show, setShow] = useState(false);
   const [img, setImg] = useState(false);
   const [id, setId] = useState();
@@ -51,20 +53,31 @@ export const TableRow = ({ part, click }) => {
     const getLS = localStorage.getItem("newAdd");
     if (getLS) {
       const parts = JSON.parse(getLS);
-      const newParts = [...parts, part];
+      const newParts = [...parts, { ...part, count: 1 }];
       localStorage.setItem("newAdd", JSON.stringify(newParts));
       console.log("id", newParts);
       setChange(!change);
       return;
     }
-    const newParts = [part];
+    const newParts = [{ ...part, count: 1 }];
     localStorage.setItem("newAdd", JSON.stringify(newParts));
     setChange(!change);
     console.log("id", newParts);
     console.log("part", part);
   };
 
-  console.log("idAAAA", id);
+  const getCount = (data) => {
+    const partsLS = localStorage.getItem("newAdd");
+    if (partsLS) {
+      const parts = JSON.parse(partsLS);
+      console.log("data", parts);
+
+      const newParts = parts.map((item) =>
+        part._id === item._id ? { ...item, count: data } : item
+      );
+      localStorage.setItem("newAdd", JSON.stringify(newParts));
+    }
+  };
 
   return (
     <>
@@ -73,9 +86,17 @@ export const TableRow = ({ part, click }) => {
           {part.Articul}
         </td>
         <td className={style.row_item}>{part.Part_Name}</td>
-        <td className={style.row_item}>{part.Quantity}</td>
-        <td className={style.row_item}>{part.Price}</td>
-        <td className={style.row_item}>
+        {modal ? (
+          <Counter
+            get={getCount}
+            countStyle={style.count}
+            counterStyle={style.counter}
+          />
+        ) : (
+          <td className={style.row_item}>{part.Quantity}</td>
+        )}
+        <td className={style.row_item}>{Math.round(part.Price * KURS)}</td>
+        <td className={add_style ? style.row_item_add : style.row_item}>
           <button
             disabled={disabled}
             id={part._id}
