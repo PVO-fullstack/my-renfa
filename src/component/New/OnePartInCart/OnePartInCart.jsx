@@ -46,7 +46,7 @@ export const OnePartInCart = ({ part, get, count, del }) => {
           <Trash click={delPart} className={style.trash} />
         </div>
         <div className={style.counter_conteiner}>
-          <p className={style.price}>{part.Price * KURS}₴</p>
+          <p className={style.price}>{Math.round(part.Price * KURS)}₴</p>
           <Counter
             width={width >= 1280 ? 30 : 20}
             height={width >= 1280 ? 30 : 20}
@@ -55,7 +55,9 @@ export const OnePartInCart = ({ part, get, count, del }) => {
             get={changeCount}
             newCount={part.count}
           />
-          <p className={style.price}>{part.Price * newCount.count * KURS}₴</p>
+          <p className={style.price}>
+            {newCount.count * Math.round(part.Price * KURS)}₴
+          </p>
         </div>
       </div>
     </div>

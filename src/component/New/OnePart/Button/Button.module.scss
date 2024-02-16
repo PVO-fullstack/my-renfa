@@ -26,3 +26,31 @@
     }
 
 }
+
+.btn_list {
+    display: flex;
+    // height: 57px;
+    padding: 6px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 6px;
+    border: 1px solid #1E1E1E;
+    background: #1E1E1E;
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover {
+        background-color: rgb(37, 129, 36);
+        color: yellow;
+    }
+
+    &:disabled {
+        background-color: grey;
+        color: rgb(215, 214, 214);
+    }
+}

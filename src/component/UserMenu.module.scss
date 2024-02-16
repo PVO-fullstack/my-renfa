@@ -24,8 +24,26 @@
 .user_name {
     margin: 0;
     font-size: large;
+
+    @media screen and (max-width:768px) {
+        width: fit-content;
+        margin-left: 10px;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 5px;
+        text-align: center;
+    }
 }
 
 .cart {
     display: block;
+}
+
+@media screen and (max-width: 768px) {
+
+    .avatar,
+    .welcome,
+    button.btn {
+        display: none;
+    }
 }

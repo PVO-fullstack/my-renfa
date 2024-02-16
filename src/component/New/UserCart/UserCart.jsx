@@ -40,6 +40,7 @@ export const UserCart = () => {
   const delPart = (id) => {
     // console.log("first");
     const newParts = parts.filter((part) => part._id !== id);
+    localStorage.setItem("order", JSON.stringify(newParts));
     setParts(newParts);
     sum(newParts);
   };
@@ -67,7 +68,7 @@ export const UserCart = () => {
             />
           ))}
         <div className={style.sum}>
-          <p>Всього:</p> <p>{allSum * KURS}₴</p>
+          <p>Всього:</p> <p>{Math.round(allSum * KURS)}₴</p>
         </div>
         <div className={style.btn_conteiner}>
           <Link className={style.btn} href="/order">

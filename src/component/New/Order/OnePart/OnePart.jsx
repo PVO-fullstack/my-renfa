@@ -17,7 +17,9 @@ export const OnePart = ({ part }) => {
         ></Image>
         <p className={style.description}>{part.Part_Name}</p>
         <p className={style.price}>x{part.count}</p>
-        <p className={style.price}>{part.Price * part.count * KURS}₴</p>
+        <p className={style.price}>
+          {part.count * Math.round(part.Price * KURS)}₴
+        </p>
       </div>
     </div>
   );

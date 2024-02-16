@@ -209,7 +209,7 @@
   display: block;
   overflow: hidden;
   float: left;
-  min-width: 80%;
+  min-width: 70%;
 
   &::after {
     content: '';
@@ -218,6 +218,10 @@
     width: 100%;
     border-bottom: .1em dotted;
     // content: ". . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . ";
+  }
+
+  @media screen and (min-width:768px) {
+    min-width: 80%;
   }
 
 }

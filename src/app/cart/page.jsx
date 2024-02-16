@@ -8,7 +8,7 @@ export default function Cart() {
         <h2>Замовлення</h2>
       </div> */}
       <UserCart />
-      <OrderList />
+      {/* <OrderList /> */}
     </>
   );
 }

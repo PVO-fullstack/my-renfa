@@ -68,7 +68,7 @@ export const Order = () => {
         Артикул: part.Articul,
         Назва: part.Part_Name + part.Brand + part.Model[0],
         Кількість: part.count,
-        Ціна: part.Price * KURS,
+        Ціна: Math.round(part.Price * KURS),
       }));
       localStorage.setItem("tg", JSON.stringify(forTG));
     };

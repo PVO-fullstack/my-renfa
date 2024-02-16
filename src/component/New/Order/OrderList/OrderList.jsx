@@ -16,7 +16,7 @@ export const OrderList = () => {
       const qwe = parseParts.reduce((all, item) => {
         return all + item.count * item.Price;
       }, 0);
-      setAllSum(qwe * KURS);
+      setAllSum(Math.round(qwe * KURS));
     };
     getLocal();
   }, []);

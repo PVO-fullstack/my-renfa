@@ -21,19 +21,31 @@ export const UserMenu = ({ logout, show, adminClick }) => {
   return (
     <div>
       <div className={css.menu}>
-        {user && user.name ? <img width={40} src={user.avatar} alt="" /> : ""}
+        {user && user.name ? (
+          <img
+            className={css.avatar}
+            width={40}
+            src={user.avatar}
+            alt="avatar"
+          />
+        ) : (
+          ""
+        )}
         {user && user.position === "admin" && (
           <p onClick={adminClick} className={css.link}>
             Admin
           </p>
         )}
         {user && user.name
-          ? <img src={user.avatar} alt="" /> && (
-              <p className={css.user_name}>Вітаю Вас, {user.name}</p>
+          ? <img className={css.avatar} src={user.avatar} alt="avatar" /> && (
+              <p onClick={logout} className={css.user_name}>
+                <span className={css.welcome}>Вітаю Вас,</span> {user.name}
+              </p>
             )
           : ""}
         {user && user.name ? (
           <Button
+            className={css.btn}
             disabled={false}
             type="button"
             // variant="primary"
