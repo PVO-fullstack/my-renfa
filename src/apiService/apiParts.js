@@ -33,7 +33,9 @@ export const getModelBrand = async (brand) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`${API_URL}/api/parts/model${brand}`);
+  const res = await axios.get(
+    `https://renfa-api.onrender.com/api/parts/model${brand}`
+  );
   return res.data;
 };
 
@@ -150,6 +152,64 @@ export const changePart = createAsyncThunk(
   }
 );
 
+export const changePartCount = createAsyncThunk(
+  "part/changecount",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    const { id, count } = data;
+    console.log("count", count);
+
+    try {
+      const res = await axios.patch(
+        `https://renfa-api.onrender.com/api/parts/${id}`,
+        {
+          count: count,
+        }
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changePartCountSell = createAsyncThunk(
+  "part/changecountsell",
+  async (data, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+
+    const { id, count } = data;
+    console.log("count", count);
+
+    try {
+      const res = await axios.patch(
+        `https://renfa-api.onrender.com/api/parts/sell/${id}`,
+        {
+          count: count,
+        }
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const changeImg = createAsyncThunk(
   "part/newimg",
   async (data, thunkAPI) => {
@@ -166,7 +226,7 @@ export const changeImg = createAsyncThunk(
 
     try {
       const res = await axios.patch(
-        `https://renfa-api.onrender.com/api/parts/${id}`,
+        `https://renfa-api.onrender.com/api/parts/img/${id}`,
         img,
         {
           headers: {

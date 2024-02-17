@@ -6,12 +6,16 @@ import css from "../../AllOrders.module.css";
 import { useDispatch } from "react-redux";
 import { KURS } from "@/variable/variable";
 import { refreshUser } from "@/lib/auth/auth-operations";
+import { Button } from "@/component/Button";
+import { changePartCountSell } from "@/apiService/apiParts";
 
 export const Sell = () => {
   const [orders, setOrders] = useState([]);
   const [order, setOrder] = useState([]);
   const [neworder, setNeworder] = useState("");
   const [owner, setOwner] = useState(null);
+  const [close, setClose] = useState(false);
+  const [id, setId] = useState();
 
   const dispatch = useDispatch();
 
@@ -29,7 +33,10 @@ export const Sell = () => {
 
   const handleOrderClick = (e) => {
     const orderN = e.currentTarget.innerText;
+    setId(orderN);
     const order = orders.filter((el) => el._id === orderN);
+    const state = order.map((el) => el.close);
+    setClose(state[0]);
     const owner = order.map((el) => el.owner);
     setOwner(...owner);
     const partsOrder = order.flatMap((el) => el.partId);
@@ -55,6 +62,13 @@ export const Sell = () => {
     patchOrder(id);
     setNeworder(neworder + 1);
     e.currentTarget.innerText = "Готово";
+  };
+
+  const closeState = () => {
+    order.map((part) =>
+      dispatch(changePartCountSell({ id: part._id, count: part.ordered }))
+    );
+    dispatch(patchOrder(id)).then(setClose(true));
   };
 
   console.log("owner", orders);
@@ -83,14 +97,14 @@ export const Sell = () => {
                   <p onClick={handleOrderClick} className={css.order_name}>
                     {el._id}
                   </p>
-                  <button
+                  {/* <button
                     data_atr={`${el._id}`}
                     onClick={handleClose}
                     disabled={el.close}
                     className={css.order_btn}
                   >
                     {el.close ? "Виконано" : "Закрити"}
-                  </button>
+                  </button> */}
                 </div>
               </li>
             ))}
@@ -140,6 +154,9 @@ export const Sell = () => {
               </div>
             </div>
           )}
+          <Button onClick={closeState} disabled={close}>
+            {close ? "Проведено" : "Провести"}
+          </Button>
         </div>
       </div>
     </div>

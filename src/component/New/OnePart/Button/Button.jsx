@@ -23,12 +23,21 @@ export const Button = ({ part, count = 1, list }) => {
     getLocal();
   }, []);
 
+  console.log("order", order);
+
   const handleClick = () => {
-    if (order && order.length > 0) {
-      const partString = JSON.stringify([...order, { ...part, count: count }]);
-      localStorage.setItem("order", partString);
-      setDisabled(true);
-      return;
+    const ls = localStorage.getItem("order");
+    if (ls) {
+      const order = JSON.parse(ls);
+      if (order && order.length > 0) {
+        const partString = JSON.stringify([
+          ...order,
+          { ...part, count: count },
+        ]);
+        localStorage.setItem("order", partString);
+        setDisabled(true);
+        return;
+      }
     }
     const partString = JSON.stringify([{ ...part, count: count }]);
     localStorage.setItem("order", partString);

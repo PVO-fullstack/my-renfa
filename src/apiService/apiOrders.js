@@ -108,13 +108,33 @@ export const createOrder = createAsyncThunk(
   }
 );
 
-export const patchOrder = async (id) => {
-  // localStorage.setItem("token", JSON.stringify(res.data.token));
-  const tokenLs = await JSON.parse(localStorage.getItem("token"));
-  await token.set(tokenLs);
-  const res = await axios.patch(
-    `https://renfa-api.onrender.com/api/orders/${id}/close`,
-    { close: "true" }
-  );
-  return res.data;
-};
+export const patchOrder = createAsyncThunk(
+  "adds/putchorder",
+  async (id, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const tokenSt = state.auth.token;
+
+    if (tokenSt === null) {
+      return thunkAPI.rejectWithValue();
+    }
+
+    token.set(tokenSt);
+    try {
+      const res = await axios.patch(
+        `https://renfa-api.onrender.com/api/orders/${id}/close`,
+        { close: "true" }
+      );
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// export const patchOrder = async (id) => {
+//   // localStorage.setItem("token", JSON.stringify(res.data.token));
+//   const tokenLs = await JSON.parse(localStorage.getItem("token"));
+//   await token.set(tokenLs);
+
+//   return res.data;
+// };

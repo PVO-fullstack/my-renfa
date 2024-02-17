@@ -16,7 +16,7 @@ export const Part = ({ part, find }) => {
           pathname: `/models/${part.Brand}/${part.Model[0]}/${part._id}`,
         }}
       >
-        <div>
+        <div className={style.flex}>
           <div className={style.img_conteiner}>
             <Image
               className={style.imageGalleryItem_image}
@@ -37,19 +37,9 @@ export const Part = ({ part, find }) => {
       </Link>
       <div className={style.desc_conteiner}>
         <div className={style.bottom_conteiner}>
-          <Button
-            part={part}
-            list
-            // onClick={() => console.log("yes")}
-            className={style.btn}
-            // type="button"
-            // disabled={false}
-          >
-            Купити
-          </Button>
+          <Button part={part} list className={style.btn} />
         </div>
       </div>
-      {/* </a> */}
     </li>
   );
 };
