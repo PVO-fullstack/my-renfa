@@ -11,8 +11,8 @@ export const Order = () => {
         className={style.img}
         src="/parts.webp"
         alt="parts"
-        width={100}
-        height={100}
+        width={517}
+        height={346}
       />
       <div className={style.flex}>
         <div className={style.text_conteiner}>

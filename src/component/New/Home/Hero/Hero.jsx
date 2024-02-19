@@ -16,10 +16,10 @@ export const Hero = () => {
         </div>
         <Image
           className={style.img}
-          src="/hero.webp"
+          src="/hero.png"
           alt="car"
-          width={100}
-          height={100}
+          width={728}
+          height={454}
         />
       </div>
       <div className={style.brand}>

@@ -29,7 +29,7 @@ export const Sell = () => {
       setOrders(orders.payload);
     }
     allOrders();
-  }, [dispatch, neworder]);
+  }, [dispatch, close]);
 
   const handleOrderClick = (e) => {
     const orderN = e.currentTarget.innerText;
@@ -60,15 +60,15 @@ export const Sell = () => {
     const id = e.currentTarget.attributes.data_atr.value;
     // console.log(id);
     patchOrder(id);
-    setNeworder(neworder + 1);
     e.currentTarget.innerText = "Готово";
   };
 
-  const closeState = () => {
-    order.map((part) =>
+  const closeState = async () => {
+    await order.map((part) =>
       dispatch(changePartCountSell({ id: part._id, count: part.ordered }))
     );
     dispatch(patchOrder(id)).then(setClose(true));
+    // setNeworder(neworder + 1);
   };
 
   console.log("owner", orders);
