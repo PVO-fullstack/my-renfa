@@ -7,6 +7,7 @@ import axios from "axios";
 import { createModel, insertParts } from "@/apiService/apiParts";
 import { useDispatch } from "react-redux";
 import { CardFromXLS } from "../CardFromXLS/CardFromXLS";
+import style from "./XLStoJson.module.scss";
 
 const contactsPath = path.resolve("1.json");
 
@@ -65,11 +66,10 @@ export const XLStoJson = () => {
   // console.log("parts", parts);
 
   return (
-    <div>
-      <form
-        onSubmit={qwe}
-        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
-      >
+    <div className={style.conteiner}>
+      <h1>Робота з базою через Excel</h1>
+      <h2>Додати позиції файлом Excel</h2>
+      <form onSubmit={qwe} className={style.form}>
         <input onChange={onFileChange} type="file" name="xls" id="" />
         <button type="submit">SENT</button>
       </form>
