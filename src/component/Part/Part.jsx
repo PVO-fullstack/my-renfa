@@ -7,7 +7,7 @@ import style from "./Part.module.scss";
 import { KURS } from "@/variable/variable";
 import { Button } from "../New/OnePart/Button/Button";
 
-export const Part = ({ part, find }) => {
+export const Part = ({ part, find, page }) => {
   return (
     <li className={style.ImageGalleryItem}>
       <Link
@@ -37,7 +37,7 @@ export const Part = ({ part, find }) => {
       </Link>
       <div className={style.desc_conteiner}>
         <div className={style.bottom_conteiner}>
-          <Button part={part} list className={style.btn} />
+          <Button page={page} part={part} list className={style.btn} />
         </div>
       </div>
     </li>

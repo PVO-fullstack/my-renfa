@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Button.module.scss";
 
-export const Button = ({ part, count = 1, list }) => {
+export const Button = ({ part, count = 1, list, page }) => {
   const [disabled, setDisabled] = useState(false);
   const [order, setOrder] = useState([]);
 
@@ -13,15 +13,17 @@ export const Button = ({ part, count = 1, list }) => {
       if (order) {
         const orderParts = await JSON.parse(order);
         const inCart = orderParts.find((item) => part._id === item._id);
+        console.log("oiCart", inCart);
         if (inCart) {
           setDisabled(true);
           return;
         }
+        setDisabled(false);
         setOrder(orderParts);
       }
     };
     getLocal();
-  }, []);
+  }, [page]);
 
   console.log("order", order);
 

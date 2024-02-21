@@ -45,6 +45,7 @@ export const PartList = async ({ find, modelName, brand, page, limit }) => {
                 key={part._id}
                 model={modelName}
                 part={part}
+                page={page}
               />
             ))}
         </ul>
