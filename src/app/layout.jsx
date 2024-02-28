@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
     <html lang="ua">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
+        <link rel="canonical" href="https://www.renfa.pp.ua/" />
       </head>
       <StoreProvider>
         <body className="main">
@@ -41,8 +42,6 @@ export default function RootLayout({ children }) {
           <Analytics />
         </body>
       </StoreProvider>
-      {/* </PersistGate>
-      </Provider> */}
     </html>
   );
 }
