@@ -28,7 +28,6 @@ export const OrderList = () => {
 
   useEffect(() => {
     setUser(userBD);
-    console.log("user", user);
     // if (
     //   user?.name.length > 1 &&
     //   user?.phone > 999999999 &&
@@ -76,7 +75,6 @@ export const OrderList = () => {
     const partId = filteredOrder.map((el) => {
       return { id: el._id, ordered: el.count };
     });
-    console.log("partId", partId);
     await dispatch(createOrder({ partId }));
     await dispatch(
       updateUser({

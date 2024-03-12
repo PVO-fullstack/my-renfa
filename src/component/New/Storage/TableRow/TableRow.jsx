@@ -20,7 +20,6 @@ export const TableRow = ({ part, click, add_style, modal, get }) => {
 
       const qwe = parts.filter((item) => item._id === part._id);
       if (qwe.length > 0) {
-        console.log("qwe", qwe);
         setDisabled(true);
       }
     }
@@ -28,7 +27,6 @@ export const TableRow = ({ part, click, add_style, modal, get }) => {
 
   const showImg = (e) => {
     const idPart = e.currentTarget.id;
-    console.log("id", idPart);
     setId(idPart);
     setImg(true);
   };
@@ -43,8 +41,6 @@ export const TableRow = ({ part, click, add_style, modal, get }) => {
 
   const getId = (e) => {
     const id = e.currentTarget.id;
-    console.log("id", id);
-    // click(id);
     setId(id);
     setShow(true);
   };
@@ -55,23 +51,18 @@ export const TableRow = ({ part, click, add_style, modal, get }) => {
       const parts = JSON.parse(getLS);
       const newParts = [...parts, { ...part, count: 1 }];
       localStorage.setItem("newAdd", JSON.stringify(newParts));
-      console.log("id", newParts);
       setChange(!change);
       return;
     }
     const newParts = [{ ...part, count: 1 }];
     localStorage.setItem("newAdd", JSON.stringify(newParts));
     setChange(!change);
-    console.log("id", newParts);
-    console.log("part", part);
   };
 
   const getCount = (data) => {
     const partsLS = localStorage.getItem("newAdd");
     if (partsLS) {
       const parts = JSON.parse(partsLS);
-      console.log("data", parts);
-
       const newParts = parts.map((item) =>
         part._id === item._id ? { ...item, count: data } : item
       );

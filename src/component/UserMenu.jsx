@@ -16,8 +16,6 @@ export const UserMenu = ({ logout, show, adminClick }) => {
 
   const [admin, setAdmin] = useState(false);
 
-  // console.log("user", user, store);
-
   return (
     <div>
       <div className={css.menu}>

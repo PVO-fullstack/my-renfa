@@ -17,9 +17,6 @@ export const OnePartInCart = ({ part, get, count, del }) => {
     setHeight(document.documentElement.clientHeight);
   }, []);
 
-  console.log(width);
-  console.log(height);
-
   const changeCount = (data) => {
     setNewCount({ ...part, count: data });
     get({ ...part, count: data });

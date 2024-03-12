@@ -5,7 +5,6 @@ import { CarOfBrend } from "@/component/CarOfBrend/CarOfBrend";
 
 export default async function page({ params }) {
   const allParts = await getModel(params.slug.toUpperCase());
-//   console.log("allParts", allParts);
 
   return (
     <div>

@@ -6,6 +6,10 @@ export async function generateMetadata() {
     description: "Запчастини на автомобілі з Китаю",
     openGrapph: {
       images: ["/src/app/opengraph-image.png"],
+      title: "Магазин запчастин Renfa",
+      description: {
+        default: "%s - в наявності і під замовлення",
+      },
     },
   };
 }

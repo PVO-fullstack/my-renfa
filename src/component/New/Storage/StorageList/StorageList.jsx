@@ -80,7 +80,6 @@ export const StorageList = ({ add_style }) => {
 
   const handlePartClick = async (data) => {
     const parts = await getModel(data, 1, 1000);
-    console.log("parts", parts);
     setParts(parts.modelParts);
     // const id = e.currentTarget;
     // console.log("id", data);

@@ -13,7 +13,6 @@ export const Button = ({ part, count = 1, list, page }) => {
       if (order) {
         const orderParts = await JSON.parse(order);
         const inCart = orderParts.find((item) => part._id === item._id);
-        console.log("oiCart", inCart);
         if (inCart) {
           setDisabled(true);
           return;
@@ -24,8 +23,6 @@ export const Button = ({ part, count = 1, list, page }) => {
     };
     getLocal();
   }, [page]);
-
-  console.log("order", order);
 
   const handleClick = () => {
     const ls = localStorage.getItem("order");

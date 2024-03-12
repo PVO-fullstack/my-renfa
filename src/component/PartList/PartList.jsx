@@ -9,11 +9,23 @@ import { Pagination } from "../New/Pagination/Pagination";
 export const PartList = async ({ find, modelName, brand, page, limit }) => {
   const partName = decodeURI(modelName);
 
+  const brend = partName.split(",")[0];
+  const model = partName.split(",")[1];
+  const partArticul = partName.split(",")[2];
+
+  console.log(model);
+
   let filtredParts;
   let count;
   if (modelName) {
     if (find) {
-      const part = await getOnePart(modelName, page || 1, limit || 6);
+      const part = await getOnePart(
+        partArticul,
+        page || 1,
+        limit || 6,
+        brend,
+        model
+      );
       filtredParts = part.modelParts || part.parts;
       count = part.count;
     }

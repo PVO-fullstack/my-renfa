@@ -3,13 +3,10 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import style from "./FindInput.module.scss";
-// import { useRouter } from "next/router";
 import { SearchBtn } from "../SearchBtn/SearchBtn";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { getOnePart } from "@/apiService/apiParts";
+import { usePathname, useRouter } from "next/navigation";
 
-export const FindInput = ({ className, inputClass, click, close }) => {
-  const searchParams = useSearchParams();
+export const FindInput = ({ click, close }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
   const [value, setValue] = useState("");
@@ -18,6 +15,9 @@ export const FindInput = ({ className, inputClass, click, close }) => {
     setValue(e.currentTarget.value);
   };
 
+  const brand = pathname.split("/")[2];
+  const model = pathname.split("/")[3];
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) {
@@ -25,17 +25,24 @@ export const FindInput = ({ className, inputClass, click, close }) => {
       return;
     }
 
-    // const part = getOnePart(value);
-    //       const params = new URLSearchParams(searchParams);
-    //   if (term) {
-    //     params.set('query', term);
-    //   } else {
-    //     params.delete('query');
-    //   }
-    //   replace(`${pathname}?${params.toString()}`);
-    // }
+    if (brand || model) {
+      if (model) {
+        replace(`/search/${brand}/${model}/${value}`);
+        setValue("");
+        if (close) {
+          close();
+        }
+        return;
+      }
+      replace(`/search/${brand}/${value}`);
+      setValue("");
+      if (close) {
+        close();
+      }
+      return;
+    }
+
     replace(`/search/${value}`);
-    // // submit(value);
     setValue("");
     if (close) {
       close();
@@ -57,9 +64,6 @@ export const FindInput = ({ className, inputClass, click, close }) => {
         placeholder="Пошук"
       />
       <SearchBtn />
-      {/* <button type="submit" className={style.searchform_button}>
-        <span className={style.searchform_button_label}>Search</span>
-      </button> */}
     </form>
   );
 };

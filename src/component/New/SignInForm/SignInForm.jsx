@@ -34,7 +34,6 @@ export const SignInForm = ({ close, show }) => {
     setIsLoading(true);
     // console.log("hello");
     dispatch(logInUser(data)).then((result) => {
-      console.log("result", result);
       const { city, email, name, phone, numberNewPost } = result?.payload?.user;
       localStorage.setItem(
         "user_order",

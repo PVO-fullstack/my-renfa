@@ -21,15 +21,12 @@ export const Add = () => {
   const [id, setId] = useState();
   const dispatch = useDispatch();
 
-  console.log("adds", adds);
-
   const allOrders = [];
 
   useEffect(() => {
     dispatch(refreshUser());
     async function allAdd() {
       const adds = await dispatch(getAllAdds());
-      console.log("orders", adds.payload);
       setAdds(adds.payload);
     }
     allAdd();
@@ -41,16 +38,13 @@ export const Add = () => {
     const add = adds.filter((el) => el._id === addN);
     const state = add.map((el) => el.close);
     setClose(state[0]);
-    console.log("addN", add);
     const owner = add.map((el) => el.owner);
     setOwner(...owner);
     const partsAdd = add.flatMap((el) => el.partId);
     const ft = partsAdd.flatMap((part) => {
-      console.log("part", part);
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
-        // console.log("newO", newO);
         allOrders.push(newO);
         const h2 = document.getElementById("nak");
         h2.textContent = `Накладна №${addN}`;
@@ -59,8 +53,6 @@ export const Add = () => {
     });
     setOrder(allOrders);
   };
-
-  console.log("order", order, close);
 
   const clickNew = () => setNewNakl(!newNakl);
 

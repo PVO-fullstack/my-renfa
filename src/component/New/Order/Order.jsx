@@ -33,7 +33,6 @@ export const Order = () => {
   const [send, setSend] = useState(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log("user", user);
   const {
     register,
     handleSubmit,
@@ -88,12 +87,9 @@ export const Order = () => {
   // console.log("send", send);
 
   const onSubmit = async (data) => {
-    console.log("data", data);
-
     const partId = parts.map((el) => {
       return { id: el._id, ordered: el.count };
     });
-    console.log("partId", partId);
     await dispatch(createOrder({ partId }));
     await dispatch(
       updateUser({
@@ -109,14 +105,12 @@ export const Order = () => {
       await toast.promise(sendTelegramOrder(data), {
         pending: {
           render() {
-            console.log("Ura", data);
             return messages.queryPending;
           },
           type: "info",
         },
         success: {
           render() {
-            console.log("Da");
             reset({ name: "", phone: "", email: "", city: "", post: "" });
             setSend(true);
             return;

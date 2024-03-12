@@ -5,13 +5,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
   // read route params
   const id = params.slug;
 
-  // console.log("id", id);
-  // fetch data
-  //   const product = await fetch(`https://.../${id}`).then((res) => res.json());
-
-  // optionally access and extend (rather than replace) parent metadata
-  const previousImages = (await parent).openGraph?.images || [];
-
   return {
     title: id,
   };
@@ -19,7 +12,6 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 export default async function page({ params }) {
   const allParts = await getModel(params.slug.toUpperCase());
-  // console.log("allParts", allParts);
 
   return (
     <div>

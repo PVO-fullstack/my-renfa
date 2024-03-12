@@ -21,8 +21,6 @@ export const JsontoXLS = () => {
     getParts();
   }, []);
 
-  console.log("parts", parts);
-
   const download = () => {
     const ws = XLSX.utils.json_to_sheet(parts);
     const wb = XLSX.utils.book_new();

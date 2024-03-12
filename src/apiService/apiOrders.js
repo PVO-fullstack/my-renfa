@@ -40,7 +40,6 @@ export const getAllOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("/api/orders");
-      // console.log("res", res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -61,7 +60,6 @@ export const getUserOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("/api/orders/userorder");
-      // console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

@@ -10,8 +10,6 @@ import chery from "@/data/chery.json";
 export const Filter = ({ open, model, storage, get }) => {
   const allCars = [mg, chery, faw, geely, jac];
 
-  console.log("storage", storage);
-
   return (
     <div className={style.conteiner}>
       <h2 className={style.title}>Фільтр</h2>

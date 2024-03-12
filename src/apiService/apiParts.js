@@ -49,13 +49,21 @@ export const getModel = async (model, page = 1, limit = 6, init) => {
   return data;
 };
 
-export const getOnePart = async (articul, page = 1, limit = 6, init) => {
+export const getOnePart = async (
+  articul,
+  page = 1,
+  limit = 6,
+  brend,
+  model,
+  init
+) => {
   const res = await fetch(
-    `${API_URL}/api/car/${articul}?page=${page}&limit=${limit}`,
+    `${API_URL}/api/car/${articul}?page=${page}&limit=${limit}&brend=${brend}&model=${model}`,
     { next: { revalidate: 600 } }
   );
 
   const data = await res.json();
+  console.log("data", data);
   return data;
 };
 
@@ -156,7 +164,6 @@ export const changePartCount = createAsyncThunk(
     token.set(tokenSt);
 
     const { id, count } = data;
-    console.log("count", count);
 
     try {
       const res = await axios.patch(`/api/parts/${id}`, {
@@ -182,7 +189,6 @@ export const changePartCountSell = createAsyncThunk(
     token.set(tokenSt);
 
     const { id, count } = data;
-    console.log("count", count);
 
     try {
       const res = await axios.patch(`/api/parts/sell/${id}`, {
@@ -235,7 +241,6 @@ export const getAllOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("/api/orders");
-      // console.log("res", res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

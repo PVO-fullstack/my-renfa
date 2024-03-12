@@ -19,7 +19,6 @@ export const AllOrders = () => {
   useEffect(() => {
     async function allOrders() {
       const orders = await dispatch(getAllOrders());
-      // console.log("orders", orders.payload);
       setOrders(orders.payload);
     }
     allOrders();
@@ -32,11 +31,9 @@ export const AllOrders = () => {
     setOwner(...owner);
     const partsOrder = order.flatMap((el) => el.partId);
     const ft = partsOrder.flatMap((part) => {
-      console.log("part", part);
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
-        // console.log("newO", newO);
         allOrders.push(newO);
         const h2 = document.getElementById("nak");
         h2.textContent = `Накладна №${orderN}`;
@@ -49,13 +46,10 @@ export const AllOrders = () => {
   const handleClose = (e) => {
     e.preventDefault();
     const id = e.currentTarget.attributes.data_atr.value;
-    // console.log(id);
     patchOrder(id);
     setNeworder(neworder + 1);
     e.currentTarget.innerText = "Готово";
   };
-
-  console.log("owner", orders);
 
   return (
     <div

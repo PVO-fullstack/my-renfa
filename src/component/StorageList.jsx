@@ -16,8 +16,6 @@ export const StorageList = () => {
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
 
-  // console.log("filter", filter);
-
   useEffect(() => {
     async function getParts() {
       const parts = await getAllParts();
@@ -38,8 +36,6 @@ export const StorageList = () => {
     );
     setModels(uniqueModel);
   };
-  // console.log("models", models);
-
   const handleModelClick = (e) => {
     const modelName = e.currentTarget.innerText;
     setFilter([]);
@@ -50,7 +46,6 @@ export const StorageList = () => {
   const handleChange = (e) => {
     e.preventDefault();
     const searchValue = e.currentTarget.value.toLowerCase();
-    // console.log("searchValue", searchValue);
     if (parts.length > 0) {
       const filtredParts = parts.filter(
         (el) =>
@@ -58,7 +53,6 @@ export const StorageList = () => {
           el.Part_Name.toLowerCase().includes(searchValue)
       );
       setFilter(filtredParts);
-      // console.log("filtredParts", filtredParts);
       return;
     }
     if (allParts.length > 0) {
@@ -66,7 +60,6 @@ export const StorageList = () => {
         el.Articul.toLowerCase().includes(searchValue)
       );
       setFilter(filtredParts);
-      // console.log("filtredParts", filtredParts);
     }
   };
 
@@ -76,8 +69,6 @@ export const StorageList = () => {
     const partId = allParts.filter((el) => el._id === id);
     setId(partId);
   };
-
-  // console.log("filter", filter);
 
   const handleClose = () => {
     setShow(false);

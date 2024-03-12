@@ -21,9 +21,12 @@ export async function generateMetadata({ params, searchParams }, parent) {
     title: `Запчастини на автомобілі ${brand} ${model}`,
     // description: "MG",
     keywords: `${partsName}`,
-    // openGraph: {
-    //   images: ["/some-specific-page-image.jpg", ...previousImages],
-    // },
+    og: {
+      title: `Запчастини на автомобілі ${brand} ${model}`,
+      description: {
+        default: "Запчастини в наявності і під замовлення",
+      },
+    },
   };
 }
 

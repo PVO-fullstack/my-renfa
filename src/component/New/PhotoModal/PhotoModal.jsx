@@ -10,11 +10,7 @@ import { useGetPartByIdQuery } from "@/apiService/apiPartsRTK";
 import Image from "next/image";
 
 export const PhotoModal = (show, handleClose, id) => {
-  console.log("id", id);
-
   const { data: part } = useGetPartByIdQuery(id);
-
-  //   console.log("img", part, id);
 
   return (
     <>

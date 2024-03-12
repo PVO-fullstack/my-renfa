@@ -41,7 +41,6 @@ export const Sell = () => {
     setOwner(...owner);
     const partsOrder = order.flatMap((el) => el.partId);
     const ft = partsOrder.flatMap((part) => {
-      console.log("part", part);
       const root = part.id;
       root.map((el) => {
         const newO = { ...el, ordered: part.ordered };
@@ -70,8 +69,6 @@ export const Sell = () => {
     dispatch(patchOrder(id)).then(setClose(true));
     // setNeworder(neworder + 1);
   };
-
-  console.log("owner", orders);
 
   return (
     <div

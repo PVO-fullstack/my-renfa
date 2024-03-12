@@ -28,8 +28,6 @@ export const PartModal = ({ show, handleClose, id, click }) => {
   //   Quantity,
   // } = data;
 
-  console.log("part", part);
-
   const [update, result] = useChangePartMutation();
 
   const dispatch = useDispatch();
@@ -40,8 +38,6 @@ export const PartModal = ({ show, handleClose, id, click }) => {
   // const [partPrice, setPartPrice] = useState();
   // const [partQuantity, setPartQuantity] = useState();
   const [isPart, setIsPart] = useState(true);
-
-  // console.log("Model", data.Model, Model);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +67,6 @@ export const PartModal = ({ show, handleClose, id, click }) => {
       Quantity: quantity || "1",
     };
 
-    // console.log("newPart", formData);
     dispatch(createModel(newPart));
     setPartPrice();
     handleClose();
@@ -86,7 +81,6 @@ export const PartModal = ({ show, handleClose, id, click }) => {
 
   const handleChangeImgBtn = (e) => {
     e.preventDefault();
-    // console.log("first");
     const partId = part._id;
     const data = { id: partId, img: partImg };
     dispatch(changeImg(data));
@@ -98,7 +92,6 @@ export const PartModal = ({ show, handleClose, id, click }) => {
     const value = e.currentTarget.children[1].value;
     if (name === "Model") {
       const qwe = value.split(",");
-      // console.log("qwe", qwe);
       setData({ ...data, [name]: qwe });
       return;
     }

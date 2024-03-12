@@ -1,6 +1,8 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://renfa-api.onrender.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+axios.defaults.baseURL = BASE_URL;
 // axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
@@ -14,10 +16,7 @@ const token = {
 };
 
 export const register = async (credential) => {
-  const res = await axios.post(
-    "https://renfa-api.onrender.com/api/auth/users/register",
-    credential
-  );
+  const res = await axios.post("/api/auth/users/register", credential);
   token.set(res.data.token);
   return res.data;
 };

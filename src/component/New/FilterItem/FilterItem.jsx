@@ -10,10 +10,6 @@ import { getModel } from "@/apiService/apiParts";
 export const FilterItem = ({ data, fara, selected, storage, get }) => {
   const [open, setOpen] = useState(false);
 
-  // const { data, error, isLoading, isFetching, refetch } = useGetPartsQuery();
-
-  // console.log("selected", selected);
-
   useEffect(() => {
     if (fara) {
       setOpen(true);
@@ -26,11 +22,8 @@ export const FilterItem = ({ data, fara, selected, storage, get }) => {
 
   const getParts = async (model) => {
     const parts = await getModel(model, 1, 1000);
-    console.log("parts", parts);
     get(parts.modelParts);
   };
-
-  console.log("data", storage);
 
   const brand = data.cars;
 

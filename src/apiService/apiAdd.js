@@ -38,7 +38,6 @@ export const getAllAdds = createAsyncThunk("add/all", async (_, thunkAPI) => {
   token.set(tokenSt);
   try {
     const res = await axios.get("/api/add");
-    // console.log("res", res);
     return res.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -58,7 +57,6 @@ export const getUserOrders = createAsyncThunk(
     token.set(tokenSt);
     try {
       const res = await axios.get("/api/orders/userorder");
-      // console.log(res);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

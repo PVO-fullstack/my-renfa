@@ -5,15 +5,6 @@ import React, { useEffect } from "react";
 import style from "./Brand.module.scss";
 
 export const Brand = ({ model, get }) => {
-  // useEffect(() => {
-  //   if (document) {
-  //     const brand = document.getElementById("#brand");
-  //     brand.addEventListener("hover", getBrandName)
-  //   }
-
-  //   console.log("brand", brand);
-  // }, []);
-
   return (
     <div>
       <ul className={style.model}>

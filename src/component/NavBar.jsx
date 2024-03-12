@@ -25,8 +25,6 @@ export default function Navbars() {
   const userName = useSelector(selectUser);
   const isLoad = useSelector(selectLoad);
 
-  // console.log("user", user);
-
   const dispatch = useDispatch();
 
   const handleClose = (user) => {
