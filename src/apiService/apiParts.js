@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const PARTS_URL = process.env.NEXT_PUBLIC_PARTS_URL;
+const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
 
 // const API_URL = "http://localhost:3000";
 // const API_URL = "https://www.renfa.pp.ua";
@@ -10,7 +10,7 @@ const PARTS_URL = process.env.NEXT_PUBLIC_PARTS_URL;
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
-axios.defaults.baseURL = PARTS_URL;
+axios.defaults.baseURL = API_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
