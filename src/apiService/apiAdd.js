@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { env } from "eslint-config-next";
 
 BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
