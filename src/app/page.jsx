@@ -5,7 +5,7 @@ export async function generateMetadata() {
     title: "Магазин запчастин Renfa",
     description: "Запчастини на автомобілі з Китаю",
     openGrapph: {
-      images: ["https://www.renfa.pp.ua/ievs4.webp"],
+      images: ["/src/app/opengraph-image.png"],
     },
   };
 }

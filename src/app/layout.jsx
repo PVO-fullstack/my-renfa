@@ -22,6 +22,9 @@ export const metadata = {
     "Сайт продажу запчастин на автомобілі китайського виробництва. Запчастини в наявності і під замовлення",
   keywords:
     "Автозапчасти, запчасти для китайського авто, запчастини MG, MG350, MG550, MG5, MG6, MG3Cross, FAW, FAW x40, FAW X80, FAW B30, купити запчастини, купить запчасти, стекло для авто, ветровые стекла, автозапчасти для китайського автомобиля, CHERY, GEELY, GREAT WALL, BYD, LIFAN, ZAZ FORZA, MG, SMA, RAVON, FAW V5, V2, B50, LANDWIND X6, ZHONGXING, CHANA BENNI, DADI, DAEWOO MATIZ, РАЗБОРКА CHERY GEELY, DONG-FENG, FAW, FOTON, ISUZU, JAC",
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({ children }) {

@@ -1,14 +1,16 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+PARTS_URL = process.env.NEXT_PUBLIC_PARTS_URL;
+
 // const API_URL = "http://localhost:3000";
-const API_URL = "https://www.renfa.pp.ua";
+// const API_URL = "https://www.renfa.pp.ua";
 // const API_URL = "https://renfa-api.onrender.com";
 // const API_URL = "https://my-renfa.vercel.app/";
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
-axios.defaults.baseURL = API_URL;
+axios.defaults.baseURL = PARTS_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
@@ -33,9 +35,7 @@ export const getModelBrand = async (brand) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(
-    `https://renfa-api.onrender.com/api/parts/model${brand}`
-  );
+  const res = await axios.get(`/api/parts/model${brand}`);
   return res.data;
 };
 
@@ -91,10 +91,7 @@ export const createModel = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      const res = await axios.post(
-        `https://renfa-api.onrender.com/api/part/api/parts`,
-        part
-      );
+      const res = await axios.post(`/api/part/api/parts`, part);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -115,10 +112,7 @@ export const insertParts = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      const res = await axios.post(
-        `https://renfa-api.onrender.com/api/parts/parts`,
-        part
-      );
+      const res = await axios.post(`/api/parts/parts`, part);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -141,10 +135,7 @@ export const changePart = createAsyncThunk(
     const id = data._id;
 
     try {
-      const res = await axios.put(
-        `https://renfa-api.onrender.com/api/parts/${id}`,
-        data
-      );
+      const res = await axios.put(`/api/parts/${id}`, data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -168,12 +159,9 @@ export const changePartCount = createAsyncThunk(
     console.log("count", count);
 
     try {
-      const res = await axios.patch(
-        `https://renfa-api.onrender.com/api/parts/${id}`,
-        {
-          count: count,
-        }
-      );
+      const res = await axios.patch(`/api/parts/${id}`, {
+        count: count,
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -197,12 +185,9 @@ export const changePartCountSell = createAsyncThunk(
     console.log("count", count);
 
     try {
-      const res = await axios.patch(
-        `https://renfa-api.onrender.com/api/parts/sell/${id}`,
-        {
-          count: count,
-        }
-      );
+      const res = await axios.patch(`/api/parts/sell/${id}`, {
+        count: count,
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -225,15 +210,11 @@ export const changeImg = createAsyncThunk(
     const { id, img } = data;
 
     try {
-      const res = await axios.patch(
-        `https://renfa-api.onrender.com/api/parts/img/${id}`,
-        img,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const res = await axios.patch(`/api/parts/img/${id}`, img, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -253,7 +234,7 @@ export const getAllOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get("https://renfa-api.onrender.com/api/orders");
+      const res = await axios.get("/api/orders");
       // console.log("res", res);
       return res.data;
     } catch (error) {

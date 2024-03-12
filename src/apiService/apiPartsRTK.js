@@ -5,7 +5,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const partsApi = createApi({
   reducerPath: "partsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://renfa-api.onrender.com/api",
+    baseUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
     prepareHeaders: (headers, { getState }) => {
       const tokenSt = getState().auth.token;
       if (!tokenSt) {

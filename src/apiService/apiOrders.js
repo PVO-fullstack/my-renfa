@@ -1,7 +1,9 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://renfa-api.onrender.com";
+BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+axios.defaults.baseURL = BASE_URL;
 // axios.defaults.baseURL = "http://localhost:3001";
 // axios.defaults.baseURL = "https://renfa-api-2uzf.vercel.app/";
 
@@ -37,7 +39,7 @@ export const getAllOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get("https://renfa-api.onrender.com/api/orders");
+      const res = await axios.get("/api/orders");
       // console.log("res", res);
       return res.data;
     } catch (error) {
@@ -58,9 +60,7 @@ export const getUserOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get(
-        "https://renfa-api.onrender.com/api/orders/userorder"
-      );
+      const res = await axios.get("/api/orders/userorder");
       // console.log(res);
       return res.data;
     } catch (error) {
@@ -97,10 +97,7 @@ export const createOrder = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.post(
-        "https://renfa-api.onrender.com/api/orders",
-        part
-      );
+      const res = await axios.post("/api/orders", part);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -120,10 +117,9 @@ export const patchOrder = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.patch(
-        `https://renfa-api.onrender.com/api/orders/${id}/close`,
-        { close: "true" }
-      );
+      const res = await axios.patch(`/api/orders/${id}/close`, {
+        close: "true",
+      });
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
