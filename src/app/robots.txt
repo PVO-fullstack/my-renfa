@@ -1,7 +1,0 @@
-User-Agent: *
-Allow: /
-Disallow: /orders/
-
-Sitemap: https://www.renfa.pp.ua/sitemap.xml
-
-Sitemap: https://www.renfa.pp.ua/models/sitemap.xml

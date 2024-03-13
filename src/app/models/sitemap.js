@@ -1,7 +1,7 @@
 import { getAllParts } from "@/apiService/apiParts";
 
 export default async function sitemap() {
-  const baseURL = "https://www.renfa.pp.ua/";
+  const baseURL = process.env.NEXT_PUBLIC_PARTS_URL;
 
   const parts = await getAllParts();
 

@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseURL = "https://www.renfa.pp.ua/";
+  const baseURL = process.env.NEXT_PUBLIC_PARTS_URL;
 
   return [
     { url: baseURL, lastModified: new Date() },
