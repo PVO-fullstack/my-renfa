@@ -14,7 +14,6 @@ export default function robots() {
           "/search",
           "/storage",
           "/xls",
-          "privacy",
         ],
       },
     ],
