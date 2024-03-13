@@ -8,6 +8,7 @@ export default async function (req, res) {
     const skip = (page - 1) * limit;
     let regexp = new RegExp(`${articul}`, "ig");
     let regexpName = new RegExp(`${model}`, "ig");
+    let regexpArticul = new RegExp(`${brend}`, "ig");
 
     let parts = [];
     let count = 0;
@@ -52,7 +53,21 @@ export default async function (req, res) {
       // res.json({ parts: parts, count: count });
       // return;
     }
+    if (parts.length === 0) {
+      parts = await db
+        .collection("parts")
+        .find({ Description: { $regex: regexpArticul } }, { skip, limit })
+        .limit(parseInt(limit))
+        .skip(skip)
+        .toArray();
 
+      count = await db
+        .collection("parts")
+        .find({ Description: { $regex: regexpArticul } }, { skip, limit })
+        .count();
+      // res.json({ parts: parts, count: count });
+      // return;
+    }
     res.json({ modelParts: parts, count: count });
   } catch (e) {
     console.error(e);
