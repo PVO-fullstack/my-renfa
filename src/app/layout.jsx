@@ -29,7 +29,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ua">
+    <html lang="uk">
       <head>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
         <link rel="canonical" href="https://www.renfa.pp.ua/" />
