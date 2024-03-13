@@ -9,18 +9,17 @@ export const Brand = ({ model, get }) => {
     <div>
       <ul className={style.model}>
         {model.map((item) => (
-          <Link
-            className={style.link}
-            key={item.Brend}
-            // href={"/models/MG"}
+          <li key={item.Brend}>
+            <Link
+              className={style.link}
+              // href={"/models/MG"}
 
-            href={`/models/${item.Brend}`}
-            // href={{
-            //   pathname: `/models/[car]`,
-            //   query: { car: item.Brend },
-            // }}
-          >
-            <li>
+              href={`/models/${item.Brend}`}
+              // href={{
+              //   pathname: `/models/[car]`,
+              //   query: { car: item.Brend },
+              // }}
+            >
               {/* <img className={style.logo} src={item.logo} alt="" /> */}
               <p
                 onMouseEnter={(e) => get(e.currentTarget.lastChild.data)}
@@ -30,8 +29,8 @@ export const Brand = ({ model, get }) => {
               >
                 {item.Brend}
               </p>
-            </li>
-          </Link>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>
