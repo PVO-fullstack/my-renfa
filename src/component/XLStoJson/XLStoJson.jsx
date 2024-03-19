@@ -50,7 +50,6 @@ export const XLStoJson = () => {
         }));
         // console.log("result", result);
         setParts(result);
-        // fs.writeFile(contactsPath, JSON.stringify(jsonXls, null, 2));
       });
     };
 
