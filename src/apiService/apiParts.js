@@ -42,10 +42,9 @@ export const getModelBrand = async (brand) => {
 };
 
 export const getModel = async (model, page = 1, limit = 6, init) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_PARTS_URL}/api/${model}?page=${page}&limit=${limit}`,
-    { next: { revalidate: 600 } }
-  );
+  const res = await fetch(`/api/${model}?page=${page}&limit=${limit}`, {
+    next: { revalidate: 600 },
+  });
 
   const data = await res.json();
   return data;
