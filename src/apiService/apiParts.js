@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
+const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
 
 // const API_URL = "http://localhost:3000";
 // const API_URL = "https://www.renfa.pp.ua";
