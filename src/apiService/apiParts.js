@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
+// const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
 
 // const API_URL = "http://localhost:3000";
 // const API_URL = "https://www.renfa.pp.ua";
@@ -10,7 +10,7 @@ const API_URL = process.env.NEXT_PUBLIC_PARTS_URL;
 // axios.defaults.baseURL = "https://renfa-api.onrender.com";
 // axios.defaults.baseURL = "http://localhost:3000";
 // axios.defaults.baseURL = "https://my-renfa.vercel.app/"?
-axios.defaults.baseURL = API_URL;
+// axios.defaults.baseURL = API_URL;
 // axios.defaults.baseURL = "https://renfa-apiup.vercel.app";
 
 const token = {
@@ -43,7 +43,7 @@ export const getModelBrand = async (brand) => {
 
 export const getModel = async (model, page = 1, limit = 6, init) => {
   const res = await fetch(
-    `${API_URL}/api/${model}?page=${page}&limit=${limit}`,
+    `${process.env.NEXT_PUBLIC_PARTS_URL}/api/${model}?page=${page}&limit=${limit}`,
     { next: { revalidate: 600 } }
   );
 
