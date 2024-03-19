@@ -35,7 +35,9 @@ export const getModelBrand = async (brand) => {
   // localStorage.setItem("token", JSON.stringify(res.data.token));
   // const tokenLs = await JSON.parse(localStorage.getItem("token"));
   // await token.set(tokenLs);
-  const res = await axios.get(`/api/parts/model${brand}`);
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/model${brand}`
+  );
   return res.data;
 };
 
@@ -99,7 +101,10 @@ export const createModel = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      const res = await axios.post(`/api/part/api/parts`, part);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/part/api/parts`,
+        part
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -120,7 +125,10 @@ export const insertParts = createAsyncThunk(
     token.set(tokenSt);
 
     try {
-      const res = await axios.post(`/api/parts/parts`, part);
+      const res = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/parts`,
+        part
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -143,7 +151,10 @@ export const changePart = createAsyncThunk(
     const id = data._id;
 
     try {
-      const res = await axios.put(`/api/parts/${id}`, data);
+      const res = await axios.put(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/${id}`,
+        data
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -166,9 +177,12 @@ export const changePartCount = createAsyncThunk(
     const { id, count } = data;
 
     try {
-      const res = await axios.patch(`/api/parts/${id}`, {
-        count: count,
-      });
+      const res = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/${id}`,
+        {
+          count: count,
+        }
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -191,9 +205,12 @@ export const changePartCountSell = createAsyncThunk(
     const { id, count } = data;
 
     try {
-      const res = await axios.patch(`/api/parts/sell/${id}`, {
-        count: count,
-      });
+      const res = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/sell/${id}`,
+        {
+          count: count,
+        }
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -216,11 +233,15 @@ export const changeImg = createAsyncThunk(
     const { id, img } = data;
 
     try {
-      const res = await axios.patch(`/api/parts/img/${id}`, img, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.patch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/parts/img/${id}`,
+        img,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -240,7 +261,9 @@ export const getAllOrders = createAsyncThunk(
 
     token.set(tokenSt);
     try {
-      const res = await axios.get("/api/orders");
+      const res = await axios.get(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/orders`
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
