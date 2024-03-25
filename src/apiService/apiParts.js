@@ -53,6 +53,15 @@ export const getModel = async (model, page = 1, limit = 6, init) => {
   return data;
 };
 
+export const getModelStor = async (model, page = 1, limit = 6, init) => {
+  const res = await fetch(`/api/${model}?page=${page}&limit=${limit}`, {
+    next: { revalidate: 600 },
+  });
+
+  const data = await res.json();
+  return data;
+};
+
 export const getOnePart = async (
   articul,
   page = 1,
