@@ -21,7 +21,7 @@ export const FilterItem = ({ data, fara, selected, storage, get }) => {
   };
 
   const getParts = async (model) => {
-    const parts = await getModelStor(model, 1, 1000);
+    const parts = await getModel(model, 1, 1000);
     get(parts.modelParts);
   };
 
