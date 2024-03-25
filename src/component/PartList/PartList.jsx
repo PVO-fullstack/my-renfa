@@ -30,7 +30,7 @@ export const PartList = async ({ find, modelName, brand, page, limit }) => {
       count = part.count;
     }
     if (!find) {
-      const allParts = await getModelStor(modelName, page || 1, limit || 6);
+      const allParts = await getModel(modelName, page || 1, limit || 6);
       filtredParts = allParts.modelParts;
       count = allParts.count;
     }
