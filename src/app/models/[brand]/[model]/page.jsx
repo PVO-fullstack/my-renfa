@@ -1,11 +1,5 @@
 import { PartListComponent } from "@/component/New/PartList/PartListComponent";
-import { OnePart } from "@/component/New/OnePart/OnePart";
-import {
-  getModel,
-  getModelBrand,
-  getOnePart,
-  getPartById,
-} from "@/apiService/apiParts";
+import { getModel } from "@/apiService/apiParts";
 
 export async function generateMetadata({ params, searchParams }, parent) {
   const brand = params.brand;
