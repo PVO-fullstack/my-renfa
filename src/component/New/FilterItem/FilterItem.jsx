@@ -5,7 +5,7 @@ import mg from "../../../data/mg.json";
 import style from "./FilterItem.module.scss";
 import { Arrow } from "../Arrow/Arrow";
 import Link from "next/link";
-import { getModel } from "@/apiService/apiParts";
+import { getModel, getModelStor } from "@/apiService/apiParts";
 
 export const FilterItem = ({ data, fara, selected, storage, get }) => {
   const [open, setOpen] = useState(false);
@@ -21,7 +21,7 @@ export const FilterItem = ({ data, fara, selected, storage, get }) => {
   };
 
   const getParts = async (model) => {
-    const parts = await getModel(model, 1, 1000);
+    const parts = await getModelStor(model, 1, 1000);
     get(parts.modelParts);
   };
 
