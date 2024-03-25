@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllParts, getModel } from "@/apiService/apiParts";
+import { getModelStor } from "@/apiService/apiParts";
 import React, { useEffect, useState } from "react";
 import brand from "../../../../data/model.json";
 import { PartModal } from "../../../PartModal";
@@ -79,7 +79,7 @@ export const StorageList = ({ add_style }) => {
   };
 
   const handlePartClick = async (data) => {
-    const parts = await getModel(data, 1, 1000);
+    const parts = await getModelStor(data, 1, 1000);
     setParts(parts.modelParts);
     // const id = e.currentTarget;
     // console.log("id", data);
