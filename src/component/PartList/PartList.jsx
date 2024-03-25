@@ -1,7 +1,7 @@
 // "use client";
 
 import style from "./PartList.module.scss";
-import { getModel, getOnePart } from "@/apiService/apiParts";
+import { getModel, getModelStor, getOnePart } from "@/apiService/apiParts";
 import { PartListItem } from "../New/PartListItem/PartListItem";
 import { SortPanel } from "../New/SortPanel/SortPanel";
 import { Pagination } from "../New/Pagination/Pagination";
@@ -30,7 +30,7 @@ export const PartList = async ({ find, modelName, brand, page, limit }) => {
       count = part.count;
     }
     if (!find) {
-      const allParts = await getModel(modelName, page || 1, limit || 6);
+      const allParts = await getModelStor(modelName, page || 1, limit || 6);
       filtredParts = allParts.modelParts;
       count = allParts.count;
     }
