@@ -40,7 +40,7 @@ export const Input = ({
   const telRegisterValidation = {
     required: errorMessages.required || "Обов'язкове поле'",
     minLength: {
-      value: 16,
+      value: 13,
       message: errorMessages.minLength || "Повинно бути мінімум 11 цифр ",
     },
   };
